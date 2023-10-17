@@ -1,11 +1,11 @@
 {
-  "name": "@fuz.dev/fuz_template",
-  "private": true,
-  "description": "a static web app and Node library template with TypeScript, Svelte, SvelteKit, Vite, esbuild, Fuz, and Gro",
+  "name": "@ryanatkn/orc",
+  "description": "a tool for orchestrating many repos",
   "version": "0.0.1",
+  "license": "MIT",
+  "homepage": "https://orc.ryanatkn.com/",
+  "repository": "https://github.com/ryanatkn/orc",
   "type": "module",
-  "homepage": "https://template.fuz.dev/",
-  "repository": "https://github.com/fuz-dev/fuz_template",
   "engines": {
     "node": ">=20.7"
   },
@@ -62,11 +62,5 @@
         }
       }
     ]
-  },
-  "exports": {
-    "./example.js": {
-      "default": "./dist/example.js",
-      "types": "./dist/example.d.ts"
-    }
   }
 }
