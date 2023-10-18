@@ -28,7 +28,7 @@
     "@grogarden/gro": "^0.95.7",
     "@grogarden/util": "^0.15.1",
     "@sveltejs/adapter-static": "^2.0.3",
-    "@sveltejs/kit": "^1.25.2",
+    "@sveltejs/kit": "^1.26.0",
     "@sveltejs/package": "^2.2.2",
     "@types/node": "^20.8.7",
     "@typescript-eslint/eslint-plugin": "^6.8.0",

@@ -28,6 +28,7 @@ const config: OrcConfig = {
 		'https://www.cosmicplayground.org/',
 		'https://sss.ryanatkn.com/',
 		'https://earbetter.ryanatkn.com/',
+		'https://ryanatkn.github.io/corpus-activity-streams/',
 	],
 };
 
