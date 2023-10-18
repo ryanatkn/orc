@@ -8,7 +8,8 @@ I maintain a lot of git repos between
 Orc is a tool to help me orchestrate this complexity.
 
 The goal is to make a generic tool that works for your projects too,
-but for now I'm hardcoding all values in `$lib/orc.config.ts`.
+but for now I'm hardcoding all values in
+[`$lib/orc.config.ts`](src/lib/orc.config.ts).
 If you want to try it yourself, you can fork the repo and change the config manually,
 and eventually I'll stabilize the APIs and publish a reusable library.
 
