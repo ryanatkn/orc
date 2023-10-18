@@ -50,3 +50,17 @@
 		</tr>
 	{/each}
 </table>
+
+<style>
+	/* TODO add basic table styles upstream and delete this */
+	th {
+		text-align: left;
+	}
+	th,
+	td {
+		padding: 0 var(--spacing_xs);
+	}
+	tr:hover {
+		background-color: var(--bg_5);
+	}
+</style>

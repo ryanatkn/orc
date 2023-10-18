@@ -22,7 +22,9 @@
 		<PageHeader />
 	</section>
 	<section>
-		<RepoTable {pkgs} />
+		<div class="panel padded_md">
+			<RepoTable {pkgs} />
+		</div>
 	</section>
 	<section>
 		<LibraryFooter pkg={orc_pkg}>
