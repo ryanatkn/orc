@@ -30,6 +30,7 @@
     "@sveltejs/adapter-static": "^2.0.3",
     "@sveltejs/kit": "^1.25.2",
     "@sveltejs/package": "^2.2.2",
+    "@types/node": "^20.8.6",
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "@typescript-eslint/parser": "^6.8.0",
     "eslint": "^8.51.0",
@@ -62,5 +63,27 @@
         }
       }
     ]
+  },
+  "exports": {
+    "./config.js": {
+      "default": "./dist/config.js",
+      "types": "./dist/config.d.ts"
+    },
+    "./fetch_packages.js": {
+      "default": "./dist/fetch_packages.js",
+      "types": "./dist/fetch_packages.d.ts"
+    },
+    "./orc.config.js": {
+      "default": "./dist/orc.config.js",
+      "types": "./dist/orc.config.d.ts"
+    },
+    "./packages.json": {
+      "default": "./dist/packages.json",
+      "types": "./dist/packages.json.d.ts"
+    },
+    "./packages.task.js": {
+      "default": "./dist/packages.task.js",
+      "types": "./dist/packages.task.d.ts"
+    }
   }
 }

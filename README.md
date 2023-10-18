@@ -12,6 +12,6 @@ but for now I'm hardcoding all values in `$lib/orc.config.ts`.
 If you want to try it yourself, you can fork the repo and change the config manually,
 and eventually I'll stabilize the APIs and publish a reusable library.
 
-## [🐦](https://wikipedia.org/wiki/Free_and_open-source_software)
+## License [🐦](https://wikipedia.org/wiki/Free_and_open-source_software)
 
 [MIT](LICENSE)
