@@ -32,7 +32,7 @@
 		</menu>
 	</section>
 	<section>
-		<LibraryFooter pkg={orc_pkg} />
+		<LibraryFooter pkg={orc_pkg}>{''}</LibraryFooter>
 	</section>
 </main>
 
