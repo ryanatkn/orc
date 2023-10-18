@@ -38,7 +38,7 @@
 				</div>
 			</td>
 			<td>
-				{#if package_json}
+				{#if package_json && package_json.version !== '0.0.1'}
 					{package_json.version}
 				{/if}
 			</td>
