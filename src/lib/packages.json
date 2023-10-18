@@ -24,12 +24,12 @@
 				"@fuz.dev/fuz_contextmenu": "^0.4.1",
 				"@fuz.dev/fuz_dialog": "^0.3.1",
 				"@fuz.dev/fuz_library": "^0.11.0",
-				"@grogarden/gro": "^0.95.5",
+				"@grogarden/gro": "^0.95.7",
 				"@grogarden/util": "^0.15.1",
 				"@sveltejs/adapter-static": "^2.0.3",
 				"@sveltejs/kit": "^1.25.2",
 				"@sveltejs/package": "^2.2.2",
-				"@types/node": "^20.8.6",
+				"@types/node": "^20.8.7",
 				"@typescript-eslint/eslint-plugin": "^6.8.0",
 				"@typescript-eslint/parser": "^6.8.0",
 				"eslint": "^8.51.0",
@@ -52,15 +52,12 @@
 				"overrides": [{"files": "package.json", "options": {"useTabs": false}}]
 			},
 			"exports": {
+				"./config.js": {"default": "./dist/config.js", "types": "./dist/config.d.ts"},
 				"./fetch_packages.js": {
 					"default": "./dist/fetch_packages.js",
 					"types": "./dist/fetch_packages.d.ts"
 				},
 				"./orc.config.js": {"default": "./dist/orc.config.js", "types": "./dist/orc.config.d.ts"},
-				"./packages_old_task.js": {
-					"default": "./dist/packages_old_task.js",
-					"types": "./dist/packages_old_task.d.ts"
-				},
 				"./packages.json": {
 					"default": "./dist/packages.json",
 					"types": "./dist/packages.json.d.ts"
@@ -68,6 +65,10 @@
 				"./packages.task.js": {
 					"default": "./dist/packages.task.js",
 					"types": "./dist/packages.task.d.ts"
+				},
+				"./RepoTable.svelte": {
+					"svelte": "./dist/RepoTable.svelte",
+					"types": "./dist/RepoTable.svelte.d.ts"
 				}
 			}
 		}
@@ -929,7 +930,7 @@
 		"package_json": {
 			"name": "@grogarden/gro",
 			"description": "task runner and toolkit extending SvelteKit",
-			"version": "0.95.5",
+			"version": "0.95.7",
 			"bin": {"gro": "dist/gro.js"},
 			"license": "MIT",
 			"homepage": "https://www.grogarden.org/",
@@ -1128,6 +1129,10 @@
 				"./release.task.js": {
 					"default": "./dist/release.task.js",
 					"types": "./dist/release.task.d.ts"
+				},
+				"./resolve_node_specifier.js": {
+					"default": "./dist/resolve_node_specifier.js",
+					"types": "./dist/resolve_node_specifier.d.ts"
 				},
 				"./resolve_specifier.js": {
 					"default": "./dist/resolve_specifier.js",

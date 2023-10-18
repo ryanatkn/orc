@@ -1,15 +1,15 @@
 <script lang="ts">
-	import PackageSummary from '@fuz.dev/fuz_library/PackageSummary.svelte';
 	import LibraryFooter from '@fuz.dev/fuz_library/LibraryFooter.svelte';
 	import {parse_package_meta, type PackageMeta} from '@fuz.dev/fuz_library/package_meta.js';
-	import {strip_end, strip_start} from '@grogarden/util/string.js';
 
 	import packages from '$lib/packages.json';
 	import PageHeader from '$routes/PageHeader.svelte';
+	import type {FetchedPackageMeta} from '$lib/fetch_packages.js';
+	import RepoTable from '$lib/RepoTable.svelte';
 	import PageFooter from '$routes/PageFooter.svelte';
 
 	// TODO hacky
-	const pkgs = packages.map(({url, package_json}) =>
+	const pkgs: FetchedPackageMeta[] = packages.map(({url, package_json}) =>
 		package_json ? parse_package_meta(url, package_json) : {url, package_json: null},
 	);
 
@@ -22,21 +22,9 @@
 		<PageHeader />
 	</section>
 	<section>
-		<menu>
-			<!-- TODO PackageSummary -->
-			{#each pkgs as pkg}
-				<li class="panel padded_md box">
-					{#if pkg.package_json}
-						<PackageSummary {pkg} />
-					{:else}
-						<div class="box">
-							failed to fetch <code>.well-known/package.json</code> from
-							<a href={pkg.url}>{strip_end(strip_start(pkg.url, 'https://'), '/')}</a>
-						</div>
-					{/if}
-				</li>
-			{/each}
-		</menu>
+		<div class="panel padded_md">
+			<RepoTable {pkgs} />
+		</div>
 	</section>
 	<section>
 		<LibraryFooter pkg={orc_pkg}>
@@ -57,15 +45,5 @@
 	}
 	section:first-child {
 		margin-top: var(--spacing_4);
-	}
-	menu {
-		gap: var(--spacing_lg);
-		width: 100%;
-		display: flex;
-		flex-wrap: wrap;
-		flex-direction: column;
-	}
-	li {
-		margin-bottom: var(--spacing_1);
 	}
 </style>
