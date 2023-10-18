@@ -1,0 +1,52 @@
+<script lang="ts">
+	import type {FetchedPackageMeta} from '$lib/fetch_packages.js';
+
+	export let pkgs: FetchedPackageMeta[];
+	export let deps = ['@fuz.dev/fuz', '@fuz.dev/fuz_library'];
+
+	// TODO hacky, handle regular deps too
+	const lookup_dep = (pkg: FetchedPackageMeta, dep: string): string => {
+		if (!pkg.package_json) return ''; // TODO null
+		for (const key in pkg.package_json.dependencies) {
+			if (key === dep) {
+				return pkg.package_json.dependencies[key];
+			}
+		}
+		for (const key in pkg.package_json.devDependencies) {
+			if (key === dep) {
+				return pkg.package_json.devDependencies[key];
+			}
+		}
+		return '';
+	};
+</script>
+
+<table>
+	<thead
+		><th>repo</th><th>version</th>{#each deps as dep (dep)}<th>{dep}</th>{/each}</thead
+	>
+	{#each pkgs as pkg}
+		{@const package_json = pkg.package_json}
+		<tr>
+			<td>
+				<div class="row">
+					{#if package_json}
+						<a href={pkg.repo_url}>{pkg.repo_name}</a>
+					{:else}
+						{pkg.url}
+					{/if}
+				</div>
+			</td>
+			<td>
+				{#if package_json}
+					{package_json.version}
+				{/if}
+			</td>
+			{#each deps as dep (dep)}
+				<td>
+					{lookup_dep(pkg, dep)}
+				</td>
+			{/each}
+		</tr>
+	{/each}
+</table>

@@ -7,11 +7,6 @@
 </header>
 
 <style>
-	h1 {
-		text-align: center;
-		font-size: var(--size_1);
-		font-weight: 400;
-	}
 	.icon {
 		font-size: var(--icon_size_lg);
 	}

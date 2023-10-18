@@ -3,11 +3,16 @@ import type {Url} from '@grogarden/gro/paths.js';
 import {strip_end} from '@grogarden/util/string.js';
 import type {Logger} from '@grogarden/util/log.js';
 import {wait} from '@grogarden/util/async.js';
+import type {PackageMeta} from '@fuz.dev/fuz_library/package_meta.js';
 
+// TODO rethink with `Package`
 export interface FetchedPackage {
 	url: Url;
 	package_json: PackageJson | null; // TODO forward error
 }
+
+// TODO rethink with `PackageMeta`
+export type FetchedPackageMeta = PackageMeta | {url: Url; package_json: null};
 
 /* eslint-disable no-await-in-loop */
 
