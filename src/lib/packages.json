@@ -19,24 +19,24 @@
 			},
 			"files": ["dist"],
 			"devDependencies": {
-				"@feltjs/eslint-config": "^0.4.0",
+				"@feltjs/eslint-config": "^0.4.1",
 				"@fuz.dev/fuz": "^0.73.0",
 				"@fuz.dev/fuz_contextmenu": "^0.4.1",
 				"@fuz.dev/fuz_dialog": "^0.3.1",
 				"@fuz.dev/fuz_library": "^0.11.0",
-				"@grogarden/gro": "^0.95.7",
-				"@grogarden/util": "^0.15.1",
+				"@grogarden/gro": "^0.95.8",
+				"@grogarden/util": "^0.15.2",
 				"@sveltejs/adapter-static": "^2.0.3",
-				"@sveltejs/kit": "^1.26.0",
+				"@sveltejs/kit": "^1.27.0",
 				"@sveltejs/package": "^2.2.2",
 				"@types/node": "^20.8.7",
-				"@typescript-eslint/eslint-plugin": "^6.8.0",
-				"@typescript-eslint/parser": "^6.8.0",
-				"eslint": "^8.51.0",
+				"@typescript-eslint/eslint-plugin": "^6.9.0",
+				"@typescript-eslint/parser": "^6.9.0",
+				"eslint": "^8.52.0",
 				"eslint-plugin-svelte": "^2.34.0",
 				"prettier": "^3.0.3",
 				"prettier-plugin-svelte": "^3.0.3",
-				"svelte": "^4.2.1",
+				"svelte": "^4.2.2",
 				"svelte-check": "^3.5.2",
 				"tslib": "^2.6.2",
 				"typescript": "^5.2.2",
@@ -930,7 +930,7 @@
 		"package_json": {
 			"name": "@grogarden/gro",
 			"description": "task runner and toolkit extending SvelteKit",
-			"version": "0.95.7",
+			"version": "0.95.8",
 			"bin": {"gro": "dist/gro.js"},
 			"license": "MIT",
 			"homepage": "https://www.grogarden.org/",
@@ -1203,7 +1203,7 @@
 		"package_json": {
 			"name": "@grogarden/util",
 			"description": "JS utilities to complement the modern web platform 🦕🐋",
-			"version": "0.15.1",
+			"version": "0.15.2",
 			"license": "MIT",
 			"homepage": "https://util.grogarden.org/",
 			"author": {
@@ -1230,11 +1230,11 @@
 				"@feltjs/eslint-config": "^0.4.0",
 				"@fuz.dev/fuz": "^0.73.0",
 				"@fuz.dev/fuz_library": "^0.11.0",
-				"@grogarden/gro": "^0.95.3",
+				"@grogarden/gro": "^0.95.8",
 				"@sveltejs/adapter-static": "^2.0.3",
-				"@sveltejs/kit": "^1.25.2",
+				"@sveltejs/kit": "^1.26.0",
 				"@sveltejs/package": "^2.2.2",
-				"@types/node": "^20.8.6",
+				"@types/node": "^20.8.7",
 				"@typescript-eslint/eslint-plugin": "^6.8.0",
 				"@typescript-eslint/parser": "^6.8.0",
 				"eslint": "^8.51.0",
@@ -1242,7 +1242,7 @@
 				"kleur": "^4.1.5",
 				"prettier": "^3.0.3",
 				"prettier-plugin-svelte": "^3.0.3",
-				"svelte": "^4.2.1",
+				"svelte": "^4.2.2",
 				"svelte-check": "^3.5.2",
 				"tslib": "^2.6.2",
 				"typescript": "^5.2.2",
@@ -1292,7 +1292,66 @@
 			}
 		}
 	},
-	{"url": "https://www.ryanatkn.com/", "package_json": null},
+	{
+		"url": "https://www.ryanatkn.com/",
+		"package_json": {
+			"name": "ryanatkn.com",
+			"description": "@ryanatkn's homepage and blog",
+			"license": "MIT",
+			"version": "0.0.1",
+			"homepage": "https://www.ryanatkn.com/",
+			"author": {
+				"name": "Ryan Atkinson",
+				"email": "mail@ryanatkn.com",
+				"url": "https://www.ryanatkn.com/"
+			},
+			"repository": {"type": "git", "url": "git+https://github.com/ryanatkn/ryanatkn.com.git"},
+			"bugs": {"url": "https://github.com/ryanatkn/ryanatkn.com/issues"},
+			"type": "module",
+			"engines": {"node": ">=20.7"},
+			"scripts": {
+				"start": "gro dev",
+				"dev": "gro dev",
+				"build": "gro build",
+				"test": "gro test",
+				"deploy": "gro deploy"
+			},
+			"files": ["dist"],
+			"devDependencies": {
+				"@feltjs/eslint-config": "^0.4.0",
+				"@fuz.dev/fuz": "^0.73.0",
+				"@fuz.dev/fuz_library": "^0.11.0",
+				"@fuz.dev/svelte_intersect": "^0.5.1",
+				"@grogarden/gro": "^0.95.8",
+				"@grogarden/util": "^0.15.2",
+				"@prettier/plugin-xml": "^3.2.1",
+				"@sveltejs/adapter-static": "^2.0.3",
+				"@sveltejs/kit": "^1.27.0",
+				"@types/node": "^20.8.7",
+				"@typescript-eslint/eslint-plugin": "^6.9.0",
+				"@typescript-eslint/parser": "^6.9.0",
+				"date-fns": "^2.30.0",
+				"eslint": "^8.52.0",
+				"eslint-plugin-svelte": "^2.34.0",
+				"prettier": "^3.0.3",
+				"prettier-plugin-svelte": "^3.0.3",
+				"svelte": "^4.2.2",
+				"svelte-check": "^3.5.2",
+				"tslib": "^2.6.2",
+				"typescript": "^5.2.2",
+				"uvu": "^0.5.6"
+			},
+			"eslintConfig": {"root": true, "extends": "@feltjs", "rules": {"no-console": 1}},
+			"prettier": {
+				"plugins": ["prettier-plugin-svelte", "@prettier/plugin-xml"],
+				"useTabs": true,
+				"printWidth": 100,
+				"singleQuote": true,
+				"bracketSpacing": false,
+				"overrides": [{"files": "package.json", "options": {"useTabs": false}}]
+			}
+		}
+	},
 	{
 		"url": "https://log.ryanatkn.com/",
 		"package_json": {
@@ -1318,23 +1377,23 @@
 				"deploy": "gro deploy"
 			},
 			"devDependencies": {
-				"@feltjs/eslint-config": "^0.4.0",
-				"@fuz.dev/fuz": "^0.70.0",
-				"@grogarden/gro": "^0.92.4",
-				"@grogarden/util": "^0.15.0",
+				"@feltjs/eslint-config": "^0.4.1",
+				"@fuz.dev/fuz": "^0.73.0",
+				"@fuz.dev/fuz_library": "^0.11.0",
+				"@grogarden/gro": "^0.95.8",
+				"@grogarden/util": "^0.15.2",
 				"@sveltejs/adapter-static": "^2.0.3",
-				"@sveltejs/kit": "^1.25.1",
+				"@sveltejs/kit": "^1.27.0",
 				"@sveltejs/package": "^2.2.2",
-				"@typescript-eslint/eslint-plugin": "^6.7.3",
-				"@typescript-eslint/parser": "^6.7.3",
+				"@typescript-eslint/eslint-plugin": "^6.9.0",
+				"@typescript-eslint/parser": "^6.9.0",
 				"date-fns": "^2.30.0",
-				"eslint": "^8.50.0",
-				"eslint-plugin-svelte": "^2.33.2",
+				"eslint": "^8.52.0",
+				"eslint-plugin-svelte": "^2.34.0",
 				"prettier": "^3.0.3",
 				"prettier-plugin-svelte": "^3.0.3",
-				"svelte": "^4.2.1",
+				"svelte": "^4.2.2",
 				"svelte-check": "^3.5.2",
-				"svelte-preprocess-esbuild": "^3.0.1",
 				"tslib": "^2.6.2",
 				"typescript": "^5.2.2",
 				"uvu": "^0.5.6"
@@ -1347,6 +1406,13 @@
 				"singleQuote": true,
 				"bracketSpacing": false,
 				"overrides": [{"files": "package.json", "options": {"useTabs": false}}]
+			},
+			"exports": {
+				"./package.gen.js": {
+					"default": "./dist/package.gen.js",
+					"types": "./dist/package.gen.d.ts"
+				},
+				"./package.js": {"default": "./dist/package.js", "types": "./dist/package.d.ts"}
 			}
 		}
 	},
@@ -1911,7 +1977,7 @@
 			"description": "alternative docs for ActivityStreams 2.0 vocabulary",
 			"homepage": "https://ryanatkn.github.io/corpus-activity-streams",
 			"license": "Unlicense",
-			"version": "0.0.0",
+			"version": "0.0.1",
 			"type": "module",
 			"scripts": {
 				"dev": "gro dev",
