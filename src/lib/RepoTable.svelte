@@ -1,4 +1,7 @@
 <script lang="ts">
+	import {format_host} from '@fuz.dev/fuz_library/package_meta.js';
+	import {page} from '$app/stores';
+
 	import type {FetchedPackageMeta} from '$lib/fetch_packages.js';
 
 	export let pkgs: FetchedPackageMeta[];
@@ -23,11 +26,23 @@
 
 <table>
 	<thead
-		><th>repo</th><th>version</th><th>npm</th>{#each deps as dep (dep)}<th>{dep}</th>{/each}</thead
+		><th>homepage</th><th>repo</th><th>version</th><th>npm</th>{#each deps as dep (dep)}<th
+				>{dep}</th
+			>{/each}</thead
 	>
 	{#each pkgs as pkg}
 		{@const package_json = pkg.package_json}
+		{@const homepage_url = package_json ? pkg.homepage_url : null}
 		<tr>
+			<td>
+				<div class="row">
+					{#if homepage_url}
+						<a class:active={homepage_url === $page.url.href} href={homepage_url}>
+							{format_host(homepage_url)}
+						</a>
+					{/if}
+				</div>
+			</td>
 			<td>
 				<div class="row">
 					{#if package_json}
