@@ -10,8 +10,8 @@
 	// TODO gray out the latest of each version for deps, but only if the max is knowable via a local dep, don't assume for externals
 
 	// TODO hacky, handle regular deps too
-	const lookup_dep = (pkg: FetchedPackageMeta, dep: string): string => {
-		if (!pkg.package_json) return ''; // TODO null
+	const lookup_dep_version = (pkg: FetchedPackageMeta, dep: string): string | null => {
+		if (!pkg.package_json) return null;
 		for (const key in pkg.package_json.dependencies) {
 			if (key === dep) {
 				return pkg.package_json.dependencies[key];
@@ -22,10 +22,16 @@
 				return pkg.package_json.devDependencies[key];
 			}
 		}
-		return '';
+		return null;
 	};
 
-	$: dep_packages = pkgs.map((pkg) => deps.map((dep) => lookup_dep(pkg, dep)));
+	$: latest_version_by_dep = new Map<string, string | null>(
+		deps.map((dep) => {
+			const pkg = pkgs.find((pkg) => pkg.package_json?.name === dep);
+			if (!pkg?.package_json) return [dep, null];
+			return [dep, pkg.package_json.version];
+		}),
+	);
 </script>
 
 <table>
@@ -68,7 +74,16 @@
 					</div>
 				{/if}
 			</td>
-			{#each deps as dep (dep)}<td>{lookup_dep(pkg, dep)}</td>{/each}
+			{#each deps as dep (dep)}
+				{@const dep_version = lookup_dep_version(pkg, dep)}
+				{@const dep_latest_version = latest_version_by_dep.get(dep)}
+				<td>
+					<!-- TODO hacky with `endsWith`, handles `^` etc -->
+					<div class:latest={!!dep_latest_version && dep_version?.endsWith(dep_latest_version)}>
+						{dep_version ?? ''}
+					</div>
+				</td>
+			{/each}
 		</tr>
 	{/each}
 </table>
@@ -84,5 +99,12 @@
 	}
 	tr:hover {
 		background-color: var(--bg_5);
+	}
+	.latest {
+		/* TODO even lighter, add `--text_4` to Fuz probably, or change the scaling of `--text_2` and `--text_3` */
+		color: var(--text_3);
+		/* TODO this is too subtle as `--faded_1`, change in Fuz to either lighter or `--faded_2` */
+		/* opacity: var(--disabled_opacity); */
+		opacity: var(--faded_2);
 	}
 </style>
