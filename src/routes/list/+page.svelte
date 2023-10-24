@@ -41,7 +41,7 @@
 		</menu>
 	</section>
 	<section>
-		<LibraryFooter pkg={orc_pkg}>
+		<LibraryFooter pkg={orc_pkg} emoji="🪄" root_url="https://www.ryanatkn.com/">
 			<PageFooter />
 		</LibraryFooter>
 	</section>
