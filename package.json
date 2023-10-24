@@ -19,6 +19,10 @@
   "files": [
     "dist"
   ],
+  "peerDependencies": {
+    "@sveltejs/kit": "*",
+    "svelte": "*"
+  },
   "devDependencies": {
     "@feltjs/eslint-config": "^0.4.1",
     "@fuz.dev/fuz": "^0.73.0",
