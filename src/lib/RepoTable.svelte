@@ -7,6 +7,8 @@
 	export let pkgs: FetchedPackageMeta[];
 	export let deps = ['@fuz.dev/fuz', '@fuz.dev/fuz_library', '@grogarden/gro', '@grogarden/util'];
 
+	// TODO gray out the latest of each version for deps, but only if the max is knowable via a local dep, don't assume for externals
+
 	// TODO hacky, handle regular deps too
 	const lookup_dep = (pkg: FetchedPackageMeta, dep: string): string => {
 		if (!pkg.package_json) return ''; // TODO null
@@ -22,6 +24,8 @@
 		}
 		return '';
 	};
+
+	$: dep_packages = pkgs.map((pkg) => deps.map((dep) => lookup_dep(pkg, dep)));
 </script>
 
 <table>
