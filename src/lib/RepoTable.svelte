@@ -23,7 +23,7 @@
 
 <table>
 	<thead
-		><th>repo</th><th>version</th>{#each deps as dep (dep)}<th>{dep}</th>{/each}</thead
+		><th>repo</th><th>version</th><th>npm</th>{#each deps as dep (dep)}<th>{dep}</th>{/each}</thead
 	>
 	{#each pkgs as pkg}
 		{@const package_json = pkg.package_json}
@@ -42,11 +42,14 @@
 					<a href={pkg.changelog_url}>{package_json.version}</a>
 				{/if}
 			</td>
-			{#each deps as dep (dep)}
-				<td>
-					{lookup_dep(pkg, dep)}
-				</td>
-			{/each}
+			<td>
+				{#if package_json && pkg.npm_url}
+					<div class="row">
+						<a href={pkg.npm_url}><code>{pkg.name}</code></a>
+					</div>
+				{/if}
+			</td>
+			{#each deps as dep (dep)}<td>{lookup_dep(pkg, dep)}</td>{/each}
 		</tr>
 	{/each}
 </table>
