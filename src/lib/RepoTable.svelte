@@ -39,7 +39,7 @@
 			</td>
 			<td>
 				{#if package_json && package_json.version !== '0.0.1'}
-					{package_json.version}
+					<a href={pkg.changelog_url}>{package_json.version}</a>
 				{/if}
 			</td>
 			{#each deps as dep (dep)}
