@@ -5,7 +5,7 @@
 	import type {FetchedPackageMeta} from '$lib/fetch_packages.js';
 
 	export let pkgs: FetchedPackageMeta[];
-	export let deps = ['@fuz.dev/fuz', '@fuz.dev/fuz_library'];
+	export let deps = ['@fuz.dev/fuz', '@fuz.dev/fuz_library', '@grogarden/gro', '@grogarden/util'];
 
 	// TODO hacky, handle regular deps too
 	const lookup_dep = (pkg: FetchedPackageMeta, dep: string): string => {
