@@ -10,6 +10,7 @@ const config: OrcConfig = {
 		'https://dialog.fuz.dev/',
 		'https://code.fuz.dev/',
 		'https://intersect.fuz.dev/',
+		'https://repos.fuz.dev/',
 		// felt
 		// TODO feltjs/felt repo? this is just feltjs/website --
 		// figuring this out this will clarify the deployment vs repo/package conceptual problem

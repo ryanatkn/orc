@@ -23,13 +23,13 @@
 				"@fuz.dev/fuz": "^0.73.0",
 				"@fuz.dev/fuz_contextmenu": "^0.4.1",
 				"@fuz.dev/fuz_dialog": "^0.3.1",
-				"@fuz.dev/fuz_library": "^0.11.0",
+				"@fuz.dev/fuz_library": "^0.11.1",
 				"@grogarden/gro": "^0.95.8",
 				"@grogarden/util": "^0.15.2",
 				"@sveltejs/adapter-static": "^2.0.3",
 				"@sveltejs/kit": "^1.27.0",
 				"@sveltejs/package": "^2.2.2",
-				"@types/node": "^20.8.7",
+				"@types/node": "^20.8.8",
 				"@typescript-eslint/eslint-plugin": "^6.9.0",
 				"@typescript-eslint/parser": "^6.9.0",
 				"eslint": "^8.52.0",
@@ -224,7 +224,7 @@
 		"package_json": {
 			"name": "@fuz.dev/fuz_library",
 			"description": "components and helpers for Svelte, SvelteKit, and Fuz",
-			"version": "0.11.0",
+			"version": "0.11.1",
 			"license": "MIT",
 			"type": "module",
 			"homepage": "https://library.fuz.dev/",
@@ -684,6 +684,74 @@
 					"types": "./dist/package.gen.d.ts"
 				},
 				"./package.js": {"default": "./dist/package.js", "types": "./dist/package.d.ts"}
+			}
+		}
+	},
+	{
+		"url": "https://repos.fuz.dev/",
+		"package_json": {
+			"name": "@fuz.dev/fuz_repos",
+			"description": "fuz repos 🧶",
+			"license": "MIT",
+			"version": "0.0.1",
+			"type": "module",
+			"homepage": "https://repos.fuz.dev/",
+			"author": {
+				"name": "Ryan Atkinson",
+				"email": "mail@ryanatkn.com",
+				"url": "https://www.ryanatkn.com/"
+			},
+			"repository": {"type": "git", "url": "git+https://github.com/fuz-dev/fuz_repos.git"},
+			"bugs": {"url": "https://github.com/fuz-dev/fuz_repos/issues", "email": "mail@ryanatkn.com"},
+			"engines": {"node": ">=20.7"},
+			"scripts": {
+				"start": "gro dev",
+				"dev": "gro dev",
+				"build": "gro build",
+				"test": "gro test",
+				"deploy": "gro deploy"
+			},
+			"files": ["dist"],
+			"devDependencies": {
+				"@changesets/changelog-git": "^0.1.14",
+				"@feltjs/eslint-config": "^0.4.1",
+				"@fuz.dev/fuz": "^0.73.0",
+				"@fuz.dev/fuz_library": "^0.11.1",
+				"@grogarden/gro": "^0.95.8",
+				"@grogarden/util": "^0.15.2",
+				"@sveltejs/adapter-static": "^2.0.3",
+				"@sveltejs/kit": "^1.27.0",
+				"@typescript-eslint/eslint-plugin": "^6.9.0",
+				"@typescript-eslint/parser": "^6.9.0",
+				"eslint": "^8.52.0",
+				"eslint-plugin-svelte": "^2.34.0",
+				"prettier": "^3.0.3",
+				"prettier-plugin-svelte": "^3.0.3",
+				"svelte": "^4.2.2",
+				"svelte-check": "^3.5.2",
+				"tslib": "^2.6.2",
+				"typescript": "^5.2.2",
+				"uvu": "^0.5.6"
+			},
+			"eslintConfig": {"root": true, "extends": "@feltjs", "rules": {"no-console": 1}},
+			"prettier": {
+				"plugins": ["prettier-plugin-svelte"],
+				"useTabs": true,
+				"printWidth": 100,
+				"singleQuote": true,
+				"bracketSpacing": false,
+				"overrides": [{"files": "package.json", "options": {"useTabs": false}}]
+			},
+			"exports": {
+				"./packages.json": {
+					"default": "./dist/packages.json",
+					"types": "./dist/packages.json.d.ts"
+				},
+				"./packages.task.js": {
+					"default": "./dist/packages.task.js",
+					"types": "./dist/packages.task.d.ts"
+				},
+				"./packages.js": {"default": "./dist/packages.js", "types": "./dist/packages.d.ts"}
 			}
 		}
 	},
