@@ -35,11 +35,15 @@
 </script>
 
 <table>
-	<thead
-		><th>homepage</th><th>repo</th><th>version</th><th>npm</th>{#each deps as dep (dep)}<th
-				>{dep}</th
-			>{/each}</thead
-	>
+	<thead>
+		<th>homepage</th>
+		<th>repo</th>
+		<th>version</th>
+		<th>npm</th>
+		{#each deps as dep (dep)}
+			<th>{dep}</th>
+		{/each}
+	</thead>
 	{#each pkgs as pkg}
 		{@const package_json = pkg.package_json}
 		{@const homepage_url = package_json ? pkg.homepage_url : null}
