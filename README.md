@@ -13,6 +13,10 @@ but for now I'm hardcoding all values in
 If you want to try it yourself, you can fork the repo and change the config manually,
 and eventually I'll stabilize the APIs and publish a reusable library.
 
+TODO
+
+- figure out better automation than manually running `gro packages`
+
 ## License [🐦](https://wikipedia.org/wiki/Free_and_open-source_software)
 
 [MIT](LICENSE)
