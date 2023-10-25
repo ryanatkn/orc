@@ -7,6 +7,8 @@
 	export let pkgs: FetchedPackageMeta[];
 	export let deps = ['@fuz.dev/fuz', '@fuz.dev/fuz_library', '@grogarden/gro', '@grogarden/util'];
 
+	// TODO fade out the `version` column if all deps are upgraded to the latest
+
 	// TODO gray out the latest of each version for deps, but only if the max is knowable via a local dep, don't assume for externals
 
 	// TODO hacky, handle regular deps too
@@ -32,14 +34,17 @@
 			return [dep, pkg.package_json.version];
 		}),
 	);
+
+	const format_version = (version: string | null): string =>
+		version === null ? '' : version.replace(/^(\^|>=)\s*/u, '');
 </script>
 
 <table>
 	<thead>
 		<th>homepage</th>
 		<th>repo</th>
-		<th>version</th>
 		<th>npm</th>
+		<th>version</th>
 		{#each deps as dep (dep)}
 			<th>{dep}</th>
 		{/each}
@@ -67,24 +72,24 @@
 				</div>
 			</td>
 			<td>
-				{#if package_json && package_json.version !== '0.0.1'}
-					<a href={pkg.changelog_url}>{package_json.version}</a>
-				{/if}
-			</td>
-			<td>
 				{#if package_json && pkg.npm_url}
 					<div class="row">
 						<a href={pkg.npm_url}><code>{pkg.name}</code></a>
 					</div>
 				{/if}
 			</td>
+			<td>
+				{#if package_json && package_json.version !== '0.0.1'}
+					<a href={pkg.changelog_url}>{format_version(package_json.version)}</a>
+				{/if}
+			</td>
 			{#each deps as dep (dep)}
 				{@const dep_version = lookup_dep_version(pkg, dep)}
+				{@const formatted_dep_version = format_version(dep_version)}
 				{@const dep_latest_version = latest_version_by_dep.get(dep)}
 				<td>
-					<!-- TODO hacky with `endsWith`, handles `^` etc -->
-					<div class:latest={!!dep_latest_version && dep_version?.endsWith(dep_latest_version)}>
-						{dep_version ?? ''}
+					<div class:latest={!!dep_latest_version && formatted_dep_version === dep_latest_version}>
+						{formatted_dep_version}
 					</div>
 				</td>
 			{/each}
