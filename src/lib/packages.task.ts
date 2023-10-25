@@ -6,7 +6,7 @@ import {format_file} from '@grogarden/gro/format_file.js';
 import {exists} from '@grogarden/gro/exists.js';
 
 import {fetch_packages, type FetchedPackage} from '$lib/fetch_packages.js';
-import {load_orc_config} from '$lib/config';
+import {load_orc_config} from '$lib/config.js';
 
 // TODO refactor for reusability
 

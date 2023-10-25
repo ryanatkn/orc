@@ -1,4 +1,4 @@
-import type {OrcConfig} from '$lib/config';
+import type {OrcConfig} from '$lib/config.js';
 
 const config: OrcConfig = {
 	repos: [
