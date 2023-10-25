@@ -24,8 +24,8 @@
 				</Card>
 			</li>
 			<li>
-				<Card href="list">
-					list
+				<Card href="tree">
+					tree
 					<svelte:fragment slot="icon">{''}</svelte:fragment>
 				</Card>
 			</li>
