@@ -25,8 +25,6 @@ const config: OrcConfig = {
 		// ryanatkn
 		'https://www.ryanatkn.com/',
 		'https://log.ryanatkn.com/',
-		// TODO this is being locally resolved
-		// 'https://orc.ryanatkn.com/',
 		'https://www.cosmicplayground.org/',
 		'https://sss.ryanatkn.com/',
 		'https://earbetter.ryanatkn.com/',
