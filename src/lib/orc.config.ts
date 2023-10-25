@@ -10,6 +10,7 @@ const config: OrcConfig = {
 		'https://dialog.fuz.dev/',
 		'https://code.fuz.dev/',
 		'https://intersect.fuz.dev/',
+		'https://mastodon.fuz.dev/',
 		'https://repos.fuz.dev/',
 		// felt
 		// TODO feltjs/felt repo? this is just feltjs/website --
