@@ -7,4 +7,4 @@ export interface OrcConfig {
 
 // TODO refactor for reusability
 export const load_orc_config = async (): Promise<OrcConfig> =>
-	(await import('$lib/orc.config.js')).default;
+	(await import('./orc.config.js')).default;
