@@ -3,6 +3,7 @@
 	import LibraryFooter from '@fuz.dev/fuz_library/LibraryFooter.svelte';
 	import {parse_package_meta, type PackageMeta} from '@fuz.dev/fuz_library/package_meta.js';
 	import {strip_end, strip_start} from '@grogarden/util/string.js';
+	import {base} from '$app/paths';
 
 	import packages from '$lib/packages.json';
 	import PageHeader from '$routes/PageHeader.svelte';
@@ -27,7 +28,11 @@
 			{#each pkgs as pkg}
 				<li class="panel padded_md box">
 					{#if pkg.package_json}
-						<PackageSummary {pkg} />
+						<PackageSummary {pkg}>
+							<svelte:fragment slot="repo_name" let:repo_name>
+								<a href="{base}/tree/{repo_name}" class="repo_name">{repo_name}</a>
+							</svelte:fragment>
+						</PackageSummary>
 					{:else}
 						<div class="prose width_sm">
 							<p>
@@ -48,11 +53,6 @@
 </main>
 
 <style>
-	main {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-	}
 	section {
 		width: 100%;
 		margin-bottom: var(--spacing_4);
@@ -74,5 +74,10 @@
 	}
 	li {
 		margin-bottom: var(--spacing_1);
+	}
+	.repo_name {
+		font-size: var(--size_2);
+		font-weight: 500;
+		text-align: center;
 	}
 </style>
