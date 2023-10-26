@@ -1,5 +1,11 @@
 # @ryanatkn/orc
 
+## 0.2.0
+
+### Minor Changes
+
+- fb9de5d: update exports
+
 ## 0.1.1
 
 ### Patch Changes
