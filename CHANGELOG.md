@@ -1,5 +1,11 @@
 # @ryanatkn/orc
 
+## 0.2.1
+
+### Patch Changes
+
+- 49f61b1: fix generated type file path
+
 ## 0.2.0
 
 ### Minor Changes
