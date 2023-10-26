@@ -1,6 +1,7 @@
 <script lang="ts">
 	import {format_host} from '@fuz.dev/fuz_library/package_meta.js';
 	import {page} from '$app/stores';
+	import {base} from '$app/paths';
 
 	import type {FetchedPackageMeta} from '$lib/fetch_packages.js';
 
@@ -41,6 +42,7 @@
 
 <table>
 	<thead>
+		<th>detail</th>
 		<th>homepage</th>
 		<th>repo</th>
 		<th>npm</th>
@@ -53,6 +55,13 @@
 		{@const package_json = pkg.package_json}
 		{@const homepage_url = package_json ? pkg.homepage_url : null}
 		<tr>
+			<td>
+				<div class="row">
+					{#if package_json}
+						<a href="{base}/tree/{pkg.repo_name}">🌳</a>
+					{/if}
+				</div>
+			</td>
 			<td>
 				<div class="row">
 					{#if homepage_url}
