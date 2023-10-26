@@ -9,6 +9,7 @@ const config: OrcConfig = {
 		'https://library.fuz.dev/',
 		'https://mastodon.fuz.dev/',
 		'https://www.cosmicplayground.org/',
+		'https://www.spiderspace.org/',
 	],
 };
 
