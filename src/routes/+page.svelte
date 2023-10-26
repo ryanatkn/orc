@@ -2,6 +2,7 @@
 	import LibraryFooter from '@fuz.dev/fuz_library/LibraryFooter.svelte';
 	import Card from '@fuz.dev/fuz_library/Card.svelte';
 	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
+	import {base} from '$app/paths';
 
 	import packages from '$lib/packages.json';
 	import MainHeader from '$routes/MainHeader.svelte';
@@ -18,14 +19,20 @@
 	<section>
 		<menu>
 			<li>
-				<Card href="table">
+				<Card href="{base}/table">
 					table
 					<svelte:fragment slot="icon">{''}</svelte:fragment>
 				</Card>
 			</li>
 			<li>
-				<Card href="tree">
+				<Card href="{base}/tree">
 					tree
+					<svelte:fragment slot="icon">{''}</svelte:fragment>
+				</Card>
+			</li>
+			<li>
+				<Card href="{base}/about">
+					about
 					<svelte:fragment slot="icon">{''}</svelte:fragment>
 				</Card>
 			</li>
