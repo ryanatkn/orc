@@ -1,25 +1,24 @@
 <script lang="ts">
 	import LibraryFooter from '@fuz.dev/fuz_library/LibraryFooter.svelte';
 	import PackageDetail from '@fuz.dev/fuz_library/PackageDetail.svelte';
-	import {parse_package_meta, type PackageMeta} from '@fuz.dev/fuz_library/package_meta.js';
-	import type {PageData} from './$types';
+	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
+	import {page} from '$app/stores';
 
 	import packages from '$lib/packages.json';
 	import PageHeader from '$routes/PageHeader.svelte';
 	import PageFooter from '$routes/PageFooter.svelte';
 
-	export let data: PageData;
-
-	$: console.log(`data`, data);
+	$: slug = $page.params.slug;
 
 	// TODO hacky
-	const pkgs = packages.map(({url, package_json}) =>
-		package_json ? parse_package_meta(url, package_json) : {url, package_json: null},
-	);
-	console.log(`pkgs`, pkgs);
+	const pkgs = packages
+		.map(({url, package_json}) => (package_json ? parse_package_meta(url, package_json) : null!))
+		.filter(Boolean);
 
 	// TODO hacky
-	const orc_pkg = pkgs.find((p) => p.url === 'https://orc.ryanatkn.com/') as PackageMeta;
+	$: pkg = pkgs.find((p) => p.repo_name === slug);
+
+	const orc_pkg = pkgs.find((p) => p.url === 'https://orc.ryanatkn.com/')!;
 </script>
 
 <main class="box width_full">
@@ -27,7 +26,11 @@
 		<PageHeader />
 	</section>
 	<section>
-		<PackageDetail pkg={orc_pkg} />
+		{#if pkg}
+			<PackageDetail {pkg} />
+		{:else}
+			cannot find <code>{slug}</code>
+		{/if}
 	</section>
 	<section>
 		<LibraryFooter pkg={orc_pkg} emoji="🪄" root_url="https://www.ryanatkn.com/">
