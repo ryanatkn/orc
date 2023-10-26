@@ -1,6 +1,7 @@
 import type {OrcConfig} from '$lib/config.js';
 
 const config: OrcConfig = {
+	// TODO what if this were package.json data?
 	repos: [
 		// fuz
 		'https://www.fuz.dev/',
