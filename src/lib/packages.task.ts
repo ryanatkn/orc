@@ -57,7 +57,7 @@ export const task: Task<Args> = {
 			await writeFile(
 				types_outfile,
 				`declare module '$lib/packages.json' {
-	import type {FetchedPackage} from '$lib/fetch_packages.js';
+	import type {FetchedPackage} from '@ryanatkn/orc/fetch_packages.js';
 	const data: FetchedPackage[];
 	export default data;
 }
