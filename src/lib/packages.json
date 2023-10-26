@@ -4,7 +4,7 @@
 		"package_json": {
 			"name": "@ryanatkn/orc",
 			"description": "a tool for orchestrating many repos",
-			"version": "0.1.0",
+			"version": "0.1.1",
 			"license": "MIT",
 			"homepage": "https://orc.ryanatkn.com/",
 			"repository": "https://github.com/ryanatkn/orc",
@@ -58,11 +58,6 @@
 				"./fetch_packages.js": {
 					"default": "./dist/fetch_packages.js",
 					"types": "./dist/fetch_packages.d.ts"
-				},
-				"./orc.config.js": {"default": "./dist/orc.config.js", "types": "./dist/orc.config.d.ts"},
-				"./packages.json": {
-					"default": "./dist/packages.json",
-					"types": "./dist/packages.json.d.ts"
 				},
 				"./packages.task.js": {
 					"default": "./dist/packages.task.js",

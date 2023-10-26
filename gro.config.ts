@@ -18,6 +18,21 @@ const config: CreateGroConfig = async (cfg) => {
 			}),
 		);
 
+	// TODO this shouldn't be necessary
+	cfg.map_package_json = (pkg) => {
+		pkg.exports = Object.fromEntries(
+			Object.entries(pkg.exports!)
+				.map(([key, value]) => {
+					if (key === './packages.json' || key === './packages.json.d.ts') {
+						return null!;
+					}
+					return [key, value];
+				})
+				.filter(Boolean),
+		);
+		return pkg;
+	};
+
 	return cfg;
 };
 
