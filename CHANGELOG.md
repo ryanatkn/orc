@@ -1,5 +1,11 @@
 # @ryanatkn/orc
 
+## 0.5.1
+
+### Patch Changes
+
+- 8dbc32a: add peer dep for @octokit/request
+
 ## 0.5.0
 
 ### Minor Changes
