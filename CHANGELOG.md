@@ -1,5 +1,11 @@
 # @ryanatkn/orc
 
+## 0.3.0
+
+### Minor Changes
+
+- 0e16e6f: rename `OrcConfig` `packages` from `repos`
+
 ## 0.2.1
 
 ### Patch Changes
