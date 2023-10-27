@@ -25,7 +25,7 @@
 				"@fuz.dev/fuz": "^0.75.2",
 				"@fuz.dev/fuz_contextmenu": "^0.4.2",
 				"@fuz.dev/fuz_dialog": "^0.3.2",
-				"@fuz.dev/fuz_library": "^0.13.0",
+				"@fuz.dev/fuz_library": "^0.14.1",
 				"@grogarden/gro": "^0.96.1",
 				"@grogarden/util": "^0.15.2",
 				"@sveltejs/adapter-static": "^2.0.3",
@@ -447,9 +447,9 @@
 			"devDependencies": {
 				"@changesets/changelog-git": "^0.1.14",
 				"@feltjs/eslint-config": "^0.4.1",
-				"@fuz.dev/fuz_code": "^0.3.1",
-				"@fuz.dev/fuz_dialog": "^0.3.1",
-				"@fuz.dev/fuz_library": "^0.12.3",
+				"@fuz.dev/fuz_code": "^0.3.2",
+				"@fuz.dev/fuz_dialog": "^0.3.2",
+				"@fuz.dev/fuz_library": "^0.14.0",
 				"@grogarden/gro": "^0.96.1",
 				"@sveltejs/adapter-static": "^2.0.3",
 				"@sveltejs/kit": "^1.27.1",
@@ -575,7 +575,7 @@
 		"package_json": {
 			"name": "@fuz.dev/fuz_library",
 			"description": "components and helpers for Svelte, SvelteKit, and Fuz",
-			"version": "0.13.0",
+			"version": "0.14.1",
 			"license": "MIT",
 			"homepage": "https://library.fuz.dev/",
 			"repository": "https://github.com/fuz-dev/fuz_library",
@@ -658,10 +658,6 @@
 					"default": "./dist/DevmodeControls.svelte",
 					"types": "./dist/DevmodeControls.svelte.d.ts"
 				},
-				"./fetch_packages.js": {
-					"default": "./dist/fetch_packages.js",
-					"types": "./dist/fetch_packages.d.ts"
-				},
 				"./GithubLogo.svelte": {
 					"svelte": "./dist/GithubLogo.svelte",
 					"default": "./dist/GithubLogo.svelte",
@@ -721,14 +717,6 @@
 					"svelte": "./dist/PackageDetail.svelte",
 					"default": "./dist/PackageDetail.svelte",
 					"types": "./dist/PackageDetail.svelte.d.ts"
-				},
-				"./packages.json": {
-					"default": "./dist/packages.json",
-					"types": "./dist/packages.json.d.ts"
-				},
-				"./packages.task.js": {
-					"default": "./dist/packages.task.js",
-					"types": "./dist/packages.task.d.ts"
 				},
 				"./PackageSummary.svelte": {
 					"svelte": "./dist/PackageSummary.svelte",
@@ -961,7 +949,7 @@
 			"devDependencies": {
 				"@feltjs/eslint-config": "^0.4.1",
 				"@fuz.dev/fuz": "^0.75.2",
-				"@fuz.dev/fuz_library": "^0.12.3",
+				"@fuz.dev/fuz_library": "^0.14.0",
 				"@grogarden/gro": "^0.96.1",
 				"@grogarden/util": "^0.15.2",
 				"@ryanatkn/orc": "^0.2.1",
