@@ -1,10 +1,11 @@
 <script lang="ts">
-	import {format_host} from '@fuz.dev/fuz_library/package_meta.js';
+	import {format_host, type PackageMeta} from '@fuz.dev/fuz_library/package_meta.js';
 	import {page} from '$app/stores';
 	import {base} from '$app/paths';
 	import {strip_end} from '@grogarden/util/string.js';
 
-	import type {FetchedPackageMeta} from '$lib/fetch_packages.js';
+	import type {FetchedPackage, FetchedPackageMeta} from '$lib/fetch_packages.js';
+	import packages from '$lib/packages.json'; // TODO BLOCK param
 
 	export let pkgs: FetchedPackageMeta[];
 	export let deps = ['@fuz.dev/fuz', '@fuz.dev/fuz_library', '@grogarden/gro', '@grogarden/util'];
@@ -40,7 +41,13 @@
 	const format_version = (version: string | null): string =>
 		version === null ? '' : version.replace(/^(\^|>=)\s*/u, '');
 
-	const pull_requests = ['13', '17']; // TODO BLOCK implement
+	const lookup_issues = (packages: FetchedPackage[], pkg: PackageMeta) => {
+		const found = packages.find((p) => p.url === pkg.url);
+		if (!found) return null;
+		const {issues} = found;
+		console.log(`issues`, issues);
+		return issues;
+	};
 </script>
 
 <table>
@@ -93,12 +100,15 @@
 			</td>
 			<td>
 				{#if package_json && pkg.repo_url}
+					{@const issues = lookup_issues(packages, pkg)}
 					<div class="row">
-						{#each pull_requests as pull_request (pull_request)}
-							<a href="{strip_end(pkg.repo_url, '/')}/pull/{pull_request}"
-								><code>#{pull_request}</code></a
-							>
-						{/each}
+						{#if issues}
+							{#each issues as issue (issue)}
+								<a href="{strip_end(pkg.repo_url, '/')}/pull/{issue.number}" class="chip"
+									>#{issue.number}</a
+								>
+							{/each}
+						{/if}
 					</div>
 				{/if}
 			</td>
