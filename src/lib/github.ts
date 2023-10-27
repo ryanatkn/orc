@@ -10,11 +10,11 @@ export const GithubIssue = z.object({
 	number: z.number(),
 	state: z.enum(['open', 'closed', 'all']),
 	title: z.string(),
-	body: z.string(),
 	user: z.object({
 		url: z.string(),
 		login: z.string(),
 	}),
+	body: z.string(),
 	draft: z.boolean(),
 });
 export type GithubIssue = z.infer<typeof GithubIssue>;

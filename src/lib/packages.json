@@ -354,8 +354,8 @@
 				"number": 427,
 				"state": "open",
 				"title": "add and integrate `gro changelog`",
-				"body": "- [ ] map leading hashes to the PR, fallback to the hash link",
 				"user": {"url": "https://api.github.com/users/ryanatkn", "login": "ryanatkn"},
+				"body": "- [ ] map leading hashes to the PR, fallback to the hash link",
 				"draft": true
 			},
 			{
@@ -365,8 +365,8 @@
 				"number": 428,
 				"state": "open",
 				"title": "change .well-known/package.json to use the static directory",
-				"body": "If you link to the .well-known/package.json, SvelteKit won't see it during the build. I think the build is fine, it just fixes the error.\r\n\r\nI knew this was the better implementation but I was being lazy, it's more work and I want to make reusable helpers for creating the file temporarily and then cleaning up.\r\n\r\nlike\r\n\r\n```ts\r\nconst cleanup = copy_temporarily(...)\r\n```\r\n\r\nor maybe a Vite plugin, so the path works during development too and without any filesystem stuff? but can Gro do that without being intrusive to configure?",
 				"user": {"url": "https://api.github.com/users/ryanatkn", "login": "ryanatkn"},
+				"body": "If you link to the .well-known/package.json, SvelteKit won't see it during the build. I think the build is fine, it just fixes the error.\r\n\r\nI knew this was the better implementation but I was being lazy, it's more work and I want to make reusable helpers for creating the file temporarily and then cleaning up.\r\n\r\nlike\r\n\r\n```ts\r\nconst cleanup = copy_temporarily(...)\r\n```\r\n\r\nor maybe a Vite plugin, so the path works during development too and without any filesystem stuff? but can Gro do that without being intrusive to configure?",
 				"draft": true
 			},
 			{
@@ -376,8 +376,8 @@
 				"number": 429,
 				"state": "open",
 				"title": "stop using the `deploy` branch in the main cwd for `gro deploy`",
-				"body": "vscode flips out regularly from the workspace-destructive `deploy` branch in `gro deploy`. This refactors the internals to use a non-destructive strategy, at the cost of inefficiency -- a `.git` directory for the `deploy` branch is now duplicated in a cache directory. A benefit is that you no longer see `deploy` in your root `.git` context.\r\n\r\n- maybe `.gro/deploy`?",
 				"user": {"url": "https://api.github.com/users/ryanatkn", "login": "ryanatkn"},
+				"body": "vscode flips out regularly from the workspace-destructive `deploy` branch in `gro deploy`. This refactors the internals to use a non-destructive strategy, at the cost of inefficiency -- a `.git` directory for the `deploy` branch is now duplicated in a cache directory. A benefit is that you no longer see `deploy` in your root `.git` context.\r\n\r\n- maybe `.gro/deploy`?",
 				"draft": true
 			}
 		]
@@ -463,8 +463,8 @@
 				"number": 41,
 				"state": "open",
 				"title": "upgrade deps",
-				"body": "blocked by https://github.com/feltjs/felt/pull/952",
 				"user": {"url": "https://api.github.com/users/ryanatkn", "login": "ryanatkn"},
+				"body": "blocked by https://github.com/feltjs/felt/pull/952",
 				"draft": false
 			}
 		]
@@ -1050,8 +1050,8 @@
 				"number": 3,
 				"state": "open",
 				"title": "upgrade deps",
-				"body": "- [ ] parse the result with a zod schema to reduce data",
 				"user": {"url": "https://api.github.com/users/ryanatkn", "login": "ryanatkn"},
+				"body": "- [ ] parse the result with a zod schema to reduce data",
 				"draft": false
 			}
 		]
