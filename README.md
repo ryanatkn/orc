@@ -18,13 +18,12 @@ and eventually I'll stabilize the APIs and publish a reusable library.
 
 - see [`.env.example`](/.env.example) and add your own `.env` with `GITHUB_TOKEN`,
   whose value is a [GitHub token](https://github.com/settings/tokens)
-  with the `public_repo` capability
-  (optional for reads, and currently that's the only functionality,
-  but it ups the rate limiting a lot)
+  (currently optional because we it's only used to read public repos)
 
 TODO
 
 - figure out better automation than manually running `gro packages`
+- show the rate limit info
 - automate `.env` (gro sync?)
 
 ## License [🐦](https://wikipedia.org/wiki/Free_and_open-source_software)
