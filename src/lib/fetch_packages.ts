@@ -5,6 +5,7 @@ import type {Logger} from '@grogarden/util/log.js';
 import {wait} from '@grogarden/util/async.js';
 import {parse_package_meta, type PackageMeta} from '@fuz.dev/fuz_library/package_meta.js';
 import {request} from '@octokit/request';
+import {GITHUB_TOKEN} from '$env/static/private';
 
 // TODO rethink with `Package`
 export interface FetchedPackage {
@@ -30,6 +31,7 @@ export const fetch_packages = async (
 	urls: Url[],
 	log?: Logger,
 	delay = 50,
+	token = GITHUB_TOKEN,
 ): Promise<FetchedPackage[]> => {
 	console.log(`urls`, urls);
 	const packages: FetchedPackage[] = [];
@@ -37,7 +39,7 @@ export const fetch_packages = async (
 		const package_json = await load_package_json(url, log);
 		// TODO delay?
 		await wait(delay);
-		const pulls = package_json ? await fetch_github_issues(url, package_json, log) : null;
+		const pulls = package_json ? await fetch_github_issues(url, package_json, log, token) : null;
 		if (!pulls) throw Error('failed to fetch issues: ' + url);
 		await wait(delay);
 		packages.push({url, package_json, pulls});
@@ -46,11 +48,17 @@ export const fetch_packages = async (
 };
 
 // TODO BLOCK make this `PackageMeta` already parsed
-const fetch_github_issues = async (url: string, package_json: PackageJson, log?: Logger) => {
+const fetch_github_issues = async (
+	url: string,
+	package_json: PackageJson,
+	log?: Logger,
+	token?: string,
+) => {
 	log?.info(`[fetch_github_issues] url`, url);
 	const parsed = parse_package_meta(url, package_json);
 	if (!parsed.owner_name) return null;
 	const res = await request('GET /repos/{owner}/{repo}/pulls', {
+		headers: {authorization: 'token ' + token},
 		owner: parsed.owner_name,
 		repo: parsed.repo_name,
 		sort: 'updated',
