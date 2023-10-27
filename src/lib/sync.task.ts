@@ -2,7 +2,7 @@ import {exists} from '@grogarden/gro/exists.js';
 import {task as base_task} from '@grogarden/gro/sync.task.js';
 import {cp} from 'fs/promises';
 
-// TODO refactor - upstream to gro? see also @feltjs/felt
+// TODO refactor - upstream to gro? see also @feltjs/felt - see also `check.yml`, we added a sync call to fix CI
 const init_env = async (): Promise<void> => {
 	const path = '.env';
 	const example_path = '.env.example'; // TODO check .production and .development too
