@@ -2,11 +2,12 @@
 	import {format_host} from '@fuz.dev/fuz_library/package_meta.js';
 	import {page} from '$app/stores';
 	import {base} from '$app/paths';
+	import {strip_end} from '@grogarden/util/string.js';
 
 	import type {FetchedPackageMeta} from '$lib/fetch_packages.js';
 
 	export let pkgs: FetchedPackageMeta[];
-	export let deps = ['@fuz.dev/fuz', '@fuz.dev/fuz_library', '@grogarden/gro', '@grogarden/util'];
+	export let deps = ['@fuz.dev/fuz', '@fuz.dev/fuz_library', '@grogarden/gro']; // TODO add felt
 
 	// TODO fade out the `version` column if all deps are upgraded to the latest
 
@@ -38,6 +39,14 @@
 
 	const format_version = (version: string | null): string =>
 		version === null ? '' : version.replace(/^(\^|>=)\s*/u, '');
+
+	const lookup_pulls = (pkgs: FetchedPackageMeta[] | null, pkg: FetchedPackageMeta) => {
+		const found = pkgs?.find((p) => p.url === pkg.url);
+		if (!found?.package_json) return null;
+		const {pulls} = found;
+		console.log(`pulls`, pulls);
+		return pulls;
+	};
 </script>
 
 <table>
@@ -46,6 +55,7 @@
 		<th>homepage</th>
 		<th>repo</th>
 		<th>npm</th>
+		<th>pull requests</th>
 		<th>version</th>
 		{#each deps as dep (dep)}
 			<th>{dep}</th>
@@ -84,6 +94,21 @@
 				{#if package_json && pkg.npm_url}
 					<div class="row">
 						<a href={pkg.npm_url}><code>{pkg.name}</code></a>
+					</div>
+				{/if}
+			</td>
+			<td>
+				{#if package_json && pkg.repo_url}
+					{@const pulls = lookup_pulls(pkgs, pkg)}
+					<!-- TODO show something like `and N more` with a link to a dialog list -->
+					<div class="row">
+						{#if pulls}
+							{#each pulls as pull (pull)}
+								<a href="{strip_end(pkg.repo_url, '/')}/pull/{pull.number}" class="chip"
+									>#{pull.number}</a
+								>
+							{/each}
+						{/if}
 					</div>
 				{/if}
 			</td>
