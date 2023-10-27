@@ -26,7 +26,7 @@
 				"@fuz.dev/fuz_contextmenu": "^0.4.2",
 				"@fuz.dev/fuz_dialog": "^0.3.2",
 				"@fuz.dev/fuz_library": "^0.15.2",
-				"@grogarden/gro": "^0.96.3",
+				"@grogarden/gro": "^0.96.4",
 				"@grogarden/util": "^0.15.2",
 				"@octokit/request": "^8.1.4",
 				"@sveltejs/adapter-static": "^2.0.3",
@@ -350,25 +350,34 @@
 			{
 				"url": "https://api.github.com/repos/grogarden/gro/pulls/427",
 				"number": 427,
+				"id": 1569858809,
+				"node_id": "PR_kwDOC_yFAc5dkiT5",
 				"body": "- [ ] map leading hashes to the PR, fallback to the hash link",
-				"title": "add and integrate `gro changelog`",
 				"state": "open",
+				"title": "add and integrate `gro changelog`",
+				"draft": true,
 				"user": {"url": "https://api.github.com/users/ryanatkn", "login": "ryanatkn"}
 			},
 			{
 				"url": "https://api.github.com/repos/grogarden/gro/pulls/428",
 				"number": 428,
+				"id": 1569906900,
+				"node_id": "PR_kwDOC_yFAc5dkuDU",
 				"body": "If you link to the .well-known/package.json, SvelteKit won't see it during the build. I think the build is fine, it just fixes the error.\r\n\r\nI knew this was the better implementation but I was being lazy, it's more work and I want to make reusable helpers for creating the file temporarily and then cleaning up.\r\n\r\nlike\r\n\r\n```ts\r\nconst cleanup = copy_temporarily(...)\r\n```\r\n\r\nor maybe a Vite plugin, so the path works during development too and without any filesystem stuff? but can Gro do that without being intrusive to configure?",
-				"title": "change .well-known/package.json to use the static directory",
 				"state": "open",
+				"title": "change .well-known/package.json to use the static directory",
+				"draft": true,
 				"user": {"url": "https://api.github.com/users/ryanatkn", "login": "ryanatkn"}
 			},
 			{
 				"url": "https://api.github.com/repos/grogarden/gro/pulls/429",
 				"number": 429,
+				"id": 1573508138,
+				"node_id": "PR_kwDOC_yFAc5dydQq",
 				"body": "vscode flips out regularly from the workspace-destructive `deploy` branch in `gro deploy`. This refactors the internals to use a non-destructive strategy, at the cost of inefficiency -- a `.git` directory for the `deploy` branch is now duplicated in a cache directory. A benefit is that you no longer see `deploy` in your root `.git` context.\r\n\r\n- maybe `.gro/deploy`?",
-				"title": "stop using the `deploy` branch in the main cwd for `gro deploy`",
 				"state": "open",
+				"title": "stop using the `deploy` branch in the main cwd for `gro deploy`",
+				"draft": true,
 				"user": {"url": "https://api.github.com/users/ryanatkn", "login": "ryanatkn"}
 			}
 		]
@@ -450,9 +459,12 @@
 			{
 				"url": "https://api.github.com/repos/feltjs/website/pulls/41",
 				"number": 41,
+				"id": 1559686093,
+				"node_id": "PR_kwDOI1AZx85c9uvN",
 				"body": "blocked by https://github.com/feltjs/felt/pull/952",
-				"title": "upgrade deps",
 				"state": "open",
+				"title": "upgrade deps",
+				"draft": false,
 				"user": {"url": "https://api.github.com/users/ryanatkn", "login": "ryanatkn"}
 			}
 		]
@@ -1034,9 +1046,12 @@
 			{
 				"url": "https://api.github.com/repos/spiderspace/spiderspace/pulls/3",
 				"number": 3,
+				"id": 1577103166,
+				"node_id": "PR_kwDOI6X-S85eAK8-",
 				"body": "- [ ] parse the result with a zod schema to reduce data",
-				"title": "upgrade deps",
 				"state": "open",
+				"title": "upgrade deps",
+				"draft": false,
 				"user": {"url": "https://api.github.com/users/ryanatkn", "login": "ryanatkn"}
 			}
 		]
