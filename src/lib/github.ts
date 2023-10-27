@@ -4,7 +4,15 @@ import {request} from '@octokit/request';
 import {z} from 'zod';
 
 export const GithubIssue = z.object({
+	url: z.string(),
 	number: z.number(),
+	body: z.string(),
+	title: z.string(),
+	state: z.enum(['open', 'closed', 'all']),
+	user: z.object({
+		url: z.string(),
+		login: z.string(),
+	}),
 });
 export type GithubIssue = z.infer<typeof GithubIssue>;
 
