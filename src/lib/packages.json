@@ -68,7 +68,8 @@
 					"svelte": "./dist/RepoTable.svelte",
 					"default": "./dist/RepoTable.svelte",
 					"types": "./dist/RepoTable.svelte.d.ts"
-				}
+				},
+				"./sync.task.js": {"default": "./dist/sync.task.js", "types": "./dist/sync.task.d.ts"}
 			}
 		}
 	},
