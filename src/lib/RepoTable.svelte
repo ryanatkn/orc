@@ -5,9 +5,9 @@
 	import {strip_end} from '@grogarden/util/string.js';
 
 	import type {FetchedPackage, FetchedPackageMeta} from '$lib/fetch_packages.js';
-	import packages from '$lib/packages.json'; // TODO BLOCK param
 
 	export let pkgs: FetchedPackageMeta[];
+	export let packages: FetchedPackage[] | null = null; // TODO hacky, refactor this with `pkgs`
 	export let deps = ['@fuz.dev/fuz', '@fuz.dev/fuz_library', '@grogarden/gro'];
 
 	// TODO fade out the `version` column if all deps are upgraded to the latest
@@ -41,8 +41,8 @@
 	const format_version = (version: string | null): string =>
 		version === null ? '' : version.replace(/^(\^|>=)\s*/u, '');
 
-	const lookup_pulls = (packages: FetchedPackage[], pkg: PackageMeta) => {
-		const found = packages.find((p) => p.url === pkg.url);
+	const lookup_pulls = (packages: FetchedPackage[] | null, pkg: PackageMeta) => {
+		const found = packages?.find((p) => p.url === pkg.url);
 		if (!found) return null;
 		const {pulls} = found;
 		console.log(`pulls`, pulls);

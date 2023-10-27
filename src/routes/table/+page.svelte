@@ -23,7 +23,7 @@
 	</section>
 	<section>
 		<div class="panel padded_md">
-			<RepoTable {pkgs} />
+			<RepoTable {pkgs} {packages} />
 		</div>
 	</section>
 	<section class="box">
