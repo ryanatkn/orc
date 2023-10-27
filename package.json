@@ -20,6 +20,7 @@
     "dist"
   ],
   "peerDependencies": {
+    "@octokit/request": "*",
     "@sveltejs/kit": "*",
     "svelte": "*"
   },
