@@ -27,7 +27,7 @@
 		</div>
 	</section>
 	<section>
-		<LibraryFooter pkg={orc_pkg} emoji="🪄" root_url="https://www.ryanatkn.com/" />
+		<LibraryFooter pkg={orc_pkg} root_url="https://www.ryanatkn.com/" />
 		<PageFooter />
 	</section>
 </main>
