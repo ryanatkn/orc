@@ -1,5 +1,12 @@
 # @ryanatkn/orc
 
+## 0.6.0
+
+### Minor Changes
+
+- e045fb1: extract `$lib/github.ts`
+- e045fb1: add `GithubIssue` schema and parse fetch response
+
 ## 0.5.2
 
 ### Patch Changes
