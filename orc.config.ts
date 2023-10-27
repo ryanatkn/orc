@@ -1,7 +1,7 @@
 import type {OrcConfig} from '$lib/config.js';
 
 const config: OrcConfig = {
-	repos: [
+	packages: [
 		'https://www.grogarden.org/',
 		'https://www.felt.dev/',
 		'https://www.fuz.dev/',

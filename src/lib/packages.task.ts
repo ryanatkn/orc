@@ -38,19 +38,22 @@ export const task: Task<Args> = {
 		const {dir, outfile} = args;
 
 		const orc_config = await load_orc_config(dir);
-		const package_urls = orc_config.repos;
+		const {packages} = orc_config;
 
-		const fetched_packages = await fetch_packages(package_urls, log);
+		const fetched_packages = await fetch_packages(packages, log);
 
 		const local_package_json = await load_package_json(dir);
 
-		const packages: FetchedPackage[] = local_package_json?.homepage
+		const final_packages: FetchedPackage[] = local_package_json?.homepage
 			? [
 					{url: local_package_json.homepage, package_json: local_package_json} as FetchedPackage,
 			  ].concat(fetched_packages)
 			: fetched_packages;
 
-		await writeFile(outfile, await format_file(JSON.stringify(packages), {filepath: outfile}));
+		await writeFile(
+			outfile,
+			await format_file(JSON.stringify(final_packages), {filepath: outfile}),
+		);
 
 		const types_outfile = outfile + '.d.ts';
 		if (!(await exists(types_outfile))) {
