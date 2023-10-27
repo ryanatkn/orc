@@ -1,5 +1,11 @@
 # @ryanatkn/orc
 
+## 0.5.2
+
+### Patch Changes
+
+- b7cb0df: fix package fetching error handling
+
 ## 0.5.1
 
 ### Patch Changes
