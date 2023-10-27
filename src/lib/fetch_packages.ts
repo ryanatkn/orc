@@ -42,6 +42,7 @@ export const fetch_packages = async (
 const fetch_github_issues = async (url: string, package_json: PackageJson, log?: Logger) => {
 	console.log(`url`, url);
 	const parsed = parse_package_meta(url, package_json);
+	console.log(`parsed`, parsed);
 	if (!parsed.owner_name) return null;
 	const res = await request('GET /repos/{owner}/{repo}/pulls', {
 		owner: parsed.owner_name,
