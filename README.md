@@ -6,6 +6,7 @@ I maintain a lot of git repos between
 [Felt](https://github.com/feltjs/felt), [Fuz](https://github.com/fuz-dev/fuz),
 [Gro](https://github.com/grogarden/gro), and [others](https://github.com/ryanatkn).
 Orc is a tool to help me orchestrate this complexity.
+It's first user project is [Spiderspace](https://github.com/spiderspace/spiderspace).
 
 The goal is to make a generic tool that works for your projects too,
 but for now I'm hardcoding all values in
