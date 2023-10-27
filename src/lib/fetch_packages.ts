@@ -10,10 +10,10 @@ import {request} from '@octokit/request';
 export interface FetchedPackage {
 	url: Url;
 	package_json: PackageJson | null; // TODO forward error
-	pulls: GithubIssue[]; // TODO BLOCK type
+	pulls: GithubIssue[];
 }
 
-type GithubIssue = any; // TODO BLOCK
+type GithubIssue = any; // TODO
 
 export interface UnfetchablePackage {
 	url: Url;

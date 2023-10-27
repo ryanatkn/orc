@@ -7,7 +7,7 @@
 	import type {FetchedPackage, FetchedPackageMeta} from '$lib/fetch_packages.js';
 
 	export let pkgs: FetchedPackageMeta[];
-	export let packages: FetchedPackage[] | null = null; // TODO hacky, refactor this with `pkgs`
+	export let packages: FetchedPackage[] | null = null; // TODO BLOCK hacky, refactor this with `pkgs`
 	export let deps = ['@fuz.dev/fuz', '@fuz.dev/fuz_library', '@grogarden/gro'];
 
 	// TODO fade out the `version` column if all deps are upgraded to the latest
