@@ -8,9 +8,11 @@
 	import RepoTable from '$lib/RepoTable.svelte';
 	import PageFooter from '$routes/PageFooter.svelte';
 
-	// TODO hacky
-	const pkgs: FetchedPackageMeta[] = packages.map(({url, package_json}) =>
-		package_json ? parse_package_meta(url, package_json) : {url, package_json: null, pulls: null},
+	// TODO hacky, weird names
+	const pkgs: FetchedPackageMeta[] = packages.map(({url, package_json, pulls}) =>
+		package_json
+			? {...parse_package_meta(url, package_json), pulls}
+			: {url, package_json: null, pulls: null},
 	);
 
 	// TODO hacky
@@ -23,7 +25,7 @@
 	</section>
 	<section>
 		<div class="panel padded_md">
-			<RepoTable {pkgs} {packages} />
+			<RepoTable {pkgs} />
 		</div>
 	</section>
 	<section class="box">

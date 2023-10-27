@@ -7,7 +7,7 @@ import {parse_package_meta, type PackageMeta} from '@fuz.dev/fuz_library/package
 import {request} from '@octokit/request';
 import {GITHUB_TOKEN} from '$env/static/private';
 
-// TODO rethink with `Package`
+// TODO rethink with `Package` and `FetchedPackage2`
 export interface FetchedPackage {
 	url: Url;
 	package_json: PackageJson | null; // TODO forward error
@@ -16,14 +16,19 @@ export interface FetchedPackage {
 
 type GithubIssue = any; // TODO
 
+// TODO obviously bad names
+export interface FetchedPackage2 extends PackageMeta {
+	pulls: GithubIssue[] | null;
+}
+
 export interface UnfetchablePackage {
 	url: Url;
 	package_json: null;
 	pulls: null;
 }
 
-// TODO rethink these
-export type FetchedPackageMeta = PackageMeta | UnfetchablePackage;
+// TODO rethink these names
+export type FetchedPackageMeta = FetchedPackage2 | UnfetchablePackage;
 
 /* eslint-disable no-await-in-loop */
 

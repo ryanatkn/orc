@@ -1,14 +1,13 @@
 <script lang="ts">
-	import {format_host, type PackageMeta} from '@fuz.dev/fuz_library/package_meta.js';
+	import {format_host} from '@fuz.dev/fuz_library/package_meta.js';
 	import {page} from '$app/stores';
 	import {base} from '$app/paths';
 	import {strip_end} from '@grogarden/util/string.js';
 
-	import type {FetchedPackage, FetchedPackageMeta} from '$lib/fetch_packages.js';
+	import type {FetchedPackageMeta} from '$lib/fetch_packages.js';
 
 	export let pkgs: FetchedPackageMeta[];
-	export let packages: FetchedPackage[] | null = null; // TODO BLOCK hacky, refactor this with `pkgs`
-	export let deps = ['@fuz.dev/fuz', '@fuz.dev/fuz_library', '@grogarden/gro'];
+	export let deps = ['@fuz.dev/fuz', '@fuz.dev/fuz_library', '@grogarden/gro']; // TODO add felt
 
 	// TODO fade out the `version` column if all deps are upgraded to the latest
 
@@ -41,9 +40,9 @@
 	const format_version = (version: string | null): string =>
 		version === null ? '' : version.replace(/^(\^|>=)\s*/u, '');
 
-	const lookup_pulls = (packages: FetchedPackage[] | null, pkg: PackageMeta) => {
-		const found = packages?.find((p) => p.url === pkg.url);
-		if (!found) return null;
+	const lookup_pulls = (pkgs: FetchedPackageMeta[] | null, pkg: FetchedPackageMeta) => {
+		const found = pkgs?.find((p) => p.url === pkg.url);
+		if (!found?.package_json) return null;
 		const {pulls} = found;
 		console.log(`pulls`, pulls);
 		return pulls;
@@ -100,7 +99,7 @@
 			</td>
 			<td>
 				{#if package_json && pkg.repo_url}
-					{@const pulls = lookup_pulls(packages, pkg)}
+					{@const pulls = lookup_pulls(pkgs, pkg)}
 					<!-- TODO show something like `and N more` with a link to a dialog list -->
 					<div class="row">
 						{#if pulls}
