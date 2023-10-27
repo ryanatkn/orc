@@ -42,10 +42,11 @@ export const fetch_packages = async (
 	const packages: FetchedPackage[] = [];
 	for (const url of urls) {
 		const package_json = await load_package_json(url, log);
-		// TODO delay?
+		if (!package_json) throw Error('failed to load package_json: ' + url);
 		await wait(delay);
-		const pkg = package_json ? parse_package_meta(url, package_json) : null;
-		const pulls = pkg ? await fetch_github_issues(url, pkg, log, token) : null;
+		const pkg = parse_package_meta(url, package_json);
+		if (!pkg) throw Error('failed to parse package_json: ' + url);
+		const pulls = await fetch_github_issues(url, pkg, log, token);
 		if (!pulls) throw Error('failed to fetch issues: ' + url);
 		await wait(delay);
 		packages.push({url, package_json, pulls});
