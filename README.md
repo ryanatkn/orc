@@ -5,7 +5,7 @@
 I maintain a lot of git repos between
 [Felt](https://github.com/feltjs/felt), [Fuz](https://github.com/fuz-dev/fuz),
 [Gro](https://github.com/grogarden/gro), and [others](https://github.com/ryanatkn).
-Orc is a tool to help me orchestrate this complexity.
+Orc is a tool for helping me orchestrate this complexity.
 It's first user project is [Spiderspace](https://github.com/spiderspace/spiderspace).
 
 The goal is to make a generic tool that works for your projects too,
@@ -18,7 +18,10 @@ and eventually I'll stabilize the APIs and publish a reusable library.
 
 - see [`.env.example`](/.env.example) and add your own `.env` with `GITHUB_TOKEN`,
   whose value is a [GitHub token](https://github.com/settings/tokens)
-  (currently optional because we it's only used to read public repos)
+  (currently optional because it's only used to read public repos)
+
+Getting started as a dev? Start with [Gro](https://github.com/grogarden/gro)
+and the [Fuz template](https://github.com/fuz-dev/fuz_template)
 
 TODO
 
