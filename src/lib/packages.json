@@ -25,7 +25,7 @@
 				"@fuz.dev/fuz": "^0.75.2",
 				"@fuz.dev/fuz_contextmenu": "^0.4.2",
 				"@fuz.dev/fuz_dialog": "^0.3.2",
-				"@fuz.dev/fuz_library": "^0.12.3",
+				"@fuz.dev/fuz_library": "^0.13.0",
 				"@grogarden/gro": "^0.96.1",
 				"@grogarden/util": "^0.15.2",
 				"@sveltejs/adapter-static": "^2.0.3",
@@ -575,7 +575,7 @@
 		"package_json": {
 			"name": "@fuz.dev/fuz_library",
 			"description": "components and helpers for Svelte, SvelteKit, and Fuz",
-			"version": "0.12.3",
+			"version": "0.13.0",
 			"license": "MIT",
 			"homepage": "https://library.fuz.dev/",
 			"repository": "https://github.com/fuz-dev/fuz_library",
@@ -599,8 +599,8 @@
 			"devDependencies": {
 				"@changesets/changelog-git": "^0.1.14",
 				"@feltjs/eslint-config": "^0.4.1",
-				"@fuz.dev/fuz": "^0.75.1",
-				"@fuz.dev/fuz_code": "^0.3.1",
+				"@fuz.dev/fuz": "^0.75.2",
+				"@fuz.dev/fuz_code": "^0.3.2",
 				"@grogarden/gro": "^0.96.1",
 				"@sveltejs/adapter-static": "^2.0.3",
 				"@sveltejs/kit": "^1.27.1",
@@ -943,12 +943,13 @@
 	{
 		"url": "https://www.spiderspace.org/",
 		"package_json": {
-			"name": "spiderspace",
-			"description": "🕸🕷",
+			"name": "@spiderspace/spiderspace",
+			"description": "a web stack for hobbyists",
 			"version": "0.0.1",
-			"type": "module",
+			"license": "MIT",
 			"homepage": "https://www.spiderspace.org/",
 			"repository": "https://github.com/spiderspace/spiderspace",
+			"type": "module",
 			"engines": {"node": ">=20.7"},
 			"scripts": {
 				"start": "gro dev",
@@ -963,7 +964,6 @@
 				"@fuz.dev/fuz_library": "^0.12.3",
 				"@grogarden/gro": "^0.96.1",
 				"@grogarden/util": "^0.15.2",
-				"@ryanatkn/collisions": "^3.0.1",
 				"@ryanatkn/orc": "^0.2.1",
 				"@sveltejs/adapter-static": "^2.0.3",
 				"@sveltejs/kit": "^1.27.1",
