@@ -44,7 +44,8 @@ export const fetch_packages = async (
 		const package_json = await load_package_json(url, log);
 		// TODO delay?
 		await wait(delay);
-		const pulls = package_json ? await fetch_github_issues(url, package_json, log, token) : null;
+		const pkg = package_json ? parse_package_meta(url, package_json) : null;
+		const pulls = pkg ? await fetch_github_issues(url, pkg, log, token) : null;
 		if (!pulls) throw Error('failed to fetch issues: ' + url);
 		await wait(delay);
 		packages.push({url, package_json, pulls});
@@ -52,20 +53,13 @@ export const fetch_packages = async (
 	return packages;
 };
 
-// TODO BLOCK make this `PackageMeta` already parsed
-const fetch_github_issues = async (
-	url: string,
-	package_json: PackageJson,
-	log?: Logger,
-	token?: string,
-) => {
+const fetch_github_issues = async (url: string, pkg: PackageMeta, log?: Logger, token?: string) => {
 	log?.info(`[fetch_github_issues] url`, url);
-	const parsed = parse_package_meta(url, package_json);
-	if (!parsed.owner_name) return null;
+	if (!pkg.owner_name) return null;
 	const res = await request('GET /repos/{owner}/{repo}/pulls', {
 		headers: {authorization: 'token ' + token},
-		owner: parsed.owner_name,
-		repo: parsed.repo_name,
+		owner: pkg.owner_name,
+		repo: pkg.repo_name,
 		sort: 'updated',
 	});
 	log?.info(`res`, res);
