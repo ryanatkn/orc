@@ -5,7 +5,7 @@ import type {Logger} from '@grogarden/util/log.js';
 import {wait} from '@grogarden/util/async.js';
 import {parse_package_meta, type PackageMeta} from '@fuz.dev/fuz_library/package_meta.js';
 import {request} from '@octokit/request';
-import {GITHUB_TOKEN} from '$env/static/private';
+import {GITHUB_TOKEN_SECRET} from '$env/static/private';
 
 // TODO rethink with `Package` and `FetchedPackage2`
 export interface FetchedPackage {
@@ -36,7 +36,7 @@ export const fetch_packages = async (
 	urls: Url[],
 	log?: Logger,
 	delay = 50,
-	token = GITHUB_TOKEN,
+	token = GITHUB_TOKEN_SECRET,
 ): Promise<FetchedPackage[]> => {
 	console.log(`urls`, urls);
 	const packages: FetchedPackage[] = [];

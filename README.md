@@ -16,7 +16,7 @@ and eventually I'll stabilize the APIs and publish a reusable library.
 
 ## Usage
 
-- see [`.env.example`](/.env.example) and add your own `.env` with `GITHUB_TOKEN`,
+- see [`.env.example`](/.env.example) and add your own `.env` with `GITHUB_TOKEN_SECRET`,
   whose value is a [GitHub token](https://github.com/settings/tokens)
   (currently optional because it's only used to read public repos)
 

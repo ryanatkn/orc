@@ -15,6 +15,8 @@
 			: {url, package_json: null, pulls: null},
 	);
 
+	console.log(`pkgs`, pkgs);
+
 	// TODO hacky
 	const orc_pkg = pkgs.find((p) => p.url === 'https://orc.ryanatkn.com/') as PackageMeta;
 </script>
