@@ -17,7 +17,7 @@ and eventually I'll stabilize the APIs and publish a reusable library.
 ## Usage
 
 - see [`.env.example`](/.env.example) and add your own `.env` with `GITHUB_TOKEN`,
-  whose value is a [GitHub classic token](https://github.com/settings/tokens)
+  whose value is a [GitHub token](https://github.com/settings/tokens)
   with the `public_repo` capability
   (optional for reads, and currently that's the only functionality,
   but it ups the rate limiting a lot)
