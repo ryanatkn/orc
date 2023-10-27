@@ -1,5 +1,11 @@
 # @ryanatkn/orc
 
+## 0.5.0
+
+### Minor Changes
+
+- 0f40917: support `pulls` for public repos
+
 ## 0.4.0
 
 ### Minor Changes
