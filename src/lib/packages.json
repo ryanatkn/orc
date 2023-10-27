@@ -354,8 +354,16 @@
 				"number": 427,
 				"state": "open",
 				"title": "add and integrate `gro changelog`",
-				"user": {"url": "https://api.github.com/users/ryanatkn", "login": "ryanatkn"},
+				"user": {
+					"login": "ryanatkn",
+					"id": 2608646,
+					"node_id": "MDQ6VXNlcjI2MDg2NDY=",
+					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
+					"url": "https://api.github.com/users/ryanatkn"
+				},
 				"body": "- [ ] map leading hashes to the PR, fallback to the hash link",
+				"created_at": "2023-10-23T19:58:40Z",
+				"updated_at": "2023-10-24T22:52:34Z",
 				"draft": true
 			},
 			{
@@ -365,8 +373,16 @@
 				"number": 428,
 				"state": "open",
 				"title": "change .well-known/package.json to use the static directory",
-				"user": {"url": "https://api.github.com/users/ryanatkn", "login": "ryanatkn"},
+				"user": {
+					"login": "ryanatkn",
+					"id": 2608646,
+					"node_id": "MDQ6VXNlcjI2MDg2NDY=",
+					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
+					"url": "https://api.github.com/users/ryanatkn"
+				},
 				"body": "If you link to the .well-known/package.json, SvelteKit won't see it during the build. I think the build is fine, it just fixes the error.\r\n\r\nI knew this was the better implementation but I was being lazy, it's more work and I want to make reusable helpers for creating the file temporarily and then cleaning up.\r\n\r\nlike\r\n\r\n```ts\r\nconst cleanup = copy_temporarily(...)\r\n```\r\n\r\nor maybe a Vite plugin, so the path works during development too and without any filesystem stuff? but can Gro do that without being intrusive to configure?",
+				"created_at": "2023-10-23T20:34:07Z",
+				"updated_at": "2023-10-24T22:52:39Z",
 				"draft": true
 			},
 			{
@@ -376,8 +392,16 @@
 				"number": 429,
 				"state": "open",
 				"title": "stop using the `deploy` branch in the main cwd for `gro deploy`",
-				"user": {"url": "https://api.github.com/users/ryanatkn", "login": "ryanatkn"},
+				"user": {
+					"login": "ryanatkn",
+					"id": 2608646,
+					"node_id": "MDQ6VXNlcjI2MDg2NDY=",
+					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
+					"url": "https://api.github.com/users/ryanatkn"
+				},
 				"body": "vscode flips out regularly from the workspace-destructive `deploy` branch in `gro deploy`. This refactors the internals to use a non-destructive strategy, at the cost of inefficiency -- a `.git` directory for the `deploy` branch is now duplicated in a cache directory. A benefit is that you no longer see `deploy` in your root `.git` context.\r\n\r\n- maybe `.gro/deploy`?",
+				"created_at": "2023-10-25T19:12:59Z",
+				"updated_at": "2023-10-25T20:48:06Z",
 				"draft": true
 			}
 		]
@@ -463,8 +487,16 @@
 				"number": 41,
 				"state": "open",
 				"title": "upgrade deps",
-				"user": {"url": "https://api.github.com/users/ryanatkn", "login": "ryanatkn"},
+				"user": {
+					"login": "ryanatkn",
+					"id": 2608646,
+					"node_id": "MDQ6VXNlcjI2MDg2NDY=",
+					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
+					"url": "https://api.github.com/users/ryanatkn"
+				},
 				"body": "blocked by https://github.com/feltjs/felt/pull/952",
+				"created_at": "2023-10-17T02:39:34Z",
+				"updated_at": "2023-10-17T02:44:50Z",
 				"draft": false
 			}
 		]
@@ -1050,8 +1082,16 @@
 				"number": 3,
 				"state": "open",
 				"title": "upgrade deps",
-				"user": {"url": "https://api.github.com/users/ryanatkn", "login": "ryanatkn"},
+				"user": {
+					"login": "ryanatkn",
+					"id": 2608646,
+					"node_id": "MDQ6VXNlcjI2MDg2NDY=",
+					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
+					"url": "https://api.github.com/users/ryanatkn"
+				},
 				"body": "- [ ] parse the result with a zod schema to reduce data",
+				"created_at": "2023-10-27T19:28:13Z",
+				"updated_at": "2023-10-27T20:02:31Z",
 				"draft": false
 			}
 		]
