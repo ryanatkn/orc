@@ -4,7 +4,8 @@ import {strip_end} from '@grogarden/util/string.js';
 import type {Logger} from '@grogarden/util/log.js';
 import {wait} from '@grogarden/util/async.js';
 import {parse_package_meta, type PackageMeta} from '@fuz.dev/fuz_library/package_meta.js';
-import {request} from '@octokit/request';
+
+import {fetch_github_issues, type GithubIssue} from '$lib/github.js';
 
 // TODO rethink with `Package` and `FetchedPackage2`
 export interface MaybeFetchedPackage {
@@ -12,8 +13,6 @@ export interface MaybeFetchedPackage {
 	package_json: PackageJson | null; // TODO forward error
 	pulls: GithubIssue[] | null;
 }
-
-type GithubIssue = any; // TODO
 
 export interface FetchedPackage extends PackageMeta {
 	pulls: GithubIssue[] | null;
@@ -36,7 +35,7 @@ export const fetch_packages = async (
 	log?: Logger,
 	delay = 50,
 ): Promise<MaybeFetchedPackage[]> => {
-	console.log(`urls`, urls);
+	log?.info(`urls`, urls);
 	const packages: MaybeFetchedPackage[] = [];
 	for (const url of urls) {
 		try {
@@ -55,19 +54,6 @@ export const fetch_packages = async (
 		}
 	}
 	return packages;
-};
-
-const fetch_github_issues = async (url: string, pkg: PackageMeta, log?: Logger, token?: string) => {
-	log?.info(`[fetch_github_issues] url`, url);
-	if (!pkg.owner_name) return null;
-	const res = await request('GET /repos/{owner}/{repo}/pulls', {
-		headers: {authorization: 'token ' + token},
-		owner: pkg.owner_name,
-		repo: pkg.repo_name,
-		sort: 'updated',
-	});
-	log?.info(`res`, res);
-	return res.data;
 };
 
 const load_package_json = async (url: string, log?: Logger): Promise<PackageJson | null> => {
