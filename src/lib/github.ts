@@ -5,17 +5,17 @@ import {z} from 'zod';
 
 export const GithubIssue = z.object({
 	url: z.string(),
-	number: z.number(),
 	id: z.number(),
 	node_id: z.string(),
-	body: z.string(),
+	number: z.number(),
 	state: z.enum(['open', 'closed', 'all']),
 	title: z.string(),
-	draft: z.boolean(),
+	body: z.string(),
 	user: z.object({
 		url: z.string(),
 		login: z.string(),
 	}),
+	draft: z.boolean(),
 });
 export type GithubIssue = z.infer<typeof GithubIssue>;
 
