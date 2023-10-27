@@ -2,6 +2,7 @@
 	import {format_host} from '@fuz.dev/fuz_library/package_meta.js';
 	import {page} from '$app/stores';
 	import {base} from '$app/paths';
+	import {strip_end} from '@grogarden/util/string.js';
 
 	import type {FetchedPackageMeta} from '$lib/fetch_packages.js';
 
@@ -38,6 +39,8 @@
 
 	const format_version = (version: string | null): string =>
 		version === null ? '' : version.replace(/^(\^|>=)\s*/u, '');
+
+	const pull_requests = ['13', '17']; // TODO BLOCK implement
 </script>
 
 <table>
@@ -46,6 +49,7 @@
 		<th>homepage</th>
 		<th>repo</th>
 		<th>npm</th>
+		<th>pull requests</th>
 		<th>version</th>
 		{#each deps as dep (dep)}
 			<th>{dep}</th>
@@ -84,6 +88,17 @@
 				{#if package_json && pkg.npm_url}
 					<div class="row">
 						<a href={pkg.npm_url}><code>{pkg.name}</code></a>
+					</div>
+				{/if}
+			</td>
+			<td>
+				{#if package_json && pkg.repo_url}
+					<div class="row">
+						{#each pull_requests as pull_request (pull_request)}
+							<a href="{strip_end(pkg.repo_url, '/')}/pull/{pull_request}"
+								><code>#{pull_request}</code></a
+							>
+						{/each}
 					</div>
 				{/if}
 			</td>
