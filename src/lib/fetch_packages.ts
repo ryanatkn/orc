@@ -3,7 +3,8 @@ import type {Url} from '@grogarden/gro/paths.js';
 import {strip_end} from '@grogarden/util/string.js';
 import type {Logger} from '@grogarden/util/log.js';
 import {wait} from '@grogarden/util/async.js';
-import type {PackageMeta} from '@fuz.dev/fuz_library/package_meta.js';
+import {parse_package_meta, type PackageMeta} from '@fuz.dev/fuz_library/package_meta.js';
+import {request} from '@octokit/request';
 
 // TODO rethink with `Package`
 export interface FetchedPackage {
@@ -30,7 +31,7 @@ export const fetch_packages = async (
 		const package_json = await load_package_json(url, log);
 		// TODO delay?
 		await wait(delay);
-		const issues = await fetch_github_issues(url);
+		const issues = package_json ? await fetch_github_issues(url, package_json, log) : null;
 		if (!issues) throw Error('failed to fetch issues: ' + url);
 		await wait(delay);
 		packages.push({url, package_json, issues});
@@ -38,8 +39,17 @@ export const fetch_packages = async (
 	return packages;
 };
 
-const fetch_github_issues = async (url: string, log?: Logger): Promise<GithubIssue[] | null> => {
-	return null;
+const fetch_github_issues = async (url: string, package_json: PackageJson, log?: Logger) => {
+	console.log(`url`, url);
+	const parsed = parse_package_meta(url, package_json);
+	if (!parsed.owner_name) return null;
+	const res = await request('GET /repos/{owner}/{repo}/pulls', {
+		owner: parsed.owner_name,
+		repo: parsed.repo_name,
+		sort: 'updated',
+	});
+	log?.info(`res`, res);
+	return res.data;
 };
 
 const load_package_json = async (url: string, log?: Logger): Promise<PackageJson | null> => {
