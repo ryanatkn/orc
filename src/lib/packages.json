@@ -350,14 +350,12 @@
 			{
 				"url": "https://api.github.com/repos/grogarden/gro/pulls/427",
 				"id": 1569858809,
-				"node_id": "PR_kwDOC_yFAc5dkiT5",
 				"number": 427,
 				"state": "open",
 				"title": "add and integrate `gro changelog`",
 				"user": {
 					"login": "ryanatkn",
 					"id": 2608646,
-					"node_id": "MDQ6VXNlcjI2MDg2NDY=",
 					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
 					"url": "https://api.github.com/users/ryanatkn"
 				},
@@ -369,14 +367,12 @@
 			{
 				"url": "https://api.github.com/repos/grogarden/gro/pulls/428",
 				"id": 1569906900,
-				"node_id": "PR_kwDOC_yFAc5dkuDU",
 				"number": 428,
 				"state": "open",
 				"title": "change .well-known/package.json to use the static directory",
 				"user": {
 					"login": "ryanatkn",
 					"id": 2608646,
-					"node_id": "MDQ6VXNlcjI2MDg2NDY=",
 					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
 					"url": "https://api.github.com/users/ryanatkn"
 				},
@@ -388,14 +384,12 @@
 			{
 				"url": "https://api.github.com/repos/grogarden/gro/pulls/429",
 				"id": 1573508138,
-				"node_id": "PR_kwDOC_yFAc5dydQq",
 				"number": 429,
 				"state": "open",
 				"title": "stop using the `deploy` branch in the main cwd for `gro deploy`",
 				"user": {
 					"login": "ryanatkn",
 					"id": 2608646,
-					"node_id": "MDQ6VXNlcjI2MDg2NDY=",
 					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
 					"url": "https://api.github.com/users/ryanatkn"
 				},
@@ -483,14 +477,12 @@
 			{
 				"url": "https://api.github.com/repos/feltjs/website/pulls/41",
 				"id": 1559686093,
-				"node_id": "PR_kwDOI1AZx85c9uvN",
 				"number": 41,
 				"state": "open",
 				"title": "upgrade deps",
 				"user": {
 					"login": "ryanatkn",
 					"id": 2608646,
-					"node_id": "MDQ6VXNlcjI2MDg2NDY=",
 					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
 					"url": "https://api.github.com/users/ryanatkn"
 				},
@@ -1078,14 +1070,12 @@
 			{
 				"url": "https://api.github.com/repos/spiderspace/spiderspace/pulls/3",
 				"id": 1577103166,
-				"node_id": "PR_kwDOI6X-S85eAK8-",
 				"number": 3,
 				"state": "open",
 				"title": "upgrade deps",
 				"user": {
 					"login": "ryanatkn",
 					"id": 2608646,
-					"node_id": "MDQ6VXNlcjI2MDg2NDY=",
 					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
 					"url": "https://api.github.com/users/ryanatkn"
 				},

@@ -6,14 +6,12 @@ import {z} from 'zod';
 export const GithubIssue = z.object({
 	url: z.string(),
 	id: z.number(),
-	node_id: z.string(),
 	number: z.number(),
 	state: z.enum(['open', 'closed', 'all']),
 	title: z.string(),
 	user: z.object({
 		login: z.string(),
 		id: z.number(),
-		node_id: z.string(),
 		avatar_url: z.string(),
 		url: z.string(),
 	}),
