@@ -344,7 +344,7 @@
 				"./watch_dir.js": {"default": "./dist/watch_dir.js", "types": "./dist/watch_dir.d.ts"}
 			}
 		},
-		"issues": [
+		"pulls": [
 			{
 				"url": "https://api.github.com/repos/grogarden/gro/pulls/427",
 				"id": 1569858809,
@@ -1416,7 +1416,7 @@
 				}
 			}
 		},
-		"issues": [
+		"pulls": [
 			{
 				"url": "https://api.github.com/repos/feltjs/website/pulls/41",
 				"id": 1559686093,
@@ -1849,7 +1849,7 @@
 				"./variables.js": {"default": "./dist/variables.js", "types": "./dist/variables.d.ts"}
 			}
 		},
-		"issues": []
+		"pulls": []
 	},
 	{
 		"url": "https://template.fuz.dev/",
@@ -1903,7 +1903,7 @@
 			},
 			"exports": {"./example.js": {"default": "./dist/example.js", "types": "./dist/example.d.ts"}}
 		},
-		"issues": []
+		"pulls": []
 	},
 	{
 		"url": "https://library.fuz.dev/",
@@ -2091,7 +2091,7 @@
 				}
 			}
 		},
-		"issues": []
+		"pulls": []
 	},
 	{
 		"url": "https://mastodon.fuz.dev/",
@@ -2193,7 +2193,7 @@
 				}
 			}
 		},
-		"issues": []
+		"pulls": []
 	},
 	{
 		"url": "https://www.cosmicplayground.org/",
@@ -2264,7 +2264,7 @@
 				"overrides": [{"files": "package.json", "options": {"useTabs": false}}]
 			}
 		},
-		"issues": []
+		"pulls": []
 	},
 	{
 		"url": "https://www.spiderspace.org/",
@@ -2324,6 +2324,6 @@
 				}
 			}
 		},
-		"issues": []
+		"pulls": []
 	}
 ]
