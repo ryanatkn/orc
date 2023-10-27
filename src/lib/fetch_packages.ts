@@ -10,7 +10,7 @@ import {request} from '@octokit/request';
 export interface FetchedPackage {
 	url: Url;
 	package_json: PackageJson | null; // TODO forward error
-	issues: GithubIssue[]; // TODO BLOCK type
+	pulls: GithubIssue[]; // TODO BLOCK type
 }
 
 type GithubIssue = any; // TODO BLOCK
@@ -18,7 +18,7 @@ type GithubIssue = any; // TODO BLOCK
 export interface UnfetchablePackage {
 	url: Url;
 	package_json: null;
-	issues: null;
+	pulls: null;
 }
 
 // TODO rethink these
@@ -37,10 +37,10 @@ export const fetch_packages = async (
 		const package_json = await load_package_json(url, log);
 		// TODO delay?
 		await wait(delay);
-		const issues = package_json ? await fetch_github_issues(url, package_json, log) : null;
-		if (!issues) throw Error('failed to fetch issues: ' + url);
+		const pulls = package_json ? await fetch_github_issues(url, package_json, log) : null;
+		if (!pulls) throw Error('failed to fetch issues: ' + url);
 		await wait(delay);
-		packages.push({url, package_json, issues});
+		packages.push({url, package_json, pulls});
 	}
 	return packages;
 };

@@ -41,12 +41,12 @@
 	const format_version = (version: string | null): string =>
 		version === null ? '' : version.replace(/^(\^|>=)\s*/u, '');
 
-	const lookup_issues = (packages: FetchedPackage[], pkg: PackageMeta) => {
+	const lookup_pulls = (packages: FetchedPackage[], pkg: PackageMeta) => {
 		const found = packages.find((p) => p.url === pkg.url);
 		if (!found) return null;
-		const {issues} = found;
-		console.log(`issues`, issues);
-		return issues;
+		const {pulls} = found;
+		console.log(`pulls`, pulls);
+		return pulls;
 	};
 </script>
 
@@ -100,12 +100,12 @@
 			</td>
 			<td>
 				{#if package_json && pkg.repo_url}
-					{@const issues = lookup_issues(packages, pkg)}
+					{@const pulls = lookup_pulls(packages, pkg)}
 					<div class="row">
-						{#if issues}
-							{#each issues as issue (issue)}
-								<a href="{strip_end(pkg.repo_url, '/')}/pull/{issue.number}" class="chip"
-									>#{issue.number}</a
+						{#if pulls}
+							{#each pulls as pull (pull)}
+								<a href="{strip_end(pkg.repo_url, '/')}/pull/{pull.number}" class="chip"
+									>#{pull.number}</a
 								>
 							{/each}
 						{/if}
