@@ -101,6 +101,7 @@
 			<td>
 				{#if package_json && pkg.repo_url}
 					{@const pulls = lookup_pulls(packages, pkg)}
+					<!-- TODO show something like `and N more` with a link to a dialog list -->
 					<div class="row">
 						{#if pulls}
 							{#each pulls as pull (pull)}
