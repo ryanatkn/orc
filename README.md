@@ -13,9 +13,18 @@ but for now I'm hardcoding all values in
 If you want to try it yourself, you can fork the repo and change the config manually,
 and eventually I'll stabilize the APIs and publish a reusable library.
 
+## Usage
+
+- see [`.env.example`](/.env.example) and add your own `.env` with `GITHUB_TOKEN`,
+  whose value is a [GitHub classic token](https://github.com/settings/tokens)
+  with the `public_repo` capability
+  (optional for reads, and currently that's the only functionality,
+  but it ups the rate limiting a lot)
+
 TODO
 
 - figure out better automation than manually running `gro packages`
+- automate `.env` (gro sync?)
 
 ## License [🐦](https://wikipedia.org/wiki/Free_and_open-source_software)
 
