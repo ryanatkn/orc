@@ -15,8 +15,14 @@ export interface FetchedPackage {
 
 type GithubIssue = any; // TODO BLOCK
 
-// TODO rethink with `PackageMeta`
-export type FetchedPackageMeta = PackageMeta | {url: Url; package_json: null};
+export interface UnfetchablePackage {
+	url: Url;
+	package_json: null;
+	issues: null;
+}
+
+// TODO rethink these
+export type FetchedPackageMeta = PackageMeta | UnfetchablePackage;
 
 /* eslint-disable no-await-in-loop */
 

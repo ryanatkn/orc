@@ -10,7 +10,7 @@
 
 	// TODO hacky
 	const pkgs: FetchedPackageMeta[] = packages.map(({url, package_json}) =>
-		package_json ? parse_package_meta(url, package_json) : {url, package_json: null},
+		package_json ? parse_package_meta(url, package_json) : {url, package_json: null, issues: null},
 	);
 
 	// TODO hacky

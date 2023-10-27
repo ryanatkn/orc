@@ -8,7 +8,7 @@
 	import packages from '$lib/packages.json'; // TODO BLOCK param
 
 	export let pkgs: FetchedPackageMeta[];
-	export let deps = ['@fuz.dev/fuz', '@fuz.dev/fuz_library', '@grogarden/gro', '@grogarden/util'];
+	export let deps = ['@fuz.dev/fuz', '@fuz.dev/fuz_library', '@grogarden/gro'];
 
 	// TODO fade out the `version` column if all deps are upgraded to the latest
 
