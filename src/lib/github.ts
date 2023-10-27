@@ -9,6 +9,7 @@ export const GithubIssue = z.object({
 	body: z.string(),
 	title: z.string(),
 	state: z.enum(['open', 'closed', 'all']),
+	draft: z.boolean(),
 	user: z.object({
 		url: z.string(),
 		login: z.string(),
