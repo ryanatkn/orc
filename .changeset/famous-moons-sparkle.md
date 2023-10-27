@@ -2,4 +2,4 @@
 '@ryanatkn/orc': minor
 ---
 
-extract $lib/github.ts
+extract `$lib/github.ts`
