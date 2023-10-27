@@ -6,8 +6,9 @@ import {format_file} from '@grogarden/gro/format_file.js';
 import {exists} from '@grogarden/gro/exists.js';
 import {join} from 'node:path';
 import {paths} from '@grogarden/gro/paths.js';
+import {GITHUB_TOKEN_SECRET} from '$env/static/private';
 
-import {fetch_packages, type FetchedPackage} from '$lib/fetch_packages.js';
+import {fetch_packages, type MaybeFetchedPackage} from '$lib/fetch_packages.js';
 import {load_orc_config} from '$lib/config.js';
 
 // TODO etags - cache?
@@ -40,13 +41,16 @@ export const task: Task<Args> = {
 		const orc_config = await load_orc_config(dir);
 		const {packages} = orc_config;
 
-		const fetched_packages = await fetch_packages(packages, log);
+		const fetched_packages = await fetch_packages(packages, GITHUB_TOKEN_SECRET, log);
 
 		const local_package_json = await load_package_json(dir);
 
-		const final_packages: FetchedPackage[] = local_package_json?.homepage
+		const final_packages: MaybeFetchedPackage[] = local_package_json?.homepage
 			? [
-					{url: local_package_json.homepage, package_json: local_package_json} as FetchedPackage,
+					{
+						url: local_package_json.homepage,
+						package_json: local_package_json,
+					} as MaybeFetchedPackage,
 			  ].concat(fetched_packages)
 			: fetched_packages;
 

@@ -5,19 +5,17 @@ import type {Logger} from '@grogarden/util/log.js';
 import {wait} from '@grogarden/util/async.js';
 import {parse_package_meta, type PackageMeta} from '@fuz.dev/fuz_library/package_meta.js';
 import {request} from '@octokit/request';
-import {GITHUB_TOKEN_SECRET} from '$env/static/private';
 
 // TODO rethink with `Package` and `FetchedPackage2`
-export interface FetchedPackage {
+export interface MaybeFetchedPackage {
 	url: Url;
 	package_json: PackageJson | null; // TODO forward error
-	pulls: GithubIssue[];
+	pulls: GithubIssue[] | null;
 }
 
 type GithubIssue = any; // TODO
 
-// TODO obviously bad names
-export interface FetchedPackage2 extends PackageMeta {
+export interface FetchedPackage extends PackageMeta {
 	pulls: GithubIssue[] | null;
 }
 
@@ -28,28 +26,33 @@ export interface UnfetchablePackage {
 }
 
 // TODO rethink these names
-export type FetchedPackageMeta = FetchedPackage2 | UnfetchablePackage;
+export type FetchedPackageMeta = FetchedPackage | UnfetchablePackage;
 
 /* eslint-disable no-await-in-loop */
 
 export const fetch_packages = async (
 	urls: Url[],
+	token?: string,
 	log?: Logger,
 	delay = 50,
-	token = GITHUB_TOKEN_SECRET,
-): Promise<FetchedPackage[]> => {
+): Promise<MaybeFetchedPackage[]> => {
 	console.log(`urls`, urls);
-	const packages: FetchedPackage[] = [];
+	const packages: MaybeFetchedPackage[] = [];
 	for (const url of urls) {
-		const package_json = await load_package_json(url, log);
-		if (!package_json) throw Error('failed to load package_json: ' + url);
-		await wait(delay);
-		const pkg = parse_package_meta(url, package_json);
-		if (!pkg) throw Error('failed to parse package_json: ' + url);
-		const pulls = await fetch_github_issues(url, pkg, log, token);
-		if (!pulls) throw Error('failed to fetch issues: ' + url);
-		await wait(delay);
-		packages.push({url, package_json, pulls});
+		try {
+			const package_json = await load_package_json(url, log);
+			if (!package_json) throw Error('failed to load package_json: ' + url);
+			await wait(delay);
+			const pkg = parse_package_meta(url, package_json);
+			if (!pkg) throw Error('failed to parse package_json: ' + url);
+			const pulls = await fetch_github_issues(url, pkg, log, token);
+			if (!pulls) throw Error('failed to fetch issues: ' + url);
+			await wait(delay);
+			packages.push({url, package_json, pulls});
+		} catch (err) {
+			packages.push({url, package_json: null, pulls: null});
+			log?.error(err);
+		}
 	}
 	return packages;
 };
