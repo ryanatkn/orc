@@ -1,5 +1,15 @@
 # @ryanatkn/orc
 
+## 0.4.0
+
+### Minor Changes
+
+- 1ed8dc4: parse OrcConfig
+
+### Patch Changes
+
+- 1ed8dc4: strict config
+
 ## 0.3.0
 
 ### Minor Changes
