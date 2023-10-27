@@ -45,7 +45,7 @@
 			{/each}
 		</menu>
 	</section>
-	<section>
+	<section class="box">
 		<LibraryFooter pkg={orc_pkg} root_url="https://www.ryanatkn.com/" />
 		<PageFooter />
 	</section>

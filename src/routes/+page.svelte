@@ -39,9 +39,7 @@
 		</menu>
 	</section>
 	<section>
-		<LibraryFooter pkg={orc_pkg} root_url="https://www.ryanatkn.com/">
-			{''}
-		</LibraryFooter>
+		<LibraryFooter pkg={orc_pkg} root_url="https://www.ryanatkn.com/" />
 	</section>
 </main>
 

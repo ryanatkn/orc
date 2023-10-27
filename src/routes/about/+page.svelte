@@ -34,8 +34,10 @@
 			<PackageDetail {pkg} />
 		</div>
 	</section>
-	<LibraryFooter {pkg} />
-	<PageFooter />
+	<div class="box">
+		<LibraryFooter {pkg} />
+		<PageFooter />
+	</div>
 </main>
 
 <style>
