@@ -16,6 +16,11 @@
 	<section>
 		<MainHeader />
 	</section>
+	<section class="prose">
+		<blockquote class="text_align_center">
+			for example usage<br />see <a href="https://www.spiderspace.org/">spiderspace.org</a>
+		</blockquote>
+	</section>
 	<section>
 		<menu>
 			<li>
