@@ -15,7 +15,7 @@ export const GithubIssue = z.object({
 		avatar_url: z.string(),
 		url: z.string(),
 	}),
-	body: z.string(),
+	body: z.string().nullable(),
 	created_at: z.string(),
 	updated_at: z.string(),
 	draft: z.boolean(),
