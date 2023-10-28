@@ -1,5 +1,11 @@
 # @ryanatkn/orc
 
+## 0.6.1
+
+### Patch Changes
+
+- 77f0ad6: make `GithubIssue` `body` nullable
+
 ## 0.6.0
 
 ### Minor Changes
