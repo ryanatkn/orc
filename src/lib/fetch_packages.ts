@@ -64,31 +64,28 @@ export const fetch_packages = async (
 	return packages;
 };
 
+// TODO refactor with `fetch_github_pull_requests`
 const fetch_package_json = async (
 	url: string,
 	cache?: FetchCache,
 	log?: Logger,
 ): Promise<{data: PackageJson | null; etag: string | null}> => {
 	const package_json_url = strip_end(url, '/') + '/.well-known/package.json'; // TODO helper
-	const key = to_fetch_cache_key(package_json_url, null);
 	log?.info('fetching', url);
-	const cached = cache?.get(key);
 	const headers: Record<string, string> = {
 		'content-type': 'application/json',
 		accept: 'application/json',
 	};
+	const key = to_fetch_cache_key(package_json_url, null);
+	const cached = cache?.get(key);
 	const etag = cached?.etag;
 	if (etag) {
 		headers['if-none-match'] = etag;
 	}
-	console.log(`cached`, !!cached);
 	try {
-		console.log(`fetching with headers`, headers);
 		const res = await fetch(package_json_url, {headers});
-		log?.info(`res.headers`, res.headers);
-		console.log(`res.status`, res.status);
 		if (res.status === 304) {
-			console.log('CACHE HIT');
+			log?.info('cached', key);
 			return cached!;
 		}
 		const json = await res.json();

@@ -23,6 +23,7 @@ export const GithubPullRequest = z.object({
 });
 export type GithubPullRequest = z.infer<typeof GithubPullRequest>;
 
+// TODO refactor with `fetch_package_json`
 export const fetch_github_pull_requests = async (
 	url: string,
 	pkg: PackageMeta,
@@ -33,30 +34,36 @@ export const fetch_github_pull_requests = async (
 	log?.info('url', url);
 	if (!pkg.owner_name) throw Error('owner_name is required');
 	const params = {owner: pkg.owner_name, repo: pkg.repo_name, sort: 'updated'} as const;
-	const key = to_fetch_cache_key(url, params);
-	const cached = cache?.get(key);
-	if (cache?.has(key)) {
-		return cache.get(key)!;
-	}
 	const headers: Record<string, string> = {};
 	if (token) headers.authorization = 'token ' + token;
+	const key = to_fetch_cache_key(url, params);
+	const cached = cache?.get(key);
 	const etag = cached?.etag;
 	if (etag) {
 		headers['if-none-match'] = etag;
 	}
-	console.log(`fetching PRs with headers`, headers);
-	const res = await request('GET /repos/{owner}/{repo}/pulls', {
-		headers,
-		...params,
-	});
-	log?.info(`res.url`, res.url);
-	log?.info(`res.status`, res.status);
-	log?.info(`res.headers`, res.headers);
-	return {
-		url,
-		params,
-		key,
-		etag: res.headers.etag ?? null,
-		data: res.data.map((i) => GithubPullRequest.parse(i)),
-	};
+	try {
+		const res = await request('GET /repos/{owner}/{repo}/pulls', {
+			headers,
+			...params,
+		});
+		log?.info(`res.url`, res.url);
+		log?.info(`res.status`, res.status);
+		const result: FetchCacheItem<GithubPullRequest[] | null> = {
+			url,
+			params,
+			key,
+			etag: res.headers.etag ?? null,
+			data: res.data.map((i) => GithubPullRequest.parse(i)),
+		};
+		cache?.set(result.key, result);
+		return result;
+	} catch (err) {
+		// TODO proper error handling?
+		if (err.status === 304) {
+			log?.info('cached', key);
+			return cached!;
+		}
+		return {url, params, key, etag: null, data: null};
+	}
 };
