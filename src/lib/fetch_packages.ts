@@ -88,8 +88,8 @@ const fetch_package_json = async (
 		const package_json = PackageJson.parse(json); // TODO maybe not?
 		const result: FetchCacheItem = {
 			url: package_json_url,
-			key,
 			params: null,
+			key,
 			etag: res.headers.get('etag'),
 			data: package_json,
 		};
