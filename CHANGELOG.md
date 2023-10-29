@@ -1,5 +1,12 @@
 # @ryanatkn/orc
 
+## 0.7.0
+
+### Minor Changes
+
+- 9681187: add cache for `gro packages`
+- 9681187: snake_case everywhere
+
 ## 0.6.2
 
 ### Patch Changes
