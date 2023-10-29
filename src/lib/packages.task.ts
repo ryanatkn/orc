@@ -51,7 +51,7 @@ export const task: Task<Args> = {
 					{
 						url: local_package_json.homepage,
 						package_json: local_package_json,
-						pulls: null, // TODO
+						pulls: null, // TODO - maybe `fetch_packages` should look locally just for the package_json?
 					} as MaybeFetchedPackage,
 			  ].concat(fetched_packages)
 			: fetched_packages;
