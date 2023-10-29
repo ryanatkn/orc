@@ -5,7 +5,10 @@ import type {Flavored} from '@grogarden/util/types.js';
 export interface Fetch_Cache {
 	name: string;
 	data: Fetch_Cache_Data; // TODO probably expose an API for this instead of passing the map directly
-	save: () => Promise<void>;
+	/**
+	 * @returns a boolean indicating if anything changed, returns `false` if it was a no-op
+	 */
+	save: () => Promise<boolean>;
 }
 
 export const Fetch_Cache_Key = z.string();

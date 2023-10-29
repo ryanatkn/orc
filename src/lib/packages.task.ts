@@ -74,6 +74,11 @@ export const task: Task<Args> = {
 			);
 		}
 
-		await cache.save();
+		const changed = await cache.save();
+		if (changed) {
+			log.info('packages cache updated');
+		} else {
+			log.info('packages cache did not change');
+		}
 	},
 };
