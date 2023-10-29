@@ -3,13 +3,13 @@
 	import {parse_package_meta, type PackageMeta} from '@fuz.dev/fuz_library/package_meta.js';
 
 	import packages from '$lib/packages.json';
-	import PageHeader from '$routes/PageHeader.svelte';
-	import type {FetchedPackageMeta} from '$lib/fetch_packages.js';
-	import RepoTable from '$lib/RepoTable.svelte';
-	import PageFooter from '$routes/PageFooter.svelte';
+	import Page_Header from '$routes/Page_Header.svelte';
+	import type {Fetched_Package_Meta} from '$lib/fetch_packages.js';
+	import Repo_Table from '$lib/Repo_Table.svelte';
+	import Page_Footer from '$routes/Page_Footer.svelte';
 
 	// TODO hacky, weird names
-	const pkgs: FetchedPackageMeta[] = packages.map(({url, package_json, pulls}) =>
+	const pkgs: Fetched_Package_Meta[] = packages.map(({url, package_json, pulls}) =>
 		package_json
 			? {...parse_package_meta(url, package_json), pulls}
 			: {url, package_json: null, pulls: null},
@@ -23,16 +23,16 @@
 
 <main class="box">
 	<section>
-		<PageHeader />
+		<Page_Header />
 	</section>
 	<section>
 		<div class="panel padded_md">
-			<RepoTable {pkgs} />
+			<Repo_Table {pkgs} />
 		</div>
 	</section>
 	<section class="box">
 		<LibraryFooter pkg={orc_pkg} root_url="https://www.ryanatkn.com/" />
-		<PageFooter />
+		<Page_Footer />
 	</section>
 </main>
 

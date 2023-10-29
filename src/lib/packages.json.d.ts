@@ -1,5 +1,5 @@
 declare module '$lib/packages.json' {
-	import type {MaybeFetchedPackage} from '$lib/fetch_packages.js';
-	const data: MaybeFetchedPackage[];
+	import type {Maybe_Fetched_Package} from '$lib/fetch_packages.js';
+	const data: Maybe_Fetched_Package[];
 	export default data;
 }

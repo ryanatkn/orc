@@ -5,7 +5,7 @@
 	import {base} from '$app/paths';
 
 	import packages from '$lib/packages.json';
-	import MainHeader from '$routes/MainHeader.svelte';
+	import Main_Header from '$routes/Main_Header.svelte';
 
 	// TODO hacky - maybe put in context?
 	const url = 'https://orc.ryanatkn.com/';
@@ -14,7 +14,7 @@
 
 <main class="box">
 	<section>
-		<MainHeader />
+		<Main_Header />
 	</section>
 	<section class="prose">
 		<blockquote class="text_align_center">

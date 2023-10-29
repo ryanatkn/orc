@@ -22,6 +22,7 @@
   "peerDependencies": {
     "@octokit/request": "*",
     "@sveltejs/kit": "*",
+    "dequal": "*",
     "svelte": "*"
   },
   "devDependencies": {
@@ -40,6 +41,7 @@
     "@types/node": "^20.8.9",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "@typescript-eslint/parser": "^6.9.0",
+    "dequal": "^2.0.3",
     "eslint": "^8.52.0",
     "eslint-plugin-svelte": "^2.34.0",
     "prettier": "^3.0.3",
@@ -76,9 +78,17 @@
       "default": "./dist/config.js",
       "types": "./dist/config.d.ts"
     },
+    "./fetch_cache.js": {
+      "default": "./dist/fetch_cache.js",
+      "types": "./dist/fetch_cache.d.ts"
+    },
     "./fetch_packages.js": {
       "default": "./dist/fetch_packages.js",
       "types": "./dist/fetch_packages.d.ts"
+    },
+    "./fs_fetch_cache.js": {
+      "default": "./dist/fs_fetch_cache.js",
+      "types": "./dist/fs_fetch_cache.d.ts"
     },
     "./github.js": {
       "default": "./dist/github.js",
@@ -88,10 +98,10 @@
       "default": "./dist/packages.task.js",
       "types": "./dist/packages.task.d.ts"
     },
-    "./RepoTable.svelte": {
-      "svelte": "./dist/RepoTable.svelte",
-      "default": "./dist/RepoTable.svelte",
-      "types": "./dist/RepoTable.svelte.d.ts"
+    "./Repo_Table.svelte": {
+      "svelte": "./dist/Repo_Table.svelte",
+      "default": "./dist/Repo_Table.svelte",
+      "types": "./dist/Repo_Table.svelte.d.ts"
     },
     "./sync.task.js": {
       "default": "./dist/sync.task.js",
