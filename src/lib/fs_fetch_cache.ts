@@ -36,10 +36,8 @@ export const create_fs_fetch_cache = async (
 		data,
 		save: async () => {
 			if (dequal(initial, data)) {
-				console.log('NOT saaving');
 				return; // no changes to save
 			}
-			console.log('SAVING');
 			await mkdir(dirname(data_path), {recursive: true});
 			await writeFile(data_path, await format_file(serialize_cache(data), {filepath: data_path}));
 		},
