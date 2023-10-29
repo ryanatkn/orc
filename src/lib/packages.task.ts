@@ -37,7 +37,7 @@ export const task: Task<Args> = {
 		const {dir} = args;
 
 		const outfile = join(paths.lib, 'packages.json');
-		const cache_path = join(paths.build, 'fetch_cache_packages.json');
+		const cache_path = join(paths.build, 'fetch_cache_packages.json'); // TODO BLOCK load_fetch_cache('packages')
 
 		const orc_config = await load_orc_config(dir);
 		const {packages} = orc_config;
