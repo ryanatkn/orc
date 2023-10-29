@@ -10,7 +10,7 @@ import {GITHUB_TOKEN_SECRET} from '$env/static/private';
 
 import {fetch_packages, type MaybeFetchedPackage} from '$lib/fetch_packages.js';
 import {load_orc_config} from '$lib/config.js';
-import {create_fetch_cache_fs} from '$lib/fetch_cache_fs';
+import {create_fs_fetch_cache} from '$lib/fs_fetch_cache.js';
 
 // TODO add flag to ignore or invalidate cache -- no-cache? clean?
 
@@ -40,7 +40,7 @@ export const task: Task<Args> = {
 		const orc_config = await load_orc_config(dir);
 		const {packages} = orc_config;
 
-		const cache = await create_fetch_cache_fs('packages');
+		const cache = await create_fs_fetch_cache('packages');
 
 		const fetched_packages = await fetch_packages(packages, GITHUB_TOKEN_SECRET, cache.data, log);
 

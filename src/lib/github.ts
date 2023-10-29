@@ -2,7 +2,8 @@ import type {Logger} from '@grogarden/util/log.js';
 import type {PackageMeta} from '@fuz.dev/fuz_library/package_meta.js';
 import {request} from '@octokit/request';
 import {z} from 'zod';
-import {to_fetch_cache_key, type FetchCache, type FetchCacheItem} from './fetch_cache';
+
+import {to_fetch_cache_key, type FetchCacheData, type FetchCacheItem} from '$lib/fetch_cache.js';
 
 export const GithubPullRequest = z.object({
 	url: z.string(),
@@ -27,7 +28,7 @@ export type GithubPullRequest = z.infer<typeof GithubPullRequest>;
 export const fetch_github_pull_requests = async (
 	url: string,
 	pkg: PackageMeta,
-	cache?: FetchCache,
+	cache?: FetchCacheData,
 	log?: Logger,
 	token?: string,
 ): Promise<FetchCacheItem<GithubPullRequest[] | null>> => {

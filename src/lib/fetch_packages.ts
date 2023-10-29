@@ -6,7 +6,7 @@ import {wait} from '@grogarden/util/async.js';
 import {parse_package_meta, type PackageMeta} from '@fuz.dev/fuz_library/package_meta.js';
 
 import {fetch_github_pull_requests, type GithubPullRequest} from '$lib/github.js';
-import {to_fetch_cache_key, type FetchCache, type FetchCacheItem} from '$lib/fetch_cache.js';
+import {to_fetch_cache_key, type FetchCacheData, type FetchCacheItem} from '$lib/fetch_cache.js';
 
 // TODO rethink with `Package` and `FetchedPackage2`
 export interface MaybeFetchedPackage {
@@ -34,7 +34,7 @@ export type FetchedPackageMeta = FetchedPackage | UnfetchablePackage;
 export const fetch_packages = async (
 	homepage_urls: Url[],
 	token?: string,
-	cache?: FetchCache,
+	cache?: FetchCacheData,
 	log?: Logger,
 	delay = 50,
 ): Promise<MaybeFetchedPackage[]> => {
@@ -62,7 +62,7 @@ export const fetch_packages = async (
 // TODO refactor with `fetch_github_pull_requests`
 const fetch_package_json = async (
 	homepage_url: string,
-	cache?: FetchCache,
+	cache?: FetchCacheData,
 	log?: Logger,
 ): Promise<FetchCacheItem<PackageJson | null>> => {
 	const url = strip_end(homepage_url, '/') + '/.well-known/package.json'; // TODO helper
