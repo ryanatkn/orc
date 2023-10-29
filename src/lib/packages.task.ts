@@ -45,6 +45,8 @@ export const task: Task<Args> = {
 		const cache: FetchCache = (await exists(cache_path))
 			? deserialize_cache(await readFile(cache_path, 'utf8'))
 			: new Map();
+		console.log(`cache`, cache);
+		process.exit();
 
 		const fetched_packages = await fetch_packages(packages, GITHUB_TOKEN_SECRET, cache, log);
 
