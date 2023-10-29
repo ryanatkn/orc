@@ -76,6 +76,10 @@
       "default": "./dist/config.js",
       "types": "./dist/config.d.ts"
     },
+    "./fetch_cache.json": {
+      "default": "./dist/fetch_cache.json",
+      "types": "./dist/fetch_cache.json.d.ts"
+    },
     "./fetch_cache.js": {
       "default": "./dist/fetch_cache.js",
       "types": "./dist/fetch_cache.d.ts"

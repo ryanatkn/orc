@@ -17,8 +17,8 @@ export const to_fetch_cache_key = (url: Url, params: any): FetchCacheKey =>
 	url + '#' + JSON.stringify(params);
 
 export const serialize_cache = (cache: FetchCache): string =>
-	JSON.stringify(Array.from(cache.entries()));
+	JSON.stringify(Array.from(cache.values()));
 
 // TODO generic serialization, these are just maps
 export const deserialize_cache = (serialized: string): FetchCache =>
-	new Map(JSON.parse(serialized));
+	new Map(JSON.parse(serialized).map((v: any) => [v.key, v]));
