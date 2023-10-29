@@ -56,9 +56,9 @@
 			},
 			"exports": {
 				"./config.js": {"default": "./dist/config.js", "types": "./dist/config.d.ts"},
-				"./fetch_cache.json": {
-					"default": "./dist/fetch_cache.json",
-					"types": "./dist/fetch_cache.json.d.ts"
+				"./fetch_cache_fs.js": {
+					"default": "./dist/fetch_cache_fs.js",
+					"types": "./dist/fetch_cache_fs.d.ts"
 				},
 				"./fetch_cache.js": {
 					"default": "./dist/fetch_cache.js",
@@ -84,7 +84,6 @@
 	},
 	{
 		"url": "https://www.felt.dev/",
-		"etag": "W/\"653ddb70-764\"",
 		"package_json": {
 			"name": "@feltjs/website",
 			"description": "web tools that feel good",
@@ -165,7 +164,6 @@
 	},
 	{
 		"url": "https://www.fuz.dev/",
-		"etag": "W/\"653d95e4-e0b\"",
 		"package_json": {
 			"name": "@fuz.dev/fuz",
 			"description": "design system for CSS, Svelte, and SvelteKit",
@@ -266,7 +264,6 @@
 	},
 	{
 		"url": "https://www.grogarden.org/",
-		"etag": "W/\"653c0614-2d60\"",
 		"package_json": {
 			"name": "@grogarden/gro",
 			"description": "task runner and toolkit extending SvelteKit",
@@ -591,10 +588,9 @@
 			}
 		]
 	},
-	{"url": "https://missing.fuz.dev/", "etag": null, "package_json": null, "pulls": null},
+	{"url": "https://missing.fuz.dev/", "package_json": null, "pulls": null},
 	{
 		"url": "https://www.spiderspace.org/",
-		"etag": "W/\"653de2ec-6b5\"",
 		"package_json": {
 			"name": "@spiderspace/spiderspace",
 			"description": "hobbyist web stack",

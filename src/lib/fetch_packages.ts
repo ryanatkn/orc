@@ -11,20 +11,17 @@ import {to_fetch_cache_key, type FetchCache, type FetchCacheItem} from '$lib/fet
 // TODO rethink with `Package` and `FetchedPackage2`
 export interface MaybeFetchedPackage {
 	url: Url;
-	etag: string | null;
 	package_json: PackageJson | null; // TODO forward error
 	pulls: GithubPullRequest[] | null;
 }
 
 // TODO rethink with `MaybeFetchedPackage`
 export interface FetchedPackage extends PackageMeta {
-	etag: string | null;
 	pulls: GithubPullRequest[] | null;
 }
 
 export interface UnfetchablePackage {
 	url: Url;
-	etag: string | null;
 	package_json: null;
 	pulls: null;
 }
@@ -45,9 +42,7 @@ export const fetch_packages = async (
 	const packages: MaybeFetchedPackage[] = [];
 	for (const url of urls) {
 		try {
-			// TODO generic per-request caching by url+params instead of hardcoding
-
-			const {data: package_json, etag} = await fetch_package_json(url, cache, log);
+			const {data: package_json} = await fetch_package_json(url, cache, log);
 			if (!package_json) throw Error('failed to load package_json: ' + url);
 			await wait(delay);
 			const pkg = parse_package_meta(url, package_json);
@@ -55,9 +50,9 @@ export const fetch_packages = async (
 			const {data: pulls} = await fetch_github_pull_requests(url, pkg, cache, log, token);
 			if (!pulls) throw Error('failed to fetch issues: ' + url);
 			await wait(delay);
-			packages.push({url, etag, package_json, pulls});
+			packages.push({url, package_json, pulls});
 		} catch (err) {
-			packages.push({url, etag: null, package_json: null, pulls: null});
+			packages.push({url, package_json: null, pulls: null});
 			log?.error(err);
 		}
 	}
