@@ -3,7 +3,7 @@ import type {Flavored} from '@grogarden/util/types.js';
 
 export interface FetchCache {
 	name: string;
-	data: FetchCacheData;
+	data: FetchCacheData; // TODO probably expose an API for this instead of passing the map directly
 	save: () => Promise<void>;
 }
 
