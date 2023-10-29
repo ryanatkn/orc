@@ -47,8 +47,7 @@ export const fetch_github_pull_requests = async (
 			headers,
 			...params,
 		});
-		log?.info(`res.url`, res.url);
-		log?.info(`res.status`, res.status);
+		log?.info('not cached', key);
 		const result: FetchCacheItem<GithubPullRequest[] | null> = {
 			url,
 			params,
