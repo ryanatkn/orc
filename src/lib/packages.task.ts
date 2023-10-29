@@ -51,6 +51,7 @@ export const task: Task<Args> = {
 					{
 						url: local_package_json.homepage,
 						package_json: local_package_json,
+						pulls: null, // TODO
 					} as MaybeFetchedPackage,
 			  ].concat(fetched_packages)
 			: fetched_packages;
