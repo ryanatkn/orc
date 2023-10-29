@@ -1,6 +1,6 @@
-import type {OrcConfig} from '$lib/config.js';
+import type {Orc_Config} from '$lib/config.js';
 
-const config: OrcConfig = {
+const config: Orc_Config = {
 	packages: [
 		'https://www.felt.dev/',
 		'https://www.fuz.dev/',

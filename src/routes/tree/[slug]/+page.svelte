@@ -5,8 +5,8 @@
 	import {page} from '$app/stores';
 
 	import packages from '$lib/packages.json';
-	import PageHeader from '$routes/PageHeader.svelte';
-	import PageFooter from '$routes/PageFooter.svelte';
+	import Page_Header from '$routes/Page_Header.svelte';
+	import Page_Footer from '$routes/Page_Footer.svelte';
 
 	$: slug = $page.params.slug;
 
@@ -23,7 +23,7 @@
 
 <main class="box width_full">
 	<section>
-		<PageHeader />
+		<Page_Header />
 	</section>
 	<section>
 		{#if pkg}
@@ -34,7 +34,7 @@
 	</section>
 	<section class="box">
 		<LibraryFooter pkg={orc_pkg} root_url="https://www.ryanatkn.com/" />
-		<PageFooter />
+		<Page_Footer />
 	</section>
 </main>
 

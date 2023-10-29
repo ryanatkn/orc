@@ -4,20 +4,20 @@
 
 ### Patch Changes
 
-- 9c0e326: add favicon to `RepoTable`
+- 9c0e326: add favicon to `Repo_Table`
 
 ## 0.6.1
 
 ### Patch Changes
 
-- 77f0ad6: make `GithubPullRequest` `body` nullable
+- 77f0ad6: make `Github_Pull_Request` `body` nullable
 
 ## 0.6.0
 
 ### Minor Changes
 
 - e045fb1: extract `$lib/github.ts`
-- e045fb1: add `GithubPullRequest` schema and parse fetch response
+- e045fb1: add `Github_Pull_Request` schema and parse fetch response
 
 ## 0.5.2
 
@@ -41,7 +41,7 @@
 
 ### Minor Changes
 
-- 1ed8dc4: parse OrcConfig
+- 1ed8dc4: parse Orc_Config
 
 ### Patch Changes
 
@@ -51,7 +51,7 @@
 
 ### Minor Changes
 
-- 0e16e6f: rename `OrcConfig` `packages` from `repos`
+- 0e16e6f: rename `Orc_Config` `packages` from `repos`
 
 ## 0.2.1
 

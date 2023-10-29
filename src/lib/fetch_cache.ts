@@ -2,29 +2,29 @@ import {z} from 'zod';
 import {Url} from '@grogarden/gro/paths.js';
 import type {Flavored} from '@grogarden/util/types.js';
 
-export interface FetchCache {
+export interface Fetch_Cache {
 	name: string;
-	data: FetchCacheData; // TODO probably expose an API for this instead of passing the map directly
+	data: Fetch_Cache_Data; // TODO probably expose an API for this instead of passing the map directly
 	save: () => Promise<void>;
 }
 
-export const FetchCacheKey = z.string();
-export type FetchCacheKey = Flavored<z.infer<typeof FetchCacheKey>, 'FetchCacheKey'>;
+export const Fetch_Cache_Key = z.string();
+export type Fetch_Cache_Key = Flavored<z.infer<typeof Fetch_Cache_Key>, 'Fetch_Cache_Key'>;
 
-export type FetchCacheData = Map<FetchCacheKey, FetchCacheItem>;
+export type Fetch_Cache_Data = Map<Fetch_Cache_Key, Fetch_Cache_Item>;
 
-export const FetchCacheItem = z.object({
+export const Fetch_Cache_Item = z.object({
 	url: Url,
 	params: z.any(), // TODO object | null?
-	key: FetchCacheKey,
+	key: Fetch_Cache_Key,
 	etag: z.string().nullable(),
 	data: z.any(), // TODO type?
 });
-// TODO use `z.infer<typeof FetchCacheItem>`, how with generic?
-export interface FetchCacheItem<TData = any, TParams = any> {
+// TODO use `z.infer<typeof Fetch_Cache_Item>`, how with generic?
+export interface Fetch_Cache_Item<TData = any, TParams = any> {
 	url: Url;
 	params: TParams;
-	key: FetchCacheKey;
+	key: Fetch_Cache_Key;
 	etag: string | null;
 	data: TData;
 }
@@ -32,15 +32,17 @@ export interface FetchCacheItem<TData = any, TParams = any> {
 export const CACHE_KEY_SEPARATOR = '::';
 
 // TODO canonical form to serialize params, start by sorting object keys
-export const to_fetch_cache_key = (url: Url, params: any, method = 'get'): FetchCacheKey =>
+export const to_fetch_cache_key = (url: Url, params: any, method = 'get'): Fetch_Cache_Key =>
 	method + CACHE_KEY_SEPARATOR + url + CACHE_KEY_SEPARATOR + JSON.stringify(params);
 
-export const serialize_cache = (cache: FetchCacheData): string =>
+export const serialize_cache = (cache: Fetch_Cache_Data): string =>
 	JSON.stringify(Array.from(cache.values()));
 
 // TODO generic serialization, these are just maps
-export const deserialize_cache = (serialized: string): FetchCacheData => {
-	// TODO maybe take a `data_schema` param and `FetchCacheItem.extend({data: data_schema}).parse(...)`
-	const parsed: FetchCacheItem[] = JSON.parse(serialized).map((v: any) => FetchCacheItem.parse(v));
+export const deserialize_cache = (serialized: string): Fetch_Cache_Data => {
+	// TODO maybe take a `data_schema` param and `Fetch_Cache_Item.extend({data: data_schema}).parse(...)`
+	const parsed: Fetch_Cache_Item[] = JSON.parse(serialized).map((v: any) =>
+		Fetch_Cache_Item.parse(v),
+	);
 	return new Map(parsed.map((v) => [v.key, v]));
 };

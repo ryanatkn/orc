@@ -4,7 +4,7 @@
 	import LibraryFooter from '@fuz.dev/fuz_library/LibraryFooter.svelte';
 
 	import packages from '$lib/packages.json';
-	import PageFooter from '$routes/PageFooter.svelte';
+	import Page_Footer from '$routes/Page_Footer.svelte';
 
 	const pkgs = packages
 		.map((pkg) =>
@@ -36,7 +36,7 @@
 	</section>
 	<div class="box">
 		<LibraryFooter {pkg} />
-		<PageFooter />
+		<Page_Footer />
 	</div>
 </main>
 

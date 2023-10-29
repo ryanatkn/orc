@@ -2,14 +2,14 @@ import {paths, Url} from '@grogarden/gro/paths.js';
 import {join} from 'node:path';
 import {z} from 'zod';
 
-export const OrcConfig = z
+export const Orc_Config = z
 	.object({
 		packages: z.array(Url),
 	})
 	.strict();
-export type OrcConfig = z.infer<typeof OrcConfig>;
+export type Orc_Config = z.infer<typeof Orc_Config>;
 
-export const load_orc_config = async (dir = paths.root): Promise<OrcConfig> => {
+export const load_orc_config = async (dir = paths.root): Promise<Orc_Config> => {
 	const config = (await import(join(dir, 'orc.config.ts'))).default;
-	return OrcConfig.parse(config);
+	return Orc_Config.parse(config);
 };

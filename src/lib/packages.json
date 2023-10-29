@@ -73,10 +73,10 @@
 					"default": "./dist/packages.task.js",
 					"types": "./dist/packages.task.d.ts"
 				},
-				"./RepoTable.svelte": {
-					"svelte": "./dist/RepoTable.svelte",
-					"default": "./dist/RepoTable.svelte",
-					"types": "./dist/RepoTable.svelte.d.ts"
+				"./Repo_Table.svelte": {
+					"svelte": "./dist/Repo_Table.svelte",
+					"default": "./dist/Repo_Table.svelte",
+					"types": "./dist/Repo_Table.svelte.d.ts"
 				},
 				"./sync.task.js": {"default": "./dist/sync.task.js", "types": "./dist/sync.task.d.ts"}
 			}

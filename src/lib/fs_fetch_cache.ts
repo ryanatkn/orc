@@ -8,8 +8,8 @@ import {deepStrictEqual} from 'node:assert';
 import {
 	deserialize_cache,
 	serialize_cache,
-	type FetchCacheData,
-	type FetchCache,
+	type Fetch_Cache_Data,
+	type Fetch_Cache,
 } from '$lib/fetch_cache.js';
 
 // TODO rename?
@@ -17,9 +17,9 @@ import {
 export const create_fs_fetch_cache = async (
 	name: string,
 	dir = join(paths.build, 'fetch'),
-): Promise<FetchCache> => {
+): Promise<Fetch_Cache> => {
 	const data_path = join(dir, name + '.json');
-	let data: FetchCacheData;
+	let data: Fetch_Cache_Data;
 	if (await exists(data_path)) {
 		try {
 			data = deserialize_cache(await readFile(data_path, 'utf8')); // TODO pass schema to parse so failures invalidate the cache

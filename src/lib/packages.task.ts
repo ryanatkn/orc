@@ -8,7 +8,7 @@ import {join} from 'node:path';
 import {paths} from '@grogarden/gro/paths.js';
 import {GITHUB_TOKEN_SECRET} from '$env/static/private';
 
-import {fetch_packages, type MaybeFetchedPackage} from '$lib/fetch_packages.js';
+import {fetch_packages, type Maybe_Fetched_Package} from '$lib/fetch_packages.js';
 import {load_orc_config} from '$lib/config.js';
 import {create_fs_fetch_cache} from '$lib/fs_fetch_cache.js';
 
@@ -46,13 +46,13 @@ export const task: Task<Args> = {
 
 		const local_package_json = await load_package_json(dir);
 
-		const final_packages: MaybeFetchedPackage[] = local_package_json?.homepage
+		const final_packages: Maybe_Fetched_Package[] = local_package_json?.homepage
 			? [
 					{
 						url: local_package_json.homepage,
 						package_json: local_package_json,
 						pulls: null, // TODO - maybe `fetch_packages` should look locally just for the package_json?
-					} as MaybeFetchedPackage,
+					} as Maybe_Fetched_Package,
 			  ].concat(fetched_packages)
 			: fetched_packages;
 
@@ -66,8 +66,8 @@ export const task: Task<Args> = {
 			await writeFile(
 				types_outfile,
 				`declare module '$lib/packages.json' {
-	import type {FetchedPackage} from '@ryanatkn/orc/fetch_packages.js';
-	const data: FetchedPackage[];
+	import type {Fetched_Package} from '@ryanatkn/orc/fetch_packages.js';
+	const data: Fetched_Package[];
 	export default data;
 }
 `,

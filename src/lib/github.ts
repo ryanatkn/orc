@@ -3,9 +3,13 @@ import type {PackageMeta} from '@fuz.dev/fuz_library/package_meta.js';
 import {request} from '@octokit/request';
 import {z} from 'zod';
 
-import {to_fetch_cache_key, type FetchCacheData, type FetchCacheItem} from '$lib/fetch_cache.js';
+import {
+	to_fetch_cache_key,
+	type Fetch_Cache_Data,
+	type Fetch_Cache_Item,
+} from '$lib/fetch_cache.js';
 
-export const GithubPullRequest = z.object({
+export const Github_Pull_Request = z.object({
 	url: z.string(),
 	id: z.number(),
 	number: z.number(),
@@ -22,16 +26,16 @@ export const GithubPullRequest = z.object({
 	updated_at: z.string(),
 	draft: z.boolean(),
 });
-export type GithubPullRequest = z.infer<typeof GithubPullRequest>;
+export type Github_Pull_Request = z.infer<typeof Github_Pull_Request>;
 
 // TODO refactor with `fetch_package_json`
 export const fetch_github_pull_requests = async (
 	url: string,
 	pkg: PackageMeta,
-	cache?: FetchCacheData,
+	cache?: Fetch_Cache_Data,
 	log?: Logger,
 	token?: string,
-): Promise<FetchCacheItem<GithubPullRequest[] | null>> => {
+): Promise<Fetch_Cache_Item<Github_Pull_Request[] | null>> => {
 	log?.info('url', url);
 	if (!pkg.owner_name) throw Error('owner_name is required');
 	const params = {owner: pkg.owner_name, repo: pkg.repo_name, sort: 'updated'} as const;
@@ -50,12 +54,12 @@ export const fetch_github_pull_requests = async (
 			...params,
 		});
 		log?.info('not cached', key);
-		const result: FetchCacheItem<GithubPullRequest[] | null> = {
+		const result: Fetch_Cache_Item<Github_Pull_Request[] | null> = {
 			url,
 			params,
 			key,
 			etag: res.headers.etag ?? null,
-			data: res.data.map((i) => GithubPullRequest.parse(i)),
+			data: res.data.map((i) => Github_Pull_Request.parse(i)),
 		};
 		cache?.set(result.key, result);
 		return result;
@@ -65,7 +69,7 @@ export const fetch_github_pull_requests = async (
 			log?.info('cached', key);
 			return cached!;
 		}
-		const result: FetchCacheItem<GithubPullRequest[] | null> = {
+		const result: Fetch_Cache_Item<Github_Pull_Request[] | null> = {
 			url,
 			params,
 			key,
