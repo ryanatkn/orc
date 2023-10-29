@@ -15,6 +15,7 @@ export interface FetchCacheItem<TData = any, TParams = any> {
 	data: TData;
 }
 
+// TODO canonical form to serialize params, start by sorting object keys
 export const to_fetch_cache_key = (url: Url, params: any): FetchCacheKey =>
 	url + '#' + JSON.stringify(params);
 

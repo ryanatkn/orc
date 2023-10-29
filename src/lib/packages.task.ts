@@ -12,6 +12,8 @@ import {fetch_packages, type MaybeFetchedPackage} from '$lib/fetch_packages.js';
 import {load_orc_config} from '$lib/config.js';
 import {create_fetch_cache_fs} from '$lib/fetch_cache_fs';
 
+// TODO add flag to ignore or invalidate cache -- no-cache? clean?
+
 // TODO maybe support `--check` for CI
 export const Args = z
 	.object({
