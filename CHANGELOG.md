@@ -10,14 +10,14 @@
 
 ### Patch Changes
 
-- 77f0ad6: make `GithubIssue` `body` nullable
+- 77f0ad6: make `GithubPullRequest` `body` nullable
 
 ## 0.6.0
 
 ### Minor Changes
 
 - e045fb1: extract `$lib/github.ts`
-- e045fb1: add `GithubIssue` schema and parse fetch response
+- e045fb1: add `GithubPullRequest` schema and parse fetch response
 
 ## 0.5.2
 
