@@ -42,6 +42,7 @@ export const task: Task<Args> = {
 		const orc_config = await load_orc_config(dir);
 		const {packages} = orc_config;
 
+		// TODO maybe parse and bust on failure?
 		const cache: FetchCache = (await exists(cache_path))
 			? deserialize_cache(await readFile(cache_path, 'utf8'))
 			: new Map();
