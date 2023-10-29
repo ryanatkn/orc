@@ -37,7 +37,7 @@ export const task: Task<Args> = {
 		const {dir} = args;
 
 		const outfile = join(paths.lib, 'packages.json');
-		const cache_path = join(paths.lib, 'fetch_cache.json');
+		const cache_path = join(paths.build, 'fetch_cache_packages.json');
 
 		const orc_config = await load_orc_config(dir);
 		const {packages} = orc_config;
@@ -79,18 +79,5 @@ export const task: Task<Args> = {
 		}
 
 		await writeFile(cache_path, await format_file(serialize_cache(cache), {filepath: cache_path}));
-
-		const types_cache_path = cache_path + '.d.ts';
-		if (!(await exists(types_cache_path))) {
-			await writeFile(
-				types_cache_path,
-				`declare module '$lib/fetch_cache.json' {
-	import type {FetchCache} from '@ryanatkn/orc/fetch_cache.js';
-	const data: FetchCache;
-	export default data;
-}
-`,
-			);
-		}
 	},
 };
