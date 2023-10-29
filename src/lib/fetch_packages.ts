@@ -37,6 +37,7 @@ export const fetch_packages = async (
 	token?: string,
 	log?: Logger,
 	delay = 50,
+	cache,
 ): Promise<MaybeFetchedPackage[]> => {
 	log?.info(`urls`, urls);
 	const packages: MaybeFetchedPackage[] = [];
