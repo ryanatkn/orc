@@ -38,7 +38,7 @@ export const fetch_github_pull_requests = async (
 		return cache.get(key)!;
 	}
 	const res = await request('GET /repos/{owner}/{repo}/pulls', {
-		headers: {authorization: 'token ' + token},
+		headers: {authorization: token ? 'token ' + token : undefined},
 		...params,
 	});
 	log?.info(`res`, res);
