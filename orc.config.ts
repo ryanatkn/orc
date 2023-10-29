@@ -2,13 +2,10 @@ import type {OrcConfig} from '$lib/config.js';
 
 const config: OrcConfig = {
 	packages: [
-		'https://www.grogarden.org/',
 		'https://www.felt.dev/',
 		'https://www.fuz.dev/',
-		'https://template.fuz.dev/',
-		'https://library.fuz.dev/',
-		'https://mastodon.fuz.dev/',
-		'https://www.cosmicplayground.org/',
+		'https://www.grogarden.org/',
+		'https://missing.fuz.dev/',
 		'https://www.spiderspace.org/',
 	],
 };
