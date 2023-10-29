@@ -44,7 +44,6 @@
 		const found = pkgs?.find((p) => p.url === pkg.url);
 		if (!found?.package_json) return null;
 		const {pulls} = found;
-		console.log(`pulls`, pulls);
 		return pulls;
 	};
 </script>
