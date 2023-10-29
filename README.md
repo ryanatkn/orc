@@ -6,16 +6,13 @@ I maintain a lot of git repos between
 [Felt](https://github.com/feltjs/felt), [Fuz](https://github.com/fuz-dev/fuz),
 [Gro](https://github.com/grogarden/gro), and [others](https://github.com/ryanatkn).
 Orc is a tool for helping me orchestrate this complexity.
-It's first user project is [Spiderspace](https://github.com/spiderspace/spiderspace).
 
-The goal is to make a generic tool that works for your projects too,
-but for now I'm hardcoding all values in
-[`$lib/orc.config.ts`](src/lib/orc.config.ts).
-If you want to try it yourself, you can fork the repo and change the config manually,
-and eventually I'll stabilize the APIs and publish a reusable library.
+I'm using Orc in [Spiderspace](https://github.com/spiderspace/spiderspace),
+this repo has demo data.
 
 ## Usage
 
+- configure [`orc.config.ts`](/orc.config.ts)
 - see [`.env.example`](/.env.example) and add your own `.env` with `GITHUB_TOKEN_SECRET`,
   whose value is a [GitHub token](https://github.com/settings/tokens)
   (currently optional because it's only used to read public repos)
