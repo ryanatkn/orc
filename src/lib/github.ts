@@ -63,6 +63,13 @@ export const fetch_github_pull_requests = async (
 			log?.info('cached', key);
 			return cached!;
 		}
-		return {url, params, key, etag: null, data: null};
+		const result: FetchCacheItem<GithubPullRequest[] | null> = {
+			url,
+			params,
+			key,
+			etag: null,
+			data: null,
+		};
+		return result;
 	}
 };

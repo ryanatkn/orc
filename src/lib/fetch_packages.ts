@@ -64,7 +64,7 @@ const fetch_package_json = async (
 	url: string,
 	cache?: FetchCache,
 	log?: Logger,
-): Promise<{data: PackageJson | null; etag: string | null}> => {
+): Promise<FetchCacheItem<PackageJson | null>> => {
 	const package_json_url = strip_end(url, '/') + '/.well-known/package.json'; // TODO helper
 	log?.info('fetching', url);
 	const headers: Record<string, string> = {
@@ -96,6 +96,13 @@ const fetch_package_json = async (
 		cache?.set(result.key, result);
 		return result;
 	} catch (err) {
-		return {data: null, etag: null}; // TODO better error
+		const result: FetchCacheItem<PackageJson | null> = {
+			url: package_json_url,
+			params: null,
+			key,
+			etag: null,
+			data: null,
+		}; // TODO better error
+		return result;
 	}
 };
