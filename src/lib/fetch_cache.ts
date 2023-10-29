@@ -1,6 +1,8 @@
 import type {Url} from '@grogarden/gro/paths.js';
 import type {Flavored} from '@grogarden/util/types.js';
 
+// TODO use with `fuz_mastodon`
+
 export type FetchCacheKey = Flavored<string, 'FetchCacheKey'>;
 
 export type FetchCache = Map<FetchCacheKey, FetchCacheItem>;
