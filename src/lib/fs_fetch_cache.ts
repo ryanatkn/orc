@@ -3,6 +3,7 @@ import {exists} from '@grogarden/gro/exists.js';
 import {dirname, join} from 'node:path';
 import {paths} from '@grogarden/gro/paths.js';
 import {format_file} from '@grogarden/gro/format_file.js';
+import {deepStrictEqual} from 'node:assert';
 
 import {
 	deserialize_cache,
@@ -29,13 +30,20 @@ export const create_fs_fetch_cache = async (
 	} else {
 		data = new Map();
 	}
+	const initial = structuredClone(data);
 	return {
 		name,
 		data,
 		save: async () => {
-			// TODO BLOCK detect if changed (structured clone for initial value)
-			await mkdir(dirname(data_path), {recursive: true});
-			await writeFile(data_path, await format_file(serialize_cache(data), {filepath: data_path}));
+			try {
+				deepStrictEqual(initial, data);
+				// no changes
+				// TODO this is awkward because `deepStrictEqual` throws, maybe add dep `dequal`?
+			} catch (err) {
+				// changed
+				await mkdir(dirname(data_path), {recursive: true});
+				await writeFile(data_path, await format_file(serialize_cache(data), {filepath: data_path}));
+			}
 		},
 	};
 };
