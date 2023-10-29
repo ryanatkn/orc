@@ -1,5 +1,11 @@
 # @ryanatkn/orc
 
+## 0.7.1
+
+### Patch Changes
+
+- fe97baf: log package cache status
+
 ## 0.7.0
 
 ### Minor Changes
