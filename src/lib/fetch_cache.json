@@ -505,8 +505,8 @@
 		}
 	},
 	{
-		"url": "https://www.felt.dev/",
-		"key": "https://www.felt.dev/#null",
+		"url": "https://www.felt.dev/.well-known/package.json",
+		"key": "https://www.felt.dev/.well-known/package.json#null",
 		"params": null,
 		"etag": "W/\"653ddb70-764\"",
 		"data": {
@@ -569,8 +569,8 @@
 		}
 	},
 	{
-		"url": "https://www.fuz.dev/",
-		"key": "https://www.fuz.dev/#null",
+		"url": "https://www.fuz.dev/.well-known/package.json",
+		"key": "https://www.fuz.dev/.well-known/package.json#null",
 		"params": null,
 		"etag": "W/\"653d95e4-e0b\"",
 		"data": {
@@ -671,8 +671,8 @@
 		}
 	},
 	{
-		"url": "https://www.grogarden.org/",
-		"key": "https://www.grogarden.org/#null",
+		"url": "https://www.grogarden.org/.well-known/package.json",
+		"key": "https://www.grogarden.org/.well-known/package.json#null",
 		"params": null,
 		"etag": "W/\"653c0614-2d60\"",
 		"data": {
@@ -947,8 +947,8 @@
 		}
 	},
 	{
-		"url": "https://www.spiderspace.org/",
-		"key": "https://www.spiderspace.org/#null",
+		"url": "https://www.spiderspace.org/.well-known/package.json",
+		"key": "https://www.spiderspace.org/.well-known/package.json#null",
 		"params": null,
 		"etag": "W/\"653de2ec-6b5\"",
 		"data": {

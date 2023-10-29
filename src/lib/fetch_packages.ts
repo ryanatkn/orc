@@ -70,25 +70,34 @@ const fetch_package_json = async (
 	log?: Logger,
 ): Promise<{data: PackageJson | null; etag: string | null}> => {
 	const package_json_url = strip_end(url, '/') + '/.well-known/package.json'; // TODO helper
-	if (cache?.has(package_json_url)) {
-		log?.info('cached', package_json_url);
-		return cache.get(package_json_url)!;
-	}
 	log?.info('fetching', package_json_url);
+	const cached = cache?.get(package_json_url);
+	const headers: Record<string, string> = {
+		'content-type': 'application/json',
+		accept: 'application/json',
+	};
+	const etag = cached?.etag;
+	if (etag) {
+		headers['if-not-changed'] = etag;
+	}
 	try {
-		const res = await fetch(package_json_url, {
-			headers: {'content-type': 'application/json', accept: 'application/json'},
-		});
+		const res = await fetch(package_json_url, {headers});
+		log?.info(`res.headers`, res.headers);
+		console.log(`res.status`, res.status);
+		if (res.status === 303) {
+			console.log('CACHE HIT');
+			return cached!;
+		}
 		const json = await res.json();
 		const package_json = PackageJson.parse(json); // TODO maybe not?
 		const result: FetchCacheItem = {
-			url,
-			key: to_fetch_cache_key(url, null),
+			url: package_json_url,
+			key: to_fetch_cache_key(package_json_url, null),
 			params: null,
 			etag: res.headers.get('etag'),
 			data: package_json,
 		};
-		cache?.set(package_json_url, result);
+		cache?.set(result.key, result);
 		return result;
 	} catch (err) {
 		return {data: null, etag: null}; // TODO better error

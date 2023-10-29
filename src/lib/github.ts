@@ -42,7 +42,6 @@ export const fetch_github_pull_requests = async (
 		...params,
 	});
 	log?.info(`res`, res);
-	console.log(`res.header`, res.headers);
 	return {
 		url,
 		params,
