@@ -1,10 +1,10 @@
 import type {Task} from '@grogarden/gro';
 import {load_package_json} from '@grogarden/gro/package_json.js';
 import {z} from 'zod';
-import {readFile, writeFile} from 'node:fs/promises';
+import {mkdir, readFile, writeFile} from 'node:fs/promises';
 import {format_file} from '@grogarden/gro/format_file.js';
 import {exists} from '@grogarden/gro/exists.js';
-import {join} from 'node:path';
+import {dirname, join} from 'node:path';
 import {paths} from '@grogarden/gro/paths.js';
 import {GITHUB_TOKEN_SECRET} from '$env/static/private';
 
@@ -37,7 +37,7 @@ export const task: Task<Args> = {
 		const {dir} = args;
 
 		const outfile = join(paths.lib, 'packages.json');
-		const cache_path = join(paths.build, 'fetch_cache_packages.json'); // TODO BLOCK load_fetch_cache('packages')
+		const cache_path = join(paths.build, 'fetch', 'packages.json'); // TODO BLOCK create_fetch_cache('packages')
 
 		const orc_config = await load_orc_config(dir);
 		const {packages} = orc_config;
@@ -78,6 +78,7 @@ export const task: Task<Args> = {
 			);
 		}
 
+		await mkdir(dirname(cache_path), {recursive: true});
 		await writeFile(cache_path, await format_file(serialize_cache(cache), {filepath: cache_path}));
 	},
 };
