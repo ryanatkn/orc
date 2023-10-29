@@ -32,27 +32,27 @@ export type FetchedPackageMeta = FetchedPackage | UnfetchablePackage;
 /* eslint-disable no-await-in-loop */
 
 export const fetch_packages = async (
-	urls: Url[],
+	homepage_urls: Url[],
 	token?: string,
 	cache?: FetchCache,
 	log?: Logger,
 	delay = 50,
 ): Promise<MaybeFetchedPackage[]> => {
-	log?.info(`urls`, urls);
+	log?.info(`homepage_urls`, homepage_urls);
 	const packages: MaybeFetchedPackage[] = [];
-	for (const url of urls) {
+	for (const homepage_url of homepage_urls) {
 		try {
-			const {data: package_json} = await fetch_package_json(url, cache, log);
-			if (!package_json) throw Error('failed to load package_json: ' + url);
+			const {data: package_json} = await fetch_package_json(homepage_url, cache, log);
+			if (!package_json) throw Error('failed to load package_json: ' + homepage_url);
 			await wait(delay);
-			const pkg = parse_package_meta(url, package_json);
-			if (!pkg) throw Error('failed to parse package_json: ' + url);
-			const {data: pulls} = await fetch_github_pull_requests(url, pkg, cache, log, token);
-			if (!pulls) throw Error('failed to fetch issues: ' + url);
+			const pkg = parse_package_meta(homepage_url, package_json);
+			if (!pkg) throw Error('failed to parse package_json: ' + homepage_url);
+			const {data: pulls} = await fetch_github_pull_requests(homepage_url, pkg, cache, log, token);
+			if (!pulls) throw Error('failed to fetch issues: ' + homepage_url);
 			await wait(delay);
-			packages.push({url, package_json, pulls});
+			packages.push({url: homepage_url, package_json, pulls});
 		} catch (err) {
-			packages.push({url, package_json: null, pulls: null});
+			packages.push({url: homepage_url, package_json: null, pulls: null});
 			log?.error(err);
 		}
 	}
@@ -61,24 +61,24 @@ export const fetch_packages = async (
 
 // TODO refactor with `fetch_github_pull_requests`
 const fetch_package_json = async (
-	url: string,
+	homepage_url: string,
 	cache?: FetchCache,
 	log?: Logger,
 ): Promise<FetchCacheItem<PackageJson | null>> => {
-	const package_json_url = strip_end(url, '/') + '/.well-known/package.json'; // TODO helper
-	log?.info('fetching', url);
+	const url = strip_end(homepage_url, '/') + '/.well-known/package.json'; // TODO helper
+	log?.info('fetching', homepage_url);
 	const headers: Record<string, string> = {
 		'content-type': 'application/json',
 		accept: 'application/json',
 	};
-	const key = to_fetch_cache_key(package_json_url, null);
+	const key = to_fetch_cache_key(url, null);
 	const cached = cache?.get(key);
 	const etag = cached?.etag;
 	if (etag) {
 		headers['if-none-match'] = etag;
 	}
 	try {
-		const res = await fetch(package_json_url, {headers});
+		const res = await fetch(url, {headers});
 		if (res.status === 304) {
 			log?.info('cached', key);
 			return cached!;
@@ -87,7 +87,7 @@ const fetch_package_json = async (
 		const json = await res.json();
 		const package_json = PackageJson.parse(json); // TODO maybe not?
 		const result: FetchCacheItem = {
-			url: package_json_url,
+			url,
 			params: null,
 			key,
 			etag: res.headers.get('etag'),
@@ -97,7 +97,7 @@ const fetch_package_json = async (
 		return result;
 	} catch (err) {
 		const result: FetchCacheItem<PackageJson | null> = {
-			url: package_json_url,
+			url,
 			params: null,
 			key,
 			etag: null,
