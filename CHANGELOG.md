@@ -1,5 +1,11 @@
 # @ryanatkn/orc
 
+## 0.6.2
+
+### Patch Changes
+
+- 9c0e326: add favicon to `RepoTable`
+
 ## 0.6.1
 
 ### Patch Changes
