@@ -81,6 +81,7 @@ const fetch_package_json = async (
 		headers['if-not-changed'] = etag;
 	}
 	try {
+		console.log(`fetching with headers`, headers);
 		const res = await fetch(package_json_url, {headers});
 		log?.info(`res.headers`, res.headers);
 		console.log(`res.status`, res.status);

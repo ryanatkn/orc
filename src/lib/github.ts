@@ -34,14 +34,24 @@ export const fetch_github_pull_requests = async (
 	if (!pkg.owner_name) throw Error('owner_name is required');
 	const params = {owner: pkg.owner_name, repo: pkg.repo_name, sort: 'updated'} as const;
 	const key = to_fetch_cache_key(url, params);
+	const cached = cache?.get(key);
 	if (cache?.has(key)) {
 		return cache.get(key)!;
 	}
+	const headers: Record<string, string> = {};
+	if (token) headers.authorization = 'token ' + token;
+	const etag = cached?.etag;
+	if (etag) {
+		headers['if-not-changed'] = etag;
+	}
+	console.log(`fetching PRs with headers`, headers);
 	const res = await request('GET /repos/{owner}/{repo}/pulls', {
-		headers: {authorization: token ? 'token ' + token : undefined},
+		headers,
 		...params,
 	});
-	log?.info(`res`, res);
+	log?.info(`res.url`, res.url);
+	log?.info(`res.status`, res.status);
+	log?.info(`res.headers`, res.headers);
 	return {
 		url,
 		params,
