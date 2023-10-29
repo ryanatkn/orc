@@ -2,7 +2,7 @@
 	import {format_host} from '@fuz.dev/fuz_library/package_meta.js';
 	import {page} from '$app/stores';
 	import {base} from '$app/paths';
-	import {strip_end} from '@grogarden/util/string.js';
+	import {ensure_end, strip_end} from '@grogarden/util/string.js';
 
 	import type {FetchedPackageMeta} from '$lib/fetch_packages.js';
 
@@ -75,7 +75,14 @@
 			<td>
 				<div class="row">
 					{#if homepage_url}
-						<a class:active={homepage_url === $page.url.href} href={homepage_url}>
+						<a class:active={homepage_url === $page.url.href} href={homepage_url} class="row">
+							<img
+								src="{ensure_end(homepage_url, '/')}favicon.png"
+								alt="favicon to homepage at {homepage_url}"
+								style:width="16px"
+								style:height="16px"
+								style:margin-right="var(--spacing_xs)"
+							/>
 							{format_host(homepage_url)}
 						</a>
 					{/if}
