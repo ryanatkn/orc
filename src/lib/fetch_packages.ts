@@ -70,22 +70,24 @@ const fetch_package_json = async (
 	log?: Logger,
 ): Promise<{data: PackageJson | null; etag: string | null}> => {
 	const package_json_url = strip_end(url, '/') + '/.well-known/package.json'; // TODO helper
-	log?.info('fetching', package_json_url);
-	const cached = cache?.get(package_json_url);
+	const key = to_fetch_cache_key(package_json_url, null);
+	log?.info('fetching', url);
+	const cached = cache?.get(key);
 	const headers: Record<string, string> = {
 		'content-type': 'application/json',
 		accept: 'application/json',
 	};
 	const etag = cached?.etag;
 	if (etag) {
-		headers['if-not-changed'] = etag;
+		headers['if-none-match'] = etag;
 	}
+	console.log(`cached`, !!cached);
 	try {
 		console.log(`fetching with headers`, headers);
 		const res = await fetch(package_json_url, {headers});
 		log?.info(`res.headers`, res.headers);
 		console.log(`res.status`, res.status);
-		if (res.status === 303) {
+		if (res.status === 304) {
 			console.log('CACHE HIT');
 			return cached!;
 		}
@@ -93,7 +95,7 @@ const fetch_package_json = async (
 		const package_json = PackageJson.parse(json); // TODO maybe not?
 		const result: FetchCacheItem = {
 			url: package_json_url,
-			key: to_fetch_cache_key(package_json_url, null),
+			key,
 			params: null,
 			etag: res.headers.get('etag'),
 			data: package_json,

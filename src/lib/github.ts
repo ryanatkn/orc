@@ -42,7 +42,7 @@ export const fetch_github_pull_requests = async (
 	if (token) headers.authorization = 'token ' + token;
 	const etag = cached?.etag;
 	if (etag) {
-		headers['if-not-changed'] = etag;
+		headers['if-none-match'] = etag;
 	}
 	console.log(`fetching PRs with headers`, headers);
 	const res = await request('GET /repos/{owner}/{repo}/pulls', {
