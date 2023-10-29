@@ -88,6 +88,7 @@ const fetch_package_json = async (
 			return cached!;
 		}
 		log?.info('not cached', key);
+		log?.info('res.headers', res.headers);
 		const json = await res.json();
 		const package_json = PackageJson.parse(json); // TODO maybe not?
 		const result: Fetch_Cache_Item = {

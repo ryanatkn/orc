@@ -54,6 +54,7 @@ export const fetch_github_pull_requests = async (
 			...params,
 		});
 		log?.info('not cached', key);
+		log?.info('res.headers', res.headers);
 		const result: Fetch_Cache_Item<Github_Pull_Request[] | null> = {
 			url,
 			params,
@@ -64,7 +65,7 @@ export const fetch_github_pull_requests = async (
 		cache?.set(result.key, result);
 		return result;
 	} catch (err) {
-		// TODO proper error handling?
+		// TODO better error handling?
 		if (err.status === 304) {
 			log?.info('cached', key);
 			return cached!;
