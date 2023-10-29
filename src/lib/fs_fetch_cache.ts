@@ -33,6 +33,7 @@ export const create_fs_fetch_cache = async (
 		name,
 		data,
 		save: async () => {
+			// TODO BLOCK detect if changed (structured clone for initial value)
 			await mkdir(dirname(data_path), {recursive: true});
 			await writeFile(data_path, await format_file(serialize_cache(data), {filepath: data_path}));
 		},

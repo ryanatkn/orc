@@ -37,14 +37,15 @@ export const fetch_github_pull_requests = async (
 	const params = {owner: pkg.owner_name, repo: pkg.repo_name, sort: 'updated'} as const;
 	const headers: Record<string, string> = {};
 	if (token) headers.authorization = 'token ' + token;
-	const key = to_fetch_cache_key(url, params);
+	const route = 'GET /repos/{owner}/{repo}/pulls'; // TODO param
+	const key = to_fetch_cache_key(route, params);
 	const cached = cache?.get(key);
 	const etag = cached?.etag;
 	if (etag) {
 		headers['if-none-match'] = etag;
 	}
 	try {
-		const res = await request('GET /repos/{owner}/{repo}/pulls', {
+		const res = await request(route, {
 			headers,
 			...params,
 		});
