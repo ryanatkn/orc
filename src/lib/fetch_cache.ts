@@ -23,4 +23,4 @@ export const serialize_cache = (cache: FetchCache): string =>
 
 // TODO generic serialization, these are just maps
 export const deserialize_cache = (serialized: string): FetchCache =>
-	new Map(JSON.parse(serialized).map((v: any) => [v.key, v]));
+	new Map(JSON.parse(serialized).map((v: FetchCacheItem) => [v.key, v]));

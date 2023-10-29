@@ -1,19 +1,16 @@
 import type {Task} from '@grogarden/gro';
 import {load_package_json} from '@grogarden/gro/package_json.js';
 import {z} from 'zod';
-import {mkdir, readFile, writeFile} from 'node:fs/promises';
+import {writeFile} from 'node:fs/promises';
 import {format_file} from '@grogarden/gro/format_file.js';
 import {exists} from '@grogarden/gro/exists.js';
-import {dirname, join} from 'node:path';
+import {join} from 'node:path';
 import {paths} from '@grogarden/gro/paths.js';
 import {GITHUB_TOKEN_SECRET} from '$env/static/private';
 
 import {fetch_packages, type MaybeFetchedPackage} from '$lib/fetch_packages.js';
 import {load_orc_config} from '$lib/config.js';
-import {deserialize_cache, serialize_cache, type FetchCache} from '$lib/fetch_cache.js';
-
-// TODO etags - cache?
-// TODO refactor for reusability
+import {create_fetch_cache_fs} from '$lib/fetch_cache_fs';
 
 // TODO maybe support `--check` for CI
 export const Args = z
@@ -37,17 +34,13 @@ export const task: Task<Args> = {
 		const {dir} = args;
 
 		const outfile = join(paths.lib, 'packages.json');
-		const cache_path = join(paths.build, 'fetch', 'packages.json'); // TODO BLOCK create_fetch_cache('packages')
 
 		const orc_config = await load_orc_config(dir);
 		const {packages} = orc_config;
 
-		// TODO maybe parse and bust on failure?
-		const cache: FetchCache = (await exists(cache_path))
-			? deserialize_cache(await readFile(cache_path, 'utf8'))
-			: new Map();
+		const cache = await create_fetch_cache_fs('packages');
 
-		const fetched_packages = await fetch_packages(packages, GITHUB_TOKEN_SECRET, cache, log);
+		const fetched_packages = await fetch_packages(packages, GITHUB_TOKEN_SECRET, cache.data, log);
 
 		const local_package_json = await load_package_json(dir);
 
@@ -78,7 +71,6 @@ export const task: Task<Args> = {
 			);
 		}
 
-		await mkdir(dirname(cache_path), {recursive: true});
-		await writeFile(cache_path, await format_file(serialize_cache(cache), {filepath: cache_path}));
+		await cache.save();
 	},
 };
