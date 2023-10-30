@@ -7,6 +7,7 @@
 	import packages from '$lib/packages.json';
 	import Page_Header from '$routes/Page_Header.svelte';
 	import Page_Footer from '$routes/Page_Footer.svelte';
+	import {package_json} from '$lib/package.js';
 
 	$: slug = $page.params.slug;
 
@@ -16,9 +17,10 @@
 		.filter(Boolean);
 
 	// TODO hacky
-	$: pkg = pkgs.find((p) => p.repo_name === slug);
+	$: route_pkg = pkgs.find((p) => p.repo_name === slug);
 
-	const orc_pkg = pkgs.find((p) => p.url === 'https://orc.ryanatkn.com/')!;
+	// TODO hacky - maybe put in context?
+	const pkg = parse_package_meta(package_json.homepage, package_json);
 </script>
 
 <main class="box width_full">
@@ -26,14 +28,14 @@
 		<Page_Header />
 	</section>
 	<section>
-		{#if pkg}
-			<PackageDetail {pkg} />
+		{#if route_pkg}
+			<PackageDetail pkg={route_pkg} />
 		{:else}
 			cannot find <code>{slug}</code>
 		{/if}
 	</section>
 	<section class="box">
-		<LibraryFooter pkg={orc_pkg} root_url="https://www.ryanatkn.com/" />
+		<LibraryFooter {pkg} root_url="https://www.ryanatkn.com/" />
 		<Page_Footer />
 	</section>
 </main>

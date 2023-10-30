@@ -1,12 +1,13 @@
 <script lang="ts">
 	import PackageSummary from '@fuz.dev/fuz_library/PackageSummary.svelte';
 	import LibraryFooter from '@fuz.dev/fuz_library/LibraryFooter.svelte';
-	import {parse_package_meta, type PackageMeta} from '@fuz.dev/fuz_library/package_meta.js';
+	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
 	import {strip_end, strip_start} from '@grogarden/util/string.js';
 	import {base} from '$app/paths';
 
 	import packages from '$lib/packages.json';
 	import Page_Header from '$routes/Page_Header.svelte';
+	import {package_json} from '$lib/package.js';
 	import Page_Footer from '$routes/Page_Footer.svelte';
 
 	// TODO hacky
@@ -14,8 +15,8 @@
 		package_json ? parse_package_meta(url, package_json) : {url, package_json: null},
 	);
 
-	// TODO hacky
-	const orc_pkg = pkgs.find((p) => p.url === 'https://orc.ryanatkn.com/') as PackageMeta;
+	// TODO hacky - maybe put in context?
+	const pkg = parse_package_meta(package_json.homepage, package_json);
 </script>
 
 <main class="box width_full">
@@ -46,7 +47,7 @@
 		</menu>
 	</section>
 	<section class="box">
-		<LibraryFooter pkg={orc_pkg} root_url="https://www.ryanatkn.com/" />
+		<LibraryFooter {pkg} root_url="https://www.ryanatkn.com/" />
 		<Page_Footer />
 	</section>
 </main>

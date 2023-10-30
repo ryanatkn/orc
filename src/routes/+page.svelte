@@ -4,12 +4,11 @@
 	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
 	import {base} from '$app/paths';
 
-	import packages from '$lib/packages.json';
 	import Main_Header from '$routes/Main_Header.svelte';
+	import {package_json} from '$lib/package.js';
 
 	// TODO hacky - maybe put in context?
-	const url = 'https://orc.ryanatkn.com/';
-	const orc_pkg = parse_package_meta(url, packages.find((p) => p.url === url)!.package_json!);
+	const pkg = parse_package_meta(package_json.homepage, package_json);
 </script>
 
 <main class="box">
@@ -44,7 +43,7 @@
 		</menu>
 	</section>
 	<section>
-		<LibraryFooter pkg={orc_pkg} root_url="https://www.ryanatkn.com/" />
+		<LibraryFooter {pkg} root_url="https://www.ryanatkn.com/" />
 	</section>
 </main>
 

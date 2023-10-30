@@ -3,20 +3,11 @@
 	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
 	import LibraryFooter from '@fuz.dev/fuz_library/LibraryFooter.svelte';
 
-	import packages from '$lib/packages.json';
 	import Page_Footer from '$routes/Page_Footer.svelte';
+	import {package_json} from '$lib/package.js';
 
-	const pkgs = packages
-		.map((pkg) =>
-			pkg.package_json?.homepage
-				? parse_package_meta(pkg.package_json.homepage, pkg.package_json)
-				: null!,
-		)
-		.filter(Boolean);
-
-	const pkg = pkgs[0];
-
-	// orc
+	// TODO hacky - maybe put in context?
+	const pkg = parse_package_meta(package_json.homepage, package_json);
 </script>
 
 <main class="width_md">
