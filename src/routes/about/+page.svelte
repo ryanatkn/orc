@@ -1,7 +1,6 @@
 <script lang="ts">
 	import PackageDetail from '@fuz.dev/fuz_library/PackageDetail.svelte';
 	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
-	import LibraryFooter from '@fuz.dev/fuz_library/LibraryFooter.svelte';
 
 	import Page_Footer from '$routes/Page_Footer.svelte';
 	import {package_json} from '$lib/package.js';
@@ -26,8 +25,7 @@
 		</div>
 	</section>
 	<div class="box">
-		<LibraryFooter {pkg} />
-		<Page_Footer />
+		<Page_Footer {pkg} />
 	</div>
 </main>
 

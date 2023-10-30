@@ -1,5 +1,4 @@
 <script lang="ts">
-	import LibraryFooter from '@fuz.dev/fuz_library/LibraryFooter.svelte';
 	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
 
 	import packages from '$lib/packages.json';
@@ -23,10 +22,7 @@
 		<Modules_Detail {pkgs} />
 	</section>
 	<section class="box">
-		{#if pkg.package_json}
-			<LibraryFooter {pkg} root_url="https://www.spiderspace.org/" />
-		{/if}
-		<Page_Footer />
+		<Page_Footer {pkg} />
 	</section>
 </main>
 
