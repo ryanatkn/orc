@@ -6,17 +6,22 @@
 	export let pkg: PackageMeta | {url: string; package_json: null};
 </script>
 
-<footer class="page_footer">
+<footer>
 	{#if pkg.package_json}
 		<LibraryFooter {pkg} root_url="https://www.spiderspace.org/" />
 	{/if}
 	<slot />
-	<Breadcrumb>🪄</Breadcrumb>
+	<div class="breadcrumb_wrapper">
+		<Breadcrumb>🪄</Breadcrumb>
+	</div>
 </footer>
 
 <style>
-	.page_footer {
-		margin: var(--spacing_3) 0 var(--spacing_1);
+	footer {
+		margin: var(--spacing_3) 0;
+	}
+	.breadcrumb_wrapper {
 		font-size: var(--size_lg);
+		margin-top: var(--spacing_3);
 	}
 </style>
