@@ -1,5 +1,11 @@
 # @ryanatkn/orc
 
+## 0.8.0
+
+### Minor Changes
+
+- 2c0164c: upgrade deps
+
 ## 0.7.1
 
 ### Patch Changes
