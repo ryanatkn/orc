@@ -69,6 +69,16 @@ export const package_json = {
 			types: './dist/fs_fetch_cache.d.ts',
 		},
 		'./github.js': {default: './dist/github.js', types: './dist/github.d.ts'},
+		'./Modules_Detail.svelte': {
+			svelte: './dist/Modules_Detail.svelte',
+			default: './dist/Modules_Detail.svelte',
+			types: './dist/Modules_Detail.svelte.d.ts',
+		},
+		'./Modules_Menu.svelte': {
+			svelte: './dist/Modules_Menu.svelte',
+			default: './dist/Modules_Menu.svelte',
+			types: './dist/Modules_Menu.svelte.d.ts',
+		},
 		'./package.gen.js': {default: './dist/package.gen.js', types: './dist/package.gen.d.ts'},
 		'./package.js': {default: './dist/package.js', types: './dist/package.d.ts'},
 		'./packages.task.js': {default: './dist/packages.task.js', types: './dist/packages.task.d.ts'},
@@ -121,6 +131,8 @@ export const package_json = {
 				{name: 'fetch_github_pull_requests', kind: 'VariableDeclaration'},
 			],
 		},
+		'./Modules_Detail.svelte': {path: 'Modules_Detail.svelte', declarations: []},
+		'./Modules_Menu.svelte': {path: 'Modules_Menu.svelte', declarations: []},
 		'./package.gen.js': {path: 'package.gen.ts', declarations: []},
 		'./package.js': {
 			path: 'package.ts',
