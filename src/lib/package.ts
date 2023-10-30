@@ -81,6 +81,7 @@ export const package_json = {
 		},
 		'./package.gen.js': {default: './dist/package.gen.js', types: './dist/package.gen.d.ts'},
 		'./package.js': {default: './dist/package.js', types: './dist/package.d.ts'},
+		'./packages.json': {default: './dist/packages.json', types: './dist/packages.json.d.ts'},
 		'./packages.task.js': {default: './dist/packages.task.js', types: './dist/packages.task.d.ts'},
 		'./Repo_Table.svelte': {
 			svelte: './dist/Repo_Table.svelte',
@@ -138,6 +139,7 @@ export const package_json = {
 			path: 'package.ts',
 			declarations: [{name: 'package_json', kind: 'VariableDeclaration'}],
 		},
+		'./packages.json': {path: 'packages.json', declarations: []},
 		'./packages.task.js': {
 			path: 'packages.task.ts',
 			declarations: [
