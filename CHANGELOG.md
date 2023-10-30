@@ -1,5 +1,12 @@
 # @ryanatkn/orc
 
+## 0.8.2
+
+### Patch Changes
+
+- 3669efa: publish sample data
+- 3669efa: add `Modules_Detail.svelte` and `Modules_Menu.svelte`
+
 ## 0.8.1
 
 ### Patch Changes
