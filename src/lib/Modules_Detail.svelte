@@ -27,6 +27,8 @@
 		},
 		[] as Array<{pkg: PackageMeta; modules: Package_Module[]}>,
 	);
+
+	// TODO BLOCK add favicon (from library? gro?)
 </script>
 
 <div class="modules_detail">
