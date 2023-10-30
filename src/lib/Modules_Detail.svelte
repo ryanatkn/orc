@@ -36,7 +36,9 @@
 	<ul class="width_md">
 		{#each pkgs_modules as pkg_modules (pkg_modules)}
 			{@const {pkg, modules} = pkg_modules}
-			<a href="#{pkg.name}" id={pkg.name} class="subtitle">🔗</a>
+			<div class="width_md relative">
+				<a href="#{pkg.name}" id={pkg.name} class="subtitle">🔗</a>
+			</div>
 			<ul>
 				{#each modules as pkg_module (pkg_module)}
 					{@const {path, declarations} = pkg_module}
@@ -92,10 +94,10 @@
 		gap: var(--spacing_1);
 	}
 	.subtitle {
-		height: 0;
-		position: relative;
-		left: calc(-1 * var(--spacing_lg));
+		position: absolute;
+		right: calc(-1 * (1rem + var(--spacing_2)));
 		top: 0;
+		text-align: right;
 	}
 	.module {
 		margin-bottom: var(--spacing_xs);
