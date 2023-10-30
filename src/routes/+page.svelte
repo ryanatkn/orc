@@ -29,18 +29,21 @@
 				</Card>
 			</li>
 			<li>
+				<Card href="{base}/modules">
+					modules
+					<svelte:fragment slot="icon">{''}</svelte:fragment>
+				</Card>
+			</li>
+			<li>
 				<Card href="{base}/tree">
 					tree
 					<svelte:fragment slot="icon">{''}</svelte:fragment>
 				</Card>
 			</li>
-			<li>
-				<Card href="{base}/about">
-					about
-					<svelte:fragment slot="icon">{''}</svelte:fragment>
-				</Card>
-			</li>
 		</menu>
+	</section>
+	<section class="box">
+		<a class="chip" href="{base}/about">about</a>
 	</section>
 	<section>
 		<LibraryFooter {pkg} root_url="https://www.ryanatkn.com/" />

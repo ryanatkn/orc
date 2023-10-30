@@ -1,6 +1,5 @@
 <script lang="ts">
 	import PackageSummary from '@fuz.dev/fuz_library/PackageSummary.svelte';
-	import LibraryFooter from '@fuz.dev/fuz_library/LibraryFooter.svelte';
 	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
 	import {strip_end, strip_start} from '@grogarden/util/string.js';
 	import {base} from '$app/paths';
@@ -46,10 +45,7 @@
 			{/each}
 		</menu>
 	</section>
-	<section class="box">
-		<LibraryFooter {pkg} root_url="https://www.ryanatkn.com/" />
-		<Page_Footer />
-	</section>
+	<section class="box"><Page_Footer {pkg} /></section>
 </main>
 
 <style>

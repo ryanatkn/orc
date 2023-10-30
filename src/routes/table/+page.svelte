@@ -1,5 +1,4 @@
 <script lang="ts">
-	import LibraryFooter from '@fuz.dev/fuz_library/LibraryFooter.svelte';
 	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
 
 	import packages from '$lib/packages.json';
@@ -32,8 +31,7 @@
 		</div>
 	</section>
 	<section class="box">
-		<LibraryFooter {pkg} root_url="https://www.ryanatkn.com/" />
-		<Page_Footer />
+		<Page_Footer {pkg} />
 	</section>
 </main>
 

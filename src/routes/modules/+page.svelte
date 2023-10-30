@@ -1,25 +1,17 @@
 <script lang="ts">
-	import PackageDetail from '@fuz.dev/fuz_library/PackageDetail.svelte';
 	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
-	import {page} from '$app/stores';
 
 	import packages from '$lib/packages.json';
 	import Page_Header from '$routes/Page_Header.svelte';
 	import Page_Footer from '$routes/Page_Footer.svelte';
-	import {package_json} from '$lib/package.js';
-
-	$: slug = $page.params.slug;
+	import Modules_Detail from '$lib/Modules_Detail.svelte';
 
 	// TODO hacky
-	const pkgs = packages
-		.map(({url, package_json}) => (package_json ? parse_package_meta(url, package_json) : null!))
-		.filter(Boolean);
+	const pkgs = packages.map(({url, package_json}) =>
+		package_json ? parse_package_meta(url, package_json) : {url, package_json: null},
+	);
 
-	// TODO hacky
-	$: route_pkg = pkgs.find((p) => p.repo_name === slug);
-
-	// TODO hacky - maybe put in context?
-	const pkg = parse_package_meta(package_json.homepage, package_json);
+	const pkg = pkgs[0];
 </script>
 
 <main class="box width_full">
@@ -27,11 +19,7 @@
 		<Page_Header />
 	</section>
 	<section>
-		{#if route_pkg}
-			<PackageDetail pkg={route_pkg} />
-		{:else}
-			cannot find <code>{slug}</code>
-		{/if}
+		<Modules_Detail {pkgs} />
 	</section>
 	<section class="box">
 		<Page_Footer {pkg} />
