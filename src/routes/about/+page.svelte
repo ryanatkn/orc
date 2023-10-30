@@ -13,9 +13,7 @@
 	<div class="prose">
 		<section>
 			<header>
-				<h1>
-					orc<small><a class="box" href="https://github.com/ryanatkn/orc">🪄</a></small>
-				</h1>
+				<h1>{pkg.repo_name}</h1>
 			</header>
 		</section>
 	</div>
