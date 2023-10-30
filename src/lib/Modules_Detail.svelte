@@ -36,7 +36,7 @@
 	<ul class="width_md">
 		{#each pkgs_modules as pkg_modules (pkg_modules)}
 			{@const {pkg, modules} = pkg_modules}
-			<a href="#{pkg.name}" id={pkg.name} class="subtitle">#</a>
+			<a href="#{pkg.name}" id={pkg.name} class="subtitle">🔗</a>
 			<ul>
 				{#each modules as pkg_module (pkg_module)}
 					{@const {path, declarations} = pkg_module}
