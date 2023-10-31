@@ -1,6 +1,6 @@
 <script lang="ts">
 	import {page} from '$app/stores';
-	import LibraryPanel from '@fuz.dev/fuz_library/LibraryPanel.svelte';
+	import Library_Panel from '@fuz.dev/fuz_library/Library_Panel.svelte';
 
 	import type {Package_Meta} from '@fuz.dev/fuz_library/package_meta.js';
 	import type {Package_Module} from '@grogarden/gro/package_json.js';
@@ -16,7 +16,7 @@
 	// TODO add favicon (from library? gro?)
 </script>
 
-<LibraryPanel>
+<Library_Panel>
 	<div class="library_menu">
 		<h6>packages</h6>
 		<menu>
@@ -29,7 +29,7 @@
 			{/each}
 		</menu>
 	</div>
-</LibraryPanel>
+</Library_Panel>
 
 <style>
 	.library_menu,
