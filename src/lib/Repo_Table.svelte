@@ -54,11 +54,11 @@
 		<th>homepage</th>
 		<th>repo</th>
 		<th>npm</th>
-		<th>pull requests</th>
 		<th>version</th>
 		{#each deps as dep (dep)}
 			<th>{dep}</th>
 		{/each}
+		<th>pull requests</th>
 	</thead>
 	{#each pkgs as pkg}
 		{@const package_json = pkg.package_json}
@@ -104,6 +104,21 @@
 				{/if}
 			</td>
 			<td>
+				{#if package_json && package_json.version !== '0.0.1'}
+					<a href={pkg.changelog_url}>{format_version(package_json.version)}</a>
+				{/if}
+			</td>
+			{#each deps as dep (dep)}
+				{@const dep_version = lookup_dep_version(pkg, dep)}
+				{@const formatted_dep_version = format_version(dep_version)}
+				{@const dep_latest_version = latest_version_by_dep.get(dep)}
+				<td>
+					<div class:latest={!!dep_latest_version && formatted_dep_version === dep_latest_version}>
+						{formatted_dep_version}
+					</div>
+				</td>
+			{/each}
+			<td>
 				{#if package_json && pkg.repo_url}
 					{@const pulls = lookup_pulls(pkgs, pkg)}
 					<!-- TODO show something like `and N more` with a link to a dialog list -->
@@ -120,21 +135,6 @@
 					</div>
 				{/if}
 			</td>
-			<td>
-				{#if package_json && package_json.version !== '0.0.1'}
-					<a href={pkg.changelog_url}>{format_version(package_json.version)}</a>
-				{/if}
-			</td>
-			{#each deps as dep (dep)}
-				{@const dep_version = lookup_dep_version(pkg, dep)}
-				{@const formatted_dep_version = format_version(dep_version)}
-				{@const dep_latest_version = latest_version_by_dep.get(dep)}
-				<td>
-					<div class:latest={!!dep_latest_version && formatted_dep_version === dep_latest_version}>
-						{formatted_dep_version}
-					</div>
-				</td>
-			{/each}
 		</tr>
 	{/each}
 </table>
