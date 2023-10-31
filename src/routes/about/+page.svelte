@@ -1,5 +1,5 @@
 <script lang="ts">
-	import PackageDetail from '@fuz.dev/fuz_library/PackageDetail.svelte';
+	import Package_Detail from '@fuz.dev/fuz_library/Package_Detail.svelte';
 	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
 
 	import Page_Footer from '$routes/Page_Footer.svelte';
@@ -13,15 +13,13 @@
 	<div class="prose">
 		<section>
 			<header>
-				<h1>
-					orc<small><a class="box" href="https://github.com/ryanatkn/orc">🪄</a></small>
-				</h1>
+				<h1>{pkg.repo_name}</h1>
 			</header>
 		</section>
 	</div>
 	<section class="box width_full spaced">
 		<div class="panel padded_md width_md">
-			<PackageDetail {pkg} />
+			<Package_Detail {pkg} />
 		</div>
 	</section>
 	<div class="box">

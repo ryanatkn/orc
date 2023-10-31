@@ -1,5 +1,5 @@
 import type {Logger} from '@grogarden/util/log.js';
-import type {PackageMeta} from '@fuz.dev/fuz_library/package_meta.js';
+import type {Package_Meta} from '@fuz.dev/fuz_library/package_meta.js';
 import {request} from '@octokit/request';
 import {z} from 'zod';
 
@@ -31,7 +31,7 @@ export type Github_Pull_Request = z.infer<typeof Github_Pull_Request>;
 // TODO refactor with `fetch_package_json`
 export const fetch_github_pull_requests = async (
 	url: string,
-	pkg: PackageMeta,
+	pkg: Package_Meta,
 	cache?: Fetch_Cache_Data,
 	log?: Logger,
 	token?: string,

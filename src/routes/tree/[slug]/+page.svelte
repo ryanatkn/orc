@@ -1,5 +1,5 @@
 <script lang="ts">
-	import PackageDetail from '@fuz.dev/fuz_library/PackageDetail.svelte';
+	import Package_Detail from '@fuz.dev/fuz_library/Package_Detail.svelte';
 	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
 	import {page} from '$app/stores';
 
@@ -28,7 +28,7 @@
 	</section>
 	<section>
 		{#if route_pkg}
-			<PackageDetail pkg={route_pkg} />
+			<Package_Detail pkg={route_pkg} />
 		{:else}
 			cannot find <code>{slug}</code>
 		{/if}

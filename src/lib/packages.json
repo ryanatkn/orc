@@ -4,7 +4,7 @@
 		"package_json": {
 			"name": "@ryanatkn/orc",
 			"description": "a tool for orchestrating many repos",
-			"version": "0.8.1",
+			"version": "0.8.2",
 			"public": true,
 			"license": "MIT",
 			"homepage": "https://orc.ryanatkn.com/",
@@ -28,17 +28,17 @@
 			"devDependencies": {
 				"@changesets/changelog-git": "^0.1.14",
 				"@feltjs/eslint-config": "^0.4.1",
-				"@fuz.dev/fuz": "^0.77.1",
-				"@fuz.dev/fuz_contextmenu": "^0.5.1",
-				"@fuz.dev/fuz_dialog": "^0.4.2",
-				"@fuz.dev/fuz_library": "^0.17.0",
-				"@grogarden/gro": "^0.98.1",
-				"@grogarden/util": "^0.15.2",
+				"@fuz.dev/fuz": "^0.79.1",
+				"@fuz.dev/fuz_contextmenu": "^0.6.0",
+				"@fuz.dev/fuz_dialog": "^0.5.0",
+				"@fuz.dev/fuz_library": "^0.18.1",
+				"@grogarden/gro": "^0.98.3",
+				"@grogarden/util": "^0.15.4",
 				"@octokit/request": "^8.1.4",
 				"@sveltejs/adapter-static": "^2.0.3",
 				"@sveltejs/kit": "^1.27.2",
 				"@sveltejs/package": "^2.2.2",
-				"@types/node": "^20.8.9",
+				"@types/node": "^20.8.10",
 				"@typescript-eslint/eslint-plugin": "^6.9.1",
 				"@typescript-eslint/parser": "^6.9.1",
 				"dequal": "^2.0.3",
@@ -91,6 +91,10 @@
 					"types": "./dist/package.gen.d.ts"
 				},
 				"./package.js": {"default": "./dist/package.js", "types": "./dist/package.d.ts"},
+				"./packages.json": {
+					"default": "./dist/packages.json",
+					"types": "./dist/packages.json.d.ts"
+				},
 				"./packages.task.js": {
 					"default": "./dist/packages.task.js",
 					"types": "./dist/packages.task.d.ts"
@@ -108,54 +112,87 @@
 	{
 		"url": "https://www.felt.dev/",
 		"package_json": {
-			"name": "@feltjs/website",
-			"description": "web tools that feel good",
-			"version": "0.0.1",
+			"name": "@feltjs/felt",
+			"description": "a programmable platform for hobbyists and human-scale communities 💚",
+			"version": "0.10.0",
+			"public": true,
 			"license": "MIT",
+			"author": {"name": "feltjs", "email": "team@felt.social", "url": "https://felt.social"},
 			"homepage": "https://www.felt.dev/",
-			"author": {
-				"name": "Felt Co-op",
-				"email": "team@felt.social",
-				"url": "https://www.felt.social/"
-			},
 			"repository": {"type": "git", "url": "git+https://github.com/feltjs/felt.git"},
-			"bugs": {"url": "https://github.com/feltjs/felt/issues", "email": "team@felt.social"},
-			"type": "module",
-			"engines": {"node": ">=20.7"},
+			"bugs": {"url": "https://github.com/feltjs/felt/issues"},
 			"scripts": {
-				"start": "gro dev",
 				"dev": "gro dev",
 				"build": "gro build",
 				"test": "gro test",
-				"deploy": "gro deploy"
+				"deploy": "gro deploy",
+				"start": "node dist_server/server/server.js",
+				"after_deploy": "node dist_server/infra/after_deploy.js"
 			},
+			"type": "module",
+			"engines": {"node": ">=20.7"},
+			"peerDependencies": {"@sveltejs/kit": "*"},
 			"devDependencies": {
+				"@changesets/changelog-git": "^0.1.14",
 				"@feltjs/eslint-config": "^0.4.1",
-				"@feltjs/felt": "^0.9.1",
-				"@feltjs/felt-mural": "^0.3.1",
-				"@fuz.dev/fuz": "^0.75.4",
-				"@fuz.dev/fuz_contextmenu": "^0.4.2",
-				"@fuz.dev/fuz_dialog": "^0.3.2",
-				"@fuz.dev/fuz_library": "^0.15.2",
-				"@fuz.dev/svelte_intersect": "^0.5.1",
-				"@grogarden/gro": "^0.96.4",
-				"@grogarden/util": "^0.15.2",
-				"@sveltejs/adapter-static": "^2.0.3",
-				"@sveltejs/kit": "^1.27.1",
-				"@typescript-eslint/eslint-plugin": "^6.9.0",
-				"@typescript-eslint/parser": "^6.9.0",
-				"eslint": "^8.52.0",
-				"eslint-plugin-svelte": "^2.34.0",
+				"@feltjs/felt_mural": "^0.5.0",
+				"@fuz.dev/fuz": "^0.78.0",
+				"@fuz.dev/fuz_contextmenu": "^0.5.1",
+				"@fuz.dev/fuz_dialog": "^0.4.2",
+				"@fuz.dev/fuz_library": "^0.17.1",
+				"@fuz.dev/svelte_intersect": "^0.6.1",
+				"@grogarden/gro": "^0.98.2",
+				"@ryanatkn/json-schema-to-typescript": "^11.1.5",
+				"@sveltejs/adapter-node": "^1.3.1",
+				"@sveltejs/kit": "^1.27.2",
+				"@sveltejs/package": "^2.2.2",
+				"@types/body-parser": "^1.19.3",
+				"@types/cookie": "^0.5.2",
+				"@types/cookie-signature": "^1.1.0",
+				"@types/node": "^20.8.0",
+				"@types/throttle-debounce": "^5.0.0",
+				"@types/ws": "^8.5.6",
+				"@typescript-eslint/eslint-plugin": "^6.7.4",
+				"@typescript-eslint/parser": "^6.7.4",
+				"eslint": "^8.50.0",
+				"eslint-plugin-svelte": "^2.33.2",
 				"eventemitter3": "^5.0.1",
 				"prettier": "^3.0.3",
 				"prettier-plugin-svelte": "^3.0.3",
-				"svelte": "^4.2.2",
+				"strict-event-emitter-types": "^2.0.0",
+				"svast": "^0.2.0",
 				"svelte-check": "^3.5.2",
 				"tslib": "^2.6.2",
 				"typescript": "^5.2.2",
-				"uvu": "^0.5.6"
+				"uvu": "^0.5.6",
+				"zod": "^3.22.2"
 			},
-			"eslintConfig": {"root": true, "extends": "@feltjs"},
+			"dependencies": {
+				"@feltcoop/svelte-gettable-stores": "^0.2.0",
+				"@grogarden/util": "^0.15.4",
+				"@polka/send-type": "^0.5.2",
+				"ajv": "^8.12.0",
+				"ajv-keywords": "^5.1.0",
+				"body-parser": "^1.20.2",
+				"cookie": "^0.5.0",
+				"cookie-signature": "^1.2.1",
+				"date-fns": "^2.30.0",
+				"dequal": "^2.0.3",
+				"dotenv": "^16.3.1",
+				"estree-walker": "^3.0.3",
+				"kleur": "^4.1.5",
+				"ley": "^0.8.1",
+				"polka": "^0.5.2",
+				"postgres": "^3.3.5",
+				"regexparam": "^2.0.1",
+				"svast-stringify": "^0.1.0",
+				"svelte": "^4.2.2",
+				"svelte-parse": "^0.1.0",
+				"throttle-debounce": "^5.0.0",
+				"ws": "^8.14.2"
+			},
+			"optionalDependencies": {"bufferutil": "^4.0.3", "utf-8-validate": "^5.0.5"},
+			"eslintConfig": {"root": true, "extends": "@feltjs", "rules": {"no-console": 1}},
 			"prettier": {
 				"plugins": ["prettier-plugin-svelte"],
 				"useTabs": true,
@@ -163,25 +200,260 @@
 				"singleQuote": true,
 				"bracketSpacing": false,
 				"overrides": [{"files": "package.json", "options": {"useTabs": false}}]
+			},
+			"files": ["dist"],
+			"exports": {
+				"./package.js": {"default": "./dist/package.js", "types": "./dist/package.d.ts"},
+				"./docs/Docs.svelte": {
+					"svelte": "./dist/docs/Docs.svelte",
+					"types": "./dist/docs/Docs.svelte.d.ts"
+				},
+				"./docs/docs.js": {"default": "./dist/docs/docs.js", "types": "./dist/docs/docs.d.ts"},
+				"./ui/app.js": {"default": "./dist/ui/app.js", "types": "./dist/ui/app.js"},
+				"./ui/components.js": {
+					"default": "./dist/ui/components.js",
+					"types": "./dist/ui/components.js"
+				},
+				"./ui/ErrorMessage.svelte": {
+					"svelte": "./dist/ui/ErrorMessage.svelte",
+					"types": "./dist/ui/ErrorMessage.svelte.d.ts"
+				},
+				"./ui/HttpApiClient.js": {
+					"default": "./dist/ui/HttpApiClient.js",
+					"types": "./dist/ui/HttpApiClient.js"
+				},
+				"./ui/mutations.js": {
+					"default": "./dist/ui/mutations.js",
+					"types": "./dist/ui/mutations.js"
+				},
+				"./ui/services.js": {"default": "./dist/ui/services.js", "types": "./dist/ui/services.js"},
+				"./ui/style.css": {"default": "./dist/ui/style.css"},
+				"./ui/ui.js": {"default": "./dist/ui/ui.js", "types": "./dist/ui/ui.js"},
+				"./util/deserialize.js": {
+					"default": "./dist/util/deserialize.js",
+					"types": "./dist/util/deserialize.d.ts"
+				},
+				"./util/query.js": {"default": "./dist/util/query.js", "types": "./dist/util/query.d.ts"},
+				"./vocab/schemas.js": {
+					"default": "./dist/vocab/schemas.js",
+					"types": "./dist/vocab/schemas.d.ts"
+				},
+				"./vocab/action/actions.js": {
+					"default": "./dist/vocab/action/actions.js",
+					"types": "./dist/vocab/action/actions.d.ts"
+				},
+				"./vocab/account/account.js": {
+					"default": "./dist/vocab/account/account.js",
+					"types": "./dist/vocab/account/account.d.ts"
+				}
+			},
+			"modules": {
+				"./package.js": {
+					"path": "package.ts",
+					"declarations": [{"name": "package_json", "kind": "VariableDeclaration"}]
+				},
+				"./docs/Docs.svelte": {"path": "docs/Docs.svelte", "declarations": []},
+				"./docs/docs.js": {
+					"path": "docs/docs.ts",
+					"declarations": [
+						{"name": "userGuideItems", "kind": "VariableDeclaration"},
+						{"name": "adminGuideItems", "kind": "VariableDeclaration"},
+						{"name": "devGuideItems", "kind": "VariableDeclaration"},
+						{"name": "guideItems", "kind": "VariableDeclaration"},
+						{"name": "guideItemsBySlug", "kind": "VariableDeclaration"},
+						{"name": "DocsSettings", "kind": "InterfaceDeclaration"},
+						{"name": "getDocsSettings", "kind": "VariableDeclaration"},
+						{"name": "setDocsSettings", "kind": "VariableDeclaration"}
+					]
+				},
+				"./ui/app.js": {
+					"path": "ui/app.ts",
+					"declarations": [
+						{"name": "App", "kind": "InterfaceDeclaration"},
+						{"name": "CreateAppQuery", "kind": "InterfaceDeclaration"},
+						{"name": "LAST_SEEN_KEY", "kind": "VariableDeclaration"},
+						{"name": "getApp", "kind": "VariableDeclaration"},
+						{"name": "setApp", "kind": "VariableDeclaration"}
+					]
+				},
+				"./ui/components.js": {
+					"path": "ui/components.ts",
+					"declarations": [{"name": "components", "kind": "VariableDeclaration"}]
+				},
+				"./ui/ErrorMessage.svelte": {"path": "ui/ErrorMessage.svelte", "declarations": []},
+				"./ui/HttpApiClient.js": {
+					"path": "ui/HttpApiClient.ts",
+					"declarations": [{"name": "toHttpApiClient", "kind": "VariableDeclaration"}]
+				},
+				"./ui/mutations.js": {
+					"path": "ui/mutations.ts",
+					"declarations": [{"name": "mutations", "kind": "VariableDeclaration"}]
+				},
+				"./ui/services.js": {
+					"path": "ui/services.ts",
+					"declarations": [
+						{"name": "findHttpService", "kind": "VariableDeclaration"},
+						{"name": "findWebsocketService", "kind": "VariableDeclaration"}
+					]
+				},
+				"./ui/style.css": {"path": "ui/style.css", "declarations": []},
+				"./ui/ui.js": {
+					"path": "ui/ui.ts",
+					"declarations": [
+						{"name": "getUi", "kind": "VariableDeclaration"},
+						{"name": "setUi", "kind": "VariableDeclaration"},
+						{"name": "UiEvents", "kind": "TypeAliasDeclaration"},
+						{"name": "Ui", "kind": "InterfaceDeclaration"},
+						{"name": "WritableUi", "kind": "TypeAliasDeclaration"},
+						{"name": "toUi", "kind": "VariableDeclaration"}
+					]
+				},
+				"./util/deserialize.js": {
+					"path": "util/deserialize.ts",
+					"declarations": [
+						{"name": "Deserialize", "kind": "InterfaceDeclaration"},
+						{"name": "deserialize", "kind": "VariableDeclaration"},
+						{"name": "deserializeDate", "kind": "VariableDeclaration"},
+						{"name": "Deserializer", "kind": "InterfaceDeclaration"},
+						{"name": "Deserializers", "kind": "TypeAliasDeclaration"},
+						{"name": "deserializers", "kind": "VariableDeclaration"}
+					]
+				},
+				"./util/query.js": {
+					"path": "util/query.ts",
+					"declarations": [
+						{"name": "Query", "kind": "InterfaceDeclaration"},
+						{"name": "QueryParams", "kind": "InterfaceDeclaration"},
+						{"name": "QueryState", "kind": "InterfaceDeclaration"},
+						{"name": "QueryStore", "kind": "InterfaceDeclaration"},
+						{"name": "QueryAddEntity", "kind": "InterfaceDeclaration"},
+						{"name": "QueryMatchEntity", "kind": "InterfaceDeclaration"},
+						{"name": "createQuery", "kind": "VariableDeclaration"},
+						{"name": "CompareEntities", "kind": "InterfaceDeclaration"},
+						{"name": "toQueryAddEntity", "kind": "VariableDeclaration"},
+						{"name": "addEntitySortedByCreated", "kind": "VariableDeclaration"},
+						{"name": "addEntitySortedByCreatedReversed", "kind": "VariableDeclaration"}
+					]
+				},
+				"./vocab/schemas.js": {
+					"path": "vocab/schemas.ts",
+					"declarations": [
+						{"name": "modelSchemas", "kind": "VariableDeclaration"},
+						{"name": "actionSchemas", "kind": "VariableDeclaration"},
+						{"name": "schemas", "kind": "VariableDeclaration"},
+						{"name": "schemasByName", "kind": "VariableDeclaration"}
+					]
+				},
+				"./vocab/action/actions.js": {
+					"path": "vocab/action/actions.ts",
+					"declarations": [
+						{"name": "getActions", "kind": "VariableDeclaration"},
+						{"name": "setActions", "kind": "VariableDeclaration"},
+						{"name": "ToActionsClient", "kind": "InterfaceDeclaration"},
+						{"name": "toActions", "kind": "VariableDeclaration"},
+						{"name": "ActionsBroadcastMessage", "kind": "InterfaceDeclaration"},
+						{"name": "toActionsBroadcastMessage", "kind": "VariableDeclaration"}
+					]
+				},
+				"./vocab/account/account.js": {
+					"path": "vocab/account/account.ts",
+					"declarations": [
+						{"name": "AccountId", "kind": "TypeAliasDeclaration"},
+						{"name": "Account", "kind": "InterfaceDeclaration"},
+						{"name": "AccountSettings", "kind": "InterfaceDeclaration"},
+						{"name": "ClientAccount", "kind": "InterfaceDeclaration"},
+						{"name": "ClientAccountSession", "kind": "InterfaceDeclaration"},
+						{"name": "ClientGuestSession", "kind": "InterfaceDeclaration"},
+						{"name": "ClientSession", "kind": "TypeAliasDeclaration"}
+					]
+				}
 			}
 		},
 		"pulls": [
 			{
-				"url": "https://api.github.com/repos/feltjs/website/pulls/43",
-				"id": 1577740318,
-				"number": 43,
+				"url": "https://api.github.com/repos/feltjs/felt/pulls/931",
+				"id": 1505025758,
+				"number": 931,
 				"state": "open",
-				"title": "add package detail to about page",
+				"title": "Add issue template for bugs",
+				"user": {
+					"login": "greatbacon",
+					"id": 4512607,
+					"avatar_url": "https://avatars.githubusercontent.com/u/4512607?v=4",
+					"url": "https://api.github.com/users/greatbacon"
+				},
+				"body": "This PR adds a couple of template for opening issues related to bugs.\r\n\r\nBased on templates from https://github.com/sveltejs/kit & https://github.com/oven-sh/bun (thanks for paving the way with these templates), I've honed in the language for our particulars.",
+				"created_at": "2023-09-06T17:25:42Z",
+				"updated_at": "2023-09-30T02:21:32Z",
+				"draft": false
+			},
+			{
+				"url": "https://api.github.com/repos/feltjs/felt/pulls/932",
+				"id": 1506852938,
+				"number": 932,
+				"state": "open",
+				"title": "Adds descriptions to Views & renders them in docs",
+				"user": {
+					"login": "greatbacon",
+					"id": 4512607,
+					"avatar_url": "https://avatars.githubusercontent.com/u/4512607?v=4",
+					"url": "https://api.github.com/users/greatbacon"
+				},
+				"body": "Got an itch and wanted to see how it easy it was to put these in & turned out to be pretty easy 🎉 \r\n\r\nNone of the descriptions need to be final, but I tried to keep it pretty clear and concise.",
+				"created_at": "2023-09-07T20:17:54Z",
+				"updated_at": "2023-09-30T02:21:33Z",
+				"draft": false
+			},
+			{
+				"url": "https://api.github.com/repos/feltjs/felt/pulls/888",
+				"id": 1452802195,
+				"number": 888,
+				"state": "open",
+				"title": "fix initial default selections",
 				"user": {
 					"login": "ryanatkn",
 					"id": 2608646,
 					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
 					"url": "https://api.github.com/users/ryanatkn"
 				},
-				"body": "it's live at https://www.felt.dev/about",
-				"created_at": "2023-10-29T04:09:15Z",
-				"updated_at": "2023-10-29T04:10:50Z",
-				"draft": false
+				"body": "Trying to figure out why the initial `space` and `hub` are saving only sometimes. I suppose we need to include `actor` and the `params` too to make it work correctly. Needs to be actor id not index?",
+				"created_at": "2023-07-27T21:43:43Z",
+				"updated_at": "2023-09-30T04:12:54Z",
+				"draft": true
+			},
+			{
+				"url": "https://api.github.com/repos/feltjs/felt/pulls/945",
+				"id": 1535519425,
+				"number": 945,
+				"state": "open",
+				"title": "randomize secrets when initializing env",
+				"user": {
+					"login": "ryanatkn",
+					"id": 2608646,
+					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
+					"url": "https://api.github.com/users/ryanatkn"
+				},
+				"body": "Security audit work - it's a footgun to init users with static secrets. Thinking the 🎲 is a good placeholder for a random value.\r\n\r\n- rename to `COOKIE_SECRETS`, use that convention elsewhere",
+				"created_at": "2023-09-29T10:30:43Z",
+				"updated_at": "2023-10-04T02:42:48Z",
+				"draft": true
+			},
+			{
+				"url": "https://api.github.com/repos/feltjs/felt/pulls/905",
+				"id": 1472244660,
+				"number": 905,
+				"state": "open",
+				"title": "replace ties with collection pages",
+				"user": {
+					"login": "ryanatkn",
+					"id": 2608646,
+					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
+					"url": "https://api.github.com/users/ryanatkn"
+				},
+				"body": "reboot of #878 but keeping directories\r\n\r\nnotes\r\n\r\n- is page a system-level concern - hoist `type='CollectionPage'` to entity table, `null` implicitly is the base `Item` type\r\n- we're building the entity query with `sql.unsafe`, which is subject to SQL injection, so we validate the input both at the schema level and immediately in the repo method\r\n\r\ntodo\r\n\r\n- [ ] query system\r\n- [ ] `items` and `lists` need to be synced with deleting entities\r\n- [ ] why are the schemas expanded here?  https://github.com/feltjs/felt/pull/905/commits/9947b25661ee6df9ee3148ef981d56c012061257",
+				"created_at": "2023-08-11T19:18:37Z",
+				"updated_at": "2023-10-29T03:47:00Z",
+				"draft": true
 			}
 		]
 	},
@@ -190,7 +462,7 @@
 		"package_json": {
 			"name": "@fuz.dev/fuz",
 			"description": "design system for CSS, Svelte, and SvelteKit",
-			"version": "0.77.1",
+			"version": "0.79.1",
 			"public": true,
 			"license": "MIT",
 			"homepage": "https://www.fuz.dev/",
@@ -215,16 +487,16 @@
 			"devDependencies": {
 				"@changesets/changelog-git": "^0.1.14",
 				"@feltjs/eslint-config": "^0.4.1",
-				"@fuz.dev/fuz_code": "^0.4.0",
-				"@fuz.dev/fuz_dialog": "^0.4.0",
-				"@fuz.dev/fuz_library": "^0.16.1",
-				"@grogarden/gro": "^0.98.1",
+				"@fuz.dev/fuz_code": "^0.4.3",
+				"@fuz.dev/fuz_dialog": "^0.5.0",
+				"@fuz.dev/fuz_library": "^0.18.0",
+				"@grogarden/gro": "^0.98.3",
 				"@sveltejs/adapter-static": "^2.0.3",
 				"@sveltejs/kit": "^1.27.2",
 				"@sveltejs/package": "^2.2.2",
 				"@types/prismjs": "^1.26.2",
-				"@typescript-eslint/eslint-plugin": "^6.9.0",
-				"@typescript-eslint/parser": "^6.9.0",
+				"@typescript-eslint/eslint-plugin": "^6.9.1",
+				"@typescript-eslint/parser": "^6.9.1",
 				"eslint": "^8.52.0",
 				"eslint-plugin-svelte": "^2.34.0",
 				"prettier": "^3.0.3",
@@ -247,10 +519,10 @@
 				"overrides": [{"files": "package.json", "options": {"useTabs": false}}]
 			},
 			"exports": {
-				"./ColorSchemeInput.svelte": {
-					"svelte": "./dist/ColorSchemeInput.svelte",
-					"default": "./dist/ColorSchemeInput.svelte",
-					"types": "./dist/ColorSchemeInput.svelte.d.ts"
+				"./Color_Scheme_Input.svelte": {
+					"svelte": "./dist/Color_Scheme_Input.svelte",
+					"default": "./dist/Color_Scheme_Input.svelte",
+					"types": "./dist/Color_Scheme_Input.svelte.d.ts"
 				},
 				"./package.gen.js": {
 					"default": "./dist/package.gen.js",
@@ -259,32 +531,32 @@
 				"./package.js": {"default": "./dist/package.js", "types": "./dist/package.d.ts"},
 				"./style.css": {"default": "./dist/style.css"},
 				"./swallow.js": {"default": "./dist/swallow.js", "types": "./dist/swallow.d.ts"},
+				"./Theme_Input.svelte": {
+					"svelte": "./dist/Theme_Input.svelte",
+					"default": "./dist/Theme_Input.svelte",
+					"types": "./dist/Theme_Input.svelte.d.ts"
+				},
 				"./theme.css": {"default": "./dist/theme.css"},
 				"./theme.gen.css.js": {
 					"default": "./dist/theme.gen.css.js",
 					"types": "./dist/theme.gen.css.d.ts"
 				},
 				"./theme.js": {"default": "./dist/theme.js", "types": "./dist/theme.d.ts"},
+				"./Themed_Scope.svelte": {
+					"svelte": "./dist/Themed_Scope.svelte",
+					"default": "./dist/Themed_Scope.svelte",
+					"types": "./dist/Themed_Scope.svelte.d.ts"
+				},
 				"./Themed.svelte": {
 					"svelte": "./dist/Themed.svelte",
 					"default": "./dist/Themed.svelte",
 					"types": "./dist/Themed.svelte.d.ts"
 				},
-				"./ThemedScope.svelte": {
-					"svelte": "./dist/ThemedScope.svelte",
-					"default": "./dist/ThemedScope.svelte",
-					"types": "./dist/ThemedScope.svelte.d.ts"
-				},
-				"./ThemeInput.svelte": {
-					"svelte": "./dist/ThemeInput.svelte",
-					"default": "./dist/ThemeInput.svelte",
-					"types": "./dist/ThemeInput.svelte.d.ts"
-				},
 				"./themes.js": {"default": "./dist/themes.js", "types": "./dist/themes.d.ts"},
 				"./variables.js": {"default": "./dist/variables.js", "types": "./dist/variables.d.ts"}
 			},
 			"modules": {
-				"./ColorSchemeInput.svelte": {"path": "ColorSchemeInput.svelte", "declarations": []},
+				"./Color_Scheme_Input.svelte": {"path": "Color_Scheme_Input.svelte", "declarations": []},
 				"./package.gen.js": {"path": "package.gen.ts", "declarations": []},
 				"./package.js": {
 					"path": "package.ts",
@@ -295,6 +567,7 @@
 					"path": "swallow.ts",
 					"declarations": [{"name": "swallow", "kind": "VariableDeclaration"}]
 				},
+				"./Theme_Input.svelte": {"path": "Theme_Input.svelte", "declarations": []},
 				"./theme.css": {"path": "theme.css", "declarations": []},
 				"./theme.gen.css.js": {
 					"path": "theme.gen.css.ts",
@@ -303,7 +576,7 @@
 				"./theme.js": {
 					"path": "theme.ts",
 					"declarations": [
-						{"name": "ColorScheme", "kind": "TypeAliasDeclaration"},
+						{"name": "Color_Scheme", "kind": "TypeAliasDeclaration"},
 						{"name": "color_schemes", "kind": "VariableDeclaration"},
 						{"name": "THEME_COLOR", "kind": "VariableDeclaration"},
 						{"name": "sync_color_scheme", "kind": "VariableDeclaration"},
@@ -316,7 +589,7 @@
 						{"name": "create_theme_setup_script", "kind": "VariableDeclaration"},
 						{"name": "create_theme_style_html", "kind": "VariableDeclaration"},
 						{"name": "Theme", "kind": "InterfaceDeclaration"},
-						{"name": "ThemeVariable", "kind": "InterfaceDeclaration"},
+						{"name": "Theme_Variable", "kind": "InterfaceDeclaration"},
 						{"name": "RenderThemeStyleOptions", "kind": "InterfaceDeclaration"},
 						{"name": "render_theme_style", "kind": "VariableDeclaration"},
 						{"name": "render_theme_variable", "kind": "VariableDeclaration"},
@@ -326,9 +599,8 @@
 						{"name": "set_color_scheme", "kind": "VariableDeclaration"}
 					]
 				},
+				"./Themed_Scope.svelte": {"path": "Themed_Scope.svelte", "declarations": []},
 				"./Themed.svelte": {"path": "Themed.svelte", "declarations": []},
-				"./ThemedScope.svelte": {"path": "ThemedScope.svelte", "declarations": []},
-				"./ThemeInput.svelte": {"path": "ThemeInput.svelte", "declarations": []},
 				"./themes.js": {
 					"path": "themes.ts",
 					"declarations": [
@@ -349,7 +621,7 @@
 		"package_json": {
 			"name": "@grogarden/gro",
 			"description": "task runner and toolkit extending SvelteKit",
-			"version": "0.98.1",
+			"version": "0.98.3",
 			"public": true,
 			"bin": {"gro": "dist/gro.js"},
 			"license": "MIT",
@@ -961,14 +1233,7 @@
 						{"name": "resolve", "kind": "VariableDeclaration"}
 					]
 				},
-				"./module.js": {
-					"path": "module.ts",
-					"declarations": [
-						{"name": "MODULE_PATH_SRC_PREFIX", "kind": "VariableDeclaration"},
-						{"name": "MODULE_PATH_LIB_PREFIX", "kind": "VariableDeclaration"},
-						{"name": "is_external_module", "kind": "VariableDeclaration"}
-					]
-				},
+				"./module.js": {"path": "module.ts", "declarations": []},
 				"./modules.js": {
 					"path": "modules.ts",
 					"declarations": [
@@ -1020,10 +1285,11 @@
 				"./path.js": {
 					"path": "path.ts",
 					"declarations": [
-						{"name": "PathData", "kind": "InterfaceDeclaration"},
-						{"name": "to_path_data", "kind": "VariableDeclaration"},
-						{"name": "PathStats", "kind": "InterfaceDeclaration"},
-						{"name": "PathFilter", "kind": "InterfaceDeclaration"}
+						{"name": "resolve_input_path", "kind": "VariableDeclaration"},
+						{"name": "resolve_input_paths", "kind": "VariableDeclaration"},
+						{"name": "get_possible_source_ids", "kind": "VariableDeclaration"},
+						{"name": "load_source_path_data_by_input_path", "kind": "VariableDeclaration"},
+						{"name": "load_source_ids_by_input_path", "kind": "VariableDeclaration"}
 					]
 				},
 				"./paths.js": {
@@ -1144,12 +1410,8 @@
 				"./schema.js": {
 					"path": "schema.ts",
 					"declarations": [
-						{"name": "JsonSchema", "kind": "InterfaceDeclaration"},
-						{"name": "bundle_schemas", "kind": "VariableDeclaration"},
-						{"name": "is_json_schema", "kind": "VariableDeclaration"},
-						{"name": "to_json_schema_resolver", "kind": "VariableDeclaration"},
-						{"name": "infer_schema_types", "kind": "VariableDeclaration"},
-						{"name": "parse_schema_name", "kind": "VariableDeclaration"}
+						{"name": "SomeTestObjectSchema", "kind": "VariableDeclaration"},
+						{"name": "SomeTestPrimitiveSchema", "kind": "VariableDeclaration"}
 					]
 				},
 				"./search_fs.js": {
@@ -1216,16 +1478,16 @@
 				"./sveltekit_shim_app.js": {
 					"path": "sveltekit_shim_app.ts",
 					"declarations": [
-						{"name": "sveltekit_shim_app_paths_matcher", "kind": "VariableDeclaration"},
-						{"name": "sveltekit_shim_app_environment_matcher", "kind": "VariableDeclaration"},
-						{"name": "sveltekit_shim_app_specifiers", "kind": "VariableDeclaration"},
-						{"name": "render_sveltekit_shim_app_paths", "kind": "VariableDeclaration"},
-						{"name": "render_sveltekit_shim_app_environment", "kind": "VariableDeclaration"}
+						{"name": "Options", "kind": "InterfaceDeclaration"},
+						{"name": "esbuild_plugin_sveltekit_shim_app", "kind": "VariableDeclaration"}
 					]
 				},
 				"./sveltekit_shim_env.js": {
 					"path": "sveltekit_shim_env.ts",
-					"declarations": [{"name": "render_env_shim_module", "kind": "VariableDeclaration"}]
+					"declarations": [
+						{"name": "Options", "kind": "InterfaceDeclaration"},
+						{"name": "esbuild_plugin_sveltekit_shim_env", "kind": "VariableDeclaration"}
+					]
 				},
 				"./sync.task.js": {
 					"path": "sync.task.ts",
@@ -1235,27 +1497,12 @@
 						{"name": "sveltekit_sync", "kind": "VariableDeclaration"}
 					]
 				},
-				"./task_module.js": {
-					"path": "task_module.ts",
-					"declarations": [
-						{"name": "TaskModule", "kind": "InterfaceDeclaration"},
-						{"name": "TaskModuleMeta", "kind": "InterfaceDeclaration"},
-						{"name": "validate_task_module", "kind": "VariableDeclaration"},
-						{"name": "load_task_module", "kind": "VariableDeclaration"},
-						{"name": "find_task_modules", "kind": "VariableDeclaration"},
-						{"name": "load_task_modules", "kind": "VariableDeclaration"}
-					]
-				},
+				"./task_module.js": {"path": "task_module.ts", "declarations": []},
 				"./task.js": {
 					"path": "task.ts",
 					"declarations": [
-						{"name": "Task", "kind": "InterfaceDeclaration"},
-						{"name": "TaskContext", "kind": "InterfaceDeclaration"},
-						{"name": "TASK_FILE_SUFFIX_TS", "kind": "VariableDeclaration"},
-						{"name": "TASK_FILE_SUFFIX_JS", "kind": "VariableDeclaration"},
-						{"name": "is_task_path", "kind": "VariableDeclaration"},
-						{"name": "to_task_name", "kind": "VariableDeclaration"},
-						{"name": "TaskError", "kind": "ClassDeclaration"}
+						{"name": "Args", "kind": "VariableDeclaration"},
+						{"name": "task", "kind": "VariableDeclaration"}
 					]
 				},
 				"./test.task.js": {
@@ -1319,23 +1566,6 @@
 				"draft": true
 			},
 			{
-				"url": "https://api.github.com/repos/grogarden/gro/pulls/428",
-				"id": 1569906900,
-				"number": 428,
-				"state": "open",
-				"title": "change .well-known/package.json to use the static directory",
-				"user": {
-					"login": "ryanatkn",
-					"id": 2608646,
-					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
-					"url": "https://api.github.com/users/ryanatkn"
-				},
-				"body": "If you link to the .well-known/package.json, SvelteKit won't see it during the build. I think the build is fine, it just fixes the error.\r\n\r\nI knew this was the better implementation but I was being lazy, it's more work and I want to make reusable helpers for creating the file temporarily and then cleaning up.\r\n\r\nlike\r\n\r\n```ts\r\nconst cleanup = copy_temporarily(...)\r\n```\r\n\r\n(similar usecase with `\"public\": true` and `src/`)\r\n\r\nor maybe a Vite plugin, so the path works during development too and without any filesystem stuff? but can Gro do that without being intrusive to configure?",
-				"created_at": "2023-10-23T20:34:07Z",
-				"updated_at": "2023-10-28T01:45:59Z",
-				"draft": true
-			},
-			{
 				"url": "https://api.github.com/repos/grogarden/gro/pulls/429",
 				"id": 1573508138,
 				"number": 429,
@@ -1350,6 +1580,23 @@
 				"body": "vscode flips out regularly from the workspace-destructive `deploy` branch in `gro deploy`. This refactors the internals to use a non-destructive strategy, at the cost of inefficiency -- a `.git` directory for the `deploy` branch is now duplicated in a cache directory. A benefit is that you no longer see `deploy` in your root `.git` context.\r\n\r\n- maybe `.gro/deploy`?\r\n- `git clone -b deploy --single-branch git://github.com/grogarden/gro.git",
 				"created_at": "2023-10-25T19:12:59Z",
 				"updated_at": "2023-10-28T01:51:29Z",
+				"draft": true
+			},
+			{
+				"url": "https://api.github.com/repos/grogarden/gro/pulls/428",
+				"id": 1569906900,
+				"number": 428,
+				"state": "open",
+				"title": "change .well-known/package.json to use the static directory",
+				"user": {
+					"login": "ryanatkn",
+					"id": 2608646,
+					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
+					"url": "https://api.github.com/users/ryanatkn"
+				},
+				"body": "If you link to the .well-known/package.json, SvelteKit won't see it during the build. I think the build is fine, it just fixes the error.\r\n\r\nI knew this was the better implementation but I was being lazy, it's more work and I want to make reusable helpers for creating the file temporarily and then cleaning up.\r\n\r\nlike\r\n\r\n```ts\r\nconst cleanup = copy_temporarily(...)\r\n```\r\n\r\n(similar usecase with `\"public\": true` and `src/`)\r\n\r\n- try/catch around build to ensure cleanup",
+				"created_at": "2023-10-23T20:34:07Z",
+				"updated_at": "2023-10-31T03:05:56Z",
 				"draft": true
 			}
 		]
@@ -1376,12 +1623,12 @@
 			},
 			"devDependencies": {
 				"@feltjs/eslint-config": "^0.4.1",
-				"@fuz.dev/fuz": "^0.77.1",
-				"@fuz.dev/fuz_library": "^0.17.0",
-				"@grogarden/gro": "^0.98.1",
-				"@grogarden/util": "^0.15.2",
+				"@fuz.dev/fuz": "^0.78.0",
+				"@fuz.dev/fuz_library": "^0.17.1",
+				"@grogarden/gro": "^0.98.3",
+				"@grogarden/util": "^0.15.4",
 				"@octokit/request": "^8.1.4",
-				"@ryanatkn/orc": "^0.8.1",
+				"@ryanatkn/orc": "^0.8.2",
 				"@sveltejs/adapter-static": "^2.0.3",
 				"@sveltejs/kit": "^1.27.2",
 				"@typescript-eslint/eslint-plugin": "^6.9.1",
@@ -1405,16 +1652,6 @@
 				"overrides": [{"files": "package.json", "options": {"useTabs": false}}]
 			},
 			"exports": {
-				"./Modules_Detail.svelte": {
-					"svelte": "./dist/Modules_Detail.svelte",
-					"default": "./dist/Modules_Detail.svelte",
-					"types": "./dist/Modules_Detail.svelte.d.ts"
-				},
-				"./Modules_Menu.svelte": {
-					"svelte": "./dist/Modules_Menu.svelte",
-					"default": "./dist/Modules_Menu.svelte",
-					"types": "./dist/Modules_Menu.svelte.d.ts"
-				},
 				"./package.gen.js": {
 					"default": "./dist/package.gen.js",
 					"types": "./dist/package.gen.d.ts"
@@ -1430,8 +1667,6 @@
 				}
 			},
 			"modules": {
-				"./Modules_Detail.svelte": {"path": "Modules_Detail.svelte", "declarations": []},
-				"./Modules_Menu.svelte": {"path": "Modules_Menu.svelte", "declarations": []},
 				"./package.gen.js": {"path": "package.gen.ts", "declarations": []},
 				"./package.js": {
 					"path": "package.ts",
@@ -1441,24 +1676,6 @@
 				"./packages.task.js": {"path": "packages.task.ts", "declarations": []}
 			}
 		},
-		"pulls": [
-			{
-				"url": "https://api.github.com/repos/spiderspace/spiderspace/pulls/6",
-				"id": 1579611788,
-				"number": 6,
-				"state": "open",
-				"title": "upstream modules components",
-				"user": {
-					"login": "ryanatkn",
-					"id": 2608646,
-					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
-					"url": "https://api.github.com/users/ryanatkn"
-				},
-				"body": "see https://github.com/ryanatkn/orc/pull/8",
-				"created_at": "2023-10-30T18:14:02Z",
-				"updated_at": "2023-10-30T18:14:17Z",
-				"draft": false
-			}
-		]
+		"pulls": []
 	}
 ]

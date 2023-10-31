@@ -1,12 +1,12 @@
 <script lang="ts">
-	import type {PackageMeta} from '@fuz.dev/fuz_library/package_meta.js';
+	import type {Package_Meta} from '@fuz.dev/fuz_library/package_meta.js';
 	import type {Package_Module} from '@grogarden/gro/package_json.js';
 	import {ensure_end} from '@grogarden/util/string.js';
 	import {base} from '$app/paths';
 
 	import Modules_Menu from '$lib/Modules_Menu.svelte';
 
-	export let pkgs: Array<PackageMeta | {url: string; package_json: null}>; // TODO normalized version with cached primitives?
+	export let pkgs: Array<Package_Meta | {url: string; package_json: null}>; // TODO normalized version with cached primitives?
 
 	// TODO extract to Orc
 
@@ -16,7 +16,7 @@
 
 	// TODO pretty hacky, needs helpers or rethinking
 	let pkgs_modules: Array<{
-		pkg: PackageMeta;
+		pkg: Package_Meta;
 		modules: Package_Module[];
 	}>;
 	$: pkgs_modules = pkgs.reduce(
@@ -25,8 +25,10 @@
 			v.push({pkg, modules: Object.values(pkg.package_json.modules)});
 			return v;
 		},
-		[] as Array<{pkg: PackageMeta; modules: Package_Module[]}>,
+		[] as Array<{pkg: Package_Meta; modules: Package_Module[]}>,
 	);
+
+	// TODO add favicon (from library? gro?)
 </script>
 
 <div class="modules_detail">

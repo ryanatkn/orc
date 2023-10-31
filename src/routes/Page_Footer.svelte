@@ -1,14 +1,14 @@
 <script lang="ts">
 	import Breadcrumb from '@fuz.dev/fuz_library/Breadcrumb.svelte';
-	import LibraryFooter from '@fuz.dev/fuz_library/LibraryFooter.svelte';
-	import type {PackageMeta} from '@fuz.dev/fuz_library/package_meta.js';
+	import Library_Footer from '@fuz.dev/fuz_library/Library_Footer.svelte';
+	import type {Package_Meta} from '@fuz.dev/fuz_library/package_meta.js';
 
-	export let pkg: PackageMeta | {url: string; package_json: null};
+	export let pkg: Package_Meta | {url: string; package_json: null};
 </script>
 
 <footer>
 	{#if pkg.package_json}
-		<LibraryFooter {pkg} root_url="https://www.spiderspace.org/" />
+		<Library_Footer {pkg} root_url="https://www.spiderspace.org/" />
 	{/if}
 	<slot />
 	<div class="breadcrumb_wrapper">

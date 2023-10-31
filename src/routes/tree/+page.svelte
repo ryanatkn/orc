@@ -1,5 +1,5 @@
 <script lang="ts">
-	import PackageSummary from '@fuz.dev/fuz_library/PackageSummary.svelte';
+	import Package_Summary from '@fuz.dev/fuz_library/Package_Summary.svelte';
 	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
 	import {strip_end, strip_start} from '@grogarden/util/string.js';
 	import {base} from '$app/paths';
@@ -24,15 +24,15 @@
 	</section>
 	<section>
 		<menu>
-			<!-- TODO PackageSummary -->
+			<!-- TODO Package_Summary -->
 			{#each pkgs as pkg}
 				<li class="panel padded_md box">
 					{#if pkg.package_json}
-						<PackageSummary {pkg}>
+						<Package_Summary {pkg}>
 							<svelte:fragment slot="repo_name" let:repo_name>
 								<a href="{base}/tree/{repo_name}" class="repo_name">{repo_name}</a>
 							</svelte:fragment>
-						</PackageSummary>
+						</Package_Summary>
 					{:else}
 						<div class="prose width_sm">
 							<p>
