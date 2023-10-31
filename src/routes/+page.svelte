@@ -1,5 +1,5 @@
 <script lang="ts">
-	import LibraryFooter from '@fuz.dev/fuz_library/LibraryFooter.svelte';
+	import Library_Footer from '@fuz.dev/fuz_library/Library_Footer.svelte';
 	import Card from '@fuz.dev/fuz_library/Card.svelte';
 	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
 	import {base} from '$app/paths';
@@ -46,7 +46,7 @@
 		<a class="chip" href="{base}/about">about</a>
 	</section>
 	<section>
-		<LibraryFooter {pkg} root_url="https://www.ryanatkn.com/" />
+		<Library_Footer {pkg} root_url="https://www.ryanatkn.com/" />
 	</section>
 </main>
 

@@ -2,18 +2,18 @@
 	import {page} from '$app/stores';
 	import LibraryPanel from '@fuz.dev/fuz_library/LibraryPanel.svelte';
 
-	import type {PackageMeta} from '@fuz.dev/fuz_library/package_meta.js';
+	import type {Package_Meta} from '@fuz.dev/fuz_library/package_meta.js';
 	import type {Package_Module} from '@grogarden/gro/package_json.js';
 
 	// TODO add highlighting of the items that are onscreen
 
 	// LibraryMenu floats alongside the docs, showing scrolled item as active
 	export let pkgs_modules: Array<{
-		pkg: PackageMeta;
+		pkg: Package_Meta;
 		modules: Package_Module[];
 	}>;
 
-	// TODO BLOCK add favicon (from library? gro?)
+	// TODO add favicon (from library? gro?)
 </script>
 
 <LibraryPanel>

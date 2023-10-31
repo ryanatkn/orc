@@ -3,7 +3,7 @@ import type {Url} from '@grogarden/gro/paths.js';
 import {strip_end} from '@grogarden/util/string.js';
 import type {Logger} from '@grogarden/util/log.js';
 import {wait} from '@grogarden/util/async.js';
-import {parse_package_meta, type PackageMeta} from '@fuz.dev/fuz_library/package_meta.js';
+import {parse_package_meta, type Package_Meta} from '@fuz.dev/fuz_library/package_meta.js';
 
 import {fetch_github_pull_requests, type Github_Pull_Request} from '$lib/github.js';
 import {
@@ -20,7 +20,7 @@ export interface Maybe_Fetched_Package {
 }
 
 // TODO rethink with `Maybe_Fetched_Package`
-export interface Fetched_Package extends PackageMeta {
+export interface Fetched_Package extends Package_Meta {
 	pulls: Github_Pull_Request[] | null;
 }
 

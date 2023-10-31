@@ -247,10 +247,10 @@
 				"overrides": [{"files": "package.json", "options": {"useTabs": false}}]
 			},
 			"exports": {
-				"./ColorSchemeInput.svelte": {
-					"svelte": "./dist/ColorSchemeInput.svelte",
-					"default": "./dist/ColorSchemeInput.svelte",
-					"types": "./dist/ColorSchemeInput.svelte.d.ts"
+				"./Color_Scheme_Input.svelte": {
+					"svelte": "./dist/Color_Scheme_Input.svelte",
+					"default": "./dist/Color_Scheme_Input.svelte",
+					"types": "./dist/Color_Scheme_Input.svelte.d.ts"
 				},
 				"./package.gen.js": {
 					"default": "./dist/package.gen.js",
@@ -275,16 +275,16 @@
 					"default": "./dist/ThemedScope.svelte",
 					"types": "./dist/ThemedScope.svelte.d.ts"
 				},
-				"./ThemeInput.svelte": {
-					"svelte": "./dist/ThemeInput.svelte",
-					"default": "./dist/ThemeInput.svelte",
-					"types": "./dist/ThemeInput.svelte.d.ts"
+				"./Theme_Input.svelte": {
+					"svelte": "./dist/Theme_Input.svelte",
+					"default": "./dist/Theme_Input.svelte",
+					"types": "./dist/Theme_Input.svelte.d.ts"
 				},
 				"./themes.js": {"default": "./dist/themes.js", "types": "./dist/themes.d.ts"},
 				"./variables.js": {"default": "./dist/variables.js", "types": "./dist/variables.d.ts"}
 			},
 			"modules": {
-				"./ColorSchemeInput.svelte": {"path": "ColorSchemeInput.svelte", "declarations": []},
+				"./Color_Scheme_Input.svelte": {"path": "Color_Scheme_Input.svelte", "declarations": []},
 				"./package.gen.js": {"path": "package.gen.ts", "declarations": []},
 				"./package.js": {
 					"path": "package.ts",
@@ -328,7 +328,7 @@
 				},
 				"./Themed.svelte": {"path": "Themed.svelte", "declarations": []},
 				"./ThemedScope.svelte": {"path": "ThemedScope.svelte", "declarations": []},
-				"./ThemeInput.svelte": {"path": "ThemeInput.svelte", "declarations": []},
+				"./Theme_Input.svelte": {"path": "Theme_Input.svelte", "declarations": []},
 				"./themes.js": {
 					"path": "themes.ts",
 					"declarations": [
