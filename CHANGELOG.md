@@ -1,5 +1,11 @@
 # @ryanatkn/orc
 
+## 0.10.1
+
+### Patch Changes
+
+- 6041e50: rearrange repo table columns
+
 ## 0.10.0
 
 ### Minor Changes
