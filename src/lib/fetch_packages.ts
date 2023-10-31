@@ -1,4 +1,4 @@
-import {PackageJson} from '@grogarden/gro/package_json.js';
+import {Package_Json} from '@grogarden/gro/package_json.js';
 import type {Url} from '@grogarden/gro/paths.js';
 import {strip_end} from '@grogarden/util/string.js';
 import type {Logger} from '@grogarden/util/log.js';
@@ -15,7 +15,7 @@ import {
 // TODO rethink with `Package` and `Fetched_Package2`
 export interface Maybe_Fetched_Package {
 	url: Url;
-	package_json: PackageJson | null; // TODO forward error
+	package_json: Package_Json | null; // TODO forward error
 	pulls: Github_Pull_Request[] | null;
 }
 
@@ -68,7 +68,7 @@ const fetch_package_json = async (
 	homepage_url: string,
 	cache?: Fetch_Cache_Data,
 	log?: Logger,
-): Promise<Fetch_Cache_Item<PackageJson | null>> => {
+): Promise<Fetch_Cache_Item<Package_Json | null>> => {
 	const url = strip_end(homepage_url, '/') + '/.well-known/package.json'; // TODO helper
 	log?.info('fetching', homepage_url);
 	const headers: Record<string, string> = {
@@ -90,7 +90,7 @@ const fetch_package_json = async (
 		log?.info('not cached', key);
 		log?.info('res.headers', res.headers);
 		const json = await res.json();
-		const package_json = PackageJson.parse(json); // TODO maybe not?
+		const package_json = Package_Json.parse(json); // TODO maybe not?
 		const result: Fetch_Cache_Item = {
 			url,
 			params: null,
@@ -101,7 +101,7 @@ const fetch_package_json = async (
 		cache?.set(result.key, result);
 		return result;
 	} catch (err) {
-		const result: Fetch_Cache_Item<PackageJson | null> = {
+		const result: Fetch_Cache_Item<Package_Json | null> = {
 			url,
 			params: null,
 			key,
