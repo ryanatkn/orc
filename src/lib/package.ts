@@ -5,7 +5,7 @@ import type {Package_Json} from '@grogarden/gro/package_json.js';
 export const package_json = {
 	name: '@ryanatkn/orc',
 	description: 'a tool for orchestrating many repos',
-	version: '0.10.2',
+	version: '0.10.3',
 	public: true,
 	license: 'MIT',
 	homepage: 'https://orc.ryanatkn.com/',
