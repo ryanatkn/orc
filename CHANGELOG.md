@@ -1,5 +1,11 @@
 # @ryanatkn/orc
 
+## 0.10.2
+
+### Patch Changes
+
+- e61c437: show only published packages
+
 ## 0.10.1
 
 ### Patch Changes
