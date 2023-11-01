@@ -1,5 +1,11 @@
 # @ryanatkn/orc
 
+## 0.10.4
+
+### Patch Changes
+
+- 4e379a1: improve `Modules_Detail`
+
 ## 0.10.3
 
 ### Patch Changes
