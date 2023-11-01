@@ -44,50 +44,50 @@
 	<div class="menu_wrapper">
 		<Modules_Menu {pkgs_modules} />
 	</div>
-	<ul class="width_md">
+	<ul class="width_md box">
 		{#each pkgs_modules as pkg_modules (pkg_modules)}
 			{@const {pkg, modules} = pkg_modules}
-			<div class="width_md relative">
-				<a href="#{pkg.name}" id={pkg.name} class="subtitle">🔗</a>
-			</div>
-			<ul>
-				{#each modules as pkg_module (pkg_module)}
-					{@const {path, declarations} = pkg_module}
-					<li
-						class="module"
-						class:ts={path.endsWith('.ts')}
-						class:svelte={path.endsWith('.svelte')}
-						class:css={path.endsWith('.css')}
-						class:json={path.endsWith('.json')}
-					>
-						<div>
-							{#if pkg.repo_url}
-								<div class="chip row">
-									<a href="{base}/tree/{pkg.repo_name}">{pkg.name}</a>/<a
-										href="{ensure_end(pkg.repo_url, '/')}blob/main/src/lib/{path}">{path}</a
+			<li class="pkg_module">
+				<header class="width_full relative">
+					<a href="#{pkg.name}" id={pkg.name} class="subtitle">🔗</a>
+					<a href="{base}/tree/{pkg.repo_name}">{pkg.name}</a>
+				</header>
+				<ul class="modules panel">
+					{#each modules as pkg_module (pkg_module)}
+						{@const {path, declarations} = pkg_module}
+						<li
+							class="module"
+							class:ts={path.endsWith('.ts')}
+							class:svelte={path.endsWith('.svelte')}
+							class:css={path.endsWith('.css')}
+							class:json={path.endsWith('.json')}
+						>
+							<div>
+								{#if pkg.repo_url}
+									<div class="chip row">
+										<a href="{ensure_end(pkg.repo_url, '/')}blob/main/src/lib/{path}">{path}</a>
+									</div>
+								{:else}
+									<span class="chip">{path}</span>
+								{/if}
+							</div>
+							<ul class="declarations">
+								{#each declarations as { name, kind }}
+									<li
+										class="declaration chip"
+										class:variable_declaration={kind === 'VariableDeclaration'}
+										class:type_declaration={kind === 'InterfaceDeclaration' ||
+											kind === 'TypeAliasDeclaration'}
+										class:class_declaration={kind === 'ClassDeclaration'}
 									>
-								</div>
-							{:else}
-								<span class="chip"><a href="{base}/tree/{pkg.repo_name}">{pkg.name}</a>/{path}</span
-								>
-							{/if}
-						</div>
-						<ul class="declarations">
-							{#each declarations as { name, kind }}
-								<li
-									class="declaration chip"
-									class:variable_declaration={kind === 'VariableDeclaration'}
-									class:type_declaration={kind === 'InterfaceDeclaration' ||
-										kind === 'TypeAliasDeclaration'}
-									class:class_declaration={kind === 'ClassDeclaration'}
-								>
-									{name}
-								</li>
-							{/each}
-						</ul>
-					</li>
-				{/each}
-			</ul>
+										{name}
+									</li>
+								{/each}
+							</ul>
+						</li>
+					{/each}
+				</ul>
+			</li>
 		{/each}
 	</ul>
 </div>
@@ -109,6 +109,23 @@
 		right: calc(-1 * (1rem + var(--spacing_2)));
 		top: 0;
 		text-align: right;
+	}
+	.pkg_module {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: var(--spacing_5);
+	}
+	.pkg_module > header {
+		display: flex;
+		padding: var(--spacing_xs) var(--spacing_md);
+		font-size: var(--size_lg);
+		position: sticky;
+		top: 0;
+		background-color: var(--bg);
+	}
+	.modules {
+		/* TODO delete? */
+		padding: var(--spacing_sm);
 	}
 	.module {
 		margin-bottom: var(--spacing_xs);
