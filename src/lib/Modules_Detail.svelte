@@ -64,7 +64,7 @@
 							{#if pkg.repo_url}
 								<div class="chip row">
 									<a href="{base}/tree/{pkg.repo_name}">{pkg.name}</a>/<a
-										href="{ensure_end(pkg.repo_url, '/')}blob/main/src/lib/">{path}</a
+										href="{ensure_end(pkg.repo_url, '/')}blob/main/src/lib/{path}">{path}</a
 									>
 								</div>
 							{:else}
