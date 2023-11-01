@@ -111,6 +111,7 @@
 		text-align: right;
 	}
 	.pkg_module {
+		width: 100%;
 		display: flex;
 		flex-direction: column;
 		margin-bottom: var(--spacing_5);
