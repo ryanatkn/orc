@@ -1,5 +1,11 @@
 # @ryanatkn/orc
 
+## 0.10.5
+
+### Patch Changes
+
+- c6d69c3: fix `Modules_Detail` layout
+
 ## 0.10.4
 
 ### Patch Changes
