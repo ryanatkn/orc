@@ -4,7 +4,7 @@
 		"package_json": {
 			"name": "@ryanatkn/orc",
 			"description": "a tool for orchestrating many repos",
-			"version": "0.8.2",
+			"version": "0.10.1",
 			"public": true,
 			"license": "MIT",
 			"homepage": "https://orc.ryanatkn.com/",
@@ -31,9 +31,9 @@
 				"@fuz.dev/fuz": "^0.79.1",
 				"@fuz.dev/fuz_contextmenu": "^0.6.0",
 				"@fuz.dev/fuz_dialog": "^0.5.0",
-				"@fuz.dev/fuz_library": "^0.18.1",
-				"@grogarden/gro": "^0.98.3",
-				"@grogarden/util": "^0.15.4",
+				"@fuz.dev/fuz_library": "^0.19.1",
+				"@grogarden/gro": "^0.100.1",
+				"@grogarden/util": "^0.16.0",
 				"@octokit/request": "^8.1.4",
 				"@sveltejs/adapter-static": "^2.0.3",
 				"@sveltejs/kit": "^1.27.2",
@@ -110,354 +110,6 @@
 		"pulls": null
 	},
 	{
-		"url": "https://www.felt.dev/",
-		"package_json": {
-			"name": "@feltjs/felt",
-			"description": "a programmable platform for hobbyists and human-scale communities 💚",
-			"version": "0.10.0",
-			"public": true,
-			"license": "MIT",
-			"author": {"name": "feltjs", "email": "team@felt.social", "url": "https://felt.social"},
-			"homepage": "https://www.felt.dev/",
-			"repository": {"type": "git", "url": "git+https://github.com/feltjs/felt.git"},
-			"bugs": {"url": "https://github.com/feltjs/felt/issues"},
-			"scripts": {
-				"dev": "gro dev",
-				"build": "gro build",
-				"test": "gro test",
-				"deploy": "gro deploy",
-				"start": "node dist_server/server/server.js",
-				"after_deploy": "node dist_server/infra/after_deploy.js"
-			},
-			"type": "module",
-			"engines": {"node": ">=20.7"},
-			"peerDependencies": {"@sveltejs/kit": "*"},
-			"devDependencies": {
-				"@changesets/changelog-git": "^0.1.14",
-				"@feltjs/eslint-config": "^0.4.1",
-				"@feltjs/felt_mural": "^0.5.0",
-				"@fuz.dev/fuz": "^0.78.0",
-				"@fuz.dev/fuz_contextmenu": "^0.5.1",
-				"@fuz.dev/fuz_dialog": "^0.4.2",
-				"@fuz.dev/fuz_library": "^0.17.1",
-				"@fuz.dev/svelte_intersect": "^0.6.1",
-				"@grogarden/gro": "^0.98.2",
-				"@ryanatkn/json-schema-to-typescript": "^11.1.5",
-				"@sveltejs/adapter-node": "^1.3.1",
-				"@sveltejs/kit": "^1.27.2",
-				"@sveltejs/package": "^2.2.2",
-				"@types/body-parser": "^1.19.3",
-				"@types/cookie": "^0.5.2",
-				"@types/cookie-signature": "^1.1.0",
-				"@types/node": "^20.8.0",
-				"@types/throttle-debounce": "^5.0.0",
-				"@types/ws": "^8.5.6",
-				"@typescript-eslint/eslint-plugin": "^6.7.4",
-				"@typescript-eslint/parser": "^6.7.4",
-				"eslint": "^8.50.0",
-				"eslint-plugin-svelte": "^2.33.2",
-				"eventemitter3": "^5.0.1",
-				"prettier": "^3.0.3",
-				"prettier-plugin-svelte": "^3.0.3",
-				"strict-event-emitter-types": "^2.0.0",
-				"svast": "^0.2.0",
-				"svelte-check": "^3.5.2",
-				"tslib": "^2.6.2",
-				"typescript": "^5.2.2",
-				"uvu": "^0.5.6",
-				"zod": "^3.22.2"
-			},
-			"dependencies": {
-				"@feltcoop/svelte-gettable-stores": "^0.2.0",
-				"@grogarden/util": "^0.15.4",
-				"@polka/send-type": "^0.5.2",
-				"ajv": "^8.12.0",
-				"ajv-keywords": "^5.1.0",
-				"body-parser": "^1.20.2",
-				"cookie": "^0.5.0",
-				"cookie-signature": "^1.2.1",
-				"date-fns": "^2.30.0",
-				"dequal": "^2.0.3",
-				"dotenv": "^16.3.1",
-				"estree-walker": "^3.0.3",
-				"kleur": "^4.1.5",
-				"ley": "^0.8.1",
-				"polka": "^0.5.2",
-				"postgres": "^3.3.5",
-				"regexparam": "^2.0.1",
-				"svast-stringify": "^0.1.0",
-				"svelte": "^4.2.2",
-				"svelte-parse": "^0.1.0",
-				"throttle-debounce": "^5.0.0",
-				"ws": "^8.14.2"
-			},
-			"optionalDependencies": {"bufferutil": "^4.0.3", "utf-8-validate": "^5.0.5"},
-			"eslintConfig": {"root": true, "extends": "@feltjs", "rules": {"no-console": 1}},
-			"prettier": {
-				"plugins": ["prettier-plugin-svelte"],
-				"useTabs": true,
-				"printWidth": 100,
-				"singleQuote": true,
-				"bracketSpacing": false,
-				"overrides": [{"files": "package.json", "options": {"useTabs": false}}]
-			},
-			"files": ["dist"],
-			"exports": {
-				"./package.js": {"default": "./dist/package.js", "types": "./dist/package.d.ts"},
-				"./docs/Docs.svelte": {
-					"svelte": "./dist/docs/Docs.svelte",
-					"types": "./dist/docs/Docs.svelte.d.ts"
-				},
-				"./docs/docs.js": {"default": "./dist/docs/docs.js", "types": "./dist/docs/docs.d.ts"},
-				"./ui/app.js": {"default": "./dist/ui/app.js", "types": "./dist/ui/app.js"},
-				"./ui/components.js": {
-					"default": "./dist/ui/components.js",
-					"types": "./dist/ui/components.js"
-				},
-				"./ui/ErrorMessage.svelte": {
-					"svelte": "./dist/ui/ErrorMessage.svelte",
-					"types": "./dist/ui/ErrorMessage.svelte.d.ts"
-				},
-				"./ui/HttpApiClient.js": {
-					"default": "./dist/ui/HttpApiClient.js",
-					"types": "./dist/ui/HttpApiClient.js"
-				},
-				"./ui/mutations.js": {
-					"default": "./dist/ui/mutations.js",
-					"types": "./dist/ui/mutations.js"
-				},
-				"./ui/services.js": {"default": "./dist/ui/services.js", "types": "./dist/ui/services.js"},
-				"./ui/style.css": {"default": "./dist/ui/style.css"},
-				"./ui/ui.js": {"default": "./dist/ui/ui.js", "types": "./dist/ui/ui.js"},
-				"./util/deserialize.js": {
-					"default": "./dist/util/deserialize.js",
-					"types": "./dist/util/deserialize.d.ts"
-				},
-				"./util/query.js": {"default": "./dist/util/query.js", "types": "./dist/util/query.d.ts"},
-				"./vocab/schemas.js": {
-					"default": "./dist/vocab/schemas.js",
-					"types": "./dist/vocab/schemas.d.ts"
-				},
-				"./vocab/action/actions.js": {
-					"default": "./dist/vocab/action/actions.js",
-					"types": "./dist/vocab/action/actions.d.ts"
-				},
-				"./vocab/account/account.js": {
-					"default": "./dist/vocab/account/account.js",
-					"types": "./dist/vocab/account/account.d.ts"
-				}
-			},
-			"modules": {
-				"./package.js": {
-					"path": "package.ts",
-					"declarations": [{"name": "package_json", "kind": "VariableDeclaration"}]
-				},
-				"./docs/Docs.svelte": {"path": "docs/Docs.svelte", "declarations": []},
-				"./docs/docs.js": {
-					"path": "docs/docs.ts",
-					"declarations": [
-						{"name": "userGuideItems", "kind": "VariableDeclaration"},
-						{"name": "adminGuideItems", "kind": "VariableDeclaration"},
-						{"name": "devGuideItems", "kind": "VariableDeclaration"},
-						{"name": "guideItems", "kind": "VariableDeclaration"},
-						{"name": "guideItemsBySlug", "kind": "VariableDeclaration"},
-						{"name": "DocsSettings", "kind": "InterfaceDeclaration"},
-						{"name": "getDocsSettings", "kind": "VariableDeclaration"},
-						{"name": "setDocsSettings", "kind": "VariableDeclaration"}
-					]
-				},
-				"./ui/app.js": {
-					"path": "ui/app.ts",
-					"declarations": [
-						{"name": "App", "kind": "InterfaceDeclaration"},
-						{"name": "CreateAppQuery", "kind": "InterfaceDeclaration"},
-						{"name": "LAST_SEEN_KEY", "kind": "VariableDeclaration"},
-						{"name": "getApp", "kind": "VariableDeclaration"},
-						{"name": "setApp", "kind": "VariableDeclaration"}
-					]
-				},
-				"./ui/components.js": {
-					"path": "ui/components.ts",
-					"declarations": [{"name": "components", "kind": "VariableDeclaration"}]
-				},
-				"./ui/ErrorMessage.svelte": {"path": "ui/ErrorMessage.svelte", "declarations": []},
-				"./ui/HttpApiClient.js": {
-					"path": "ui/HttpApiClient.ts",
-					"declarations": [{"name": "toHttpApiClient", "kind": "VariableDeclaration"}]
-				},
-				"./ui/mutations.js": {
-					"path": "ui/mutations.ts",
-					"declarations": [{"name": "mutations", "kind": "VariableDeclaration"}]
-				},
-				"./ui/services.js": {
-					"path": "ui/services.ts",
-					"declarations": [
-						{"name": "findHttpService", "kind": "VariableDeclaration"},
-						{"name": "findWebsocketService", "kind": "VariableDeclaration"}
-					]
-				},
-				"./ui/style.css": {"path": "ui/style.css", "declarations": []},
-				"./ui/ui.js": {
-					"path": "ui/ui.ts",
-					"declarations": [
-						{"name": "getUi", "kind": "VariableDeclaration"},
-						{"name": "setUi", "kind": "VariableDeclaration"},
-						{"name": "UiEvents", "kind": "TypeAliasDeclaration"},
-						{"name": "Ui", "kind": "InterfaceDeclaration"},
-						{"name": "WritableUi", "kind": "TypeAliasDeclaration"},
-						{"name": "toUi", "kind": "VariableDeclaration"}
-					]
-				},
-				"./util/deserialize.js": {
-					"path": "util/deserialize.ts",
-					"declarations": [
-						{"name": "Deserialize", "kind": "InterfaceDeclaration"},
-						{"name": "deserialize", "kind": "VariableDeclaration"},
-						{"name": "deserializeDate", "kind": "VariableDeclaration"},
-						{"name": "Deserializer", "kind": "InterfaceDeclaration"},
-						{"name": "Deserializers", "kind": "TypeAliasDeclaration"},
-						{"name": "deserializers", "kind": "VariableDeclaration"}
-					]
-				},
-				"./util/query.js": {
-					"path": "util/query.ts",
-					"declarations": [
-						{"name": "Query", "kind": "InterfaceDeclaration"},
-						{"name": "QueryParams", "kind": "InterfaceDeclaration"},
-						{"name": "QueryState", "kind": "InterfaceDeclaration"},
-						{"name": "QueryStore", "kind": "InterfaceDeclaration"},
-						{"name": "QueryAddEntity", "kind": "InterfaceDeclaration"},
-						{"name": "QueryMatchEntity", "kind": "InterfaceDeclaration"},
-						{"name": "createQuery", "kind": "VariableDeclaration"},
-						{"name": "CompareEntities", "kind": "InterfaceDeclaration"},
-						{"name": "toQueryAddEntity", "kind": "VariableDeclaration"},
-						{"name": "addEntitySortedByCreated", "kind": "VariableDeclaration"},
-						{"name": "addEntitySortedByCreatedReversed", "kind": "VariableDeclaration"}
-					]
-				},
-				"./vocab/schemas.js": {
-					"path": "vocab/schemas.ts",
-					"declarations": [
-						{"name": "modelSchemas", "kind": "VariableDeclaration"},
-						{"name": "actionSchemas", "kind": "VariableDeclaration"},
-						{"name": "schemas", "kind": "VariableDeclaration"},
-						{"name": "schemasByName", "kind": "VariableDeclaration"}
-					]
-				},
-				"./vocab/action/actions.js": {
-					"path": "vocab/action/actions.ts",
-					"declarations": [
-						{"name": "getActions", "kind": "VariableDeclaration"},
-						{"name": "setActions", "kind": "VariableDeclaration"},
-						{"name": "ToActionsClient", "kind": "InterfaceDeclaration"},
-						{"name": "toActions", "kind": "VariableDeclaration"},
-						{"name": "ActionsBroadcastMessage", "kind": "InterfaceDeclaration"},
-						{"name": "toActionsBroadcastMessage", "kind": "VariableDeclaration"}
-					]
-				},
-				"./vocab/account/account.js": {
-					"path": "vocab/account/account.ts",
-					"declarations": [
-						{"name": "AccountId", "kind": "TypeAliasDeclaration"},
-						{"name": "Account", "kind": "InterfaceDeclaration"},
-						{"name": "AccountSettings", "kind": "InterfaceDeclaration"},
-						{"name": "ClientAccount", "kind": "InterfaceDeclaration"},
-						{"name": "ClientAccountSession", "kind": "InterfaceDeclaration"},
-						{"name": "ClientGuestSession", "kind": "InterfaceDeclaration"},
-						{"name": "ClientSession", "kind": "TypeAliasDeclaration"}
-					]
-				}
-			}
-		},
-		"pulls": [
-			{
-				"url": "https://api.github.com/repos/feltjs/felt/pulls/931",
-				"id": 1505025758,
-				"number": 931,
-				"state": "open",
-				"title": "Add issue template for bugs",
-				"user": {
-					"login": "greatbacon",
-					"id": 4512607,
-					"avatar_url": "https://avatars.githubusercontent.com/u/4512607?v=4",
-					"url": "https://api.github.com/users/greatbacon"
-				},
-				"body": "This PR adds a couple of template for opening issues related to bugs.\r\n\r\nBased on templates from https://github.com/sveltejs/kit & https://github.com/oven-sh/bun (thanks for paving the way with these templates), I've honed in the language for our particulars.",
-				"created_at": "2023-09-06T17:25:42Z",
-				"updated_at": "2023-09-30T02:21:32Z",
-				"draft": false
-			},
-			{
-				"url": "https://api.github.com/repos/feltjs/felt/pulls/932",
-				"id": 1506852938,
-				"number": 932,
-				"state": "open",
-				"title": "Adds descriptions to Views & renders them in docs",
-				"user": {
-					"login": "greatbacon",
-					"id": 4512607,
-					"avatar_url": "https://avatars.githubusercontent.com/u/4512607?v=4",
-					"url": "https://api.github.com/users/greatbacon"
-				},
-				"body": "Got an itch and wanted to see how it easy it was to put these in & turned out to be pretty easy 🎉 \r\n\r\nNone of the descriptions need to be final, but I tried to keep it pretty clear and concise.",
-				"created_at": "2023-09-07T20:17:54Z",
-				"updated_at": "2023-09-30T02:21:33Z",
-				"draft": false
-			},
-			{
-				"url": "https://api.github.com/repos/feltjs/felt/pulls/888",
-				"id": 1452802195,
-				"number": 888,
-				"state": "open",
-				"title": "fix initial default selections",
-				"user": {
-					"login": "ryanatkn",
-					"id": 2608646,
-					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
-					"url": "https://api.github.com/users/ryanatkn"
-				},
-				"body": "Trying to figure out why the initial `space` and `hub` are saving only sometimes. I suppose we need to include `actor` and the `params` too to make it work correctly. Needs to be actor id not index?",
-				"created_at": "2023-07-27T21:43:43Z",
-				"updated_at": "2023-09-30T04:12:54Z",
-				"draft": true
-			},
-			{
-				"url": "https://api.github.com/repos/feltjs/felt/pulls/945",
-				"id": 1535519425,
-				"number": 945,
-				"state": "open",
-				"title": "randomize secrets when initializing env",
-				"user": {
-					"login": "ryanatkn",
-					"id": 2608646,
-					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
-					"url": "https://api.github.com/users/ryanatkn"
-				},
-				"body": "Security audit work - it's a footgun to init users with static secrets. Thinking the 🎲 is a good placeholder for a random value.\r\n\r\n- rename to `COOKIE_SECRETS`, use that convention elsewhere",
-				"created_at": "2023-09-29T10:30:43Z",
-				"updated_at": "2023-10-04T02:42:48Z",
-				"draft": true
-			},
-			{
-				"url": "https://api.github.com/repos/feltjs/felt/pulls/905",
-				"id": 1472244660,
-				"number": 905,
-				"state": "open",
-				"title": "replace ties with collection pages",
-				"user": {
-					"login": "ryanatkn",
-					"id": 2608646,
-					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
-					"url": "https://api.github.com/users/ryanatkn"
-				},
-				"body": "reboot of #878 but keeping directories\r\n\r\nnotes\r\n\r\n- is page a system-level concern - hoist `type='CollectionPage'` to entity table, `null` implicitly is the base `Item` type\r\n- we're building the entity query with `sql.unsafe`, which is subject to SQL injection, so we validate the input both at the schema level and immediately in the repo method\r\n\r\ntodo\r\n\r\n- [ ] query system\r\n- [ ] `items` and `lists` need to be synced with deleting entities\r\n- [ ] why are the schemas expanded here?  https://github.com/feltjs/felt/pull/905/commits/9947b25661ee6df9ee3148ef981d56c012061257",
-				"created_at": "2023-08-11T19:18:37Z",
-				"updated_at": "2023-10-29T03:47:00Z",
-				"draft": true
-			}
-		]
-	},
-	{
 		"url": "https://www.fuz.dev/",
 		"package_json": {
 			"name": "@fuz.dev/fuz",
@@ -489,8 +141,8 @@
 				"@feltjs/eslint-config": "^0.4.1",
 				"@fuz.dev/fuz_code": "^0.4.3",
 				"@fuz.dev/fuz_dialog": "^0.5.0",
-				"@fuz.dev/fuz_library": "^0.18.0",
-				"@grogarden/gro": "^0.98.3",
+				"@fuz.dev/fuz_library": "^0.19.1",
+				"@grogarden/gro": "^0.100.1",
 				"@sveltejs/adapter-static": "^2.0.3",
 				"@sveltejs/kit": "^1.27.2",
 				"@sveltejs/package": "^2.2.2",
@@ -617,11 +269,347 @@
 		"pulls": []
 	},
 	{
+		"url": "https://library.fuz.dev/",
+		"package_json": {
+			"name": "@fuz.dev/fuz_library",
+			"description": "components and helpers for Svelte, SvelteKit, and Fuz",
+			"version": "0.19.1",
+			"public": true,
+			"license": "MIT",
+			"homepage": "https://library.fuz.dev/",
+			"repository": "https://github.com/fuz-dev/fuz_library",
+			"author": {
+				"name": "Ryan Atkinson",
+				"email": "mail@ryanatkn.com",
+				"url": "https://www.ryanatkn.com/"
+			},
+			"type": "module",
+			"engines": {"node": ">=20.7"},
+			"scripts": {
+				"start": "gro dev",
+				"dev": "gro dev",
+				"build": "gro build",
+				"test": "gro test",
+				"deploy": "gro deploy"
+			},
+			"files": ["dist"],
+			"peerDependencies": {"@grogarden/util": "*", "@sveltejs/kit": "*", "svelte": "*"},
+			"devDependencies": {
+				"@changesets/changelog-git": "^0.1.14",
+				"@feltjs/eslint-config": "^0.4.1",
+				"@fuz.dev/fuz": "^0.79.1",
+				"@fuz.dev/fuz_code": "^0.4.3",
+				"@grogarden/gro": "^0.100.1",
+				"@grogarden/util": "^0.16.0",
+				"@sveltejs/adapter-static": "^2.0.3",
+				"@sveltejs/kit": "^1.27.2",
+				"@sveltejs/package": "^2.2.2",
+				"@types/node": "^20.8.10",
+				"@typescript-eslint/eslint-plugin": "^6.9.1",
+				"@typescript-eslint/parser": "^6.9.1",
+				"eslint": "^8.52.0",
+				"eslint-plugin-svelte": "^2.34.0",
+				"prettier": "^3.0.3",
+				"prettier-plugin-svelte": "^3.0.3",
+				"prism-svelte": "^0.5.0",
+				"prismjs": "^1.29.0",
+				"svelte": "^4.2.2",
+				"svelte-check": "^3.5.2",
+				"tslib": "^2.6.2",
+				"typescript": "^5.2.2",
+				"uvu": "^0.5.6",
+				"zod": "^3.22.4"
+			},
+			"eslintConfig": {"root": true, "extends": "@feltjs", "rules": {"no-console": 1}},
+			"prettier": {
+				"plugins": ["prettier-plugin-svelte"],
+				"useTabs": true,
+				"printWidth": 100,
+				"singleQuote": true,
+				"bracketSpacing": false,
+				"overrides": [{"files": "package.json", "options": {"useTabs": false}}]
+			},
+			"exports": {
+				"./Alert.svelte": {
+					"svelte": "./dist/Alert.svelte",
+					"default": "./dist/Alert.svelte",
+					"types": "./dist/Alert.svelte.d.ts"
+				},
+				"./alert.js": {"default": "./dist/alert.js", "types": "./dist/alert.d.ts"},
+				"./Breadcrumb.svelte": {
+					"svelte": "./dist/Breadcrumb.svelte",
+					"default": "./dist/Breadcrumb.svelte",
+					"types": "./dist/Breadcrumb.svelte.d.ts"
+				},
+				"./Card.svelte": {
+					"svelte": "./dist/Card.svelte",
+					"default": "./dist/Card.svelte",
+					"types": "./dist/Card.svelte.d.ts"
+				},
+				"./Copy_To_Clipboard.svelte": {
+					"svelte": "./dist/Copy_To_Clipboard.svelte",
+					"default": "./dist/Copy_To_Clipboard.svelte",
+					"types": "./dist/Copy_To_Clipboard.svelte.d.ts"
+				},
+				"./Devmode_Controls.svelte": {
+					"svelte": "./dist/Devmode_Controls.svelte",
+					"default": "./dist/Devmode_Controls.svelte",
+					"types": "./dist/Devmode_Controls.svelte.d.ts"
+				},
+				"./devmode.js": {"default": "./dist/devmode.js", "types": "./dist/devmode.d.ts"},
+				"./Github_Logo.svelte": {
+					"svelte": "./dist/Github_Logo.svelte",
+					"default": "./dist/Github_Logo.svelte",
+					"types": "./dist/Github_Logo.svelte.d.ts"
+				},
+				"./helpers.js": {"default": "./dist/helpers.js", "types": "./dist/helpers.d.ts"},
+				"./Hue_Input.svelte": {
+					"svelte": "./dist/Hue_Input.svelte",
+					"default": "./dist/Hue_Input.svelte",
+					"types": "./dist/Hue_Input.svelte.d.ts"
+				},
+				"./Library_Footer.svelte": {
+					"svelte": "./dist/Library_Footer.svelte",
+					"default": "./dist/Library_Footer.svelte",
+					"types": "./dist/Library_Footer.svelte.d.ts"
+				},
+				"./Library_Header.svelte": {
+					"svelte": "./dist/Library_Header.svelte",
+					"default": "./dist/Library_Header.svelte",
+					"types": "./dist/Library_Header.svelte.d.ts"
+				},
+				"./Library_Menu.svelte": {
+					"svelte": "./dist/Library_Menu.svelte",
+					"default": "./dist/Library_Menu.svelte",
+					"types": "./dist/Library_Menu.svelte.d.ts"
+				},
+				"./Library_Nav.svelte": {
+					"svelte": "./dist/Library_Nav.svelte",
+					"default": "./dist/Library_Nav.svelte",
+					"types": "./dist/Library_Nav.svelte.d.ts"
+				},
+				"./Library_Panel.svelte": {
+					"svelte": "./dist/Library_Panel.svelte",
+					"default": "./dist/Library_Panel.svelte",
+					"types": "./dist/Library_Panel.svelte.d.ts"
+				},
+				"./Library_Vocab.svelte": {
+					"svelte": "./dist/Library_Vocab.svelte",
+					"default": "./dist/Library_Vocab.svelte",
+					"types": "./dist/Library_Vocab.svelte.d.ts"
+				},
+				"./Library.svelte": {
+					"svelte": "./dist/Library.svelte",
+					"default": "./dist/Library.svelte",
+					"types": "./dist/Library.svelte.d.ts"
+				},
+				"./Package_Detail.svelte": {
+					"svelte": "./dist/Package_Detail.svelte",
+					"default": "./dist/Package_Detail.svelte",
+					"types": "./dist/Package_Detail.svelte.d.ts"
+				},
+				"./package_meta.js": {
+					"default": "./dist/package_meta.js",
+					"types": "./dist/package_meta.d.ts"
+				},
+				"./Package_Summary.svelte": {
+					"svelte": "./dist/Package_Summary.svelte",
+					"default": "./dist/Package_Summary.svelte",
+					"types": "./dist/Package_Summary.svelte.d.ts"
+				},
+				"./package.gen.js": {
+					"default": "./dist/package.gen.js",
+					"types": "./dist/package.gen.d.ts"
+				},
+				"./package.js": {"default": "./dist/package.js", "types": "./dist/package.d.ts"},
+				"./Pending_Animation.svelte": {
+					"svelte": "./dist/Pending_Animation.svelte",
+					"default": "./dist/Pending_Animation.svelte",
+					"types": "./dist/Pending_Animation.svelte.d.ts"
+				},
+				"./Pending_Button.svelte": {
+					"svelte": "./dist/Pending_Button.svelte",
+					"default": "./dist/Pending_Button.svelte",
+					"types": "./dist/Pending_Button.svelte.d.ts"
+				},
+				"./Redirect.svelte": {
+					"svelte": "./dist/Redirect.svelte",
+					"default": "./dist/Redirect.svelte",
+					"types": "./dist/Redirect.svelte.d.ts"
+				},
+				"./Teleport.svelte": {
+					"svelte": "./dist/Teleport.svelte",
+					"default": "./dist/Teleport.svelte",
+					"types": "./dist/Teleport.svelte.d.ts"
+				},
+				"./Tome_Detail.svelte": {
+					"svelte": "./dist/Tome_Detail.svelte",
+					"default": "./dist/Tome_Detail.svelte",
+					"types": "./dist/Tome_Detail.svelte.d.ts"
+				},
+				"./Tome_Title.svelte": {
+					"svelte": "./dist/Tome_Title.svelte",
+					"default": "./dist/Tome_Title.svelte",
+					"types": "./dist/Tome_Title.svelte.d.ts"
+				},
+				"./tome.js": {"default": "./dist/tome.js", "types": "./dist/tome.d.ts"}
+			},
+			"modules": {
+				"./Alert.svelte": {"path": "Alert.svelte", "declarations": []},
+				"./alert.js": {
+					"path": "alert.ts",
+					"declarations": [
+						{"name": "Alert_Status", "kind": "TypeAliasDeclaration"},
+						{"name": "Alert_Status_Options", "kind": "InterfaceDeclaration"},
+						{"name": "alert_status_options", "kind": "VariableDeclaration"}
+					]
+				},
+				"./Breadcrumb.svelte": {"path": "Breadcrumb.svelte", "declarations": []},
+				"./Card.svelte": {"path": "Card.svelte", "declarations": []},
+				"./Copy_To_Clipboard.svelte": {"path": "Copy_To_Clipboard.svelte", "declarations": []},
+				"./Devmode_Controls.svelte": {"path": "Devmode_Controls.svelte", "declarations": []},
+				"./devmode.js": {
+					"path": "devmode.ts",
+					"declarations": [
+						{"name": "get_devmode", "kind": "VariableDeclaration"},
+						{"name": "set_devmode", "kind": "VariableDeclaration"}
+					]
+				},
+				"./Github_Logo.svelte": {"path": "Github_Logo.svelte", "declarations": []},
+				"./helpers.js": {
+					"path": "helpers.ts",
+					"declarations": [
+						{"name": "LIBRARY_PATH", "kind": "VariableDeclaration"},
+						{"name": "to_library_path_info", "kind": "VariableDeclaration"}
+					]
+				},
+				"./Hue_Input.svelte": {"path": "Hue_Input.svelte", "declarations": []},
+				"./Library_Footer.svelte": {"path": "Library_Footer.svelte", "declarations": []},
+				"./Library_Header.svelte": {"path": "Library_Header.svelte", "declarations": []},
+				"./Library_Menu.svelte": {"path": "Library_Menu.svelte", "declarations": []},
+				"./Library_Nav.svelte": {"path": "Library_Nav.svelte", "declarations": []},
+				"./Library_Panel.svelte": {"path": "Library_Panel.svelte", "declarations": []},
+				"./Library_Vocab.svelte": {"path": "Library_Vocab.svelte", "declarations": []},
+				"./Library.svelte": {"path": "Library.svelte", "declarations": []},
+				"./Package_Detail.svelte": {"path": "Package_Detail.svelte", "declarations": []},
+				"./package_meta.js": {
+					"path": "package_meta.ts",
+					"declarations": [
+						{"name": "Package", "kind": "InterfaceDeclaration"},
+						{"name": "Package_Meta", "kind": "InterfaceDeclaration"},
+						{"name": "parse_package_meta", "kind": "VariableDeclaration"},
+						{"name": "parse_repo_name", "kind": "VariableDeclaration"},
+						{"name": "format_host", "kind": "VariableDeclaration"},
+						{"name": "parse_org_url", "kind": "VariableDeclaration"}
+					]
+				},
+				"./Package_Summary.svelte": {"path": "Package_Summary.svelte", "declarations": []},
+				"./package.gen.js": {"path": "package.gen.ts", "declarations": []},
+				"./package.js": {
+					"path": "package.ts",
+					"declarations": [{"name": "package_json", "kind": "VariableDeclaration"}]
+				},
+				"./Pending_Animation.svelte": {"path": "Pending_Animation.svelte", "declarations": []},
+				"./Pending_Button.svelte": {"path": "Pending_Button.svelte", "declarations": []},
+				"./Redirect.svelte": {"path": "Redirect.svelte", "declarations": []},
+				"./Teleport.svelte": {"path": "Teleport.svelte", "declarations": []},
+				"./Tome_Detail.svelte": {"path": "Tome_Detail.svelte", "declarations": []},
+				"./Tome_Title.svelte": {"path": "Tome_Title.svelte", "declarations": []},
+				"./tome.js": {
+					"path": "tome.ts",
+					"declarations": [
+						{"name": "Tome", "kind": "VariableDeclaration"},
+						{"name": "init_tome", "kind": "VariableDeclaration"},
+						{"name": "get_tomes", "kind": "VariableDeclaration"},
+						{"name": "set_tomes", "kind": "VariableDeclaration"},
+						{"name": "get_tome", "kind": "VariableDeclaration"}
+					]
+				}
+			}
+		},
+		"pulls": []
+	},
+	{
+		"url": "https://template.fuz.dev/",
+		"package_json": {
+			"name": "@fuz.dev/fuz_template",
+			"description": "a static web app and Node library template with TypeScript, Svelte, SvelteKit, Vite, esbuild, Fuz, and Gro",
+			"version": "0.0.1",
+			"public": true,
+			"homepage": "https://template.fuz.dev/",
+			"repository": "https://github.com/fuz-dev/fuz_template",
+			"type": "module",
+			"engines": {"node": ">=20.7"},
+			"scripts": {
+				"start": "gro dev",
+				"dev": "gro dev",
+				"build": "gro build",
+				"test": "gro test",
+				"deploy": "gro deploy"
+			},
+			"files": ["dist"],
+			"devDependencies": {
+				"@feltjs/eslint-config": "^0.4.1",
+				"@fuz.dev/fuz": "^0.79.1",
+				"@fuz.dev/fuz_contextmenu": "^0.6.0",
+				"@fuz.dev/fuz_dialog": "^0.5.0",
+				"@fuz.dev/fuz_library": "^0.19.1",
+				"@grogarden/gro": "^0.100.1",
+				"@grogarden/util": "^0.16.0",
+				"@sveltejs/adapter-static": "^2.0.3",
+				"@sveltejs/kit": "^1.27.2",
+				"@typescript-eslint/eslint-plugin": "^6.9.1",
+				"@typescript-eslint/parser": "^6.9.1",
+				"eslint": "^8.52.0",
+				"eslint-plugin-svelte": "^2.34.0",
+				"prettier": "^3.0.3",
+				"prettier-plugin-svelte": "^3.0.3",
+				"svelte": "^4.2.2",
+				"svelte-check": "^3.5.2",
+				"tslib": "^2.6.2",
+				"typescript": "^5.2.2",
+				"uvu": "^0.5.6"
+			},
+			"eslintConfig": {"root": true, "extends": "@feltjs"},
+			"prettier": {
+				"plugins": ["prettier-plugin-svelte"],
+				"useTabs": true,
+				"printWidth": 100,
+				"singleQuote": true,
+				"bracketSpacing": false,
+				"overrides": [{"files": "package.json", "options": {"useTabs": false}}]
+			},
+			"exports": {
+				"./example.js": {"default": "./dist/example.js", "types": "./dist/example.d.ts"},
+				"./package.gen.js": {
+					"default": "./dist/package.gen.js",
+					"types": "./dist/package.gen.d.ts"
+				},
+				"./package.js": {"default": "./dist/package.js", "types": "./dist/package.d.ts"}
+			},
+			"modules": {
+				"./example.js": {
+					"path": "example.ts",
+					"declarations": [
+						{"name": "example_a", "kind": "VariableDeclaration"},
+						{"name": "example_b", "kind": "VariableDeclaration"}
+					]
+				},
+				"./package.gen.js": {"path": "package.gen.ts", "declarations": []},
+				"./package.js": {
+					"path": "package.ts",
+					"declarations": [{"name": "package_json", "kind": "VariableDeclaration"}]
+				}
+			}
+		},
+		"pulls": []
+	},
+	{
 		"url": "https://www.grogarden.org/",
 		"package_json": {
 			"name": "@grogarden/gro",
 			"description": "task runner and toolkit extending SvelteKit",
-			"version": "0.98.3",
+			"version": "0.100.1",
 			"public": true,
 			"bin": {"gro": "dist/gro.js"},
 			"license": "MIT",
@@ -653,7 +641,7 @@
 			],
 			"files": ["dist"],
 			"dependencies": {
-				"@grogarden/util": "^0.15.2",
+				"@grogarden/util": "^0.16.0",
 				"@ryanatkn/json-schema-to-typescript": "^11.1.5",
 				"chokidar": "^3.5.3",
 				"dotenv": "^16.3.1",
@@ -667,21 +655,21 @@
 				"tslib": "^2.6.2",
 				"zod": "^3.22.4"
 			},
-			"peerDependencies": {"esbuild": "^0.18", "svelte": "*"},
+			"peerDependencies": {"esbuild": "^0.18.20", "svelte": "*"},
 			"devDependencies": {
 				"@changesets/changelog-git": "^0.1.14",
 				"@changesets/types": "^5.2.1",
 				"@feltjs/eslint-config": "^0.4.1",
-				"@fuz.dev/fuz": "^0.76.0",
-				"@fuz.dev/fuz_library": "^0.16.1",
+				"@fuz.dev/fuz": "^0.79.1",
+				"@fuz.dev/fuz_library": "^0.19.1",
 				"@sveltejs/adapter-static": "^2.0.3",
-				"@sveltejs/kit": "^1.27.1",
+				"@sveltejs/kit": "^1.27.2",
 				"@sveltejs/package": "^2.2.2",
 				"@types/fs-extra": "^11.0.3",
-				"@types/node": "^20.8.9",
-				"@typescript-eslint/eslint-plugin": "^6.9.0",
-				"@typescript-eslint/parser": "^6.9.0",
-				"esbuild": "^0.18.0",
+				"@types/node": "^20.8.10",
+				"@typescript-eslint/eslint-plugin": "^6.9.1",
+				"@typescript-eslint/parser": "^6.9.1",
+				"esbuild": "^0.18.20",
 				"eslint": "^8.52.0",
 				"eslint-plugin-svelte": "^2.34.0",
 				"svelte": "^4.2.2",
@@ -893,23 +881,23 @@
 				".": {
 					"path": "index.ts",
 					"declarations": [
-						{"name": "GroConfig", "kind": "InterfaceDeclaration"},
-						{"name": "CreateGroConfig", "kind": "InterfaceDeclaration"},
+						{"name": "Gro_Config", "kind": "InterfaceDeclaration"},
+						{"name": "Create_Gro_Config", "kind": "InterfaceDeclaration"},
 						{"name": "Plugin", "kind": "InterfaceDeclaration"},
 						{"name": "replace_plugin", "kind": "VariableDeclaration"},
 						{"name": "Gen", "kind": "InterfaceDeclaration"},
-						{"name": "GenContext", "kind": "InterfaceDeclaration"},
+						{"name": "Gen_Context", "kind": "InterfaceDeclaration"},
 						{"name": "Task", "kind": "InterfaceDeclaration"},
-						{"name": "TaskContext", "kind": "InterfaceDeclaration"},
-						{"name": "TaskError", "kind": "ClassDeclaration"}
+						{"name": "Task_Context", "kind": "InterfaceDeclaration"},
+						{"name": "Task_Error", "kind": "ClassDeclaration"}
 					]
 				},
 				"./args.js": {
 					"path": "args.ts",
 					"declarations": [
 						{"name": "Args", "kind": "InterfaceDeclaration"},
-						{"name": "ArgValue", "kind": "TypeAliasDeclaration"},
-						{"name": "ArgSchema", "kind": "InterfaceDeclaration"},
+						{"name": "Arg_Value", "kind": "TypeAliasDeclaration"},
+						{"name": "Arg_Schema", "kind": "InterfaceDeclaration"},
 						{"name": "parse_args", "kind": "VariableDeclaration"},
 						{"name": "serialize_args", "kind": "VariableDeclaration"},
 						{"name": "to_task_args", "kind": "VariableDeclaration"},
@@ -931,8 +919,8 @@
 					"declarations": [
 						{"name": "Args", "kind": "VariableDeclaration"},
 						{"name": "task", "kind": "VariableDeclaration"},
-						{"name": "ChangesetCallback", "kind": "InterfaceDeclaration"},
-						{"name": "UpdateWrittenConfig", "kind": "InterfaceDeclaration"},
+						{"name": "Changeset_Callback", "kind": "InterfaceDeclaration"},
+						{"name": "Update_Written_Config", "kind": "InterfaceDeclaration"},
 						{"name": "update_changeset_config", "kind": "VariableDeclaration"},
 						{"name": "load_changeset_config", "kind": "VariableDeclaration"},
 						{"name": "load_changeset_config_contents", "kind": "VariableDeclaration"},
@@ -976,10 +964,10 @@
 				"./config.js": {
 					"path": "config.ts",
 					"declarations": [
-						{"name": "GroConfig", "kind": "InterfaceDeclaration"},
-						{"name": "CreateGroConfig", "kind": "InterfaceDeclaration"},
+						{"name": "Gro_Config", "kind": "InterfaceDeclaration"},
+						{"name": "Create_Gro_Config", "kind": "InterfaceDeclaration"},
 						{"name": "create_empty_config", "kind": "VariableDeclaration"},
-						{"name": "GroConfigModule", "kind": "InterfaceDeclaration"},
+						{"name": "Gro_Config_Module", "kind": "InterfaceDeclaration"},
 						{"name": "load_config", "kind": "VariableDeclaration"},
 						{"name": "validate_config_module", "kind": "VariableDeclaration"}
 					]
@@ -995,7 +983,7 @@
 					"path": "dev.task.ts",
 					"declarations": [
 						{"name": "Args", "kind": "VariableDeclaration"},
-						{"name": "DevTaskContext", "kind": "TypeAliasDeclaration"},
+						{"name": "DevTask_Context", "kind": "TypeAliasDeclaration"},
 						{"name": "task", "kind": "VariableDeclaration"}
 					]
 				},
@@ -1086,18 +1074,18 @@
 						{"name": "GEN_SCHEMA_FILE_PATTERN", "kind": "VariableDeclaration"},
 						{"name": "GEN_SCHEMA_PATH_SUFFIX", "kind": "VariableDeclaration"},
 						{"name": "GEN_SCHEMA_IDENTIFIER_SUFFIX", "kind": "VariableDeclaration"},
-						{"name": "GenModuleType", "kind": "TypeAliasDeclaration"},
-						{"name": "GenModule", "kind": "TypeAliasDeclaration"},
-						{"name": "BasicGenModule", "kind": "InterfaceDeclaration"},
-						{"name": "SchemaGenModule", "kind": "InterfaceDeclaration"},
+						{"name": "Gen_Module_Type", "kind": "TypeAliasDeclaration"},
+						{"name": "Gen_Module", "kind": "TypeAliasDeclaration"},
+						{"name": "Basic_Gen_Module", "kind": "InterfaceDeclaration"},
+						{"name": "Schema_Gen_Module", "kind": "InterfaceDeclaration"},
 						{"name": "to_gen_module_type", "kind": "VariableDeclaration"},
 						{"name": "gen_module_meta", "kind": "VariableDeclaration"},
 						{"name": "validate_gen_module", "kind": "VariableDeclaration"},
-						{"name": "GenModuleMeta", "kind": "TypeAliasDeclaration"},
-						{"name": "BasicGenModuleMeta", "kind": "InterfaceDeclaration"},
-						{"name": "SchemaGenModuleMeta", "kind": "InterfaceDeclaration"},
+						{"name": "Gen_Module_Meta", "kind": "TypeAliasDeclaration"},
+						{"name": "Basic_Gen_Module_Meta", "kind": "InterfaceDeclaration"},
+						{"name": "Schema_Gen_Module_Meta", "kind": "InterfaceDeclaration"},
 						{"name": "load_gen_module", "kind": "VariableDeclaration"},
-						{"name": "CheckGenModuleResult", "kind": "TypeAliasDeclaration"},
+						{"name": "Check_Gen_Module_Result", "kind": "TypeAliasDeclaration"},
 						{"name": "check_gen_modules", "kind": "VariableDeclaration"},
 						{"name": "check_gen_module", "kind": "VariableDeclaration"},
 						{"name": "find_gen_modules", "kind": "VariableDeclaration"}
@@ -1120,17 +1108,17 @@
 				"./gen.js": {
 					"path": "gen.ts",
 					"declarations": [
-						{"name": "GenResult", "kind": "TypeAliasDeclaration"},
-						{"name": "GenFile", "kind": "InterfaceDeclaration"},
+						{"name": "Gen_Result", "kind": "TypeAliasDeclaration"},
+						{"name": "Gen_File", "kind": "InterfaceDeclaration"},
 						{"name": "Gen", "kind": "InterfaceDeclaration"},
-						{"name": "GenContext", "kind": "InterfaceDeclaration"},
-						{"name": "RawGenResult", "kind": "TypeAliasDeclaration"},
-						{"name": "RawGenFile", "kind": "InterfaceDeclaration"},
-						{"name": "GenConfig", "kind": "VariableDeclaration"},
-						{"name": "GenResults", "kind": "TypeAliasDeclaration"},
-						{"name": "GenModuleResult", "kind": "TypeAliasDeclaration"},
-						{"name": "GenModuleResultSuccess", "kind": "TypeAliasDeclaration"},
-						{"name": "GenModuleResultFailure", "kind": "TypeAliasDeclaration"},
+						{"name": "Gen_Context", "kind": "InterfaceDeclaration"},
+						{"name": "Raw_Gen_Result", "kind": "TypeAliasDeclaration"},
+						{"name": "Raw_Gen_File", "kind": "InterfaceDeclaration"},
+						{"name": "Gen_Config", "kind": "VariableDeclaration"},
+						{"name": "Gen_Results", "kind": "TypeAliasDeclaration"},
+						{"name": "Gen_Module_Result", "kind": "TypeAliasDeclaration"},
+						{"name": "Gen_Module_Result_Success", "kind": "TypeAliasDeclaration"},
+						{"name": "Gen_Module_Result_Failure", "kind": "TypeAliasDeclaration"},
 						{"name": "to_gen_result", "kind": "VariableDeclaration"},
 						{"name": "to_output_file_name", "kind": "VariableDeclaration"}
 					]
@@ -1138,8 +1126,8 @@
 				"./git.js": {
 					"path": "git.ts",
 					"declarations": [
-						{"name": "GitOrigin", "kind": "VariableDeclaration"},
-						{"name": "GitBranch", "kind": "VariableDeclaration"},
+						{"name": "Git_Origin", "kind": "VariableDeclaration"},
+						{"name": "Git_Branch", "kind": "VariableDeclaration"},
 						{"name": "git_current_branch_name", "kind": "VariableDeclaration"},
 						{"name": "git_remote_branch_exists", "kind": "VariableDeclaration"},
 						{"name": "git_local_branch_exists", "kind": "VariableDeclaration"},
@@ -1162,7 +1150,7 @@
 				"./gro_plugin_gen.js": {
 					"path": "gro_plugin_gen.ts",
 					"declarations": [
-						{"name": "TaskArgs", "kind": "InterfaceDeclaration"},
+						{"name": "Task_Args", "kind": "InterfaceDeclaration"},
 						{"name": "plugin", "kind": "VariableDeclaration"}
 					]
 				},
@@ -1180,7 +1168,7 @@
 						{"name": "has_server", "kind": "VariableDeclaration"},
 						{"name": "Options", "kind": "InterfaceDeclaration"},
 						{"name": "Outpaths", "kind": "InterfaceDeclaration"},
-						{"name": "CreateOutpaths", "kind": "InterfaceDeclaration"},
+						{"name": "Create_Outpaths", "kind": "InterfaceDeclaration"},
 						{"name": "plugin", "kind": "VariableDeclaration"}
 					]
 				},
@@ -1188,7 +1176,7 @@
 					"path": "gro_plugin_sveltekit_frontend.ts",
 					"declarations": [
 						{"name": "Options", "kind": "InterfaceDeclaration"},
-						{"name": "HostTarget", "kind": "TypeAliasDeclaration"},
+						{"name": "Host_Target", "kind": "TypeAliasDeclaration"},
 						{"name": "plugin", "kind": "VariableDeclaration"}
 					]
 				},
@@ -1237,13 +1225,13 @@
 				"./modules.js": {
 					"path": "modules.ts",
 					"declarations": [
-						{"name": "ModuleMeta", "kind": "InterfaceDeclaration"},
-						{"name": "LoadModuleResult", "kind": "TypeAliasDeclaration"},
-						{"name": "LoadModuleFailure", "kind": "TypeAliasDeclaration"},
+						{"name": "Module_Meta", "kind": "InterfaceDeclaration"},
+						{"name": "Load_Module_Result", "kind": "TypeAliasDeclaration"},
+						{"name": "Load_Module_Failure", "kind": "TypeAliasDeclaration"},
 						{"name": "load_module", "kind": "VariableDeclaration"},
-						{"name": "FindModulesResult", "kind": "TypeAliasDeclaration"},
-						{"name": "FindModulesFailure", "kind": "TypeAliasDeclaration"},
-						{"name": "LoadModulesResult", "kind": "TypeAliasDeclaration"},
+						{"name": "Find_Modules_Result", "kind": "TypeAliasDeclaration"},
+						{"name": "Find_Modules_Failure", "kind": "TypeAliasDeclaration"},
+						{"name": "Load_Modules_Result", "kind": "TypeAliasDeclaration"},
 						{"name": "find_modules", "kind": "VariableDeclaration"},
 						{"name": "load_modules", "kind": "VariableDeclaration"}
 					]
@@ -1254,13 +1242,13 @@
 						{"name": "Package_Module_Declaration", "kind": "VariableDeclaration"},
 						{"name": "Package_Module", "kind": "VariableDeclaration"},
 						{"name": "Package_Modules", "kind": "VariableDeclaration"},
-						{"name": "PackageJsonRepository", "kind": "VariableDeclaration"},
-						{"name": "PackageJsonAuthor", "kind": "VariableDeclaration"},
-						{"name": "PackageJsonFunding", "kind": "VariableDeclaration"},
-						{"name": "PackageJsonExports", "kind": "VariableDeclaration"},
-						{"name": "PackageJsonModules", "kind": "VariableDeclaration"},
-						{"name": "PackageJson", "kind": "VariableDeclaration"},
-						{"name": "MapPackageJson", "kind": "InterfaceDeclaration"},
+						{"name": "Package_Json_Repository", "kind": "VariableDeclaration"},
+						{"name": "Package_Json_Author", "kind": "VariableDeclaration"},
+						{"name": "Package_Json_Funding", "kind": "VariableDeclaration"},
+						{"name": "Package_Json_Exports", "kind": "VariableDeclaration"},
+						{"name": "Package_Json_Modules", "kind": "VariableDeclaration"},
+						{"name": "Package_Json", "kind": "VariableDeclaration"},
+						{"name": "Map_Package_Json", "kind": "InterfaceDeclaration"},
 						{"name": "EMPTY_PACKAGE_JSON", "kind": "VariableDeclaration"},
 						{"name": "load_package_json", "kind": "VariableDeclaration"},
 						{"name": "load_mapped_package_json", "kind": "VariableDeclaration"},
@@ -1322,8 +1310,8 @@
 						{"name": "Paths", "kind": "InterfaceDeclaration"},
 						{"name": "Url", "kind": "VariableDeclaration"},
 						{"name": "Email", "kind": "VariableDeclaration"},
-						{"name": "SourceId", "kind": "VariableDeclaration"},
-						{"name": "BuildId", "kind": "VariableDeclaration"},
+						{"name": "Source_Id", "kind": "VariableDeclaration"},
+						{"name": "Build_Id", "kind": "VariableDeclaration"},
 						{"name": "create_paths", "kind": "VariableDeclaration"},
 						{"name": "paths_from_id", "kind": "VariableDeclaration"},
 						{"name": "is_gro_id", "kind": "VariableDeclaration"},
@@ -1348,8 +1336,8 @@
 					"path": "plugin.ts",
 					"declarations": [
 						{"name": "Plugin", "kind": "InterfaceDeclaration"},
-						{"name": "CreateConfigPlugins", "kind": "InterfaceDeclaration"},
-						{"name": "PluginContext", "kind": "InterfaceDeclaration"},
+						{"name": "Create_Config_Plugins", "kind": "InterfaceDeclaration"},
+						{"name": "Plugin_Context", "kind": "InterfaceDeclaration"},
 						{"name": "Plugins", "kind": "ClassDeclaration"},
 						{"name": "replace_plugin", "kind": "VariableDeclaration"}
 					]
@@ -1380,14 +1368,14 @@
 					"path": "resolve_node_specifier.ts",
 					"declarations": [
 						{"name": "resolve_node_specifier", "kind": "VariableDeclaration"},
-						{"name": "ParsedNodeSpecifier", "kind": "InterfaceDeclaration"},
+						{"name": "Parsed_Node_Specifier", "kind": "InterfaceDeclaration"},
 						{"name": "parse_node_specifier", "kind": "VariableDeclaration"}
 					]
 				},
 				"./resolve_specifier.js": {
 					"path": "resolve_specifier.ts",
 					"declarations": [
-						{"name": "ResolvedSpecifier", "kind": "InterfaceDeclaration"},
+						{"name": "Resolved_Specifier", "kind": "InterfaceDeclaration"},
 						{"name": "resolve_specifier", "kind": "VariableDeclaration"}
 					]
 				},
@@ -1403,21 +1391,21 @@
 				"./run_task.js": {
 					"path": "run_task.ts",
 					"declarations": [
-						{"name": "RunTaskResult", "kind": "TypeAliasDeclaration"},
+						{"name": "Run_Task_Result", "kind": "TypeAliasDeclaration"},
 						{"name": "run_task", "kind": "VariableDeclaration"}
 					]
 				},
 				"./schema.js": {
 					"path": "schema.ts",
 					"declarations": [
-						{"name": "SomeTestObjectSchema", "kind": "VariableDeclaration"},
-						{"name": "SomeTestPrimitiveSchema", "kind": "VariableDeclaration"}
+						{"name": "Some_Test_Object_Schema", "kind": "VariableDeclaration"},
+						{"name": "Some_Test_Primitive_Schema", "kind": "VariableDeclaration"}
 					]
 				},
 				"./search_fs.js": {
 					"path": "search_fs.ts",
 					"declarations": [
-						{"name": "SearchFsOptions", "kind": "InterfaceDeclaration"},
+						{"name": "Search_Fs_Options", "kind": "InterfaceDeclaration"},
 						{"name": "search_fs", "kind": "VariableDeclaration"}
 					]
 				},
@@ -1425,7 +1413,7 @@
 					"path": "sveltekit_config.ts",
 					"declarations": [
 						{"name": "load_sveltekit_config", "kind": "VariableDeclaration"},
-						{"name": "ParsedSveltekitConfig", "kind": "InterfaceDeclaration"},
+						{"name": "Parsed_Sveltekit_Config", "kind": "InterfaceDeclaration"},
 						{"name": "init_sveltekit_config", "kind": "VariableDeclaration"}
 					]
 				},
@@ -1537,10 +1525,10 @@
 				"./watch_dir.js": {
 					"path": "watch_dir.ts",
 					"declarations": [
-						{"name": "WatchNodeFs", "kind": "InterfaceDeclaration"},
-						{"name": "WatcherChange", "kind": "InterfaceDeclaration"},
-						{"name": "WatcherChangeType", "kind": "TypeAliasDeclaration"},
-						{"name": "WatcherChangeCallback", "kind": "InterfaceDeclaration"},
+						{"name": "Watch_Node_Fs", "kind": "InterfaceDeclaration"},
+						{"name": "Watcher_Change", "kind": "InterfaceDeclaration"},
+						{"name": "Watcher_Change_Type", "kind": "TypeAliasDeclaration"},
+						{"name": "Watcher_Change_Callback", "kind": "InterfaceDeclaration"},
 						{"name": "Options", "kind": "InterfaceDeclaration"},
 						{"name": "watch_dir", "kind": "VariableDeclaration"}
 					]
@@ -1623,12 +1611,12 @@
 			},
 			"devDependencies": {
 				"@feltjs/eslint-config": "^0.4.1",
-				"@fuz.dev/fuz": "^0.78.0",
-				"@fuz.dev/fuz_library": "^0.17.1",
-				"@grogarden/gro": "^0.98.3",
-				"@grogarden/util": "^0.15.4",
+				"@fuz.dev/fuz": "^0.79.1",
+				"@fuz.dev/fuz_library": "^0.19.1",
+				"@grogarden/gro": "^0.100.1",
+				"@grogarden/util": "^0.16.0",
 				"@octokit/request": "^8.1.4",
-				"@ryanatkn/orc": "^0.8.2",
+				"@ryanatkn/orc": "^0.10.1",
 				"@sveltejs/adapter-static": "^2.0.3",
 				"@sveltejs/kit": "^1.27.2",
 				"@typescript-eslint/eslint-plugin": "^6.9.1",

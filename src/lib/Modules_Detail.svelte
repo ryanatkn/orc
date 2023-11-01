@@ -14,15 +14,24 @@
 
 	// TODO show other data (bytes and lines of code per module?)
 
-	// TODO pretty hacky, needs helpers or rethinking
+	// TODO hacky, needs helpers or rethinking
 	let pkgs_modules: Array<{
 		pkg: Package_Meta;
 		modules: Package_Module[];
 	}>;
 	$: pkgs_modules = pkgs.reduce(
 		(v, pkg) => {
-			if (!pkg.package_json?.modules) return v;
-			v.push({pkg, modules: Object.values(pkg.package_json.modules)});
+			const {package_json} = pkg;
+			if (
+				!package_json?.modules ||
+				!(
+					!!package_json.devDependencies?.['@sveltejs/package'] ||
+					!!package_json.dependencies?.['@sveltejs/package']
+				)
+			) {
+				return v;
+			}
+			v.push({pkg, modules: Object.values(package_json.modules)});
 			return v;
 		},
 		[] as Array<{pkg: Package_Meta; modules: Package_Module[]}>,
