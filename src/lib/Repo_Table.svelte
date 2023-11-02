@@ -125,11 +125,7 @@
 					<div class="row">
 						{#if pulls}
 							{#each pulls as pull (pull)}
-								<a
-									href="{strip_end(pkg.repo_url, '/')}/pull/{pull.number}"
-									class="chip"
-									title={pull.title}>#{pull.number}</a
-								>
+								<a href={pull.url} class="chip" title={pull.title}>#{pull.number}</a>
 							{/each}
 						{/if}
 					</div>
