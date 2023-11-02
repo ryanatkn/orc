@@ -84,6 +84,11 @@ export const package_json = {
 		'./package.js': {default: './dist/package.js', types: './dist/package.d.ts'},
 		'./packages.json': {default: './dist/packages.json', types: './dist/packages.json.d.ts'},
 		'./packages.task.js': {default: './dist/packages.task.js', types: './dist/packages.task.d.ts'},
+		'./Pull_Requests_Detail.svelte': {
+			svelte: './dist/Pull_Requests_Detail.svelte',
+			default: './dist/Pull_Requests_Detail.svelte',
+			types: './dist/Pull_Requests_Detail.svelte.d.ts',
+		},
 		'./Repo_Table.svelte': {
 			svelte: './dist/Repo_Table.svelte',
 			default: './dist/Repo_Table.svelte',
@@ -148,6 +153,7 @@ export const package_json = {
 				{name: 'task', kind: 'VariableDeclaration'},
 			],
 		},
+		'./Pull_Requests_Detail.svelte': {path: 'Pull_Requests_Detail.svelte', declarations: []},
 		'./Repo_Table.svelte': {path: 'Repo_Table.svelte', declarations: []},
 		'./sync.task.js': {
 			path: 'sync.task.ts',

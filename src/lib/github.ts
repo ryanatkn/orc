@@ -60,7 +60,7 @@ export const fetch_github_pull_requests = async (
 			params,
 			key,
 			etag: res.headers.etag ?? null,
-			data: res.data.map((i) => Github_Pull_Request.parse(i)),
+			data: res.data.map((i) => Github_Pull_Request.parse(i)).sort((a, b) => b.number - a.number),
 		};
 		cache?.set(result.key, result);
 		return result;

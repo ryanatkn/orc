@@ -122,6 +122,11 @@
       "default": "./dist/packages.task.js",
       "types": "./dist/packages.task.d.ts"
     },
+    "./Pull_Requests_Detail.svelte": {
+      "svelte": "./dist/Pull_Requests_Detail.svelte",
+      "default": "./dist/Pull_Requests_Detail.svelte",
+      "types": "./dist/Pull_Requests_Detail.svelte.d.ts"
+    },
     "./Repo_Table.svelte": {
       "svelte": "./dist/Repo_Table.svelte",
       "default": "./dist/Repo_Table.svelte",
