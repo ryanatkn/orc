@@ -42,7 +42,7 @@
 					>
 					<td
 						><a
-							href="https://github.com/{pull_request.pkg.repo_url}/{pull_request.pull.number}"
+							href="{pull_request.pkg.repo_url}/pull/{pull_request.pull.number}"
 							title={pull_request.pull.title}>#{pull_request.pull.number}</a
 						></td
 					>
