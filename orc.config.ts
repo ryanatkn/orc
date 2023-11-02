@@ -10,6 +10,9 @@ const config: Orc_Config = {
 		'https://missing.fuz.dev/',
 		'https://www.spiderspace.org/',
 	],
+	// TODO BLOCK
+	// Filter_Pull_Request =
+	filter_pull_request: (pull) => pull.user.login === 'ryanatkn',
 };
 
 export default config;
