@@ -2,7 +2,7 @@
 	import {format_host} from '@fuz.dev/fuz_library/package_meta.js';
 	import {page} from '$app/stores';
 	import {base} from '$app/paths';
-	import {ensure_end, strip_end} from '@grogarden/util/string.js';
+	import {ensure_end} from '@grogarden/util/string.js';
 
 	import type {Fetched_Package_Meta} from '$lib/fetch_packages.js';
 
