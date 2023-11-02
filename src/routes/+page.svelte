@@ -35,6 +35,12 @@
 				</Card>
 			</li>
 			<li>
+				<Card href="{base}/pulls">
+					pulls
+					<svelte:fragment slot="icon">{''}</svelte:fragment>
+				</Card>
+			</li>
+			<li>
 				<Card href="{base}/tree">
 					tree
 					<svelte:fragment slot="icon">{''}</svelte:fragment>
