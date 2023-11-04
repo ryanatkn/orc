@@ -40,7 +40,7 @@
 
 	{#if unfetched.length}
 		<section class="prose">
-			<p>Some packages could not be fetched:</p>
+			<p>⚠️ Some packages could not be fetched:</p>
 			<ul>
 				{#each unfetched as { url }}
 					<li><a href={url}>{format_host(url)}</a></li>
