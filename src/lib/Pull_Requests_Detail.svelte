@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type {Maybe_Fetched_Package} from '@ryanatkn/orc/fetch_packages.js';
 	import {format_host} from '@fuz.dev/fuz_library/package_meta.js';
 
 	import {split_packages, to_pull_requests, type Filter_Pull_Request} from '$lib/github_helpers.js';
+	import type {Maybe_Fetched_Package} from '$lib/fetch_packages.js';
 
 	export let packages: Maybe_Fetched_Package[];
 
