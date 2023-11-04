@@ -11,14 +11,18 @@
 	const pkg = parse_package_meta(package_json.homepage, package_json);
 </script>
 
+<svelte:head>
+	<title>{package_json.name}</title>
+</svelte:head>
+
 <main class="box">
 	<section>
 		<Main_Header />
 	</section>
 	<section class="prose">
-		<blockquote class="text_align_center">
-			for example usage<br />see <a href="https://www.spiderspace.org/">spiderspace.org</a>
-		</blockquote>
+		<aside class="text_align_center">
+			for example usage see <a href="https://www.spiderspace.org/">spiderspace.org</a>
+		</aside>
 	</section>
 	<section>
 		<menu>

@@ -14,7 +14,7 @@
 </script>
 
 <svelte:head>
-	<title>pull requests {package_json.icon} @ryanatkn/orc</title>
+	<title>pull requests {package_json.icon} {package_json.name}</title>
 </svelte:head>
 
 <main class="box width_full">
