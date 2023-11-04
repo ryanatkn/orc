@@ -8,10 +8,13 @@
 	import {package_json} from '$lib/package.js';
 
 	const pkg = parse_package_meta(package_json.homepage, package_json);
+
+	// TODO BLOCK finalize API, get from where? orc.config.ts?
+	const filter_pull_request = undefined;
 </script>
 
 <svelte:head>
-	<title>@ryanatkn/orc: pull requests</title>
+	<title>pull requests {package_json.icon} @ryanatkn/orc</title>
 </svelte:head>
 
 <main class="box width_full">
@@ -19,7 +22,7 @@
 		<Page_Header />
 	</section>
 	<section>
-		<Pull_Requests_Detail {packages} />
+		<Pull_Requests_Detail {packages} {filter_pull_request} />
 	</section>
 	<section class="box">
 		<Page_Footer {pkg} />

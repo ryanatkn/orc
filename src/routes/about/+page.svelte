@@ -10,7 +10,7 @@
 </script>
 
 <svelte:head>
-	<title>@ryanatkn/orc: about</title>
+	<title>about {package_json.icon} @ryanatkn/orc</title>
 </svelte:head>
 
 <main class="width_md">

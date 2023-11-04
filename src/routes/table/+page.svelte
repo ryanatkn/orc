@@ -22,7 +22,7 @@
 </script>
 
 <svelte:head>
-	<title>@ryanatkn/orc: table</title>
+	<title>table {package_json.icon} @ryanatkn/orc</title>
 </svelte:head>
 
 <main class="box">

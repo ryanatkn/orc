@@ -15,7 +15,7 @@
 </script>
 
 <svelte:head>
-	<title>@ryanatkn/orc: modules</title>
+	<title>modules {package_json.icon} @ryanatkn/orc</title>
 </svelte:head>
 
 <main class="box width_full">

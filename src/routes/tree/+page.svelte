@@ -19,7 +19,7 @@
 </script>
 
 <svelte:head>
-	<title>@ryanatkn/orc: tree</title>
+	<title>tree {package_json.icon} @ryanatkn/orc</title>
 </svelte:head>
 
 <main class="box width_full">
