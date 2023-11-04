@@ -2,7 +2,6 @@ import type {Orc_Config} from '$lib/config.js';
 
 const config: Orc_Config = {
 	packages: [
-		'https://www.felt.dev/',
 		'https://www.fuz.dev/',
 		'https://library.fuz.dev/',
 		'https://template.fuz.dev/',
@@ -11,7 +10,7 @@ const config: Orc_Config = {
 		'https://www.spiderspace.org/',
 	],
 	// TODO BLOCK
-	filter_pull_request: (pull) => pull.user.login === 'ryanatkn',
+	// filter_pull_request: (pull) => pull.user.login === 'ryanatkn',
 };
 
 export default config;
