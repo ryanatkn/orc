@@ -18,6 +18,10 @@
 	const pkg = parse_package_meta(package_json.homepage, package_json);
 </script>
 
+<svelte:head>
+	<title>@ryanatkn/orc: tree</title>
+</svelte:head>
+
 <main class="box width_full">
 	<section>
 		<Page_Header />

@@ -29,7 +29,7 @@
 			"devDependencies": {
 				"@changesets/changelog-git": "^0.1.14",
 				"@feltjs/eslint-config": "^0.4.1",
-				"@fuz.dev/fuz": "^0.79.2",
+				"@fuz.dev/fuz": "^0.79.3",
 				"@fuz.dev/fuz_contextmenu": "^0.6.0",
 				"@fuz.dev/fuz_dialog": "^0.5.0",
 				"@fuz.dev/fuz_library": "^0.19.4",
@@ -76,6 +76,10 @@
 					"default": "./dist/fs_fetch_cache.js",
 					"types": "./dist/fs_fetch_cache.d.ts"
 				},
+				"./github_helpers.js": {
+					"default": "./dist/github_helpers.js",
+					"types": "./dist/github_helpers.d.ts"
+				},
 				"./github.js": {"default": "./dist/github.js", "types": "./dist/github.d.ts"},
 				"./Modules_Detail.svelte": {
 					"svelte": "./dist/Modules_Detail.svelte",
@@ -100,6 +104,11 @@
 					"default": "./dist/packages.task.js",
 					"types": "./dist/packages.task.d.ts"
 				},
+				"./Pull_Requests_Detail.svelte": {
+					"svelte": "./dist/Pull_Requests_Detail.svelte",
+					"default": "./dist/Pull_Requests_Detail.svelte",
+					"types": "./dist/Pull_Requests_Detail.svelte.d.ts"
+				},
 				"./Repo_Table.svelte": {
 					"svelte": "./dist/Repo_Table.svelte",
 					"default": "./dist/Repo_Table.svelte",
@@ -108,7 +117,7 @@
 				"./sync.task.js": {"default": "./dist/sync.task.js", "types": "./dist/sync.task.d.ts"}
 			}
 		},
-		"pulls": null
+		"pull_requests": null
 	},
 	{
 		"url": "https://www.felt.dev/",
@@ -4293,57 +4302,23 @@
 				}
 			}
 		},
-		"pulls": [
+		"pull_requests": [
 			{
-				"url": "https://api.github.com/repos/feltjs/felt/pulls/888",
-				"id": 1452802195,
-				"number": 888,
+				"url": "https://api.github.com/repos/feltjs/felt/pulls/945",
+				"id": 1535519425,
+				"number": 945,
 				"state": "open",
-				"title": "fix initial default selections",
+				"title": "randomize secrets when initializing env",
 				"user": {
 					"login": "ryanatkn",
 					"id": 2608646,
 					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
 					"url": "https://api.github.com/users/ryanatkn"
 				},
-				"body": "Trying to figure out why the initial `space` and `hub` are saving only sometimes. I suppose we need to include `actor` and the `params` too to make it work correctly. Needs to be actor id not index?",
-				"created_at": "2023-07-27T21:43:43Z",
+				"body": "Security audit work - it's a footgun to init users with static secrets. Thinking the 🎲 is a good placeholder for a random value.\r\n\r\n- rename to `COOKIE_SECRETS`, use that convention elsewhere",
+				"created_at": "2023-09-29T10:30:43Z",
 				"updated_at": "2023-11-02T01:39:00Z",
 				"draft": true
-			},
-			{
-				"url": "https://api.github.com/repos/feltjs/felt/pulls/905",
-				"id": 1472244660,
-				"number": 905,
-				"state": "open",
-				"title": "replace ties with collection pages",
-				"user": {
-					"login": "ryanatkn",
-					"id": 2608646,
-					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
-					"url": "https://api.github.com/users/ryanatkn"
-				},
-				"body": "reboot of #878 but keeping directories\r\n\r\nnotes\r\n\r\n- is page a system-level concern - hoist `type='CollectionPage'` to entity table, `null` implicitly is the base `Item` type\r\n- we're building the entity query with `sql.unsafe`, which is subject to SQL injection, so we validate the input both at the schema level and immediately in the repo method\r\n\r\ntodo\r\n\r\n- [ ] query system\r\n- [ ] `items` and `lists` need to be synced with deleting entities\r\n- [ ] why are the schemas expanded here?  https://github.com/feltjs/felt/pull/905/commits/9947b25661ee6df9ee3148ef981d56c012061257",
-				"created_at": "2023-08-11T19:18:37Z",
-				"updated_at": "2023-11-02T07:57:46Z",
-				"draft": true
-			},
-			{
-				"url": "https://api.github.com/repos/feltjs/felt/pulls/931",
-				"id": 1505025758,
-				"number": 931,
-				"state": "open",
-				"title": "Add issue template for bugs",
-				"user": {
-					"login": "greatbacon",
-					"id": 4512607,
-					"avatar_url": "https://avatars.githubusercontent.com/u/4512607?v=4",
-					"url": "https://api.github.com/users/greatbacon"
-				},
-				"body": "This PR adds a couple of template for opening issues related to bugs.\r\n\r\nBased on templates from https://github.com/sveltejs/kit & https://github.com/oven-sh/bun (thanks for paving the way with these templates), I've honed in the language for our particulars.",
-				"created_at": "2023-09-06T17:25:42Z",
-				"updated_at": "2023-11-02T01:39:00Z",
-				"draft": false
 			},
 			{
 				"url": "https://api.github.com/repos/feltjs/felt/pulls/932",
@@ -4363,19 +4338,53 @@
 				"draft": false
 			},
 			{
-				"url": "https://api.github.com/repos/feltjs/felt/pulls/945",
-				"id": 1535519425,
-				"number": 945,
+				"url": "https://api.github.com/repos/feltjs/felt/pulls/931",
+				"id": 1505025758,
+				"number": 931,
 				"state": "open",
-				"title": "randomize secrets when initializing env",
+				"title": "Add issue template for bugs",
+				"user": {
+					"login": "greatbacon",
+					"id": 4512607,
+					"avatar_url": "https://avatars.githubusercontent.com/u/4512607?v=4",
+					"url": "https://api.github.com/users/greatbacon"
+				},
+				"body": "This PR adds a couple of template for opening issues related to bugs.\r\n\r\nBased on templates from https://github.com/sveltejs/kit & https://github.com/oven-sh/bun (thanks for paving the way with these templates), I've honed in the language for our particulars.",
+				"created_at": "2023-09-06T17:25:42Z",
+				"updated_at": "2023-11-02T01:39:00Z",
+				"draft": false
+			},
+			{
+				"url": "https://api.github.com/repos/feltjs/felt/pulls/905",
+				"id": 1472244660,
+				"number": 905,
+				"state": "open",
+				"title": "replace ties with collection pages",
 				"user": {
 					"login": "ryanatkn",
 					"id": 2608646,
 					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
 					"url": "https://api.github.com/users/ryanatkn"
 				},
-				"body": "Security audit work - it's a footgun to init users with static secrets. Thinking the 🎲 is a good placeholder for a random value.\r\n\r\n- rename to `COOKIE_SECRETS`, use that convention elsewhere",
-				"created_at": "2023-09-29T10:30:43Z",
+				"body": "reboot of #878 but keeping directories\r\n\r\nnotes\r\n\r\n- is page a system-level concern - hoist `type='CollectionPage'` to entity table, `null` implicitly is the base `Item` type\r\n- we're building the entity query with `sql.unsafe`, which is subject to SQL injection, so we validate the input both at the schema level and immediately in the repo method\r\n\r\ntodo\r\n\r\n- [ ] query system\r\n- [ ] `items` and `lists` need to be synced with deleting entities\r\n- [ ] why are the schemas expanded here?  https://github.com/feltjs/felt/pull/905/commits/9947b25661ee6df9ee3148ef981d56c012061257",
+				"created_at": "2023-08-11T19:18:37Z",
+				"updated_at": "2023-11-03T18:58:48Z",
+				"draft": true
+			},
+			{
+				"url": "https://api.github.com/repos/feltjs/felt/pulls/888",
+				"id": 1452802195,
+				"number": 888,
+				"state": "open",
+				"title": "fix initial default selections",
+				"user": {
+					"login": "ryanatkn",
+					"id": 2608646,
+					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
+					"url": "https://api.github.com/users/ryanatkn"
+				},
+				"body": "Trying to figure out why the initial `space` and `hub` are saving only sometimes. I suppose we need to include `actor` and the `params` too to make it work correctly. Needs to be actor id not index?",
+				"created_at": "2023-07-27T21:43:43Z",
 				"updated_at": "2023-11-02T01:39:00Z",
 				"draft": true
 			}
@@ -4538,7 +4547,7 @@
 				}
 			}
 		},
-		"pulls": []
+		"pull_requests": []
 	},
 	{
 		"url": "https://library.fuz.dev/",
@@ -4799,7 +4808,7 @@
 				}
 			}
 		},
-		"pulls": []
+		"pull_requests": []
 	},
 	{
 		"url": "https://template.fuz.dev/",
@@ -4874,7 +4883,7 @@
 				}
 			}
 		},
-		"pulls": []
+		"pull_requests": []
 	},
 	{
 		"url": "https://www.grogarden.org/",
@@ -5807,24 +5816,7 @@
 				}
 			}
 		},
-		"pulls": [
-			{
-				"url": "https://api.github.com/repos/grogarden/gro/pulls/427",
-				"id": 1569858809,
-				"number": 427,
-				"state": "open",
-				"title": "add and integrate `gro changelog`",
-				"user": {
-					"login": "ryanatkn",
-					"id": 2608646,
-					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
-					"url": "https://api.github.com/users/ryanatkn"
-				},
-				"body": "- [ ] map leading hashes to the PR, fallback to the hash link",
-				"created_at": "2023-10-23T19:58:40Z",
-				"updated_at": "2023-10-24T22:52:34Z",
-				"draft": true
-			},
+		"pull_requests": [
 			{
 				"url": "https://api.github.com/repos/grogarden/gro/pulls/429",
 				"id": 1573508138,
@@ -5858,10 +5850,27 @@
 				"created_at": "2023-10-23T20:34:07Z",
 				"updated_at": "2023-10-31T03:05:56Z",
 				"draft": true
+			},
+			{
+				"url": "https://api.github.com/repos/grogarden/gro/pulls/427",
+				"id": 1569858809,
+				"number": 427,
+				"state": "open",
+				"title": "add and integrate `gro changelog`",
+				"user": {
+					"login": "ryanatkn",
+					"id": 2608646,
+					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
+					"url": "https://api.github.com/users/ryanatkn"
+				},
+				"body": "- [ ] map leading hashes to the PR, fallback to the hash link",
+				"created_at": "2023-10-23T19:58:40Z",
+				"updated_at": "2023-10-24T22:52:34Z",
+				"draft": true
 			}
 		]
 	},
-	{"url": "https://missing.fuz.dev/", "package_json": null, "pulls": null},
+	{"url": "https://missing.fuz.dev/", "package_json": null, "pull_requests": null},
 	{
 		"url": "https://www.spiderspace.org/",
 		"package_json": {
@@ -5885,7 +5894,7 @@
 			"devDependencies": {
 				"@changesets/changelog-git": "^0.1.14",
 				"@feltjs/eslint-config": "^0.4.1",
-				"@fuz.dev/fuz": "^0.79.2",
+				"@fuz.dev/fuz": "^0.79.3",
 				"@fuz.dev/fuz_library": "^0.19.4",
 				"@grogarden/gro": "^0.100.1",
 				"@grogarden/util": "^0.16.0",
@@ -5938,24 +5947,6 @@
 				"./packages.task.js": {"path": "packages.task.ts", "declarations": []}
 			}
 		},
-		"pulls": [
-			{
-				"url": "https://api.github.com/repos/spiderspace/spiderspace/pulls/7",
-				"id": 1583825869,
-				"number": 7,
-				"state": "open",
-				"title": "add pulls",
-				"user": {
-					"login": "ryanatkn",
-					"id": 2608646,
-					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
-					"url": "https://api.github.com/users/ryanatkn"
-				},
-				"body": "- [ ] upstream to orc",
-				"created_at": "2023-11-02T07:47:41Z",
-				"updated_at": "2023-11-02T09:23:53Z",
-				"draft": false
-			}
-		]
+		"pull_requests": []
 	}
 ]

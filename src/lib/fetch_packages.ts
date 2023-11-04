@@ -16,19 +16,19 @@ import {
 export interface Maybe_Fetched_Package {
 	url: Url;
 	package_json: Package_Json | null; // TODO forward error
-	pulls: Github_Pull_Request[] | null;
+	pull_requests: Github_Pull_Request[] | null;
 }
 
 // TODO rethink these
 export interface Fetched_Package extends Package_Meta {
-	pulls: Github_Pull_Request[] | null;
+	pull_requests: Github_Pull_Request[] | null;
 }
 
 // TODO rethink these
 export interface Unfetched_Package extends Maybe_Fetched_Package {
 	url: Url;
 	package_json: null;
-	pulls: null;
+	pull_requests: null;
 }
 
 // TODO rethink these
@@ -52,12 +52,18 @@ export const fetch_packages = async (
 			await wait(delay);
 			const pkg = parse_package_meta(homepage_url, package_json);
 			if (!pkg) throw Error('failed to parse package_json: ' + homepage_url);
-			const {data: pulls} = await fetch_github_pull_requests(homepage_url, pkg, cache, log, token);
-			if (!pulls) throw Error('failed to fetch issues: ' + homepage_url);
+			const {data: pull_requests} = await fetch_github_pull_requests(
+				homepage_url,
+				pkg,
+				cache,
+				log,
+				token,
+			);
+			if (!pull_requests) throw Error('failed to fetch issues: ' + homepage_url);
 			await wait(delay);
-			packages.push({url: homepage_url, package_json, pulls});
+			packages.push({url: homepage_url, package_json, pull_requests});
 		} catch (err) {
-			packages.push({url: homepage_url, package_json: null, pulls: null});
+			packages.push({url: homepage_url, package_json: null, pull_requests: null});
 			log?.error(err);
 		}
 	}

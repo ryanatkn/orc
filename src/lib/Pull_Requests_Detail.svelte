@@ -27,11 +27,11 @@
 					>
 					<td
 						><a
-							href="{pull_request.pkg.repo_url}/pull/{pull_request.pull.number}"
-							title={pull_request.pull.title}>#{pull_request.pull.number}</a
+							href="{pull_request.pkg.repo_url}/pull/{pull_request.pull_request.number}"
+							title={pull_request.pull_request.title}>#{pull_request.pull_request.number}</a
 						></td
 					>
-					<td><div>{pull_request.pull.title}</div></td>
+					<td><div>{pull_request.pull_request.title}</div></td>
 				</tr>
 			{/each}
 		</table>

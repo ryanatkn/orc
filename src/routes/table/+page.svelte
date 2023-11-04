@@ -9,10 +9,10 @@
 	import {package_json} from '$lib/package.js';
 
 	// TODO hacky, weird names
-	const pkgs: Fetched_Package_Meta[] = packages.map(({url, package_json, pulls}) =>
+	const pkgs: Fetched_Package_Meta[] = packages.map(({url, package_json, pull_requests}) =>
 		package_json
-			? {...parse_package_meta(url, package_json), pulls}
-			: {url, package_json: null, pulls: null},
+			? {...parse_package_meta(url, package_json), pull_requests}
+			: {url, package_json: null, pull_requests: null},
 	);
 
 	console.log(`pkgs`, pkgs);
@@ -20,6 +20,10 @@
 	// TODO hacky - maybe put in context?
 	const pkg = parse_package_meta(package_json.homepage, package_json);
 </script>
+
+<svelte:head>
+	<title>@ryanatkn/orc: table</title>
+</svelte:head>
 
 <main class="box">
 	<section>

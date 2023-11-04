@@ -37,7 +37,7 @@ export const task: Task<Args> = {
 
 		const outfile = join(paths.lib, 'packages.json');
 
-		const orc_config = await load_orc_config(dir);
+		const orc_config = await load_orc_config(log, dir);
 		const {packages} = orc_config;
 
 		const cache = await create_fs_fetch_cache('packages');
@@ -51,7 +51,7 @@ export const task: Task<Args> = {
 					{
 						url: local_package_json.homepage,
 						package_json: local_package_json,
-						pulls: null, // TODO - maybe `fetch_packages` should look locally just for the package_json?
+						pull_requests: null, // TODO - maybe `fetch_packages` should look locally just for the package_json?
 					} as Maybe_Fetched_Package,
 			  ].concat(fetched_packages)
 			: fetched_packages;

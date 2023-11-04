@@ -14,6 +14,10 @@
 	const pkg = pkgs[0];
 </script>
 
+<svelte:head>
+	<title>@ryanatkn/orc: modules</title>
+</svelte:head>
+
 <main class="box width_full">
 	<section>
 		<Page_Header />

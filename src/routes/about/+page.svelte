@@ -9,6 +9,10 @@
 	const pkg = parse_package_meta(package_json.homepage, package_json);
 </script>
 
+<svelte:head>
+	<title>@ryanatkn/orc: about</title>
+</svelte:head>
+
 <main class="width_md">
 	<div class="prose">
 		<section>

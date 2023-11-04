@@ -11,7 +11,6 @@ const config: Orc_Config = {
 		'https://www.spiderspace.org/',
 	],
 	// TODO BLOCK
-	// Filter_Pull_Request =
 	filter_pull_request: (pull) => pull.user.login === 'ryanatkn',
 };
 
