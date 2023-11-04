@@ -42,10 +42,10 @@ export const split_packages = (
 			? parse_package_meta(p.package_json.homepage, p.package_json)
 			: null;
 		if (pkg) {
-			pkg.pull_requests; // TODO BLOCK how?
-			fetched.push(pkg);
+			// TODO cleaner object constructio without spread
+			fetched.push({...pkg, pull_requests: p.pull_requests});
 		} else {
-			unfetched.push(p);
+			unfetched.push({url: p.url, package_json: null, pull_requests: null});
 		}
 	}
 	return {fetched, unfetched};
