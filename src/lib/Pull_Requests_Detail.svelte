@@ -6,11 +6,10 @@
 
 	export let packages: Maybe_Fetched_Package[];
 
-	// TODO BLOCK filter, with orc config? probably with a function? or list of logins? complex config object?
-	// maybe it's a default filter but all can be rendered? and it can be X'd out, but it's enabled by default?
-	export let filter_pull_request: Filter_Pull_Request = (pull) => pull.user.login === 'ryanatkn';
+	export let filter_pull_request: Filter_Pull_Request | undefined = undefined;
 
 	$: ({fetched, unfetched} = split_packages(packages));
+	// TODO BLOCK should filter_pull_request happen to filter `packages` upstream of this?
 	$: pull_requests = to_pull_requests(fetched, filter_pull_request);
 </script>
 
