@@ -92,6 +92,10 @@
       "default": "./dist/fs_fetch_cache.js",
       "types": "./dist/fs_fetch_cache.d.ts"
     },
+    "./github_helpers.js": {
+      "default": "./dist/github_helpers.js",
+      "types": "./dist/github_helpers.d.ts"
+    },
     "./github.js": {
       "default": "./dist/github.js",
       "types": "./dist/github.d.ts"

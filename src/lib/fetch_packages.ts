@@ -12,26 +12,27 @@ import {
 	type Fetch_Cache_Item,
 } from '$lib/fetch_cache.js';
 
-// TODO rethink with `Package` and `Fetched_Package2`
+// TODO rethink these
 export interface Maybe_Fetched_Package {
 	url: Url;
 	package_json: Package_Json | null; // TODO forward error
 	pulls: Github_Pull_Request[] | null;
 }
 
-// TODO rethink with `Maybe_Fetched_Package`
+// TODO rethink these
 export interface Fetched_Package extends Package_Meta {
 	pulls: Github_Pull_Request[] | null;
 }
 
-export interface Unfetchable_Package {
+// TODO rethink these
+export interface Unfetched_Package extends Maybe_Fetched_Package {
 	url: Url;
 	package_json: null;
 	pulls: null;
 }
 
-// TODO rethink these names
-export type Fetched_Package_Meta = Fetched_Package | Unfetchable_Package;
+// TODO rethink these
+export type Fetched_Package_Meta = Fetched_Package | Unfetched_Package;
 
 /* eslint-disable no-await-in-loop */
 

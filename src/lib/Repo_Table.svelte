@@ -92,7 +92,7 @@
 					{#if package_json}
 						<a href={pkg.repo_url}>{pkg.repo_name}</a>
 					{:else}
-						{pkg.url}
+						<a href={pkg.url}>{format_host(pkg.url)}</a>
 					{/if}
 				</div>
 			</td>

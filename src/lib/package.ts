@@ -69,6 +69,10 @@ export const package_json = {
 			default: './dist/fs_fetch_cache.js',
 			types: './dist/fs_fetch_cache.d.ts',
 		},
+		'./github_helpers.js': {
+			default: './dist/github_helpers.js',
+			types: './dist/github_helpers.d.ts',
+		},
 		'./github.js': {default: './dist/github.js', types: './dist/github.d.ts'},
 		'./Modules_Detail.svelte': {
 			svelte: './dist/Modules_Detail.svelte',
@@ -122,7 +126,7 @@ export const package_json = {
 			declarations: [
 				{name: 'Maybe_Fetched_Package', kind: 'InterfaceDeclaration'},
 				{name: 'Fetched_Package', kind: 'InterfaceDeclaration'},
-				{name: 'Unfetchable_Package', kind: 'InterfaceDeclaration'},
+				{name: 'Unfetched_Package', kind: 'InterfaceDeclaration'},
 				{name: 'Fetched_Package_Meta', kind: 'TypeAliasDeclaration'},
 				{name: 'fetch_packages', kind: 'VariableDeclaration'},
 			],
@@ -130,6 +134,15 @@ export const package_json = {
 		'./fs_fetch_cache.js': {
 			path: 'fs_fetch_cache.ts',
 			declarations: [{name: 'create_fs_fetch_cache', kind: 'VariableDeclaration'}],
+		},
+		'./github_helpers.js': {
+			path: 'github_helpers.ts',
+			declarations: [
+				{name: 'Filter_Pull_Request', kind: 'InterfaceDeclaration'},
+				{name: 'Pull_Request_Meta', kind: 'InterfaceDeclaration'},
+				{name: 'to_pull_requests', kind: 'VariableDeclaration'},
+				{name: 'split_packages', kind: 'VariableDeclaration'},
+			],
 		},
 		'./github.js': {
 			path: 'github.ts',
