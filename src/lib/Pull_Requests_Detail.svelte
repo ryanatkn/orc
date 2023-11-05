@@ -1,5 +1,6 @@
 <script lang="ts">
 	import {format_host} from '@fuz.dev/fuz_library/package_meta.js';
+	import {base} from '$app/paths';
 
 	import {split_packages, to_pull_requests, type Filter_Pull_Request} from '$lib/github_helpers.js';
 	import type {Maybe_Fetched_Package} from '$lib/fetch_packages.js';
@@ -19,9 +20,9 @@
 			{#each pull_requests as pull_request}
 				<tr>
 					<td
-						><a href={pull_request.pkg.repo_url}
-							>{#if pull_request.pkg.package_json.icon}{pull_request.pkg.package_json
-									.icon}{' '}{/if}{pull_request.pkg.repo_name}</a
+						><a href="{base}/tree/{pull_request.pkg.repo_name}"
+							>{pull_request.pkg.repo_name}{#if pull_request.pkg.package_json.icon}{pull_request.pkg
+									.package_json.icon}{' '}{/if}</a
 						></td
 					>
 					<td
