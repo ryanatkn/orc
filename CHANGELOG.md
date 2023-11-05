@@ -1,5 +1,11 @@
 # @ryanatkn/orc
 
+## 0.10.9
+
+### Patch Changes
+
+- 7de4255: fix whitespace
+
 ## 0.10.8
 
 ### Patch Changes
