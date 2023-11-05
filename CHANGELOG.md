@@ -1,5 +1,12 @@
 # @ryanatkn/orc
 
+## 0.10.8
+
+### Patch Changes
+
+- 1e2dc8f: add `orc.task.ts`
+- 68e4f47: use `if-modified-since` and `last-modified` headers
+
 ## 0.10.7
 
 ### Patch Changes
