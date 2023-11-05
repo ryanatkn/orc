@@ -42,7 +42,9 @@ export const fetch_github_pull_requests = async (
 	log?.info('url', url);
 	if (!pkg.owner_name) throw Error('owner_name is required');
 	const params = {owner: pkg.owner_name, repo: pkg.repo_name} as const; // defaults to `sort: 'created'`
-	const headers: Record<string, string> = {}; // TODO is this set by the library? `accept: 'application/vnd.github+json'`
+	const headers: Record<string, string> = {
+		accept: 'application/vnd.github+json', // might be set by the library, @see https://docs.github.com/en/rest/pulls/pulls?apiVersion=2022-11-28#list-pull-requests
+	};
 	if (token) headers.authorization = 'token ' + token;
 	const route = 'GET /repos/{owner}/{repo}/pulls'; // TODO param
 	const key = to_fetch_cache_key(route, params);
