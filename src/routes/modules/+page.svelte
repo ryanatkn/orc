@@ -1,5 +1,6 @@
 <script lang="ts">
 	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
+	import Breadcrumb from '@fuz.dev/fuz_library/Breadcrumb.svelte';
 
 	import packages from '$lib/packages.json';
 	import Page_Header from '$routes/Page_Header.svelte';
@@ -24,7 +25,11 @@
 		<Page_Header />
 	</section>
 	<section>
-		<Modules_Detail {pkgs} />
+		<Modules_Detail {pkgs}>
+			<div slot="menu" class="row">
+				<Breadcrumb>{package_json.icon}</Breadcrumb>
+			</div>
+		</Modules_Detail>
 	</section>
 	<section class="box">
 		<Page_Footer {pkg} />

@@ -43,6 +43,7 @@
 <div class="modules_detail">
 	<div class="menu_wrapper">
 		<Modules_Menu {pkgs_modules} />
+		<slot name="menu" />
 	</div>
 	<ul class="width_md box">
 		{#each pkgs_modules as pkg_modules (pkg_modules)}
@@ -106,7 +107,7 @@
 	}
 	.subtitle {
 		position: absolute;
-		right: calc(-1 * (1rem + var(--spacing_2)));
+		right: 0;
 		top: 0;
 		text-align: right;
 	}
@@ -172,5 +173,6 @@
 		position: sticky;
 		top: var(--spacing_1);
 		display: flex;
+		flex-direction: column;
 	}
 </style>
