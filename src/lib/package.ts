@@ -87,6 +87,11 @@ export const package_json = {
 		'./orc.task.js': {default: './dist/orc.task.js', types: './dist/orc.task.d.ts'},
 		'./package.gen.js': {default: './dist/package.gen.js', types: './dist/package.gen.d.ts'},
 		'./package.js': {default: './dist/package.js', types: './dist/package.d.ts'},
+		'./Packages_Tree.svelte': {
+			svelte: './dist/Packages_Tree.svelte',
+			default: './dist/Packages_Tree.svelte',
+			types: './dist/Packages_Tree.svelte.d.ts',
+		},
 		'./packages.json': {default: './dist/packages.json', types: './dist/packages.json.d.ts'},
 		'./packages.task.js': {default: './dist/packages.task.js', types: './dist/packages.task.d.ts'},
 		'./Pull_Requests_Detail.svelte': {
@@ -166,6 +171,7 @@ export const package_json = {
 			path: 'package.ts',
 			declarations: [{name: 'package_json', kind: 'VariableDeclaration'}],
 		},
+		'./Packages_Tree.svelte': {path: 'Packages_Tree.svelte', declarations: []},
 		'./packages.json': {path: 'packages.json', declarations: []},
 		'./packages.task.js': {
 			path: 'packages.task.ts',

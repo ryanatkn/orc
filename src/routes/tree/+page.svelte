@@ -1,15 +1,11 @@
 <script lang="ts">
-	import Package_Summary from '@fuz.dev/fuz_library/Package_Summary.svelte';
 	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
-	import {strip_end, strip_start} from '@grogarden/util/string.js';
-	import {base} from '$app/paths';
 
+	import Packages_Tree from '$lib/Packages_Tree.svelte';
 	import packages from '$lib/packages.json';
 	import Page_Header from '$routes/Page_Header.svelte';
 	import Page_Footer from '$routes/Page_Footer.svelte';
 	import {package_json} from '$lib/package.js';
-
-	// TODO BLOCK extract a component
 
 	// TODO hacky
 	const pkgs = packages.map(({url, package_json}) =>
@@ -29,36 +25,7 @@
 		<Page_Header />
 	</section>
 	<section class="tree">
-		<menu class="names panel padded_md">
-			{#each pkgs as pkg}
-				<li>
-					{#if pkg.package_json}<a class="menu_item nowrap" href="{base}/tree/{pkg.repo_name}"
-							>{pkg.repo_name}{#if pkg.package_json.icon}{' '}{pkg.package_json.icon}{/if}</a
-						>{/if}
-				</li>
-			{/each}
-		</menu>
-		<menu class="summaries">
-			<!-- TODO Package_Summary -->
-			{#each pkgs as pkg}
-				<li class="panel padded_md box">
-					{#if pkg.package_json}
-						<Package_Summary {pkg}>
-							<svelte:fragment slot="repo_name" let:repo_name>
-								<a href="{base}/tree/{repo_name}" class="repo_name">{repo_name}</a>
-							</svelte:fragment>
-						</Package_Summary>
-					{:else}
-						<div class="prose width_sm">
-							<p>
-								failed to fetch <code>.well-known/package.json</code> from
-								<a href={pkg.url}>{strip_end(strip_start(pkg.url, 'https://'), '/')}</a>
-							</p>
-						</div>
-					{/if}
-				</li>
-			{/each}
-		</menu>
+		<Packages_Tree {pkgs} />
 	</section>
 	<section class="box">
 		<Page_Footer {pkg} />
