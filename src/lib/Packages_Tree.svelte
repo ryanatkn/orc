@@ -17,7 +17,7 @@
 <div class="packages_tree">
 	<menu class="names panel padded_md">
 		{#each pkgs as pkg}
-			<li>
+			<li style:display="contents">
 				{#if pkg.package_json}<a class="menu_item nowrap" href="{base}/tree/{pkg.repo_name}"
 						>{pkg.repo_name}{#if pkg.package_json.icon}{' '}{pkg.package_json.icon}{/if}</a
 					>{/if}
@@ -57,6 +57,13 @@
 		margin-left: var(--spacing_md);
 		position: sticky;
 		top: var(--spacing_md);
+	}
+	/* TODO should be a CSS class */
+	.names a:hover {
+		background-color: var(--bg_5);
+	}
+	.names a:is(:active, .active) {
+		background-color: var(--bg_7);
 	}
 	.summaries {
 		gap: var(--spacing_lg);
