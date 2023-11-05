@@ -29,7 +29,7 @@ export const package_json = {
 		'@fuz.dev/fuz_contextmenu': '^0.6.0',
 		'@fuz.dev/fuz_dialog': '^0.5.0',
 		'@fuz.dev/fuz_library': '^0.19.5',
-		'@grogarden/gro': '^0.100.2',
+		'@grogarden/gro': '^0.100.3',
 		'@grogarden/util': '^0.16.0',
 		'@octokit/request': '^8.1.4',
 		'@sveltejs/adapter-static': '^2.0.3',
@@ -84,6 +84,7 @@ export const package_json = {
 			default: './dist/Modules_Menu.svelte',
 			types: './dist/Modules_Menu.svelte.d.ts',
 		},
+		'./orc.task.js': {default: './dist/orc.task.js', types: './dist/orc.task.d.ts'},
 		'./package.gen.js': {default: './dist/package.gen.js', types: './dist/package.gen.d.ts'},
 		'./package.js': {default: './dist/package.js', types: './dist/package.d.ts'},
 		'./packages.json': {default: './dist/packages.json', types: './dist/packages.json.d.ts'},
@@ -153,6 +154,13 @@ export const package_json = {
 		},
 		'./Modules_Detail.svelte': {path: 'Modules_Detail.svelte', declarations: []},
 		'./Modules_Menu.svelte': {path: 'Modules_Menu.svelte', declarations: []},
+		'./orc.task.js': {
+			path: 'orc.task.ts',
+			declarations: [
+				{name: 'Args', kind: 'VariableDeclaration'},
+				{name: 'task', kind: 'VariableDeclaration'},
+			],
+		},
 		'./package.gen.js': {path: 'package.gen.ts', declarations: []},
 		'./package.js': {
 			path: 'package.ts',
