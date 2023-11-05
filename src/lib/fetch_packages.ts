@@ -88,8 +88,12 @@ const fetch_package_json = async (
 	if (etag) {
 		headers['if-none-match'] = etag;
 	}
+	const last_modified = cached?.last_modified;
+	if (last_modified) {
+		headers['if-modified-since'] = last_modified;
+	}
 	try {
-		const res = await fetch(url, {headers});
+		const res = await fetch(url, {headers}); // TODO handle `retry-after` @see https://docs.github.com/en/rest/guides/best-practices-for-using-the-rest-api
 		if (res.status === 304) {
 			log?.info('cached', key);
 			return cached!;
@@ -103,6 +107,7 @@ const fetch_package_json = async (
 			params: null,
 			key,
 			etag: res.headers.get('etag'),
+			last_modified: res.headers.get('last-modified'),
 			data: package_json,
 		};
 		cache?.set(result.key, result);
@@ -113,6 +118,7 @@ const fetch_package_json = async (
 			params: null,
 			key,
 			etag: null,
+			last_modified: null,
 			data: null,
 		}; // TODO better error
 		return result;

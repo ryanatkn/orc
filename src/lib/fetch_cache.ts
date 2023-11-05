@@ -29,6 +29,7 @@ export interface Fetch_Cache_Item<TData = any, TParams = any> {
 	params: TParams;
 	key: Fetch_Cache_Key;
 	etag: string | null;
+	last_modified: string | null;
 	data: TData;
 }
 

@@ -65,6 +65,7 @@ export const fetch_github_pull_requests = async (
 			params,
 			key,
 			etag: res.headers.etag ?? null,
+			last_modified: res.headers['last-modified'] ?? null,
 			data: res.data.map((i) => Github_Pull_Request.parse(i)).sort((a, b) => b.number - a.number),
 		};
 		cache?.set(result.key, result);
@@ -80,6 +81,7 @@ export const fetch_github_pull_requests = async (
 			params,
 			key,
 			etag: null,
+			last_modified: null,
 			data: null,
 		};
 		return result;
