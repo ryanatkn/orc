@@ -6,28 +6,39 @@
 
 	import packages from '$lib/packages.json';
 	import Page_Header from '$routes/Page_Header.svelte';
-	import {package_json} from '$lib/package.js';
 	import Page_Footer from '$routes/Page_Footer.svelte';
+	import {package_json} from '$lib/package.js';
+
+	// TODO BLOCK extract a component
 
 	// TODO hacky
 	const pkgs = packages.map(({url, package_json}) =>
 		package_json ? parse_package_meta(url, package_json) : {url, package_json: null},
 	);
 
-	// TODO hacky - maybe put in context?
+	// TODO hacky, and copypaste error?
 	const pkg = parse_package_meta(package_json.homepage, package_json);
 </script>
 
 <svelte:head>
-	<title>tree {package_json.icon} {package_json.name}</title>
+	<title>tree {package_json.icon} {pkg.name}</title>
 </svelte:head>
 
 <main class="box width_full">
 	<section>
 		<Page_Header />
 	</section>
-	<section>
-		<menu>
+	<section class="tree">
+		<menu class="names panel padded_md">
+			{#each pkgs as pkg}
+				<li>
+					{#if pkg.package_json}<a class="menu_item nowrap" href="{base}/tree/{pkg.repo_name}"
+							>{pkg.repo_name}{#if pkg.package_json.icon}{' '}{pkg.package_json.icon}{/if}</a
+						>{/if}
+				</li>
+			{/each}
+		</menu>
+		<menu class="summaries">
 			<!-- TODO Package_Summary -->
 			{#each pkgs as pkg}
 				<li class="panel padded_md box">
@@ -49,7 +60,9 @@
 			{/each}
 		</menu>
 	</section>
-	<section class="box"><Page_Footer {pkg} /></section>
+	<section class="box">
+		<Page_Footer {pkg} />
+	</section>
 </main>
 
 <style>
@@ -57,22 +70,31 @@
 		width: 100%;
 		margin-bottom: var(--spacing_4);
 		display: flex;
-		flex-wrap: wrap;
 		justify-content: center;
 	}
 	section:first-child {
 		margin-top: var(--spacing_4);
 	}
-	menu {
+	.names {
+		padding: var(--spacing_md);
+		margin-left: var(--spacing_md);
+		position: sticky;
+		top: var(--spacing_md);
+	}
+	.tree {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+	}
+	.summaries {
 		gap: var(--spacing_lg);
-		width: 100%;
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: center;
 		align-items: flex-start;
 	}
-	li {
+	.summaries li {
 		margin-bottom: var(--spacing_1);
 	}
 	.repo_name {
