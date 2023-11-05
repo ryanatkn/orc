@@ -1,12 +1,16 @@
 <script lang="ts">
-	import Package_Detail from '@fuz.dev/fuz_library/Package_Detail.svelte';
 	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
 	import {page} from '$app/stores';
+	import Alert from '@fuz.dev/fuz_library/Alert.svelte';
+	import Breadcrumb from '@fuz.dev/fuz_library/Breadcrumb.svelte';
 
 	import packages from '$lib/packages.json';
 	import Page_Header from '$routes/Page_Header.svelte';
 	import Page_Footer from '$routes/Page_Footer.svelte';
 	import {package_json} from '$lib/package.js';
+	import Packages_Tree from '$lib/Packages_Tree.svelte';
+
+	// TODO ideally there would be one `Packages_Tree` mounted by the layout
 
 	$: slug = $page.params.slug;
 
@@ -30,12 +34,17 @@
 	<section>
 		<Page_Header />
 	</section>
-	<section>
-		{#if route_pkg}
-			<Package_Detail pkg={route_pkg} />
-		{:else}
-			cannot find <code>{slug}</code>
+	<section class="tree">
+		{#if !route_pkg}
+			<div class="spaced">
+				<Alert status="error"><p>cannot find <code>{slug}</code></p></Alert>
+			</div>
 		{/if}
+		<Packages_Tree {pkgs} selected_pkg={route_pkg}>
+			<div slot="nav" class="packages_tree_nav">
+				<Breadcrumb>{package_json.icon}</Breadcrumb>
+			</div>
+		</Packages_Tree>
 	</section>
 	<section class="box">
 		<Page_Footer {pkg} />
@@ -52,5 +61,19 @@
 	}
 	section:first-child {
 		margin-top: var(--spacing_4);
+	}
+	.tree {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+	}
+	.packages_tree_nav {
+		display: flex;
+		margin-top: var(--spacing_1);
+	}
+	/* TODO hacky */
+	.packages_tree_nav :global(.breadcrumb) {
+		justify-content: flex-start;
 	}
 </style>

@@ -41,9 +41,9 @@
 </script>
 
 <div class="modules_detail">
-	<div class="menu_wrapper">
+	<div class="nav">
 		<Modules_Menu {pkgs_modules} />
-		<slot name="menu" />
+		<slot name="nav" />
 	</div>
 	<ul class="width_md box">
 		{#each pkgs_modules as pkg_modules (pkg_modules)}
@@ -169,7 +169,7 @@
 		color: var(--color_6);
 	}
 	/* TODO extract  */
-	.menu_wrapper {
+	.nav {
 		position: sticky;
 		top: var(--spacing_1);
 		display: flex;

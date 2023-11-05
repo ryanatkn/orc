@@ -39,7 +39,7 @@
 				</Card>
 			</li>
 			<li>
-				<Card href="{base}/pulls">
+				<Card href="{base}/pull_requests">
 					pull requests
 					<svelte:fragment slot="icon">{''}</svelte:fragment>
 				</Card>

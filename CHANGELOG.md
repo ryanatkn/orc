@@ -134,7 +134,7 @@
 
 ### Minor Changes
 
-- 0f40917: support `pulls` for public repos
+- 0f40917: support `pull_requests` for public repos
 
 ## 0.4.0
 

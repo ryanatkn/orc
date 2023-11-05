@@ -97,6 +97,11 @@
 					"types": "./dist/package.gen.d.ts"
 				},
 				"./package.js": {"default": "./dist/package.js", "types": "./dist/package.d.ts"},
+				"./Packages_Tree.svelte": {
+					"svelte": "./dist/Packages_Tree.svelte",
+					"default": "./dist/Packages_Tree.svelte",
+					"types": "./dist/Packages_Tree.svelte.d.ts"
+				},
 				"./packages.json": {
 					"default": "./dist/packages.json",
 					"types": "./dist/packages.json.d.ts"

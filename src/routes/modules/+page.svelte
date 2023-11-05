@@ -26,7 +26,7 @@
 	</section>
 	<section>
 		<Modules_Detail {pkgs}>
-			<div slot="menu" class="row">
+			<div slot="nav" class="row">
 				<Breadcrumb>{package_json.icon}</Breadcrumb>
 			</div>
 		</Modules_Detail>
