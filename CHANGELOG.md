@@ -1,5 +1,11 @@
 # @ryanatkn/orc
 
+## 0.10.6
+
+### Patch Changes
+
+- c37cd9a: add `Pull_Requests_Detail`
+
 ## 0.10.5
 
 ### Patch Changes
