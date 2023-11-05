@@ -1,5 +1,16 @@
 # @ryanatkn/orc
 
+## 0.11.0
+
+### Minor Changes
+
+- f742bba: rename `Modules_Detail` slot `"nav"` from `"menu"`
+
+### Patch Changes
+
+- f742bba: add `Packages_Tree`
+- 6088428: add breadcrumb to `Modules_Detail`
+
 ## 0.10.9
 
 ### Patch Changes
