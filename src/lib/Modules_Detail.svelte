@@ -41,7 +41,7 @@
 </script>
 
 <div class="modules_detail">
-	<div class="menu_wrapper">
+	<div class="nav">
 		<Modules_Menu {pkgs_modules} />
 		<slot name="nav" />
 	</div>
@@ -169,7 +169,7 @@
 		color: var(--color_6);
 	}
 	/* TODO extract  */
-	.menu_wrapper {
+	.nav {
 		position: sticky;
 		top: var(--spacing_1);
 		display: flex;
