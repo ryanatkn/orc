@@ -7,6 +7,8 @@
 	import Page_Footer from '$routes/Page_Footer.svelte';
 	import {package_json} from '$lib/package.js';
 
+	// TODO ideally there would be one `Packages_Tree` mounted by the layout
+
 	// TODO hacky
 	const pkgs = packages.map(({url, package_json}) =>
 		package_json ? parse_package_meta(url, package_json) : {url, package_json: null},
