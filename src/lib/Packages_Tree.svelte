@@ -21,19 +21,23 @@
 </script>
 
 <div class="packages_tree">
-	<menu class="names panel padded_md">
-		{#each pkgs as pkg}
-			<li style:display="contents">
-				{#if pkg.package_json}<a class="menu_item nowrap" href="{base}/tree/{pkg.repo_name}"
-						>{pkg.repo_name}{#if pkg.package_json.icon}{' '}{pkg.package_json.icon}{/if}</a
-					>{/if}
-			</li>
-		{/each}
-	</menu>
+	<div class="sidebar">
+		<menu class="names panel padded_md">
+			{#each pkgs as pkg}
+				<li style:display="contents">
+					{#if pkg.package_json}<a class="menu_item nowrap" href="{base}/tree/{pkg.repo_name}"
+							>{pkg.repo_name}{#if pkg.package_json.icon}{' '}{pkg.package_json.icon}{/if}</a
+						>{/if}
+				</li>
+			{/each}
+		</menu>
+	</div>
 	<div>
 		{#if pkg}
-			<section>
-				<Package_Detail {pkg} />
+			<section class="detail_wrapper">
+				<div class="panel detail">
+					<Package_Detail {pkg} />
+				</div>
 			</section>
 		{/if}
 		<menu class="summaries">
@@ -65,11 +69,14 @@
 		flex-direction: row;
 		align-items: flex-start;
 	}
-	.names {
-		padding: var(--spacing_md);
-		margin-left: var(--spacing_md);
+	.sidebar {
 		position: sticky;
 		top: var(--spacing_md);
+		padding: var(--spacing_lg);
+		padding-right: 0;
+	}
+	.names {
+		padding: var(--spacing_md);
 	}
 	/* TODO should be a CSS class */
 	.names a:hover {
@@ -79,11 +86,12 @@
 		background-color: var(--bg_7);
 	}
 	.summaries {
+		padding: var(--spacing_lg);
 		gap: var(--spacing_lg);
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
-		justify-content: center;
+		justify-content: flex-start;
 		align-items: flex-start;
 	}
 	.summaries li {
@@ -93,5 +101,11 @@
 		font-size: var(--size_2);
 		font-weight: 500;
 		text-align: center;
+	}
+	.detail_wrapper {
+		padding: var(--spacing_lg);
+	}
+	.detail {
+		display: flex;
 	}
 </style>

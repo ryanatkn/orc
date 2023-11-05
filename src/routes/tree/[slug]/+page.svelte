@@ -35,7 +35,9 @@
 	</section>
 	<section class="tree">
 		{#if !route_pkg}
-			<Alert status="error">cannot find <code>{slug}</code></Alert>
+			<div class="spaced">
+				<Alert status="error"><p>cannot find <code>{slug}</code></p></Alert>
+			</div>
 		{/if}
 		<Packages_Tree {pkgs} pkg={route_pkg} />
 	</section>
@@ -54,5 +56,11 @@
 	}
 	section:first-child {
 		margin-top: var(--spacing_4);
+	}
+	.tree {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
 	}
 </style>
