@@ -42,31 +42,9 @@
 	section:first-child {
 		margin-top: var(--spacing_4);
 	}
-	.names {
-		padding: var(--spacing_md);
-		margin-left: var(--spacing_md);
-		position: sticky;
-		top: var(--spacing_md);
-	}
 	.tree {
 		display: flex;
 		flex-direction: row;
 		align-items: flex-start;
-	}
-	.summaries {
-		gap: var(--spacing_lg);
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: center;
-		align-items: flex-start;
-	}
-	.summaries li {
-		margin-bottom: var(--spacing_1);
-	}
-	.repo_name {
-		font-size: var(--size_2);
-		font-weight: 500;
-		text-align: center;
 	}
 </style>
