@@ -2,6 +2,7 @@
 	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
 	import {page} from '$app/stores';
 	import Alert from '@fuz.dev/fuz_library/Alert.svelte';
+	import Breadcrumb from '@fuz.dev/fuz_library/Breadcrumb.svelte';
 
 	import packages from '$lib/packages.json';
 	import Page_Header from '$routes/Page_Header.svelte';
@@ -39,7 +40,11 @@
 				<Alert status="error"><p>cannot find <code>{slug}</code></p></Alert>
 			</div>
 		{/if}
-		<Packages_Tree {pkgs} pkg={route_pkg} />
+		<Packages_Tree {pkgs} pkg={route_pkg}>
+			<div slot="nav" class="row" style:margin-top="var(--spacing_1)">
+				<Breadcrumb>{package_json.icon}</Breadcrumb>
+			</div>
+		</Packages_Tree>
 	</section>
 	<section class="box">
 		<Page_Footer {pkg} />

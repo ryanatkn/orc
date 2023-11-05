@@ -21,7 +21,7 @@
 </script>
 
 <div class="packages_tree">
-	<div class="sidebar">
+	<div class="nav">
 		<menu class="names panel padded_md">
 			{#each pkgs as pkg}
 				<li style:display="contents">
@@ -31,45 +31,48 @@
 				</li>
 			{/each}
 		</menu>
+		<slot name="nav" />
 	</div>
-	<div>
+	<div class="width_md">
 		{#if pkg}
 			<section class="detail_wrapper">
 				<div class="panel detail">
 					<Package_Detail {pkg} />
 				</div>
 			</section>
+		{:else}
+			<menu class="summaries">
+				{#each pkgs as pkg}
+					<li class="panel padded_md box">
+						{#if pkg.package_json}
+							<Package_Summary {pkg}>
+								<svelte:fragment slot="repo_name" let:repo_name>
+									<a href="{base}/tree/{repo_name}" class="repo_name">{repo_name}</a>
+								</svelte:fragment>
+							</Package_Summary>
+						{:else}
+							<div class="prose width_sm">
+								<p>
+									failed to fetch <code>.well-known/package.json</code> from
+									<a href={pkg.url}>{strip_end(strip_start(pkg.url, 'https://'), '/')}</a>
+								</p>
+							</div>
+						{/if}
+					</li>
+				{/each}
+			</menu>
 		{/if}
-		<menu class="summaries">
-			{#each pkgs as pkg}
-				<li class="panel padded_md box">
-					{#if pkg.package_json}
-						<Package_Summary {pkg}>
-							<svelte:fragment slot="repo_name" let:repo_name>
-								<a href="{base}/tree/{repo_name}" class="repo_name">{repo_name}</a>
-							</svelte:fragment>
-						</Package_Summary>
-					{:else}
-						<div class="prose width_sm">
-							<p>
-								failed to fetch <code>.well-known/package.json</code> from
-								<a href={pkg.url}>{strip_end(strip_start(pkg.url, 'https://'), '/')}</a>
-							</p>
-						</div>
-					{/if}
-				</li>
-			{/each}
-		</menu>
 	</div>
 </div>
 
 <style>
 	.packages_tree {
+		width: 100%;
 		display: flex;
 		flex-direction: row;
 		align-items: flex-start;
 	}
-	.sidebar {
+	.nav {
 		position: sticky;
 		top: var(--spacing_md);
 		padding: var(--spacing_lg);
@@ -104,6 +107,7 @@
 	}
 	.detail_wrapper {
 		padding: var(--spacing_lg);
+		width: 100%;
 	}
 	.detail {
 		display: flex;

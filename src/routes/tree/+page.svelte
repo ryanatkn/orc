@@ -1,5 +1,6 @@
 <script lang="ts">
 	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
+	import Breadcrumb from '@fuz.dev/fuz_library/Breadcrumb.svelte';
 
 	import Packages_Tree from '$lib/Packages_Tree.svelte';
 	import packages from '$lib/packages.json';
@@ -27,7 +28,11 @@
 		<Page_Header />
 	</section>
 	<section class="tree">
-		<Packages_Tree {pkgs} />
+		<Packages_Tree {pkgs}>
+			<div slot="nav" class="row" style:margin-top="var(--spacing_1)">
+				<Breadcrumb>{package_json.icon}</Breadcrumb>
+			</div>
+		</Packages_Tree>
 	</section>
 	<section class="box">
 		<Page_Footer {pkg} />

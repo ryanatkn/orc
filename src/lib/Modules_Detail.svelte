@@ -43,7 +43,7 @@
 <div class="modules_detail">
 	<div class="menu_wrapper">
 		<Modules_Menu {pkgs_modules} />
-		<slot name="menu" />
+		<slot name="nav" />
 	</div>
 	<ul class="width_md box">
 		{#each pkgs_modules as pkg_modules (pkg_modules)}
