@@ -9,6 +9,10 @@
 	const pkg = parse_package_meta(package_json.homepage, package_json);
 </script>
 
+<svelte:head>
+	<title>about {package_json.icon} {package_json.name}</title>
+</svelte:head>
+
 <main class="width_md">
 	<div class="prose">
 		<section>

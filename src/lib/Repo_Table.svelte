@@ -40,11 +40,11 @@
 	const format_version = (version: string | null): string =>
 		version === null ? '' : version.replace(/^(\^|>=)\s*/u, '');
 
-	const lookup_pulls = (pkgs: Fetched_Package_Meta[] | null, pkg: Fetched_Package_Meta) => {
+	const lookup_pull_requests = (pkgs: Fetched_Package_Meta[] | null, pkg: Fetched_Package_Meta) => {
 		const found = pkgs?.find((p) => p.url === pkg.url);
 		if (!found?.package_json) return null;
-		const {pulls} = found;
-		return pulls;
+		const {pull_requests} = found;
+		return pull_requests;
 	};
 </script>
 
@@ -67,7 +67,7 @@
 			<td>
 				<div class="row">
 					{#if package_json}
-						<a href="{base}/tree/{pkg.repo_name}">🌳</a>
+						<a href="{base}/tree/{pkg.repo_name}">{pkg.package_json.icon || '🌳'}</a>
 					{/if}
 				</div>
 			</td>
@@ -92,7 +92,7 @@
 					{#if package_json}
 						<a href={pkg.repo_url}>{pkg.repo_name}</a>
 					{:else}
-						{pkg.url}
+						<a href={pkg.url}>{format_host(pkg.url)}</a>
 					{/if}
 				</div>
 			</td>
@@ -120,11 +120,11 @@
 			{/each}
 			<td>
 				{#if package_json && pkg.repo_url}
-					{@const pulls = lookup_pulls(pkgs, pkg)}
+					{@const pull_requests = lookup_pull_requests(pkgs, pkg)}
 					<!-- TODO show something like `and N more` with a link to a dialog list -->
 					<div class="row">
-						{#if pulls}
-							{#each pulls as pull (pull)}
+						{#if pull_requests}
+							{#each pull_requests as pull (pull)}
 								<a href={pull.url} class="chip" title={pull.title}>#{pull.number}</a>
 							{/each}
 						{/if}

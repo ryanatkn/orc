@@ -1,22 +1,20 @@
 <script lang="ts">
 	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
 
+	import Pull_Requests_Detail from '$lib/Pull_Requests_Detail.svelte';
 	import packages from '$lib/packages.json';
 	import Page_Header from '$routes/Page_Header.svelte';
 	import Page_Footer from '$routes/Page_Footer.svelte';
-	import Modules_Detail from '$lib/Modules_Detail.svelte';
 	import {package_json} from '$lib/package.js';
+	import type {Filter_Pull_Request} from '$lib/github_helpers.js';
 
-	// TODO hacky
-	const pkgs = packages.map(({url, package_json}) =>
-		package_json ? parse_package_meta(url, package_json) : {url, package_json: null},
-	);
+	const pkg = parse_package_meta(package_json.homepage, package_json);
 
-	const pkg = pkgs[0];
+	const filter_pull_request: Filter_Pull_Request = (pull) => pull.user.login === 'ryanatkn';
 </script>
 
 <svelte:head>
-	<title>modules {package_json.icon} {package_json.name}</title>
+	<title>pull requests {package_json.icon} {package_json.name}</title>
 </svelte:head>
 
 <main class="box width_full">
@@ -24,7 +22,7 @@
 		<Page_Header />
 	</section>
 	<section>
-		<Modules_Detail {pkgs} />
+		<Pull_Requests_Detail {packages} {filter_pull_request} />
 	</section>
 	<section class="box">
 		<Page_Footer {pkg} />

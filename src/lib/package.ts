@@ -25,7 +25,7 @@ export const package_json = {
 	devDependencies: {
 		'@changesets/changelog-git': '^0.1.14',
 		'@feltjs/eslint-config': '^0.4.1',
-		'@fuz.dev/fuz': '^0.79.2',
+		'@fuz.dev/fuz': '^0.79.3',
 		'@fuz.dev/fuz_contextmenu': '^0.6.0',
 		'@fuz.dev/fuz_dialog': '^0.5.0',
 		'@fuz.dev/fuz_library': '^0.19.4',
@@ -69,6 +69,10 @@ export const package_json = {
 			default: './dist/fs_fetch_cache.js',
 			types: './dist/fs_fetch_cache.d.ts',
 		},
+		'./github_helpers.js': {
+			default: './dist/github_helpers.js',
+			types: './dist/github_helpers.d.ts',
+		},
 		'./github.js': {default: './dist/github.js', types: './dist/github.d.ts'},
 		'./Modules_Detail.svelte': {
 			svelte: './dist/Modules_Detail.svelte',
@@ -84,6 +88,11 @@ export const package_json = {
 		'./package.js': {default: './dist/package.js', types: './dist/package.d.ts'},
 		'./packages.json': {default: './dist/packages.json', types: './dist/packages.json.d.ts'},
 		'./packages.task.js': {default: './dist/packages.task.js', types: './dist/packages.task.d.ts'},
+		'./Pull_Requests_Detail.svelte': {
+			svelte: './dist/Pull_Requests_Detail.svelte',
+			default: './dist/Pull_Requests_Detail.svelte',
+			types: './dist/Pull_Requests_Detail.svelte.d.ts',
+		},
 		'./Repo_Table.svelte': {
 			svelte: './dist/Repo_Table.svelte',
 			default: './dist/Repo_Table.svelte',
@@ -117,7 +126,7 @@ export const package_json = {
 			declarations: [
 				{name: 'Maybe_Fetched_Package', kind: 'InterfaceDeclaration'},
 				{name: 'Fetched_Package', kind: 'InterfaceDeclaration'},
-				{name: 'Unfetchable_Package', kind: 'InterfaceDeclaration'},
+				{name: 'Unfetched_Package', kind: 'InterfaceDeclaration'},
 				{name: 'Fetched_Package_Meta', kind: 'TypeAliasDeclaration'},
 				{name: 'fetch_packages', kind: 'VariableDeclaration'},
 			],
@@ -125,6 +134,15 @@ export const package_json = {
 		'./fs_fetch_cache.js': {
 			path: 'fs_fetch_cache.ts',
 			declarations: [{name: 'create_fs_fetch_cache', kind: 'VariableDeclaration'}],
+		},
+		'./github_helpers.js': {
+			path: 'github_helpers.ts',
+			declarations: [
+				{name: 'Filter_Pull_Request', kind: 'InterfaceDeclaration'},
+				{name: 'Pull_Request_Meta', kind: 'InterfaceDeclaration'},
+				{name: 'to_pull_requests', kind: 'VariableDeclaration'},
+				{name: 'split_packages', kind: 'VariableDeclaration'},
+			],
 		},
 		'./github.js': {
 			path: 'github.ts',
@@ -148,6 +166,7 @@ export const package_json = {
 				{name: 'task', kind: 'VariableDeclaration'},
 			],
 		},
+		'./Pull_Requests_Detail.svelte': {path: 'Pull_Requests_Detail.svelte', declarations: []},
 		'./Repo_Table.svelte': {path: 'Repo_Table.svelte', declarations: []},
 		'./sync.task.js': {
 			path: 'sync.task.ts',

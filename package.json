@@ -30,7 +30,7 @@
   "devDependencies": {
     "@changesets/changelog-git": "^0.1.14",
     "@feltjs/eslint-config": "^0.4.1",
-    "@fuz.dev/fuz": "^0.79.2",
+    "@fuz.dev/fuz": "^0.79.3",
     "@fuz.dev/fuz_contextmenu": "^0.6.0",
     "@fuz.dev/fuz_dialog": "^0.5.0",
     "@fuz.dev/fuz_library": "^0.19.4",
@@ -92,6 +92,10 @@
       "default": "./dist/fs_fetch_cache.js",
       "types": "./dist/fs_fetch_cache.d.ts"
     },
+    "./github_helpers.js": {
+      "default": "./dist/github_helpers.js",
+      "types": "./dist/github_helpers.d.ts"
+    },
     "./github.js": {
       "default": "./dist/github.js",
       "types": "./dist/github.d.ts"
@@ -121,6 +125,11 @@
     "./packages.task.js": {
       "default": "./dist/packages.task.js",
       "types": "./dist/packages.task.d.ts"
+    },
+    "./Pull_Requests_Detail.svelte": {
+      "svelte": "./dist/Pull_Requests_Detail.svelte",
+      "default": "./dist/Pull_Requests_Detail.svelte",
+      "types": "./dist/Pull_Requests_Detail.svelte.d.ts"
     },
     "./Repo_Table.svelte": {
       "svelte": "./dist/Repo_Table.svelte",

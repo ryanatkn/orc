@@ -29,6 +29,9 @@ export const Github_Pull_Request = z.object({
 export type Github_Pull_Request = z.infer<typeof Github_Pull_Request>;
 
 // TODO refactor with `fetch_package_json`
+/**
+ * @see https://docs.github.com/en/rest/pulls/pulls#list-pull-requests
+ */
 export const fetch_github_pull_requests = async (
 	url: string,
 	pkg: Package_Meta,
@@ -38,8 +41,8 @@ export const fetch_github_pull_requests = async (
 ): Promise<Fetch_Cache_Item<Github_Pull_Request[] | null>> => {
 	log?.info('url', url);
 	if (!pkg.owner_name) throw Error('owner_name is required');
-	const params = {owner: pkg.owner_name, repo: pkg.repo_name, sort: 'updated'} as const;
-	const headers: Record<string, string> = {};
+	const params = {owner: pkg.owner_name, repo: pkg.repo_name} as const; // defaults to `sort: 'created'`
+	const headers: Record<string, string> = {}; // TODO is this set by the library? `accept: 'application/vnd.github+json'`
 	if (token) headers.authorization = 'token ' + token;
 	const route = 'GET /repos/{owner}/{repo}/pulls'; // TODO param
 	const key = to_fetch_cache_key(route, params);
@@ -60,7 +63,7 @@ export const fetch_github_pull_requests = async (
 			params,
 			key,
 			etag: res.headers.etag ?? null,
-			data: res.data.map((i) => Github_Pull_Request.parse(i)),
+			data: res.data.map((i) => Github_Pull_Request.parse(i)).sort((a, b) => b.number - a.number),
 		};
 		cache?.set(result.key, result);
 		return result;
