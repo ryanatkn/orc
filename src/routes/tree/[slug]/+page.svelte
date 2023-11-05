@@ -22,6 +22,10 @@
 	const pkg = parse_package_meta(package_json.homepage, package_json);
 </script>
 
+<svelte:head>
+	<title>{slug} - tree {package_json.icon} {package_json.name}</title>
+</svelte:head>
+
 <main class="box width_full">
 	<section>
 		<Page_Header />
