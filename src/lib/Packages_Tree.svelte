@@ -17,15 +17,19 @@
 	/**
 	 * The selected package, if any.
 	 */
-	export let pkg: Package_Meta | undefined = undefined;
+	export let selected_pkg: Package_Meta | undefined = undefined;
 </script>
 
 <div class="packages_tree">
 	<div class="nav">
 		<menu class="names panel padded_md">
 			{#each pkgs as pkg}
+				{@const active = pkg === selected_pkg}
 				<li style:display="contents">
-					{#if pkg.package_json}<a class="menu_item nowrap" href="{base}/tree/{pkg.repo_name}"
+					{#if pkg.package_json}<a
+							class="menu_item nowrap"
+							class:active
+							href="{base}/tree/{pkg.repo_name}"
 							>{pkg.repo_name}{#if pkg.package_json.icon}{' '}{pkg.package_json.icon}{/if}</a
 						>{/if}
 				</li>
@@ -34,10 +38,10 @@
 		<slot name="nav" />
 	</div>
 	<div class="width_md">
-		{#if pkg}
+		{#if selected_pkg}
 			<section class="detail_wrapper">
 				<div class="panel detail">
-					<Package_Detail {pkg} />
+					<Package_Detail pkg={selected_pkg} />
 				</div>
 			</section>
 		{:else}
@@ -81,7 +85,7 @@
 	.names {
 		padding: var(--spacing_md);
 	}
-	/* TODO should be a CSS class */
+	/* TODO should be a CSS class, probably add :focus behavior */
 	.names a:hover {
 		background-color: var(--bg_5);
 	}

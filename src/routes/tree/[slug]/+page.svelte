@@ -40,7 +40,7 @@
 				<Alert status="error"><p>cannot find <code>{slug}</code></p></Alert>
 			</div>
 		{/if}
-		<Packages_Tree {pkgs} pkg={route_pkg}>
+		<Packages_Tree {pkgs} selected_pkg={route_pkg}>
 			<div slot="nav" class="row" style:margin-top="var(--spacing_1)">
 				<Breadcrumb>{package_json.icon}</Breadcrumb>
 			</div>
