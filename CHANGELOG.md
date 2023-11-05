@@ -1,5 +1,11 @@
 # @ryanatkn/orc
 
+## 0.10.7
+
+### Patch Changes
+
+- 9887469: improve `Pull_Requests_Detail`
+
 ## 0.10.6
 
 ### Patch Changes
