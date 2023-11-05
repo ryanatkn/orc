@@ -26,11 +26,10 @@
 			{#each pkgs as pkg}
 				{@const active = pkg === selected_pkg}
 				<li style:display="contents">
-					{#if pkg.package_json}<a
-							class="menu_item nowrap"
-							class:active
-							href="{base}/tree/{pkg.repo_name}"
-							>{pkg.repo_name}{#if pkg.package_json.icon}{' '}{pkg.package_json.icon}{/if}</a
+					{#if pkg.package_json}<a class="menu_item" class:active href="{base}/tree/{pkg.repo_name}"
+							><div class="ellipsis">
+								{pkg.repo_name}{#if pkg.package_json.icon}{' '}{pkg.package_json.icon}{/if}
+							</div></a
 						>{/if}
 				</li>
 			{/each}
@@ -77,6 +76,7 @@
 		align-items: flex-start;
 	}
 	.nav {
+		width: var(--nav_width, 240px);
 		position: sticky;
 		top: var(--spacing_md);
 		padding: var(--spacing_lg);

@@ -29,7 +29,7 @@
 	</section>
 	<section class="tree">
 		<Packages_Tree {pkgs}>
-			<div slot="nav" class="row" style:margin-top="var(--spacing_1)">
+			<div slot="nav" class="packages_tree_nav">
 				<Breadcrumb>{package_json.icon}</Breadcrumb>
 			</div>
 		</Packages_Tree>
@@ -53,5 +53,13 @@
 		display: flex;
 		flex-direction: row;
 		align-items: flex-start;
+	}
+	.packages_tree_nav {
+		display: flex;
+		margin-top: var(--spacing_1);
+	}
+	/* TODO hacky */
+	.packages_tree_nav :global(.breadcrumb) {
+		justify-content: flex-start;
 	}
 </style>

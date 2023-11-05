@@ -41,7 +41,7 @@
 			</div>
 		{/if}
 		<Packages_Tree {pkgs} selected_pkg={route_pkg}>
-			<div slot="nav" class="row" style:margin-top="var(--spacing_1)">
+			<div slot="nav" class="packages_tree_nav">
 				<Breadcrumb>{package_json.icon}</Breadcrumb>
 			</div>
 		</Packages_Tree>
@@ -67,5 +67,13 @@
 		flex-direction: column;
 		align-items: center;
 		width: 100%;
+	}
+	.packages_tree_nav {
+		display: flex;
+		margin-top: var(--spacing_1);
+	}
+	/* TODO hacky */
+	.packages_tree_nav :global(.breadcrumb) {
+		justify-content: flex-start;
 	}
 </style>
