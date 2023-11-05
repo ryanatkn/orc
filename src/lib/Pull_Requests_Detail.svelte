@@ -9,7 +9,6 @@
 	export let filter_pull_request: Filter_Pull_Request | undefined = undefined;
 
 	$: ({fetched, unfetched} = split_packages(packages));
-	// TODO BLOCK should filter_pull_request happen to filter `packages` upstream of this?
 	$: pull_requests = to_pull_requests(fetched, filter_pull_request);
 </script>
 
