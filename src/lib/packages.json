@@ -3,7 +3,7 @@
 		"url": "https://orc.ryanatkn.com/",
 		"package_json": {
 			"name": "@ryanatkn/orc",
-			"version": "0.10.9",
+			"version": "0.11.0",
 			"description": "a tool for orchestrating many repos",
 			"icon": "🪄",
 			"public": true,
@@ -1654,7 +1654,7 @@
 				"@grogarden/gro": "^0.100.3",
 				"@grogarden/util": "^0.16.0",
 				"@octokit/request": "^8.1.4",
-				"@ryanatkn/orc": "^0.10.9",
+				"@ryanatkn/orc": "^0.11.0",
 				"@sveltejs/adapter-static": "^2.0.3",
 				"@sveltejs/kit": "^1.27.3",
 				"@typescript-eslint/eslint-plugin": "^6.9.1",
