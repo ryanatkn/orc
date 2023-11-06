@@ -21,7 +21,7 @@
 	</section>
 	<section class="prose">
 		<aside class="text_align_center">
-			for example usage see <a href="https://www.spiderspace.org/">spiderspace.org</a>
+			for a real usage example see <a href="https://www.spiderspace.org/">spiderspace.org</a>
 		</aside>
 	</section>
 	<section>
