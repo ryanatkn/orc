@@ -3,7 +3,7 @@
 		"url": "https://orc.ryanatkn.com/",
 		"package_json": {
 			"name": "@ryanatkn/orc",
-			"version": "0.11.0",
+			"version": "0.12.0",
 			"description": "a tool for orchestrating many repos",
 			"icon": "🪄",
 			"public": true,
@@ -1621,5 +1621,84 @@
 		]
 	},
 	{"url": "https://missing.fuz.dev/", "package_json": null, "pull_requests": null},
-	{"url": "https://www.spiderspace.org/", "package_json": null, "pull_requests": null}
+	{
+		"url": "https://www.spiderspace.org/",
+		"package_json": {
+			"name": "@spiderspace/spiderspace",
+			"description": "hobbyist web stack",
+			"version": "0.0.1",
+			"public": true,
+			"icon": "🪜",
+			"license": "MIT",
+			"homepage": "https://www.spiderspace.org/",
+			"repository": "https://github.com/spiderspace/spiderspace",
+			"type": "module",
+			"engines": {"node": ">=20.7"},
+			"scripts": {
+				"start": "gro dev",
+				"dev": "gro dev",
+				"build": "gro build",
+				"test": "gro test",
+				"deploy": "gro deploy"
+			},
+			"devDependencies": {
+				"@changesets/changelog-git": "^0.1.14",
+				"@feltjs/eslint-config": "^0.4.1",
+				"@fuz.dev/fuz": "^0.79.3",
+				"@fuz.dev/fuz_library": "^0.20.0",
+				"@grogarden/gro": "^0.101.0",
+				"@grogarden/util": "^0.16.0",
+				"@octokit/request": "^8.1.5",
+				"@ryanatkn/orc": "^0.12.0",
+				"@sveltejs/adapter-static": "^2.0.3",
+				"@sveltejs/kit": "^1.27.3",
+				"@typescript-eslint/eslint-plugin": "^6.10.0",
+				"@typescript-eslint/parser": "^6.10.0",
+				"eslint": "^8.53.0",
+				"prettier": "^3.0.3",
+				"prettier-plugin-svelte": "^3.0.3",
+				"svelte": "^4.2.2",
+				"svelte-check": "^3.5.2",
+				"tslib": "^2.6.2",
+				"typescript": "^5.2.2",
+				"uvu": "^0.5.6"
+			},
+			"eslintConfig": {"root": true, "extends": "@feltjs"},
+			"prettier": {
+				"plugins": ["prettier-plugin-svelte"],
+				"useTabs": true,
+				"printWidth": 100,
+				"singleQuote": true,
+				"bracketSpacing": false,
+				"overrides": [{"files": "package.json", "options": {"useTabs": false}}]
+			},
+			"exports": {
+				"./orc.task.js": {"default": "./dist/orc.task.js", "types": "./dist/orc.task.d.ts"},
+				"./package.gen.js": {
+					"default": "./dist/package.gen.js",
+					"types": "./dist/package.gen.d.ts"
+				},
+				"./package.js": {"default": "./dist/package.js", "types": "./dist/package.d.ts"},
+				"./packages.json": {
+					"default": "./dist/packages.json",
+					"types": "./dist/packages.json.d.ts"
+				},
+				"./packages.task.js": {
+					"default": "./dist/packages.task.js",
+					"types": "./dist/packages.task.d.ts"
+				}
+			},
+			"modules": {
+				"./orc.task.js": {"path": "orc.task.ts", "declarations": []},
+				"./package.gen.js": {"path": "package.gen.ts", "declarations": []},
+				"./package.js": {
+					"path": "package.ts",
+					"declarations": [{"name": "package_json", "kind": "variable"}]
+				},
+				"./packages.json": {"path": "packages.json", "declarations": []},
+				"./packages.task.js": {"path": "packages.task.ts", "declarations": []}
+			}
+		},
+		"pull_requests": []
+	}
 ]
