@@ -14,6 +14,7 @@ and [fuz_repos](https://github.com/fuz-dev/fuz_repos).
 
 With Orc you can:
 
+- fetch typesafe metadata about collections of packages and import it as typesafe JSON
 - publish a generated docs website for your collections of packages
 - publish metadata about your collections of packages to the web for other users and tools
 
