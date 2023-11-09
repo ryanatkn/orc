@@ -12,6 +12,16 @@ This repo has demo data,
 I'm using Orc in [Spiderspace](https://github.com/spiderspace/spiderspace)
 and [fuz_repos](https://github.com/fuz-dev/fuz_repos).
 
+With Orc you can:
+
+- publish a generated docs website for your collections of packages
+- publish metadata about your collections of packages to the web for other users and tools
+
+planned additions:
+
+- run updating operations and other workflows from the frontend in dev mode
+  (ultimately, an `update all` button)
+
 ## Usage
 
 - configure [`orc.config.ts`](/orc.config.ts)
