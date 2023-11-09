@@ -16,6 +16,7 @@ With Orc you can:
 
 - fetch typesafe metadata about collections of packages and import it as typesafe JSON
 - publish a generated docs website for your collections of packages
+- import its components to view and interact with package collection metadata
 - publish metadata about your collections of packages to the web for other users and tools
 
 planned additions:
