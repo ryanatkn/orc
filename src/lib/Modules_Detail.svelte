@@ -74,13 +74,7 @@
 							</div>
 							<ul class="declarations">
 								{#each declarations as { name, kind }}
-									<li
-										class="declaration chip"
-										class:variable_declaration={kind === 'VariableDeclaration'}
-										class:type_declaration={kind === 'InterfaceDeclaration' ||
-											kind === 'TypeAliasDeclaration'}
-										class:class_declaration={kind === 'ClassDeclaration'}
-									>
+									<li class="declaration chip {kind}_declaration">
 										{name}
 									</li>
 								{/each}
@@ -161,6 +155,9 @@
 	}
 	.variable_declaration {
 		color: var(--color_3);
+	}
+	.function_declaration {
+		color: var(--color_5);
 	}
 	.type_declaration {
 		color: var(--color_7);
