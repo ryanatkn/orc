@@ -13,7 +13,7 @@ import {
 	type Fetch_Cache_Item,
 } from '$lib/fetch_cache.js';
 
-// TODO rethink these
+// TODO BLOCK rethink these
 export interface Maybe_Fetched_Package {
 	url: Url;
 	package_json: Package_Json | null; // TODO forward error
@@ -26,7 +26,7 @@ export interface Fetched_Package extends Package_Meta {
 	pull_requests: Github_Pull_Request[] | null;
 }
 
-// TODO rethink these
+// TODO BLOCK rethink these
 export interface Unfetched_Package extends Maybe_Fetched_Package {
 	url: Url;
 	package_json: null;
@@ -34,7 +34,7 @@ export interface Unfetched_Package extends Maybe_Fetched_Package {
 	pull_requests: null;
 }
 
-// TODO rethink these
+// TODO BLOCK rethink these
 export type Fetched_Package_Meta = Fetched_Package | Unfetched_Package;
 
 /* eslint-disable no-await-in-loop */
@@ -77,7 +77,6 @@ export const fetch_packages = async (
 };
 
 // TODO BLOCK make this work with other urls and text, and extract
-// TODO refactor with `fetch_github_pull_requests`
 
 export const fetch_package_json = async (
 	homepage_url: string,
@@ -97,6 +96,7 @@ export const fetch_src_json = async (
 	return fetch_json(url, cache, log);
 };
 
+// TODO refactor with `fetch_github_pull_requests`
 export const fetch_json = async (
 	url: string,
 	cache?: Fetch_Cache_Data,
