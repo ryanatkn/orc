@@ -49,10 +49,10 @@ export const fetch_packages = async (
 	const packages: Maybe_Fetched_Package[] = [];
 	for (const homepage_url of homepage_urls) {
 		try {
-			const {data: package_json} = await fetch_package_json(homepage_url, cache, log); // TODO BLOCK shouldn't be a new function, or should use a common helper
+			const {data: package_json} = await fetch_package_json(homepage_url, cache, log);
 			if (!package_json) throw Error('failed to load package_json: ' + homepage_url);
 			await wait(delay);
-			const {data: src_json} = await fetch_src_json(homepage_url, cache, log); // TODO BLOCK shouldn't be a new function, or should use a common helper
+			const {data: src_json} = await fetch_src_json(homepage_url, cache, log);
 			if (!src_json) throw Error('failed to load package_json: ' + homepage_url);
 			await wait(delay);
 			const pkg = parse_package_meta(homepage_url, package_json, src_json);
@@ -77,13 +77,31 @@ export const fetch_packages = async (
 
 // TODO BLOCK make this work with other urls and text, and extract
 // TODO refactor with `fetch_github_pull_requests`
-const fetch_package_json = async (
+
+export const fetch_package_json = async (
 	homepage_url: string,
 	cache?: Fetch_Cache_Data,
 	log?: Logger,
 ): Promise<Fetch_Cache_Item<Package_Json | null>> => {
 	const url = strip_end(homepage_url, '/') + '/.well-known/package.json'; // TODO helper
-	log?.info('fetching', homepage_url);
+	return fetch_json(url, cache, log);
+};
+
+export const fetch_src_json = async (
+	homepage_url: string,
+	cache?: Fetch_Cache_Data,
+	log?: Logger,
+): Promise<Fetch_Cache_Item<Package_Json | null>> => {
+	const url = strip_end(homepage_url, '/') + '/.well-known/src.json'; // TODO helper
+	return fetch_json(url, cache, log);
+};
+
+export const fetch_json = async (
+	url: string,
+	cache?: Fetch_Cache_Data,
+	log?: Logger,
+): Promise<Fetch_Cache_Item<Package_Json | null>> => {
+	log?.info('fetching', url);
 	const headers: Record<string, string> = {
 		'content-type': 'application/json',
 		accept: 'application/json',
