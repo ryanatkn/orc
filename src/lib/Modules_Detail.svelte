@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {Package_Meta} from '@fuz.dev/fuz_library/package_meta.js';
-	import type {Package_Module} from '@grogarden/gro/package_json.js';
+	import type {Src_Module} from '@grogarden/gro/src_json.js';
 	import {ensure_end} from '@grogarden/util/string.js';
 	import {base} from '$app/paths';
 
@@ -17,7 +17,7 @@
 	// TODO hacky, needs helpers or rethinking
 	let pkgs_modules: Array<{
 		pkg: Package_Meta;
-		modules: Package_Module[];
+		modules: Src_Module[];
 	}>;
 	$: pkgs_modules = pkgs.reduce(
 		(v, pkg) => {
@@ -34,7 +34,7 @@
 			v.push({pkg, modules: Object.values(src_json.modules)});
 			return v;
 		},
-		[] as Array<{pkg: Package_Meta; modules: Package_Module[]}>,
+		[] as Array<{pkg: Package_Meta; modules: Src_Module[]}>,
 	);
 
 	// TODO add favicon (from library? gro?)
