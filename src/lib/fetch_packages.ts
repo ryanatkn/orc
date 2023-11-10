@@ -75,6 +75,7 @@ export const fetch_packages = async (
 	return packages;
 };
 
+// TODO BLOCK make this work with other urls and text
 // TODO refactor with `fetch_github_pull_requests`
 const fetch_package_json = async (
 	homepage_url: string,
