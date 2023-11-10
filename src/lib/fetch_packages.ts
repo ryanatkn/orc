@@ -50,7 +50,7 @@ export const fetch_packages = async (
 			const {data: package_json} = await fetch_package_json(homepage_url, cache, log);
 			if (!package_json) throw Error('failed to load package_json: ' + homepage_url);
 			await wait(delay);
-			const pkg = parse_package_meta(homepage_url, package_json);
+			const pkg = parse_package_meta(homepage_url, package_json, src_json);
 			if (!pkg) throw Error('failed to parse package_json: ' + homepage_url);
 			const {data: pull_requests} = await fetch_github_pull_requests(
 				homepage_url,
