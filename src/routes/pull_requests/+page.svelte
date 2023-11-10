@@ -1,14 +1,13 @@
 <script lang="ts">
-	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
-
 	import Pull_Requests_Detail from '$lib/Pull_Requests_Detail.svelte';
 	import packages from '$lib/packages.json';
 	import Page_Header from '$routes/Page_Header.svelte';
 	import Page_Footer from '$routes/Page_Footer.svelte';
-	import {package_json, src_json} from '$lib/package.js';
+	import {package_json} from '$lib/package.js';
 	import type {Filter_Pull_Request} from '$lib/github_helpers.js';
+	import {get_packages} from '$lib/packages.js';
 
-	const pkg = parse_package_meta(package_json.homepage, package_json, src_json);
+	const {pkg} = get_packages();
 
 	const filter_pull_request: Filter_Pull_Request = (pull) => pull.user.login === 'ryanatkn';
 </script>

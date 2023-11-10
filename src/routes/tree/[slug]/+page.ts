@@ -3,6 +3,7 @@ import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
 
 import packages from '$lib/packages.json';
 
+// TODO BLOCK add and use the init helper
 const pkgs = packages
 	.map(({url, package_json, src_json}) =>
 		package_json && src_json ? parse_package_meta(url, package_json, src_json) : null!,

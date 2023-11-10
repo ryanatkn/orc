@@ -1,14 +1,13 @@
 <script lang="ts">
 	import Library_Footer from '@fuz.dev/fuz_library/Library_Footer.svelte';
 	import Card from '@fuz.dev/fuz_library/Card.svelte';
-	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
 	import {base} from '$app/paths';
 
 	import Main_Header from '$routes/Main_Header.svelte';
-	import {package_json, src_json} from '$lib/package.js';
+	import {package_json} from '$lib/package.js';
+	import {get_packages} from '$lib/packages.js';
 
-	// TODO hacky - maybe put in context?
-	const pkg = parse_package_meta(package_json.homepage, package_json, src_json);
+	const {pkg} = get_packages();
 </script>
 
 <svelte:head>

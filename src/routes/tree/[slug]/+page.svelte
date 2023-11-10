@@ -1,31 +1,24 @@
 <script lang="ts">
-	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
 	import {page} from '$app/stores';
 	import Alert from '@fuz.dev/fuz_library/Alert.svelte';
 	import Breadcrumb from '@fuz.dev/fuz_library/Breadcrumb.svelte';
 
-	import packages from '$lib/packages.json';
 	import Page_Header from '$routes/Page_Header.svelte';
 	import Page_Footer from '$routes/Page_Footer.svelte';
-	import {package_json, src_json} from '$lib/package.js';
+	import {package_json} from '$lib/package.js';
 	import Packages_Tree from '$lib/Packages_Tree.svelte';
+	import {get_packages} from '$lib/packages';
+
+	const {pkg, pkgs} = get_packages();
 
 	// TODO ideally there would be one `Packages_Tree` mounted by the layout
 
 	$: slug = $page.params.slug;
 
 	// TODO hacky
-	const pkgs = packages
-		.map(({url, package_json}) =>
-			package_json && src_json ? parse_package_meta(url, package_json, src_json) : null!,
-		)
-		.filter(Boolean);
 
 	// TODO hacky
 	$: route_pkg = pkgs.find((p) => p.repo_name === slug);
-
-	// TODO hacky - maybe put in context?
-	const pkg = parse_package_meta(package_json.homepage, package_json, src_json);
 </script>
 
 <svelte:head>

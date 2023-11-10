@@ -1,6 +1,6 @@
 import {Package_Json} from '@grogarden/gro/package_json.js';
 import type {Url} from '@grogarden/gro/paths.js';
-import {strip_end} from '@grogarden/util/string.js';
+import {ensure_end} from '@grogarden/util/string.js';
 import type {Logger} from '@grogarden/util/log.js';
 import {wait} from '@grogarden/util/async.js';
 import {parse_package_meta, type Package_Meta} from '@fuz.dev/fuz_library/package_meta.js';
@@ -21,7 +21,7 @@ export interface Maybe_Fetched_Package {
 	pull_requests: Github_Pull_Request[] | null;
 }
 
-// TODO rethink these
+// TODO BLOCK rethink these
 export interface Fetched_Package extends Package_Meta {
 	pull_requests: Github_Pull_Request[] | null;
 }
@@ -30,6 +30,7 @@ export interface Fetched_Package extends Package_Meta {
 export interface Unfetched_Package extends Maybe_Fetched_Package {
 	url: Url;
 	package_json: null;
+	src_json: null;
 	pull_requests: null;
 }
 
@@ -53,7 +54,7 @@ export const fetch_packages = async (
 			if (!package_json) throw Error('failed to load package_json: ' + homepage_url);
 			await wait(delay);
 			const {data: src_json} = await fetch_src_json(homepage_url, cache, log);
-			if (!src_json) throw Error('failed to load package_json: ' + homepage_url);
+			if (!src_json) throw Error('failed to load src_json: ' + homepage_url);
 			await wait(delay);
 			const pkg = parse_package_meta(homepage_url, package_json, src_json);
 			if (!pkg) throw Error('failed to parse package_json: ' + homepage_url);
@@ -83,7 +84,7 @@ export const fetch_package_json = async (
 	cache?: Fetch_Cache_Data,
 	log?: Logger,
 ): Promise<Fetch_Cache_Item<Package_Json | null>> => {
-	const url = strip_end(homepage_url, '/') + '/.well-known/package.json'; // TODO helper
+	const url = ensure_end(homepage_url, '/') + '.well-known/package.json'; // TODO helper
 	return fetch_json(url, cache, log);
 };
 
@@ -92,7 +93,7 @@ export const fetch_src_json = async (
 	cache?: Fetch_Cache_Data,
 	log?: Logger,
 ): Promise<Fetch_Cache_Item<Package_Json | null>> => {
-	const url = strip_end(homepage_url, '/') + '/.well-known/src.json'; // TODO helper
+	const url = ensure_end(homepage_url, '/') + '.well-known/src.json'; // TODO helper
 	return fetch_json(url, cache, log);
 };
 
