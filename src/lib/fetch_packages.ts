@@ -49,10 +49,10 @@ export const fetch_packages = async (
 	const packages: Maybe_Fetched_Package[] = [];
 	for (const homepage_url of homepage_urls) {
 		try {
-			const {data: package_json} = await fetch_package_json(homepage_url, cache, log);
+			const {data: package_json} = await fetch_package_json(homepage_url, cache, log); // TODO BLOCK shouldn't be a new function, or should use a common helper
 			if (!package_json) throw Error('failed to load package_json: ' + homepage_url);
 			await wait(delay);
-			const {data: src_json} = await fetch_src_json(homepage_url, cache, log); // TODO BLOCK shouldn't be a new function
+			const {data: src_json} = await fetch_src_json(homepage_url, cache, log); // TODO BLOCK shouldn't be a new function, or should use a common helper
 			if (!src_json) throw Error('failed to load package_json: ' + homepage_url);
 			await wait(delay);
 			const pkg = parse_package_meta(homepage_url, package_json, src_json);
