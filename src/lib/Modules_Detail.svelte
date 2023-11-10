@@ -31,7 +31,7 @@
 			) {
 				return v;
 			}
-			v.push({pkg, modules: Object.values(package_json.modules)});
+			v.push({pkg, modules: Object.values(src_json.modules)});
 			return v;
 		},
 		[] as Array<{pkg: Package_Meta; modules: Package_Module[]}>,
