@@ -6,7 +6,7 @@
 	import packages from '$lib/packages.json';
 	import Page_Header from '$routes/Page_Header.svelte';
 	import Page_Footer from '$routes/Page_Footer.svelte';
-	import {package_json} from '$lib/package.js';
+	import {package_json, src_json} from '$lib/package.js';
 
 	// TODO ideally there would be one `Packages_Tree` mounted by the layout
 
@@ -16,7 +16,7 @@
 	);
 
 	// TODO hacky, and copypaste error?
-	const pkg = parse_package_meta(package_json.homepage, package_json);
+	const pkg = parse_package_meta(package_json.homepage, package_json, src_json);
 </script>
 
 <svelte:head>

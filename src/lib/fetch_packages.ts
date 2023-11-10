@@ -4,6 +4,7 @@ import {strip_end} from '@grogarden/util/string.js';
 import type {Logger} from '@grogarden/util/log.js';
 import {wait} from '@grogarden/util/async.js';
 import {parse_package_meta, type Package_Meta} from '@fuz.dev/fuz_library/package_meta.js';
+import type {Src_Json} from '@grogarden/gro/src_json.js';
 
 import {fetch_github_pull_requests, type Github_Pull_Request} from '$lib/github.js';
 import {
@@ -16,6 +17,7 @@ import {
 export interface Maybe_Fetched_Package {
 	url: Url;
 	package_json: Package_Json | null; // TODO forward error
+	src_json: Src_Json | null; // TODO forward error
 	pull_requests: Github_Pull_Request[] | null;
 }
 
@@ -50,6 +52,9 @@ export const fetch_packages = async (
 			const {data: package_json} = await fetch_package_json(homepage_url, cache, log);
 			if (!package_json) throw Error('failed to load package_json: ' + homepage_url);
 			await wait(delay);
+			const {data: src_json} = await fetch_src_json(homepage_url, cache, log); // TODO BLOCK shouldn't be a new function
+			if (!src_json) throw Error('failed to load package_json: ' + homepage_url);
+			await wait(delay);
 			const pkg = parse_package_meta(homepage_url, package_json, src_json);
 			if (!pkg) throw Error('failed to parse package_json: ' + homepage_url);
 			const {data: pull_requests} = await fetch_github_pull_requests(
@@ -61,9 +66,9 @@ export const fetch_packages = async (
 			);
 			if (!pull_requests) throw Error('failed to fetch issues: ' + homepage_url);
 			await wait(delay);
-			packages.push({url: homepage_url, package_json, pull_requests});
+			packages.push({url: homepage_url, package_json, src_json, pull_requests});
 		} catch (err) {
-			packages.push({url: homepage_url, package_json: null, pull_requests: null});
+			packages.push({url: homepage_url, package_json: null, src_json: null, pull_requests: null});
 			log?.error(err);
 		}
 	}

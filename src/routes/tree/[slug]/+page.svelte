@@ -7,7 +7,7 @@
 	import packages from '$lib/packages.json';
 	import Page_Header from '$routes/Page_Header.svelte';
 	import Page_Footer from '$routes/Page_Footer.svelte';
-	import {package_json} from '$lib/package.js';
+	import {package_json, src_json} from '$lib/package.js';
 	import Packages_Tree from '$lib/Packages_Tree.svelte';
 
 	// TODO ideally there would be one `Packages_Tree` mounted by the layout
@@ -23,7 +23,7 @@
 	$: route_pkg = pkgs.find((p) => p.repo_name === slug);
 
 	// TODO hacky - maybe put in context?
-	const pkg = parse_package_meta(package_json.homepage, package_json);
+	const pkg = parse_package_meta(package_json.homepage, package_json, src_json);
 </script>
 
 <svelte:head>

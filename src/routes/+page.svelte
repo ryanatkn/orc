@@ -5,10 +5,10 @@
 	import {base} from '$app/paths';
 
 	import Main_Header from '$routes/Main_Header.svelte';
-	import {package_json} from '$lib/package.js';
+	import {package_json, src_json} from '$lib/package.js';
 
 	// TODO hacky - maybe put in context?
-	const pkg = parse_package_meta(package_json.homepage, package_json);
+	const pkg = parse_package_meta(package_json.homepage, package_json, src_json);
 </script>
 
 <svelte:head>

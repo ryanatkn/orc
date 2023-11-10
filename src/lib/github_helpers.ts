@@ -40,7 +40,7 @@ export const split_packages = (
 	const unfetched: Unfetched_Package[] = [];
 	for (const p of packages) {
 		const pkg = p.package_json?.homepage
-			? parse_package_meta(p.package_json.homepage, p.package_json)
+			? parse_package_meta(p.package_json.homepage, p.package_json, p.src_json)
 			: null;
 		if (pkg) {
 			// TODO cleaner object constructio without spread

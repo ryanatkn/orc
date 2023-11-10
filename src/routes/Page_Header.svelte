@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Breadcrumb from '@fuz.dev/fuz_library/Breadcrumb.svelte';
 
-	import {package_json} from '$lib/package.js';
+	import {package_json, src_json} from '$lib/package.js';
 </script>
 
 <div>
