@@ -10,9 +10,13 @@
 
 	// TODO ideally there would be one `Packages_Tree` mounted by the layout
 
+	// TODO BLOCK return packages in 2 collections, the `packages` and `unfetchable_packages`
+
 	// TODO hacky
-	const pkgs = packages.map(({url, package_json}) =>
-		package_json ? parse_package_meta(url, package_json) : {url, package_json: null},
+	const pkgs = packages.map(({url, package_json, src_json}) =>
+		package_json && src_json
+			? parse_package_meta(url, package_json, src_json)
+			: {url, package_json: null, src_json: null},
 	);
 
 	// TODO hacky, and copypaste error?

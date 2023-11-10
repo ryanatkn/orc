@@ -6,7 +6,7 @@
 
 	import Modules_Menu from '$lib/Modules_Menu.svelte';
 
-	export let pkgs: Array<Package_Meta | {url: string; package_json: null}>; // TODO normalized version with cached primitives?
+	export let pkgs: Array<Package_Meta | {url: string; package_json: null; src_json: null}>; // TODO normalized version with cached primitives?
 
 	// TODO extract to Orc
 
@@ -21,9 +21,9 @@
 	}>;
 	$: pkgs_modules = pkgs.reduce(
 		(v, pkg) => {
-			const {package_json} = pkg;
+			const {package_json, src_json} = pkg;
 			if (
-				!package_json?.modules ||
+				!src_json?.modules ||
 				!(
 					!!package_json.devDependencies?.['@sveltejs/package'] ||
 					!!package_json.dependencies?.['@sveltejs/package']

@@ -16,7 +16,9 @@
 
 	// TODO hacky
 	const pkgs = packages
-		.map(({url, package_json}) => (package_json ? parse_package_meta(url, package_json) : null!))
+		.map(({url, package_json}) =>
+			package_json && src_json ? parse_package_meta(url, package_json, src_json) : null!,
+		)
 		.filter(Boolean);
 
 	// TODO hacky

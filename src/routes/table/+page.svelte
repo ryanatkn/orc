@@ -9,10 +9,11 @@
 	import {package_json, src_json} from '$lib/package.js';
 
 	// TODO hacky, weird names
-	const pkgs: Fetched_Package_Meta[] = packages.map(({url, package_json, pull_requests}) =>
-		package_json
-			? {...parse_package_meta(url, package_json), pull_requests}
-			: {url, package_json: null, pull_requests: null},
+	const pkgs: Fetched_Package_Meta[] = packages.map(
+		({url, package_json, pull_requests, src_json}) =>
+			package_json && src_json
+				? {...parse_package_meta(url, package_json, src_json), pull_requests}
+				: {url, package_json: null, src_json: null, pull_requests: null},
 	);
 
 	console.log(`pkgs`, pkgs);

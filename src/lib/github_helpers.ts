@@ -39,14 +39,15 @@ export const split_packages = (
 	const fetched: Fetched_Package[] = [];
 	const unfetched: Unfetched_Package[] = [];
 	for (const p of packages) {
-		const pkg = p.package_json?.homepage
-			? parse_package_meta(p.package_json.homepage, p.package_json, p.src_json)
-			: null;
+		const pkg =
+			p.package_json?.homepage && p.src_json
+				? parse_package_meta(p.package_json.homepage, p.package_json, p.src_json)
+				: null;
 		if (pkg) {
-			// TODO cleaner object constructio without spread
+			// TODO cleaner object construction without spread
 			fetched.push({...pkg, pull_requests: p.pull_requests});
 		} else {
-			unfetched.push({url: p.url, package_json: null, pull_requests: null});
+			unfetched.push({url: p.url, package_json: null, src_json: null, pull_requests: null});
 		}
 	}
 	return {fetched, unfetched};

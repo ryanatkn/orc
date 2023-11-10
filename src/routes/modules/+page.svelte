@@ -10,7 +10,7 @@
 
 	// TODO hacky
 	const pkgs = packages.map(({url, package_json, src_json}) =>
-		package_json
+		package_json && src_json
 			? parse_package_meta(url, package_json, src_json)
 			: {url, package_json: null, src_json: null},
 	);
