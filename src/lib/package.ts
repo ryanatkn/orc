@@ -158,7 +158,6 @@ export const src_json = {
 				{name: 'Filter_Pull_Request', kind: 'type'},
 				{name: 'Pull_Request_Meta', kind: 'type'},
 				{name: 'to_pull_requests', kind: 'function'},
-				{name: 'split_packages', kind: 'function'},
 			],
 		},
 		'./github.js': {
