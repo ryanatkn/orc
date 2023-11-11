@@ -1,5 +1,11 @@
 # @ryanatkn/orc
 
+## 0.13.1
+
+### Patch Changes
+
+- 3bb681a: fix packages.json type
+
 ## 0.13.0
 
 ### Minor Changes
