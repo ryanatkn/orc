@@ -10,7 +10,7 @@
 
 	import Settings from '$routes/Settings.svelte';
 	import packages from '$lib/packages.json';
-	import {set_packages} from '$lib/packages.js';
+	import {parse_packages, set_packages} from '$lib/packages.js';
 
 	const contextmenu = create_contextmenu();
 
