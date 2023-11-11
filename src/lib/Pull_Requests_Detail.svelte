@@ -2,15 +2,16 @@
 	import {format_host} from '@fuz.dev/fuz_library/package_meta.js';
 	import {base} from '$app/paths';
 
-	import {split_packages, to_pull_requests, type Filter_Pull_Request} from '$lib/github_helpers.js';
+	import {to_pull_requests, type Filter_Pull_Request} from '$lib/github_helpers.js';
 	import type {Maybe_Fetched_Package} from '$lib/fetch_packages.js';
+	import {parse_packages} from '$lib/packages.js';
 
 	export let packages: Maybe_Fetched_Package[];
 
 	export let filter_pull_request: Filter_Pull_Request | undefined = undefined;
 
-	$: ({fetched, unfetched} = split_packages(packages));
-	$: pull_requests = to_pull_requests(fetched, filter_pull_request);
+	$: ({pkgs, unfetched_pkgs} = parse_packages(packages));
+	$: pull_requests = to_pull_requests(pkgs, filter_pull_request);
 </script>
 
 <div class="width_md">
@@ -37,12 +38,11 @@
 			{/each}
 		</table>
 	</section>
-
-	{#if unfetched.length}
+	{#if unfetched_pkgs.length}
 		<section class="prose">
 			<p>⚠️ Some packages could not be fetched:</p>
 			<ul>
-				{#each unfetched as { url }}
+				{#each unfetched_pkgs as { url }}
 					<li><a href={url}>{format_host(url)}</a></li>
 				{/each}
 			</ul>

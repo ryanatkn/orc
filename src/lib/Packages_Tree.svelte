@@ -85,7 +85,7 @@
 	.names {
 		padding: var(--spacing_md);
 	}
-	/* TODO should be a CSS class, probably add :focus behavior */
+	/* TODO should be a CSS class or variable, probably add :focus behavior */
 	.names a:hover {
 		background-color: var(--bg_5);
 	}

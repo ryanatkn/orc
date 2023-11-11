@@ -29,15 +29,15 @@
 			"devDependencies": {
 				"@changesets/changelog-git": "^0.1.14",
 				"@feltjs/eslint-config": "^0.4.1",
-				"@fuz.dev/fuz": "^0.79.3",
+				"@fuz.dev/fuz": "^0.80.0",
 				"@fuz.dev/fuz_contextmenu": "^0.6.0",
 				"@fuz.dev/fuz_dialog": "^0.5.0",
-				"@fuz.dev/fuz_library": "^0.20.0",
-				"@grogarden/gro": "^0.101.0",
+				"@fuz.dev/fuz_library": "^0.21.1",
+				"@grogarden/gro": "^0.102.0",
 				"@grogarden/util": "^0.16.0",
 				"@octokit/request": "^8.1.5",
 				"@sveltejs/adapter-static": "^2.0.3",
-				"@sveltejs/kit": "^1.27.3",
+				"@sveltejs/kit": "^1.27.4",
 				"@sveltejs/package": "^2.2.2",
 				"@types/node": "^20.9.0",
 				"@typescript-eslint/eslint-plugin": "^6.10.0",
@@ -46,9 +46,9 @@
 				"eslint": "^8.53.0",
 				"eslint-plugin-svelte": "^2.35.0",
 				"prettier": "^3.0.3",
-				"prettier-plugin-svelte": "^3.0.3",
-				"svelte": "^4.2.2",
-				"svelte-check": "^3.5.2",
+				"prettier-plugin-svelte": "^3.1.0",
+				"svelte": "^4.2.3",
+				"svelte-check": "^3.6.0",
 				"tslib": "^2.6.2",
 				"typescript": "^5.2.2",
 				"uvu": "^0.5.6"
@@ -110,6 +110,7 @@
 					"default": "./dist/packages.task.js",
 					"types": "./dist/packages.task.d.ts"
 				},
+				"./packages.js": {"default": "./dist/packages.js", "types": "./dist/packages.d.ts"},
 				"./Pull_Requests_Detail.svelte": {
 					"svelte": "./dist/Pull_Requests_Detail.svelte",
 					"default": "./dist/Pull_Requests_Detail.svelte",
@@ -129,8 +130,9 @@
 		"url": "https://www.fuz.dev/",
 		"package_json": {
 			"name": "@fuz.dev/fuz",
+			"version": "0.80.0",
 			"description": "design system for CSS, Svelte, and SvelteKit",
-			"version": "0.79.3",
+			"icon": "🧶",
 			"public": true,
 			"license": "MIT",
 			"homepage": "https://www.fuz.dev/",
@@ -157,10 +159,10 @@
 				"@feltjs/eslint-config": "^0.4.1",
 				"@fuz.dev/fuz_code": "^0.4.3",
 				"@fuz.dev/fuz_dialog": "^0.5.0",
-				"@fuz.dev/fuz_library": "^0.20.0",
-				"@grogarden/gro": "^0.101.0",
+				"@fuz.dev/fuz_library": "^0.21.1",
+				"@grogarden/gro": "^0.102.0",
 				"@sveltejs/adapter-static": "^2.0.3",
-				"@sveltejs/kit": "^1.27.3",
+				"@sveltejs/kit": "^1.27.4",
 				"@sveltejs/package": "^2.2.2",
 				"@types/prismjs": "^1.26.3",
 				"@typescript-eslint/eslint-plugin": "^6.10.0",
@@ -168,11 +170,11 @@
 				"eslint": "^8.53.0",
 				"eslint-plugin-svelte": "^2.35.0",
 				"prettier": "^3.0.3",
-				"prettier-plugin-svelte": "^3.0.3",
+				"prettier-plugin-svelte": "^3.1.0",
 				"prism-svelte": "^0.5.0",
 				"prismjs": "^1.29.0",
-				"svelte": "^4.2.2",
-				"svelte-check": "^3.5.2",
+				"svelte": "^4.2.3",
+				"svelte-check": "^3.6.0",
 				"tslib": "^2.6.2",
 				"typescript": "^5.2.2",
 				"uvu": "^0.5.6"
@@ -222,13 +224,20 @@
 				},
 				"./themes.js": {"default": "./dist/themes.js", "types": "./dist/themes.d.ts"},
 				"./variables.js": {"default": "./dist/variables.js", "types": "./dist/variables.d.ts"}
-			},
+			}
+		},
+		"src_json": {
+			"name": "@fuz.dev/fuz",
+			"version": "0.80.0",
 			"modules": {
 				"./Color_Scheme_Input.svelte": {"path": "Color_Scheme_Input.svelte", "declarations": []},
 				"./package.gen.js": {"path": "package.gen.ts", "declarations": []},
 				"./package.js": {
 					"path": "package.ts",
-					"declarations": [{"name": "package_json", "kind": "variable"}]
+					"declarations": [
+						{"name": "package_json", "kind": "variable"},
+						{"name": "src_json", "kind": "variable"}
+					]
 				},
 				"./style.css": {"path": "style.css", "declarations": []},
 				"./swallow.js": {
@@ -282,13 +291,31 @@
 				}
 			}
 		},
-		"pull_requests": []
+		"pull_requests": [
+			{
+				"url": "https://api.github.com/repos/fuz-dev/fuz/pulls/358",
+				"id": 1594939344,
+				"number": 358,
+				"state": "open",
+				"title": "add .unprose",
+				"user": {
+					"login": "ryanatkn",
+					"id": 2608646,
+					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
+					"url": "https://api.github.com/users/ryanatkn"
+				},
+				"body": "Trying to solve my biggest problem with `.prose`, that I sometimes want sections inside it to opt-out of the styles.\r\n\r\nThe thing I originally tried doesn't work though. Not sure I can accomplish what I want without some gross CSS. (adding more large+slow+duplicative selectors, bleh)\r\n\r\n- see `/* allow nesting in .prose */`",
+				"created_at": "2023-11-09T18:43:22Z",
+				"updated_at": "2023-11-10T17:01:34Z",
+				"draft": true
+			}
+		]
 	},
 	{
 		"url": "https://library.fuz.dev/",
 		"package_json": {
 			"name": "@fuz.dev/fuz_library",
-			"version": "0.20.0",
+			"version": "0.21.1",
 			"description": "components and helpers for Svelte, SvelteKit, and Fuz",
 			"icon": "🧶",
 			"public": true,
@@ -316,7 +343,7 @@
 				"@feltjs/eslint-config": "^0.4.1",
 				"@fuz.dev/fuz": "^0.79.3",
 				"@fuz.dev/fuz_code": "^0.4.3",
-				"@grogarden/gro": "^0.101.0",
+				"@grogarden/gro": "^0.102.0",
 				"@grogarden/util": "^0.16.0",
 				"@sveltejs/adapter-static": "^2.0.3",
 				"@sveltejs/kit": "^1.27.3",
@@ -470,7 +497,11 @@
 					"types": "./dist/Tome_Title.svelte.d.ts"
 				},
 				"./tome.js": {"default": "./dist/tome.js", "types": "./dist/tome.d.ts"}
-			},
+			}
+		},
+		"src_json": {
+			"name": "@fuz.dev/fuz_library",
+			"version": "0.21.1",
 			"modules": {
 				"./Alert.svelte": {"path": "Alert.svelte", "declarations": []},
 				"./alert.js": {
@@ -524,7 +555,10 @@
 				"./package.gen.js": {"path": "package.gen.ts", "declarations": []},
 				"./package.js": {
 					"path": "package.ts",
-					"declarations": [{"name": "package_json", "kind": "variable"}]
+					"declarations": [
+						{"name": "package_json", "kind": "variable"},
+						{"name": "src_json", "kind": "variable"}
+					]
 				},
 				"./Pending_Animation.svelte": {"path": "Pending_Animation.svelte", "declarations": []},
 				"./Pending_Button.svelte": {"path": "Pending_Button.svelte", "declarations": []},
@@ -559,8 +593,8 @@
 				},
 				"body": "- render deps with icon+link to dependency detail (favicon? standardize with table)",
 				"created_at": "2023-11-04T18:26:39Z",
-				"updated_at": "2023-11-04T18:28:43Z",
-				"draft": false
+				"updated_at": "2023-11-10T14:26:20Z",
+				"draft": true
 			}
 		]
 	},
@@ -568,8 +602,9 @@
 		"url": "https://template.fuz.dev/",
 		"package_json": {
 			"name": "@fuz.dev/fuz_template",
-			"description": "a static web app and Node library template with TypeScript, Svelte, SvelteKit, Vite, esbuild, Fuz, and Gro",
 			"version": "0.0.1",
+			"description": "a static web app and Node library template with TypeScript, Svelte, SvelteKit, Vite, esbuild, Fuz, and Gro",
+			"icon": "❄",
 			"public": true,
 			"homepage": "https://template.fuz.dev/",
 			"repository": "https://github.com/fuz-dev/fuz_template",
@@ -585,22 +620,22 @@
 			"files": ["dist"],
 			"devDependencies": {
 				"@feltjs/eslint-config": "^0.4.1",
-				"@fuz.dev/fuz": "^0.79.3",
+				"@fuz.dev/fuz": "^0.80.0",
 				"@fuz.dev/fuz_contextmenu": "^0.6.0",
 				"@fuz.dev/fuz_dialog": "^0.5.0",
-				"@fuz.dev/fuz_library": "^0.20.0",
-				"@grogarden/gro": "^0.101.0",
+				"@fuz.dev/fuz_library": "^0.21.1",
+				"@grogarden/gro": "^0.102.0",
 				"@grogarden/util": "^0.16.0",
 				"@sveltejs/adapter-static": "^2.0.3",
-				"@sveltejs/kit": "^1.27.3",
+				"@sveltejs/kit": "^1.27.4",
 				"@typescript-eslint/eslint-plugin": "^6.10.0",
 				"@typescript-eslint/parser": "^6.10.0",
 				"eslint": "^8.53.0",
 				"eslint-plugin-svelte": "^2.35.0",
 				"prettier": "^3.0.3",
-				"prettier-plugin-svelte": "^3.0.3",
-				"svelte": "^4.2.2",
-				"svelte-check": "^3.5.2",
+				"prettier-plugin-svelte": "^3.1.0",
+				"svelte": "^4.2.3",
+				"svelte-check": "^3.6.0",
 				"tslib": "^2.6.2",
 				"typescript": "^5.2.2",
 				"uvu": "^0.5.6"
@@ -613,37 +648,16 @@
 				"singleQuote": true,
 				"bracketSpacing": false,
 				"overrides": [{"files": "package.json", "options": {"useTabs": false}}]
-			},
-			"exports": {
-				"./example.js": {"default": "./dist/example.js", "types": "./dist/example.d.ts"},
-				"./package.gen.js": {
-					"default": "./dist/package.gen.js",
-					"types": "./dist/package.gen.d.ts"
-				},
-				"./package.js": {"default": "./dist/package.js", "types": "./dist/package.d.ts"}
-			},
-			"modules": {
-				"./example.js": {
-					"path": "example.ts",
-					"declarations": [
-						{"name": "example_a", "kind": "variable"},
-						{"name": "example_b", "kind": "function"}
-					]
-				},
-				"./package.gen.js": {"path": "package.gen.ts", "declarations": []},
-				"./package.js": {
-					"path": "package.ts",
-					"declarations": [{"name": "package_json", "kind": "variable"}]
-				}
 			}
 		},
+		"src_json": {"name": "@fuz.dev/fuz_template", "version": "0.0.1"},
 		"pull_requests": []
 	},
 	{
 		"url": "https://www.grogarden.org/",
 		"package_json": {
 			"name": "@grogarden/gro",
-			"version": "0.101.0",
+			"version": "0.102.0",
 			"description": "task runner and toolkit extending SvelteKit",
 			"icon": "🌰",
 			"public": true,
@@ -696,18 +710,18 @@
 				"@changesets/changelog-git": "^0.1.14",
 				"@changesets/types": "^5.2.1",
 				"@feltjs/eslint-config": "^0.4.1",
-				"@fuz.dev/fuz": "^0.79.1",
-				"@fuz.dev/fuz_library": "^0.19.1",
+				"@fuz.dev/fuz": "^0.79.3",
+				"@fuz.dev/fuz_library": "^0.20.0",
 				"@sveltejs/adapter-static": "^2.0.3",
-				"@sveltejs/kit": "^1.27.2",
+				"@sveltejs/kit": "^1.27.3",
 				"@sveltejs/package": "^2.2.2",
-				"@types/fs-extra": "^11.0.3",
-				"@types/node": "^20.8.10",
-				"@typescript-eslint/eslint-plugin": "^6.9.1",
-				"@typescript-eslint/parser": "^6.9.1",
+				"@types/fs-extra": "^11.0.4",
+				"@types/node": "^20.9.0",
+				"@typescript-eslint/eslint-plugin": "^6.10.0",
+				"@typescript-eslint/parser": "^6.10.0",
 				"esbuild": "^0.18.20",
-				"eslint": "^8.52.0",
-				"eslint-plugin-svelte": "^2.34.0",
+				"eslint": "^8.53.0",
+				"eslint-plugin-svelte": "^2.35.0",
 				"svelte": "^4.2.2",
 				"svelte-check": "^3.5.2",
 				"typescript": "^5.2.2",
@@ -859,6 +873,7 @@
 				"./run_task.js": {"default": "./dist/run_task.js", "types": "./dist/run_task.d.ts"},
 				"./schema.js": {"default": "./dist/schema.js", "types": "./dist/schema.d.ts"},
 				"./search_fs.js": {"default": "./dist/search_fs.js", "types": "./dist/search_fs.d.ts"},
+				"./src_json.js": {"default": "./dist/src_json.js", "types": "./dist/src_json.d.ts"},
 				"./sveltekit_config.js": {
 					"default": "./dist/sveltekit_config.js",
 					"types": "./dist/sveltekit_config.d.ts"
@@ -912,7 +927,11 @@
 					"types": "./dist/upgrade.task.d.ts"
 				},
 				"./watch_dir.js": {"default": "./dist/watch_dir.js", "types": "./dist/watch_dir.d.ts"}
-			},
+			}
+		},
+		"src_json": {
+			"name": "@grogarden/gro",
+			"version": "0.102.0",
 			"modules": {
 				".": {
 					"path": "index.ts",
@@ -1003,6 +1022,7 @@
 						{"name": "Gro_Config", "kind": "type"},
 						{"name": "Create_Gro_Config", "kind": "type"},
 						{"name": "create_empty_config", "kind": "function"},
+						{"name": "DEFAULT_EXPORTS_EXCLUDER", "kind": "variable"},
 						{"name": "Gro_Config_Module", "kind": "type"},
 						{"name": "load_config", "kind": "function"},
 						{"name": "validate_config_module", "kind": "function"}
@@ -1270,27 +1290,21 @@
 				"./package_json.js": {
 					"path": "package_json.ts",
 					"declarations": [
-						{"name": "Package_Module_Declaration", "kind": "variable"},
-						{"name": "Package_Module", "kind": "variable"},
-						{"name": "Package_Modules", "kind": "variable"},
+						{"name": "transform_empty_object_to_undefined", "kind": "function"},
 						{"name": "Package_Json_Repository", "kind": "variable"},
 						{"name": "Package_Json_Author", "kind": "variable"},
 						{"name": "Package_Json_Funding", "kind": "variable"},
 						{"name": "Package_Json_Exports", "kind": "variable"},
-						{"name": "Package_Json_Modules", "kind": "variable"},
 						{"name": "Package_Json", "kind": "variable"},
 						{"name": "Map_Package_Json", "kind": "type"},
 						{"name": "EMPTY_PACKAGE_JSON", "kind": "variable"},
 						{"name": "load_package_json", "kind": "function"},
-						{"name": "load_mapped_package_json", "kind": "function"},
 						{"name": "sync_package_json", "kind": "function"},
 						{"name": "load_gro_package_json", "kind": "function"},
 						{"name": "write_package_json", "kind": "function"},
 						{"name": "serialize_package_json", "kind": "function"},
 						{"name": "update_package_json", "kind": "function"},
-						{"name": "normalize_package_json", "kind": "function"},
-						{"name": "to_package_exports", "kind": "function"},
-						{"name": "to_package_modules", "kind": "function"}
+						{"name": "to_package_exports", "kind": "function"}
 					]
 				},
 				"./package.gen.js": {
@@ -1299,7 +1313,10 @@
 				},
 				"./package.js": {
 					"path": "package.ts",
-					"declarations": [{"name": "package_json", "kind": "variable"}]
+					"declarations": [
+						{"name": "package_json", "kind": "variable"},
+						{"name": "src_json", "kind": "variable"}
+					]
 				},
 				"./path.js": {
 					"path": "path.ts",
@@ -1440,6 +1457,19 @@
 						{"name": "search_fs", "kind": "function"}
 					]
 				},
+				"./src_json.js": {
+					"path": "src_json.ts",
+					"declarations": [
+						{"name": "Src_Module_Declaration", "kind": "variable"},
+						{"name": "Src_Module", "kind": "variable"},
+						{"name": "Src_Modules", "kind": "variable"},
+						{"name": "Src_Json", "kind": "variable"},
+						{"name": "Map_Src_Json", "kind": "type"},
+						{"name": "create_src_json", "kind": "function"},
+						{"name": "serialize_src_json", "kind": "function"},
+						{"name": "to_src_modules", "kind": "function"}
+					]
+				},
 				"./sveltekit_config.js": {
 					"path": "sveltekit_config.ts",
 					"declarations": [
@@ -1568,23 +1598,6 @@
 		},
 		"pull_requests": [
 			{
-				"url": "https://api.github.com/repos/grogarden/gro/pulls/434",
-				"id": 1593503608,
-				"number": 434,
-				"state": "open",
-				"title": "add `.well-known/src.json` and `.well-known/src/` ",
-				"user": {
-					"login": "ryanatkn",
-					"id": 2608646,
-					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
-					"url": "https://api.github.com/users/ryanatkn"
-				},
-				"body": "- add `.well-known/src.json` and `.well-known/src/` with `modules`\r\n- remove `modules` from `.well-known/package.json`\r\n- docs\r\n- export src_json  from package.ts\r\n\r\nfuture\r\n\r\n- improve default source filter? filter with gitignore? trace the modules maybe?",
-				"created_at": "2023-11-09T00:12:21Z",
-				"updated_at": "2023-11-09T04:03:45Z",
-				"draft": false
-			},
-			{
 				"url": "https://api.github.com/repos/grogarden/gro/pulls/429",
 				"id": 1573508138,
 				"number": 429,
@@ -1598,7 +1611,7 @@
 				},
 				"body": "vscode flips out regularly from the workspace-destructive `deploy` branch in `gro deploy`. This refactors the internals to use a non-destructive strategy, at the cost of inefficiency -- a `.git` directory for the `deploy` branch is now duplicated in a cache directory. A benefit is that you no longer see `deploy` in your root `.git` context.\r\n\r\n- maybe `.gro/deploy`?\r\n- `git clone -b deploy --single-branch git://github.com/grogarden/gro.git",
 				"created_at": "2023-10-25T19:12:59Z",
-				"updated_at": "2023-11-09T00:05:51Z",
+				"updated_at": "2023-11-10T18:59:54Z",
 				"draft": true
 			},
 			{
@@ -1615,90 +1628,21 @@
 				},
 				"body": "- [ ] map leading hashes to the PR, fallback to the hash link",
 				"created_at": "2023-10-23T19:58:40Z",
-				"updated_at": "2023-11-09T00:05:45Z",
+				"updated_at": "2023-11-10T19:00:01Z",
 				"draft": true
 			}
 		]
 	},
-	{"url": "https://missing.fuz.dev/", "package_json": null, "pull_requests": null},
+	{
+		"url": "https://missing.fuz.dev/",
+		"package_json": null,
+		"src_json": null,
+		"pull_requests": null
+	},
 	{
 		"url": "https://www.spiderspace.org/",
-		"package_json": {
-			"name": "@spiderspace/spiderspace",
-			"description": "hobbyist web stack",
-			"version": "0.0.1",
-			"public": true,
-			"icon": "🪜",
-			"license": "MIT",
-			"homepage": "https://www.spiderspace.org/",
-			"repository": "https://github.com/spiderspace/spiderspace",
-			"type": "module",
-			"engines": {"node": ">=20.7"},
-			"scripts": {
-				"start": "gro dev",
-				"dev": "gro dev",
-				"build": "gro build",
-				"test": "gro test",
-				"deploy": "gro deploy"
-			},
-			"devDependencies": {
-				"@changesets/changelog-git": "^0.1.14",
-				"@feltjs/eslint-config": "^0.4.1",
-				"@fuz.dev/fuz": "^0.79.3",
-				"@fuz.dev/fuz_library": "^0.20.0",
-				"@grogarden/gro": "^0.101.0",
-				"@grogarden/util": "^0.16.0",
-				"@octokit/request": "^8.1.5",
-				"@ryanatkn/orc": "^0.12.0",
-				"@sveltejs/adapter-static": "^2.0.3",
-				"@sveltejs/kit": "^1.27.3",
-				"@typescript-eslint/eslint-plugin": "^6.10.0",
-				"@typescript-eslint/parser": "^6.10.0",
-				"eslint": "^8.53.0",
-				"prettier": "^3.0.3",
-				"prettier-plugin-svelte": "^3.0.3",
-				"svelte": "^4.2.2",
-				"svelte-check": "^3.5.2",
-				"tslib": "^2.6.2",
-				"typescript": "^5.2.2",
-				"uvu": "^0.5.6"
-			},
-			"eslintConfig": {"root": true, "extends": "@feltjs"},
-			"prettier": {
-				"plugins": ["prettier-plugin-svelte"],
-				"useTabs": true,
-				"printWidth": 100,
-				"singleQuote": true,
-				"bracketSpacing": false,
-				"overrides": [{"files": "package.json", "options": {"useTabs": false}}]
-			},
-			"exports": {
-				"./orc.task.js": {"default": "./dist/orc.task.js", "types": "./dist/orc.task.d.ts"},
-				"./package.gen.js": {
-					"default": "./dist/package.gen.js",
-					"types": "./dist/package.gen.d.ts"
-				},
-				"./package.js": {"default": "./dist/package.js", "types": "./dist/package.d.ts"},
-				"./packages.json": {
-					"default": "./dist/packages.json",
-					"types": "./dist/packages.json.d.ts"
-				},
-				"./packages.task.js": {
-					"default": "./dist/packages.task.js",
-					"types": "./dist/packages.task.d.ts"
-				}
-			},
-			"modules": {
-				"./orc.task.js": {"path": "orc.task.ts", "declarations": []},
-				"./package.gen.js": {"path": "package.gen.ts", "declarations": []},
-				"./package.js": {
-					"path": "package.ts",
-					"declarations": [{"name": "package_json", "kind": "variable"}]
-				},
-				"./packages.json": {"path": "packages.json", "declarations": []},
-				"./packages.task.js": {"path": "packages.task.ts", "declarations": []}
-			}
-		},
-		"pull_requests": []
+		"package_json": null,
+		"src_json": null,
+		"pull_requests": null
 	}
 ]

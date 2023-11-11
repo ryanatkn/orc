@@ -1,12 +1,11 @@
 <script lang="ts">
 	import Package_Detail from '@fuz.dev/fuz_library/Package_Detail.svelte';
-	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
 
 	import Page_Footer from '$routes/Page_Footer.svelte';
 	import {package_json} from '$lib/package.js';
+	import {get_packages} from '$lib/packages.js';
 
-	// TODO hacky - maybe put in context?
-	const pkg = parse_package_meta(package_json.homepage, package_json);
+	const {pkg} = get_packages();
 </script>
 
 <svelte:head>

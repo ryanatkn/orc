@@ -1,22 +1,15 @@
 <script lang="ts">
-	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
 	import Breadcrumb from '@fuz.dev/fuz_library/Breadcrumb.svelte';
 
 	import Packages_Tree from '$lib/Packages_Tree.svelte';
-	import packages from '$lib/packages.json';
 	import Page_Header from '$routes/Page_Header.svelte';
 	import Page_Footer from '$routes/Page_Footer.svelte';
 	import {package_json} from '$lib/package.js';
+	import {get_packages} from '$lib/packages.js';
+
+	const {pkg, pkgs} = get_packages();
 
 	// TODO ideally there would be one `Packages_Tree` mounted by the layout
-
-	// TODO hacky
-	const pkgs = packages.map(({url, package_json}) =>
-		package_json ? parse_package_meta(url, package_json) : {url, package_json: null},
-	);
-
-	// TODO hacky, and copypaste error?
-	const pkg = parse_package_meta(package_json.homepage, package_json);
 </script>
 
 <svelte:head>
@@ -25,7 +18,7 @@
 
 <main class="box width_full">
 	<section>
-		<Page_Header />
+		<Page_Header {pkg} />
 	</section>
 	<section class="tree">
 		<Packages_Tree {pkgs}>

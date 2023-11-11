@@ -9,8 +9,12 @@
 	import {create_contextmenu} from '@fuz.dev/fuz_contextmenu/contextmenu.js';
 
 	import Settings from '$routes/Settings.svelte';
+	import packages from '$lib/packages.json';
+	import {parse_packages, set_packages} from '$lib/packages.js';
 
 	const contextmenu = create_contextmenu();
+
+	set_packages(parse_packages(packages));
 
 	let show_settings = false;
 </script>

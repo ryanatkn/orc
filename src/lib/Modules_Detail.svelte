@@ -1,12 +1,12 @@
 <script lang="ts">
 	import type {Package_Meta} from '@fuz.dev/fuz_library/package_meta.js';
-	import type {Package_Module} from '@grogarden/gro/package_json.js';
+	import type {Src_Module} from '@grogarden/gro/src_json.js';
 	import {ensure_end} from '@grogarden/util/string.js';
 	import {base} from '$app/paths';
 
 	import Modules_Menu from '$lib/Modules_Menu.svelte';
 
-	export let pkgs: Array<Package_Meta | {url: string; package_json: null}>; // TODO normalized version with cached primitives?
+	export let pkgs: Array<Package_Meta | {url: string; package_json: null; src_json: null}>; // TODO normalized version with cached primitives?
 
 	// TODO extract to Orc
 
@@ -17,13 +17,13 @@
 	// TODO hacky, needs helpers or rethinking
 	let pkgs_modules: Array<{
 		pkg: Package_Meta;
-		modules: Package_Module[];
+		modules: Src_Module[];
 	}>;
 	$: pkgs_modules = pkgs.reduce(
 		(v, pkg) => {
-			const {package_json} = pkg;
+			const {package_json, src_json} = pkg;
 			if (
-				!package_json?.modules ||
+				!src_json?.modules ||
 				!(
 					!!package_json.devDependencies?.['@sveltejs/package'] ||
 					!!package_json.dependencies?.['@sveltejs/package']
@@ -31,10 +31,10 @@
 			) {
 				return v;
 			}
-			v.push({pkg, modules: Object.values(package_json.modules)});
+			v.push({pkg, modules: Object.values(src_json.modules)});
 			return v;
 		},
-		[] as Array<{pkg: Package_Meta; modules: Package_Module[]}>,
+		[] as Array<{pkg: Package_Meta; modules: Src_Module[]}>,
 	);
 
 	// TODO add favicon (from library? gro?)
