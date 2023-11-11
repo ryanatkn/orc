@@ -38,11 +38,16 @@ export const task: Task<Args> = {
 		const outfile = join(paths.lib, 'packages.json');
 
 		const orc_config = await load_orc_config(log, dir);
-		const {packages} = orc_config;
 
 		const cache = await create_fs_fetch_cache('packages');
 
-		const fetched_packages = await fetch_packages(packages, GITHUB_TOKEN_SECRET, cache.data, log);
+		// TODO `packages` seems wrong now, it's deployments? packages are parsed out in `parse_deployments` probably
+		const fetched_packages = await fetch_packages(
+			orc_config.deployments,
+			GITHUB_TOKEN_SECRET,
+			cache.data,
+			log,
+		);
 
 		const local_package_json = await load_package_json(dir);
 
