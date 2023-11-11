@@ -14,9 +14,6 @@
 
 	const contextmenu = create_contextmenu();
 
-	// TODO BLOCK helper to init these
-
-	// TODO BLOCK name?
 	set_packages(parse_packages(packages));
 
 	let show_settings = false;

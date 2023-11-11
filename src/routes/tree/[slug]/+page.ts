@@ -1,14 +1,9 @@
 import type {EntryGenerator} from './$types';
-import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
 
 import packages from '$lib/packages.json';
+import {parse_packages} from '$lib/packages.js';
 
-// TODO BLOCK add and use the init helper
-const pkgs = packages
-	.map(({url, package_json, src_json}) =>
-		package_json && src_json ? parse_package_meta(url, package_json, src_json) : null!,
-	)
-	.filter(Boolean);
+const {pkgs} = parse_packages(packages);
 
 export const entries: EntryGenerator = async () => {
 	return pkgs.map((pkg) => {
