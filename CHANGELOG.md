@@ -1,5 +1,11 @@
 # @ryanatkn/orc
 
+## 0.13.2
+
+### Patch Changes
+
+- fb802a2: fix local package
+
 ## 0.13.1
 
 ### Patch Changes
