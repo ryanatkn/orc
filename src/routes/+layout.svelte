@@ -7,10 +7,8 @@
 	import Dialog from '@fuz.dev/fuz_dialog/Dialog.svelte';
 	import Contextmenu from '@fuz.dev/fuz_contextmenu/Contextmenu.svelte';
 	import {create_contextmenu} from '@fuz.dev/fuz_contextmenu/contextmenu.js';
-	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
 
 	import Settings from '$routes/Settings.svelte';
-	import type {Fetched_Package, Unfetched_Package} from '$lib/fetch_packages.js';
 	import packages from '$lib/packages.json';
 	import {set_packages} from '$lib/packages.js';
 
@@ -18,26 +16,8 @@
 
 	// TODO BLOCK helper to init these
 
-	const pkgs: Fetched_Package[] = packages
-		.map(({url, package_json, src_json, pull_requests}) =>
-			package_json && src_json
-				? {...parse_package_meta(url, package_json, src_json), pull_requests}
-				: null!,
-		)
-		.filter(Boolean);
-
-	const pkg = pkgs[0];
-
-	const unfetched_pkgs: Unfetched_Package[] = packages
-		.map(({url, package_json, src_json}) =>
-			package_json && src_json
-				? null!
-				: {url, package_json: null, src_json: null, pull_requests: null},
-		)
-		.filter(Boolean);
-
 	// TODO BLOCK name?
-	set_packages({pkgs, pkg, unfetched_pkgs});
+	set_packages(parse_packages(packages));
 
 	let show_settings = false;
 </script>
