@@ -1,11 +1,12 @@
 <script lang="ts">
 	import Breadcrumb from '@fuz.dev/fuz_library/Breadcrumb.svelte';
+	import type {Package_Meta} from '@fuz.dev/fuz_library/package_meta.js';
 
-	import {package_json} from '$lib/package.js';
+	export let pkg: Package_Meta;
 </script>
 
 <div>
-	<Breadcrumb>{package_json.icon}</Breadcrumb>
+	<Breadcrumb>{pkg.package_json.icon}</Breadcrumb>
 </div>
 
 <style>

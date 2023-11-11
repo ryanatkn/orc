@@ -18,7 +18,7 @@
 
 <main class="box width_full">
 	<section>
-		<Page_Header />
+		<Page_Header {pkg} />
 	</section>
 	<section class="tree">
 		<Packages_Tree {pkgs}>

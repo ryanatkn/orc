@@ -14,7 +14,7 @@
 
 <main class="box">
 	<section>
-		<Page_Header />
+		<Page_Header {pkg} />
 	</section>
 	<section>
 		<div class="panel padded_md">

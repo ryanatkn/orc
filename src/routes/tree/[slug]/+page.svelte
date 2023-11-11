@@ -27,7 +27,7 @@
 
 <main class="box width_full">
 	<section>
-		<Page_Header />
+		<Page_Header {pkg} />
 	</section>
 	<section class="tree">
 		{#if !route_pkg}

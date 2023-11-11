@@ -18,7 +18,7 @@
 
 <main class="box width_full">
 	<section>
-		<Page_Header />
+		<Page_Header {pkg} />
 	</section>
 	<section>
 		<Pull_Requests_Detail {packages} {filter_pull_request} />
