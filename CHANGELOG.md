@@ -1,5 +1,11 @@
 # @ryanatkn/orc
 
+## 0.13.0
+
+### Minor Changes
+
+- 25b4e86: upgrade gro with src_json
+
 ## 0.12.0
 
 ### Minor Changes
