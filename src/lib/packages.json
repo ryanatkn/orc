@@ -1634,6 +1634,12 @@
 		]
 	},
 	{
+		"url": "https://missing.fuz.dev/",
+		"package_json": null,
+		"src_json": null,
+		"pull_requests": null
+	},
+	{
 		"url": "https://www.spiderspace.org/",
 		"package_json": null,
 		"src_json": null,

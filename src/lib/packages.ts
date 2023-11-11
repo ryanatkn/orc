@@ -7,8 +7,7 @@ import type {
 	Unfetched_Package,
 } from '$lib/fetch_packages.js';
 
-// TODO BLOCK what relationship does this have to `Deployments`?
-// TODO BLOCK name? move to `fetch_packages`?
+// TODO name? move to `fetch_packages`?
 export interface Packages {
 	pkg: Fetched_Package;
 	pkgs: Fetched_Package[];
