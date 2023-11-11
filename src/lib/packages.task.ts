@@ -42,6 +42,7 @@ export const task: Task<Args> = {
 
 		const cache = await create_fs_fetch_cache('packages');
 
+		// TODO BLOCK handle packages containing `local_package_json.homepage` and the final_packages below
 		const fetched_packages = await fetch_packages(packages, GITHUB_TOKEN_SECRET, cache.data, log);
 
 		const local_package_json = await load_package_json(dir);
