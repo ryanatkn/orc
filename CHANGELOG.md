@@ -1,5 +1,11 @@
 # @ryanatkn/orc
 
+## 0.14.0
+
+### Minor Changes
+
+- 70d4b0d: rename `Packages_Table` from `Repo_Table`
+
 ## 0.13.3
 
 ### Patch Changes
