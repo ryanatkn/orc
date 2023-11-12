@@ -34,7 +34,7 @@
     "@fuz.dev/fuz_contextmenu": "^0.6.0",
     "@fuz.dev/fuz_dialog": "^0.5.0",
     "@fuz.dev/fuz_library": "^0.21.1",
-    "@grogarden/gro": "^0.102.0",
+    "@grogarden/gro": "^0.102.1",
     "@grogarden/util": "^0.16.0",
     "@octokit/request": "^8.1.5",
     "@sveltejs/adapter-static": "^2.0.3",
@@ -122,6 +122,11 @@
       "default": "./dist/package.js",
       "types": "./dist/package.d.ts"
     },
+    "./Packages_Table.svelte": {
+      "svelte": "./dist/Packages_Table.svelte",
+      "default": "./dist/Packages_Table.svelte",
+      "types": "./dist/Packages_Table.svelte.d.ts"
+    },
     "./Packages_Tree.svelte": {
       "svelte": "./dist/Packages_Tree.svelte",
       "default": "./dist/Packages_Tree.svelte",
@@ -143,11 +148,6 @@
       "svelte": "./dist/Pull_Requests_Detail.svelte",
       "default": "./dist/Pull_Requests_Detail.svelte",
       "types": "./dist/Pull_Requests_Detail.svelte.d.ts"
-    },
-    "./Repo_Table.svelte": {
-      "svelte": "./dist/Repo_Table.svelte",
-      "default": "./dist/Repo_Table.svelte",
-      "types": "./dist/Repo_Table.svelte.d.ts"
     },
     "./sync.task.js": {
       "default": "./dist/sync.task.js",

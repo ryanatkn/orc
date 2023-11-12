@@ -144,7 +144,7 @@
 
 ### Patch Changes
 
-- 9c0e326: add favicon to `Repo_Table`
+- 9c0e326: add favicon to `Packages_Table`
 
 ## 0.6.1
 

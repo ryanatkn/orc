@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Page_Header from '$routes/Page_Header.svelte';
-	import Repo_Table from '$lib/Repo_Table.svelte';
+	import Packages_Table from '$lib/Packages_Table.svelte';
 	import Page_Footer from '$routes/Page_Footer.svelte';
 	import {package_json} from '$lib/package.js';
 	import {get_packages} from '$lib/packages.js';
@@ -18,7 +18,7 @@
 	</section>
 	<section>
 		<div class="panel padded_md">
-			<Repo_Table {pkgs} />
+			<Packages_Table {pkgs} />
 		</div>
 	</section>
 	<section class="box">

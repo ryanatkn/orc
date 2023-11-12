@@ -3,7 +3,7 @@
 		"url": "https://orc.ryanatkn.com/",
 		"package_json": {
 			"name": "@ryanatkn/orc",
-			"version": "0.13.2",
+			"version": "0.13.3",
 			"description": "a tool for orchestrating many repos",
 			"icon": "🪄",
 			"public": true,
@@ -33,7 +33,7 @@
 				"@fuz.dev/fuz_contextmenu": "^0.6.0",
 				"@fuz.dev/fuz_dialog": "^0.5.0",
 				"@fuz.dev/fuz_library": "^0.21.1",
-				"@grogarden/gro": "^0.102.0",
+				"@grogarden/gro": "^0.102.1",
 				"@grogarden/util": "^0.16.0",
 				"@octokit/request": "^8.1.5",
 				"@sveltejs/adapter-static": "^2.0.3",
@@ -97,6 +97,11 @@
 					"types": "./dist/package.gen.d.ts"
 				},
 				"./package.js": {"default": "./dist/package.js", "types": "./dist/package.d.ts"},
+				"./Packages_Table.svelte": {
+					"svelte": "./dist/Packages_Table.svelte",
+					"default": "./dist/Packages_Table.svelte",
+					"types": "./dist/Packages_Table.svelte.d.ts"
+				},
 				"./Packages_Tree.svelte": {
 					"svelte": "./dist/Packages_Tree.svelte",
 					"default": "./dist/Packages_Tree.svelte",
@@ -116,17 +121,12 @@
 					"default": "./dist/Pull_Requests_Detail.svelte",
 					"types": "./dist/Pull_Requests_Detail.svelte.d.ts"
 				},
-				"./Repo_Table.svelte": {
-					"svelte": "./dist/Repo_Table.svelte",
-					"default": "./dist/Repo_Table.svelte",
-					"types": "./dist/Repo_Table.svelte.d.ts"
-				},
 				"./sync.task.js": {"default": "./dist/sync.task.js", "types": "./dist/sync.task.d.ts"}
 			}
 		},
 		"src_json": {
 			"name": "@ryanatkn/orc",
-			"version": "0.13.2",
+			"version": "0.13.3",
 			"modules": {
 				"./config.js": {
 					"path": "config.ts",
@@ -197,6 +197,7 @@
 						{"name": "src_json", "kind": "variable"}
 					]
 				},
+				"./Packages_Table.svelte": {"path": "Packages_Table.svelte", "declarations": []},
 				"./Packages_Tree.svelte": {"path": "Packages_Tree.svelte", "declarations": []},
 				"./packages.json": {"path": "packages.json", "declarations": []},
 				"./packages.task.js": {
@@ -223,7 +224,6 @@
 					"path": "Pull_Requests_Detail.svelte",
 					"declarations": []
 				},
-				"./Repo_Table.svelte": {"path": "Repo_Table.svelte", "declarations": []},
 				"./sync.task.js": {
 					"path": "sync.task.ts",
 					"declarations": [{"name": "task", "kind": "variable"}]
@@ -266,8 +266,8 @@
 				"@fuz.dev/fuz_code": "^0.4.3",
 				"@fuz.dev/fuz_dialog": "^0.5.0",
 				"@fuz.dev/fuz_library": "^0.21.1",
-				"@grogarden/gro": "^0.102.0",
-				"@ryanatkn/orc": "^0.13.2",
+				"@grogarden/gro": "^0.102.1",
+				"@ryanatkn/orc": "^0.13.3",
 				"@sveltejs/adapter-static": "^2.0.3",
 				"@sveltejs/kit": "^1.27.5",
 				"@sveltejs/package": "^2.2.2",
@@ -776,7 +776,7 @@
 		"url": "https://www.grogarden.org/",
 		"package_json": {
 			"name": "@grogarden/gro",
-			"version": "0.102.0",
+			"version": "0.102.1",
 			"description": "task runner and toolkit extending SvelteKit",
 			"icon": "🌰",
 			"public": true,
@@ -1050,7 +1050,7 @@
 		},
 		"src_json": {
 			"name": "@grogarden/gro",
-			"version": "0.102.0",
+			"version": "0.102.1",
 			"modules": {
 				".": {
 					"path": "index.ts",
@@ -1779,16 +1779,15 @@
 				"deploy": "gro deploy"
 			},
 			"devDependencies": {
-				"@changesets/changelog-git": "^0.1.14",
 				"@feltjs/eslint-config": "^0.4.1",
-				"@fuz.dev/fuz": "^0.80.0",
+				"@fuz.dev/fuz": "^0.80.1",
 				"@fuz.dev/fuz_library": "^0.21.1",
-				"@grogarden/gro": "^0.102.0",
+				"@grogarden/gro": "^0.102.1",
 				"@grogarden/util": "^0.16.0",
 				"@octokit/request": "^8.1.5",
-				"@ryanatkn/orc": "^0.13.2",
+				"@ryanatkn/orc": "^0.13.3",
 				"@sveltejs/adapter-static": "^2.0.3",
-				"@sveltejs/kit": "^1.27.3",
+				"@sveltejs/kit": "^1.27.5",
 				"@typescript-eslint/eslint-plugin": "^6.10.0",
 				"@typescript-eslint/parser": "^6.10.0",
 				"eslint": "^8.53.0",
@@ -1808,41 +1807,9 @@
 				"singleQuote": true,
 				"bracketSpacing": false,
 				"overrides": [{"files": "package.json", "options": {"useTabs": false}}]
-			},
-			"exports": {
-				"./orc.task.js": {"default": "./dist/orc.task.js", "types": "./dist/orc.task.d.ts"},
-				"./package.gen.js": {
-					"default": "./dist/package.gen.js",
-					"types": "./dist/package.gen.d.ts"
-				},
-				"./package.js": {"default": "./dist/package.js", "types": "./dist/package.d.ts"},
-				"./packages.json": {
-					"default": "./dist/packages.json",
-					"types": "./dist/packages.json.d.ts"
-				},
-				"./packages.task.js": {
-					"default": "./dist/packages.task.js",
-					"types": "./dist/packages.task.d.ts"
-				}
 			}
 		},
-		"src_json": {
-			"name": "@spiderspace/spiderspace",
-			"version": "0.0.1",
-			"modules": {
-				"./orc.task.js": {"path": "orc.task.ts", "declarations": []},
-				"./package.gen.js": {"path": "package.gen.ts", "declarations": []},
-				"./package.js": {
-					"path": "package.ts",
-					"declarations": [
-						{"name": "package_json", "kind": "variable"},
-						{"name": "src_json", "kind": "variable"}
-					]
-				},
-				"./packages.json": {"path": "packages.json", "declarations": []},
-				"./packages.task.js": {"path": "packages.task.ts", "declarations": []}
-			}
-		},
+		"src_json": {"name": "@spiderspace/spiderspace", "version": "0.0.1"},
 		"pull_requests": []
 	}
 ]
