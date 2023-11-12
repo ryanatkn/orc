@@ -27,7 +27,7 @@ export const package_json = {
 	devDependencies: {
 		'@changesets/changelog-git': '^0.1.14',
 		'@feltjs/eslint-config': '^0.4.1',
-		'@fuz.dev/fuz': '^0.80.0',
+		'@fuz.dev/fuz': '^0.80.1',
 		'@fuz.dev/fuz_contextmenu': '^0.6.0',
 		'@fuz.dev/fuz_dialog': '^0.5.0',
 		'@fuz.dev/fuz_library': '^0.21.1',
@@ -35,7 +35,7 @@ export const package_json = {
 		'@grogarden/util': '^0.16.0',
 		'@octokit/request': '^8.1.5',
 		'@sveltejs/adapter-static': '^2.0.3',
-		'@sveltejs/kit': '^1.27.4',
+		'@sveltejs/kit': '^1.27.5',
 		'@sveltejs/package': '^2.2.2',
 		'@types/node': '^20.9.0',
 		'@typescript-eslint/eslint-plugin': '^6.10.0',
