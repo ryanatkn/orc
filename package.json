@@ -110,6 +110,11 @@
       "default": "./dist/Modules_Menu.svelte",
       "types": "./dist/Modules_Menu.svelte.d.ts"
     },
+    "./Modules_Page.svelte": {
+      "svelte": "./dist/Modules_Page.svelte",
+      "default": "./dist/Modules_Page.svelte",
+      "types": "./dist/Modules_Page.svelte.d.ts"
+    },
     "./orc.task.js": {
       "default": "./dist/orc.task.js",
       "types": "./dist/orc.task.d.ts"
@@ -143,6 +148,16 @@
     "./packages.js": {
       "default": "./dist/packages.js",
       "types": "./dist/packages.d.ts"
+    },
+    "./Page_Footer.svelte": {
+      "svelte": "./dist/Page_Footer.svelte",
+      "default": "./dist/Page_Footer.svelte",
+      "types": "./dist/Page_Footer.svelte.d.ts"
+    },
+    "./Page_Header.svelte": {
+      "svelte": "./dist/Page_Header.svelte",
+      "default": "./dist/Page_Header.svelte",
+      "types": "./dist/Page_Header.svelte.d.ts"
     },
     "./Pull_Requests_Detail.svelte": {
       "svelte": "./dist/Pull_Requests_Detail.svelte",

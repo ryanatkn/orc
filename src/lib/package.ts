@@ -85,6 +85,11 @@ export const package_json = {
 			default: './dist/Modules_Menu.svelte',
 			types: './dist/Modules_Menu.svelte.d.ts',
 		},
+		'./Modules_Page.svelte': {
+			svelte: './dist/Modules_Page.svelte',
+			default: './dist/Modules_Page.svelte',
+			types: './dist/Modules_Page.svelte.d.ts',
+		},
 		'./orc.task.js': {default: './dist/orc.task.js', types: './dist/orc.task.d.ts'},
 		'./package.gen.js': {default: './dist/package.gen.js', types: './dist/package.gen.d.ts'},
 		'./package.js': {default: './dist/package.js', types: './dist/package.d.ts'},
@@ -101,6 +106,16 @@ export const package_json = {
 		'./packages.json': {default: './dist/packages.json', types: './dist/packages.json.d.ts'},
 		'./packages.task.js': {default: './dist/packages.task.js', types: './dist/packages.task.d.ts'},
 		'./packages.js': {default: './dist/packages.js', types: './dist/packages.d.ts'},
+		'./Page_Footer.svelte': {
+			svelte: './dist/Page_Footer.svelte',
+			default: './dist/Page_Footer.svelte',
+			types: './dist/Page_Footer.svelte.d.ts',
+		},
+		'./Page_Header.svelte': {
+			svelte: './dist/Page_Header.svelte',
+			default: './dist/Page_Header.svelte',
+			types: './dist/Page_Header.svelte.d.ts',
+		},
 		'./Pull_Requests_Detail.svelte': {
 			svelte: './dist/Pull_Requests_Detail.svelte',
 			default: './dist/Pull_Requests_Detail.svelte',
@@ -168,6 +183,7 @@ export const src_json = {
 		},
 		'./Modules_Detail.svelte': {path: 'Modules_Detail.svelte', declarations: []},
 		'./Modules_Menu.svelte': {path: 'Modules_Menu.svelte', declarations: []},
+		'./Modules_Page.svelte': {path: 'Modules_Page.svelte', declarations: []},
 		'./orc.task.js': {
 			path: 'orc.task.ts',
 			declarations: [
@@ -206,6 +222,8 @@ export const src_json = {
 				{name: 'fetch_json', kind: 'function'},
 			],
 		},
+		'./Page_Footer.svelte': {path: 'Page_Footer.svelte', declarations: []},
+		'./Page_Header.svelte': {path: 'Page_Header.svelte', declarations: []},
 		'./Pull_Requests_Detail.svelte': {path: 'Pull_Requests_Detail.svelte', declarations: []},
 		'./sync.task.js': {path: 'sync.task.ts', declarations: [{name: 'task', kind: 'variable'}]},
 	},

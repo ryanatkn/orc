@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Page_Header from '$routes/Page_Header.svelte';
+	import Page_Header from '$lib/Page_Header.svelte';
 	import Packages_Table from '$lib/Packages_Table.svelte';
-	import Page_Footer from '$routes/Page_Footer.svelte';
+	import Page_Footer from '$lib/Page_Footer.svelte';
 	import {package_json} from '$lib/package.js';
 	import {get_packages} from '$lib/packages.js';
 

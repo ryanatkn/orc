@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Package_Detail from '@fuz.dev/fuz_library/Package_Detail.svelte';
 
-	import Page_Footer from '$routes/Page_Footer.svelte';
+	import Page_Footer from '$lib/Page_Footer.svelte';
 	import {package_json} from '$lib/package.js';
 	import {get_packages} from '$lib/packages.js';
 
