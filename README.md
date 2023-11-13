@@ -10,7 +10,7 @@ It's an alternative to the monorepo pattern that more loosely couples repos.
 
 This repo has demo data,
 I'm using Orc in [Spiderspace](https://github.com/spiderspace/spiderspace)
-and [fuz_repos](https://github.com/fuz-dev/fuz_repos).
+and [Fuz](https://github.com/fuz-dev/fuz).
 
 With Orc you can:
 
