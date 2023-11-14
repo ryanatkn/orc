@@ -3,7 +3,7 @@
 		"url": "https://orc.ryanatkn.com/",
 		"package_json": {
 			"name": "@ryanatkn/orc",
-			"version": "0.13.3",
+			"version": "0.14.0",
 			"description": "a tool for orchestrating many repos",
 			"icon": "🪄",
 			"public": true,
@@ -40,12 +40,12 @@
 				"@sveltejs/kit": "^1.27.5",
 				"@sveltejs/package": "^2.2.2",
 				"@types/node": "^20.9.0",
-				"@typescript-eslint/eslint-plugin": "^6.10.0",
-				"@typescript-eslint/parser": "^6.10.0",
+				"@typescript-eslint/eslint-plugin": "^6.11.0",
+				"@typescript-eslint/parser": "^6.11.0",
 				"dequal": "^2.0.3",
 				"eslint": "^8.53.0",
 				"eslint-plugin-svelte": "^2.35.0",
-				"prettier": "^3.0.3",
+				"prettier": "^3.1.0",
 				"prettier-plugin-svelte": "^3.1.0",
 				"svelte": "^4.2.3",
 				"svelte-check": "^3.6.0",
@@ -126,7 +126,7 @@
 		},
 		"src_json": {
 			"name": "@ryanatkn/orc",
-			"version": "0.13.3",
+			"version": "0.14.0",
 			"modules": {
 				"./config.js": {
 					"path": "config.ts",
@@ -1785,7 +1785,7 @@
 				"@grogarden/gro": "^0.102.1",
 				"@grogarden/util": "^0.16.0",
 				"@octokit/request": "^8.1.5",
-				"@ryanatkn/orc": "^0.13.3",
+				"@ryanatkn/orc": "^0.14.0",
 				"@sveltejs/adapter-static": "^2.0.3",
 				"@sveltejs/kit": "^1.27.5",
 				"@typescript-eslint/eslint-plugin": "^6.10.0",
