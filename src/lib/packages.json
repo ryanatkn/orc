@@ -400,42 +400,9 @@
 				}
 			}
 		},
-		"check_runs": [
-			{
-				"id": 18647256447,
-				"url": "https://api.github.com/repos/fuz-dev/fuz/check-runs/18647256447",
-				"html_url": "https://github.com/fuz-dev/fuz/actions/runs/6857701327/job/18647256447",
-				"status": "completed",
-				"conclusion": "success",
-				"started_at": "2023-11-14T00:52:52Z",
-				"completed_at": "2023-11-14T00:54:04Z",
-				"output": {
-					"title": null,
-					"summary": null,
-					"text": null,
-					"annotations_count": 1,
-					"annotations_url": "https://api.github.com/repos/fuz-dev/fuz/check-runs/18647256447/annotations"
-				}
-			}
-		],
+		"check_runs": {"status": "completed", "conclusion": "success"},
 		"pull_requests": [
-			{
-				"url": "https://api.github.com/repos/fuz-dev/fuz/pulls/358",
-				"id": 1594939344,
-				"number": 358,
-				"state": "open",
-				"title": "add .unprose",
-				"user": {
-					"login": "ryanatkn",
-					"id": 2608646,
-					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
-					"url": "https://api.github.com/users/ryanatkn"
-				},
-				"body": "Trying to solve my biggest problem with `.prose`, that I sometimes want sections inside it to opt-out of the styles.\r\n\r\nThe thing I originally tried doesn't work though. Not sure I can accomplish what I want without some gross CSS. (adding more large+slow+duplicative selectors, bleh)\r\n\r\n- see `/* allow nesting in .prose */`",
-				"created_at": "2023-11-09T18:43:22Z",
-				"updated_at": "2023-11-10T17:01:34Z",
-				"draft": true
-			}
+			{"number": 358, "title": "add .unprose", "user": {"login": "ryanatkn"}, "draft": true}
 		]
 	},
 	{
@@ -692,40 +659,12 @@
 				}
 			}
 		},
-		"check_runs": [
-			{
-				"id": 19043282303,
-				"url": "https://api.github.com/repos/fuz-dev/fuz_library/check-runs/19043282303",
-				"html_url": "https://github.com/fuz-dev/fuz_library/actions/runs/7001334628/job/19043282303",
-				"status": "completed",
-				"conclusion": "success",
-				"started_at": "2023-11-27T06:15:56Z",
-				"completed_at": "2023-11-27T06:16:41Z",
-				"output": {
-					"title": null,
-					"summary": null,
-					"text": null,
-					"annotations_count": 1,
-					"annotations_url": "https://api.github.com/repos/fuz-dev/fuz_library/check-runs/19043282303/annotations"
-				}
-			}
-		],
+		"check_runs": {"status": "completed", "conclusion": "success"},
 		"pull_requests": [
 			{
-				"url": "https://api.github.com/repos/fuz-dev/fuz_library/pulls/10",
-				"id": 1587159182,
 				"number": 10,
-				"state": "open",
 				"title": "show deps on `Package_Detail`",
-				"user": {
-					"login": "ryanatkn",
-					"id": 2608646,
-					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
-					"url": "https://api.github.com/users/ryanatkn"
-				},
-				"body": "- render deps with icon+link to dependency detail (favicon? standardize with table)",
-				"created_at": "2023-11-04T18:26:39Z",
-				"updated_at": "2023-11-10T14:26:20Z",
+				"user": {"login": "ryanatkn"},
 				"draft": true
 			}
 		]
@@ -783,24 +722,7 @@
 			}
 		},
 		"src_json": {"name": "@fuz.dev/fuz_template", "version": "0.0.1"},
-		"check_runs": [
-			{
-				"id": 19035886319,
-				"url": "https://api.github.com/repos/fuz-dev/fuz_template/check-runs/19035886319",
-				"html_url": "https://github.com/fuz-dev/fuz_template/actions/runs/6998152520/job/19035886319",
-				"status": "completed",
-				"conclusion": "success",
-				"started_at": "2023-11-26T21:36:17Z",
-				"completed_at": "2023-11-26T21:38:01Z",
-				"output": {
-					"title": null,
-					"summary": null,
-					"text": null,
-					"annotations_count": 1,
-					"annotations_url": "https://api.github.com/repos/fuz-dev/fuz_template/check-runs/19035886319/annotations"
-				}
-			}
-		],
+		"check_runs": {"status": "completed", "conclusion": "success"},
 		"pull_requests": []
 	},
 	{
@@ -1746,57 +1668,18 @@
 				}
 			}
 		},
-		"check_runs": [
-			{
-				"id": 19043447627,
-				"url": "https://api.github.com/repos/grogarden/gro/check-runs/19043447627",
-				"html_url": "https://github.com/grogarden/gro/actions/runs/7001401262/job/19043447627",
-				"status": "completed",
-				"conclusion": "success",
-				"started_at": "2023-11-27T06:24:23Z",
-				"completed_at": "2023-11-27T06:25:25Z",
-				"output": {
-					"title": null,
-					"summary": null,
-					"text": null,
-					"annotations_count": 1,
-					"annotations_url": "https://api.github.com/repos/grogarden/gro/check-runs/19043447627/annotations"
-				}
-			}
-		],
+		"check_runs": {"status": "completed", "conclusion": "success"},
 		"pull_requests": [
 			{
-				"url": "https://api.github.com/repos/grogarden/gro/pulls/429",
-				"id": 1573508138,
 				"number": 429,
-				"state": "open",
 				"title": "stop using the `deploy` branch in the main cwd for `gro deploy`",
-				"user": {
-					"login": "ryanatkn",
-					"id": 2608646,
-					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
-					"url": "https://api.github.com/users/ryanatkn"
-				},
-				"body": "vscode flips out regularly from the workspace-destructive `deploy` branch in `gro deploy`. This refactors the internals to use a non-destructive strategy, at the cost of inefficiency -- a `.git` directory for the `deploy` branch is now duplicated in a cache directory. A benefit is that you no longer see `deploy` in your root `.git` context.\r\n\r\n- maybe `.gro/deploy`?\r\n- `git clone -b deploy --single-branch git://github.com/grogarden/gro.git",
-				"created_at": "2023-10-25T19:12:59Z",
-				"updated_at": "2023-11-10T18:59:54Z",
+				"user": {"login": "ryanatkn"},
 				"draft": true
 			},
 			{
-				"url": "https://api.github.com/repos/grogarden/gro/pulls/427",
-				"id": 1569858809,
 				"number": 427,
-				"state": "open",
 				"title": "add and integrate `gro changelog`",
-				"user": {
-					"login": "ryanatkn",
-					"id": 2608646,
-					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
-					"url": "https://api.github.com/users/ryanatkn"
-				},
-				"body": "- [ ] map leading hashes to the PR, fallback to the hash link",
-				"created_at": "2023-10-23T19:58:40Z",
-				"updated_at": "2023-11-10T19:00:01Z",
+				"user": {"login": "ryanatkn"},
 				"draft": true
 			}
 		]
@@ -1860,24 +1743,7 @@
 			}
 		},
 		"src_json": {"name": "@spiderspace/spiderspace", "version": "0.0.1"},
-		"check_runs": [
-			{
-				"id": 19044449639,
-				"url": "https://api.github.com/repos/spiderspace/spiderspace/check-runs/19044449639",
-				"html_url": "https://github.com/spiderspace/spiderspace/actions/runs/7001796879/job/19044449639",
-				"status": "completed",
-				"conclusion": "success",
-				"started_at": "2023-11-27T07:16:23Z",
-				"completed_at": "2023-11-27T07:16:56Z",
-				"output": {
-					"title": null,
-					"summary": null,
-					"text": null,
-					"annotations_count": 1,
-					"annotations_url": "https://api.github.com/repos/spiderspace/spiderspace/check-runs/19044449639/annotations"
-				}
-			}
-		],
+		"check_runs": {"status": "completed", "conclusion": "success"},
 		"pull_requests": []
 	}
 ]

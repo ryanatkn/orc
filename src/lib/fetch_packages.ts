@@ -23,13 +23,13 @@ export interface Maybe_Fetched_Package {
 	url: Url;
 	package_json: Package_Json | null; // TODO forward error
 	src_json: Src_Json | null; // TODO forward error
-	check_runs: Github_Check_Runs[] | null;
+	check_runs: Github_Check_Runs | null;
 	pull_requests: Github_Pull_Request[] | null;
 }
 
 // TODO rethink these
 export interface Fetched_Package extends Package_Meta {
-	check_runs: Github_Check_Runs[] | null;
+	check_runs: Github_Check_Runs | null;
 	pull_requests: Github_Pull_Request[] | null;
 }
 

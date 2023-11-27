@@ -10,20 +10,11 @@ import {
 } from '$lib/fetch_cache.js';
 
 export const Github_Pull_Request = z.object({
-	id: z.number(),
-	url: z.string(),
 	number: z.number(),
-	state: z.enum(['open', 'closed', 'all']),
 	title: z.string(),
 	user: z.object({
 		login: z.string(),
-		id: z.number(),
-		avatar_url: z.string(),
-		url: z.string(),
 	}),
-	body: z.string().nullable(),
-	created_at: z.string(),
-	updated_at: z.string(),
 	draft: z.boolean(),
 });
 export type Github_Pull_Request = z.infer<typeof Github_Pull_Request>;
@@ -32,24 +23,27 @@ export type Github_Pull_Request = z.infer<typeof Github_Pull_Request>;
  * @see https://docs.github.com/en/rest/checks/runs#list-check-runs-for-a-git-reference
  */
 export const Github_Check_Runs = z.object({
-	id: z.number(),
-	url: z.string().url(),
-	html_url: z.string().url(),
 	status: z.enum(['queued', 'in_progress', 'completed']),
 	conclusion: z
 		.enum(['success', 'failure', 'neutral', 'cancelled', 'skipped', 'timed_out', 'action_required'])
 		.nullable(),
-	started_at: z.string(),
-	completed_at: z.string(),
-	output: z.object({
-		title: z.string().nullable(),
-		summary: z.string().nullable(),
-		text: z.string().nullable(),
-		annotations_count: z.number(),
-		annotations_url: z.string().url(),
-	}),
 });
 export type Github_Check_Runs = z.infer<typeof Github_Check_Runs>;
+
+const reduce_check_runs = (check_runs: Github_Check_Runs[]): Github_Check_Runs | null => {
+	if (!check_runs.length) return null;
+	let status!: Github_Check_Runs['status'];
+	let conclusion!: Github_Check_Runs['conclusion'];
+	for (const check_run of check_runs) {
+		if (!status || status === 'completed') {
+			status = check_run.status;
+		}
+		if (!conclusion || conclusion === 'success') {
+			conclusion = check_run.conclusion;
+		}
+	}
+	return {status, conclusion};
+};
 
 // TODO refactor with `fetch_package_json` and `fetch_github_check_runs`
 /**
@@ -122,7 +116,7 @@ export const fetch_github_check_runs = async (
 	log?: Logger,
 	token?: string,
 	ref = 'main',
-): Promise<Fetch_Cache_Item<Github_Check_Runs[] | null>> => {
+): Promise<Fetch_Cache_Item<Github_Check_Runs | null>> => {
 	log?.info('url', url);
 	if (!pkg.owner_name) throw Error('owner_name is required');
 	const params = {owner: pkg.owner_name, repo: pkg.repo_name, ref} as const;
@@ -145,13 +139,13 @@ export const fetch_github_check_runs = async (
 		log?.info('not cached', key);
 		log?.info('res.headers', res.headers);
 		console.log(`res.data`, res.data);
-		const result: Fetch_Cache_Item<Github_Check_Runs[] | null> = {
+		const result: Fetch_Cache_Item<Github_Check_Runs | null> = {
 			url,
 			params,
 			key,
 			etag: res.headers.etag ?? null,
 			last_modified: res.headers['last-modified'] ?? null,
-			data: res.data.check_runs.map((i) => Github_Check_Runs.parse(i)),
+			data: reduce_check_runs(res.data.check_runs.map((i) => Github_Check_Runs.parse(i))),
 		};
 		cache?.set(result.key, result);
 		return result;
@@ -161,7 +155,7 @@ export const fetch_github_check_runs = async (
 			log?.info('cached', key);
 			return cached!;
 		}
-		const result: Fetch_Cache_Item<Github_Check_Runs[] | null> = {
+		const result: Fetch_Cache_Item<Github_Check_Runs | null> = {
 			url,
 			params,
 			key,
