@@ -1,5 +1,15 @@
 # @ryanatkn/orc
 
+## 0.15.0
+
+### Minor Changes
+
+- 4826b85: query and display CI status
+
+### Patch Changes
+
+- 523131f: fix pull request links
+
 ## 0.14.0
 
 ### Minor Changes

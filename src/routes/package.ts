@@ -5,7 +5,7 @@ import type {Src_Json} from '@grogarden/gro/src_json.js';
 
 export const package_json = {
 	name: '@ryanatkn/orc',
-	version: '0.14.0',
+	version: '0.15.0',
 	description: 'a tool for orchestrating many repos',
 	icon: '🪄',
 	public: true,
@@ -110,7 +110,7 @@ export const package_json = {
 
 export const src_json = {
 	name: '@ryanatkn/orc',
-	version: '0.14.0',
+	version: '0.15.0',
 	modules: {
 		'./config.js': {
 			path: 'config.ts',
