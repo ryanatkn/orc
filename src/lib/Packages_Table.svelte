@@ -92,6 +92,18 @@
 				<div class="row">
 					{#if package_json}
 						<a href={pkg.repo_url}>{pkg.repo_name}</a>
+						{@const check_runs = pkg.check_runs}
+						{@const check_runs_completed = check_runs?.status === 'completed'}
+						{@const check_runs_success = check_runs?.conclusion === 'success'}
+						{#if check_runs && (!check_runs_completed || !check_runs_success)}
+							<a
+								href="{pkg.repo_url}/commits/main"
+								title={!check_runs_completed
+									? `status: ${check_runs.status}`
+									: `CI failed: ${check_runs.conclusion}`}
+								>{#if !check_runs_completed}🟡{:else}⚠️{/if}</a
+							>
+						{/if}
 					{:else}
 						<a href={pkg.url}>{format_host(pkg.url)}</a>
 					{/if}
