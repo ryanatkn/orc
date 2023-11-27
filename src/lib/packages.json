@@ -165,14 +165,17 @@
 					"declarations": [
 						{"name": "Filter_Pull_Request", "kind": "type"},
 						{"name": "Pull_Request_Meta", "kind": "type"},
-						{"name": "to_pull_requests", "kind": "function"}
+						{"name": "to_pull_requests", "kind": "function"},
+						{"name": "to_pull_url", "kind": "function"}
 					]
 				},
 				"./github.js": {
 					"path": "github.ts",
 					"declarations": [
 						{"name": "Github_Pull_Request", "kind": "variable"},
-						{"name": "fetch_github_pull_requests", "kind": "function"}
+						{"name": "Github_Check_Runs", "kind": "variable"},
+						{"name": "fetch_github_pull_requests", "kind": "function"},
+						{"name": "fetch_github_check_runs", "kind": "function"}
 					]
 				},
 				"./Modules_Detail.svelte": {"path": "Modules_Detail.svelte", "declarations": []},
@@ -397,6 +400,24 @@
 				}
 			}
 		},
+		"check_runs": [
+			{
+				"id": 18647256447,
+				"url": "https://api.github.com/repos/fuz-dev/fuz/check-runs/18647256447",
+				"html_url": "https://github.com/fuz-dev/fuz/actions/runs/6857701327/job/18647256447",
+				"status": "completed",
+				"conclusion": "success",
+				"started_at": "2023-11-14T00:52:52Z",
+				"completed_at": "2023-11-14T00:54:04Z",
+				"output": {
+					"title": null,
+					"summary": null,
+					"text": null,
+					"annotations_count": 1,
+					"annotations_url": "https://api.github.com/repos/fuz-dev/fuz/check-runs/18647256447/annotations"
+				}
+			}
+		],
 		"pull_requests": [
 			{
 				"url": "https://api.github.com/repos/fuz-dev/fuz/pulls/358",
@@ -671,6 +692,24 @@
 				}
 			}
 		},
+		"check_runs": [
+			{
+				"id": 19043282303,
+				"url": "https://api.github.com/repos/fuz-dev/fuz_library/check-runs/19043282303",
+				"html_url": "https://github.com/fuz-dev/fuz_library/actions/runs/7001334628/job/19043282303",
+				"status": "completed",
+				"conclusion": "success",
+				"started_at": "2023-11-27T06:15:56Z",
+				"completed_at": "2023-11-27T06:16:41Z",
+				"output": {
+					"title": null,
+					"summary": null,
+					"text": null,
+					"annotations_count": 1,
+					"annotations_url": "https://api.github.com/repos/fuz-dev/fuz_library/check-runs/19043282303/annotations"
+				}
+			}
+		],
 		"pull_requests": [
 			{
 				"url": "https://api.github.com/repos/fuz-dev/fuz_library/pulls/10",
@@ -744,6 +783,24 @@
 			}
 		},
 		"src_json": {"name": "@fuz.dev/fuz_template", "version": "0.0.1"},
+		"check_runs": [
+			{
+				"id": 19035886319,
+				"url": "https://api.github.com/repos/fuz-dev/fuz_template/check-runs/19035886319",
+				"html_url": "https://github.com/fuz-dev/fuz_template/actions/runs/6998152520/job/19035886319",
+				"status": "completed",
+				"conclusion": "success",
+				"started_at": "2023-11-26T21:36:17Z",
+				"completed_at": "2023-11-26T21:38:01Z",
+				"output": {
+					"title": null,
+					"summary": null,
+					"text": null,
+					"annotations_count": 1,
+					"annotations_url": "https://api.github.com/repos/fuz-dev/fuz_template/check-runs/19035886319/annotations"
+				}
+			}
+		],
 		"pull_requests": []
 	},
 	{
@@ -1689,6 +1746,24 @@
 				}
 			}
 		},
+		"check_runs": [
+			{
+				"id": 19043447627,
+				"url": "https://api.github.com/repos/grogarden/gro/check-runs/19043447627",
+				"html_url": "https://github.com/grogarden/gro/actions/runs/7001401262/job/19043447627",
+				"status": "completed",
+				"conclusion": "success",
+				"started_at": "2023-11-27T06:24:23Z",
+				"completed_at": "2023-11-27T06:25:25Z",
+				"output": {
+					"title": null,
+					"summary": null,
+					"text": null,
+					"annotations_count": 1,
+					"annotations_url": "https://api.github.com/repos/grogarden/gro/check-runs/19043447627/annotations"
+				}
+			}
+		],
 		"pull_requests": [
 			{
 				"url": "https://api.github.com/repos/grogarden/gro/pulls/429",
@@ -1730,6 +1805,7 @@
 		"url": "https://missing.fuz.dev/",
 		"package_json": null,
 		"src_json": null,
+		"check_runs": null,
 		"pull_requests": null
 	},
 	{
@@ -1784,6 +1860,24 @@
 			}
 		},
 		"src_json": {"name": "@spiderspace/spiderspace", "version": "0.0.1"},
+		"check_runs": [
+			{
+				"id": 19044449639,
+				"url": "https://api.github.com/repos/spiderspace/spiderspace/check-runs/19044449639",
+				"html_url": "https://github.com/spiderspace/spiderspace/actions/runs/7001796879/job/19044449639",
+				"status": "completed",
+				"conclusion": "success",
+				"started_at": "2023-11-27T07:16:23Z",
+				"completed_at": "2023-11-27T07:16:56Z",
+				"output": {
+					"title": null,
+					"summary": null,
+					"text": null,
+					"annotations_count": 1,
+					"annotations_url": "https://api.github.com/repos/spiderspace/spiderspace/check-runs/19044449639/annotations"
+				}
+			}
+		],
 		"pull_requests": []
 	}
 ]
