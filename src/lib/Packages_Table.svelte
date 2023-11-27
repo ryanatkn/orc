@@ -5,6 +5,7 @@
 	import {ensure_end} from '@grogarden/util/string.js';
 
 	import type {Fetched_Package_Meta} from '$lib/fetch_packages.js';
+	import {to_pull_url} from '$lib/github_helpers.js';
 
 	export let pkgs: Fetched_Package_Meta[];
 	export let deps = ['@fuz.dev/fuz', '@fuz.dev/fuz_library', '@grogarden/gro']; // TODO add felt
@@ -125,7 +126,9 @@
 					<div class="row">
 						{#if pull_requests}
 							{#each pull_requests as pull (pull)}
-								<a href={pull.url} class="chip" title={pull.title}>#{pull.number}</a>
+								<a href={to_pull_url(pkg.repo_url, pull)} class="chip" title={pull.title}
+									>#{pull.number}</a
+								>
 							{/each}
 						{/if}
 					</div>
