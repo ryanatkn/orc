@@ -24,11 +24,17 @@ export const parse_packages = (packages: Maybe_Fetched_Package[]): Packages => {
 	const pkgs: Fetched_Package[] = [];
 	const unfetched_pkgs: Unfetched_Package[] = [];
 
-	for (const {url, package_json, src_json, pull_requests} of packages) {
+	for (const {url, package_json, src_json, check_runs, pull_requests} of packages) {
 		if (package_json && src_json) {
-			pkgs.push({...parse_package_meta(url, package_json, src_json), pull_requests});
+			pkgs.push({...parse_package_meta(url, package_json, src_json), check_runs, pull_requests});
 		} else {
-			unfetched_pkgs.push({url, package_json: null, src_json: null, pull_requests: null});
+			unfetched_pkgs.push({
+				url,
+				package_json: null,
+				src_json: null,
+				check_runs: null,
+				pull_requests: null,
+			});
 		}
 	}
 
