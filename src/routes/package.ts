@@ -162,7 +162,9 @@ export const src_json = {
 			path: 'github.ts',
 			declarations: [
 				{name: 'Github_Pull_Request', kind: 'variable'},
+				{name: 'Github_Check_Runs', kind: 'variable'},
 				{name: 'fetch_github_pull_requests', kind: 'function'},
+				{name: 'fetch_github_check_runs', kind: 'function'},
 			],
 		},
 		'./Modules_Detail.svelte': {path: 'Modules_Detail.svelte', declarations: []},

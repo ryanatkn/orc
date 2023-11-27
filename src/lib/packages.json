@@ -165,14 +165,17 @@
 					"declarations": [
 						{"name": "Filter_Pull_Request", "kind": "type"},
 						{"name": "Pull_Request_Meta", "kind": "type"},
-						{"name": "to_pull_requests", "kind": "function"}
+						{"name": "to_pull_requests", "kind": "function"},
+						{"name": "to_pull_url", "kind": "function"}
 					]
 				},
 				"./github.js": {
 					"path": "github.ts",
 					"declarations": [
 						{"name": "Github_Pull_Request", "kind": "variable"},
-						{"name": "fetch_github_pull_requests", "kind": "function"}
+						{"name": "Github_Check_Runs", "kind": "variable"},
+						{"name": "fetch_github_pull_requests", "kind": "function"},
+						{"name": "fetch_github_check_runs", "kind": "function"}
 					]
 				},
 				"./Modules_Detail.svelte": {"path": "Modules_Detail.svelte", "declarations": []},
@@ -397,24 +400,9 @@
 				}
 			}
 		},
+		"check_runs": {"status": "completed", "conclusion": "success"},
 		"pull_requests": [
-			{
-				"url": "https://api.github.com/repos/fuz-dev/fuz/pulls/358",
-				"id": 1594939344,
-				"number": 358,
-				"state": "open",
-				"title": "add .unprose",
-				"user": {
-					"login": "ryanatkn",
-					"id": 2608646,
-					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
-					"url": "https://api.github.com/users/ryanatkn"
-				},
-				"body": "Trying to solve my biggest problem with `.prose`, that I sometimes want sections inside it to opt-out of the styles.\r\n\r\nThe thing I originally tried doesn't work though. Not sure I can accomplish what I want without some gross CSS. (adding more large+slow+duplicative selectors, bleh)\r\n\r\n- see `/* allow nesting in .prose */`",
-				"created_at": "2023-11-09T18:43:22Z",
-				"updated_at": "2023-11-10T17:01:34Z",
-				"draft": true
-			}
+			{"number": 358, "title": "add .unprose", "user": {"login": "ryanatkn"}, "draft": true}
 		]
 	},
 	{
@@ -671,22 +659,12 @@
 				}
 			}
 		},
+		"check_runs": {"status": "completed", "conclusion": "success"},
 		"pull_requests": [
 			{
-				"url": "https://api.github.com/repos/fuz-dev/fuz_library/pulls/10",
-				"id": 1587159182,
 				"number": 10,
-				"state": "open",
 				"title": "show deps on `Package_Detail`",
-				"user": {
-					"login": "ryanatkn",
-					"id": 2608646,
-					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
-					"url": "https://api.github.com/users/ryanatkn"
-				},
-				"body": "- render deps with icon+link to dependency detail (favicon? standardize with table)",
-				"created_at": "2023-11-04T18:26:39Z",
-				"updated_at": "2023-11-10T14:26:20Z",
+				"user": {"login": "ryanatkn"},
 				"draft": true
 			}
 		]
@@ -744,6 +722,7 @@
 			}
 		},
 		"src_json": {"name": "@fuz.dev/fuz_template", "version": "0.0.1"},
+		"check_runs": {"status": "completed", "conclusion": "success"},
 		"pull_requests": []
 	},
 	{
@@ -1689,39 +1668,18 @@
 				}
 			}
 		},
+		"check_runs": {"status": "completed", "conclusion": "success"},
 		"pull_requests": [
 			{
-				"url": "https://api.github.com/repos/grogarden/gro/pulls/429",
-				"id": 1573508138,
 				"number": 429,
-				"state": "open",
 				"title": "stop using the `deploy` branch in the main cwd for `gro deploy`",
-				"user": {
-					"login": "ryanatkn",
-					"id": 2608646,
-					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
-					"url": "https://api.github.com/users/ryanatkn"
-				},
-				"body": "vscode flips out regularly from the workspace-destructive `deploy` branch in `gro deploy`. This refactors the internals to use a non-destructive strategy, at the cost of inefficiency -- a `.git` directory for the `deploy` branch is now duplicated in a cache directory. A benefit is that you no longer see `deploy` in your root `.git` context.\r\n\r\n- maybe `.gro/deploy`?\r\n- `git clone -b deploy --single-branch git://github.com/grogarden/gro.git",
-				"created_at": "2023-10-25T19:12:59Z",
-				"updated_at": "2023-11-10T18:59:54Z",
+				"user": {"login": "ryanatkn"},
 				"draft": true
 			},
 			{
-				"url": "https://api.github.com/repos/grogarden/gro/pulls/427",
-				"id": 1569858809,
 				"number": 427,
-				"state": "open",
 				"title": "add and integrate `gro changelog`",
-				"user": {
-					"login": "ryanatkn",
-					"id": 2608646,
-					"avatar_url": "https://avatars.githubusercontent.com/u/2608646?v=4",
-					"url": "https://api.github.com/users/ryanatkn"
-				},
-				"body": "- [ ] map leading hashes to the PR, fallback to the hash link",
-				"created_at": "2023-10-23T19:58:40Z",
-				"updated_at": "2023-11-10T19:00:01Z",
+				"user": {"login": "ryanatkn"},
 				"draft": true
 			}
 		]
@@ -1730,6 +1688,7 @@
 		"url": "https://missing.fuz.dev/",
 		"package_json": null,
 		"src_json": null,
+		"check_runs": null,
 		"pull_requests": null
 	},
 	{
@@ -1784,6 +1743,7 @@
 			}
 		},
 		"src_json": {"name": "@spiderspace/spiderspace", "version": "0.0.1"},
+		"check_runs": {"status": "completed", "conclusion": "success"},
 		"pull_requests": []
 	}
 ]
