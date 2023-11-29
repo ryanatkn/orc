@@ -8,9 +8,10 @@ I maintain a lot of git repos between
 Orc is a tool for helping me orchestrate this complexity.
 It's an alternative to the monorepo pattern that more loosely couples repos.
 
-This repo has demo data,
-I'm using Orc in [Spiderspace](https://github.com/spiderspace/spiderspace)
-and [fuz_repos](https://github.com/fuz-dev/fuz_repos).
+This repo has demo data -
+I'm using Orc in [Spiderspace](https://github.com/spiderspace/spiderspace),
+[Fuz](https://github.com/fuz-dev/fuz),
+and [Felt's website](https://github.com/feltjs/felt_website).
 
 With Orc you can:
 

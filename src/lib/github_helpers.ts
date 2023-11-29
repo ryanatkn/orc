@@ -1,4 +1,5 @@
 import type {Package_Meta} from '@fuz.dev/fuz_library/package_meta.js';
+import {ensure_end} from '@grogarden/util/string.js';
 
 import type {Github_Pull_Request} from '$lib/github.js';
 import type {Fetched_Package, Maybe_Fetched_Package} from '$lib/fetch_packages.js';
@@ -28,3 +29,6 @@ export const to_pull_requests = (
 			);
 		})
 		.filter(Boolean);
+
+export const to_pull_url = (repo_url: string, pull: Github_Pull_Request): string =>
+	ensure_end(repo_url, '/') + 'pull/' + pull.number;

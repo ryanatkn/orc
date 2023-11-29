@@ -1,5 +1,39 @@
 # @ryanatkn/orc
 
+## 0.15.0
+
+### Minor Changes
+
+- 4826b85: query and display CI status
+
+### Patch Changes
+
+- 523131f: fix pull request links
+
+## 0.14.0
+
+### Minor Changes
+
+- 70d4b0d: rename `Packages_Table` from `Repo_Table`
+
+## 0.13.3
+
+### Patch Changes
+
+- 19809e1: make Packages_Tree full the available width
+
+## 0.13.2
+
+### Patch Changes
+
+- fb802a2: fix local package
+
+## 0.13.1
+
+### Patch Changes
+
+- 3bb681a: fix packages.json type
+
 ## 0.13.0
 
 ### Minor Changes
@@ -126,7 +160,7 @@
 
 ### Patch Changes
 
-- 9c0e326: add favicon to `Repo_Table`
+- 9c0e326: add favicon to `Packages_Table`
 
 ## 0.6.1
 
