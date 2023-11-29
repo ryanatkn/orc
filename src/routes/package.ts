@@ -36,7 +36,7 @@ export const package_json = {
 		'@sveltejs/adapter-static': '^2.0.3',
 		'@sveltejs/kit': '^1.27.6',
 		'@sveltejs/package': '^2.2.3',
-		'@types/node': '^20.10.0',
+		'@types/node': '^20.10.1',
 		'@typescript-eslint/eslint-plugin': '^6.13.1',
 		'@typescript-eslint/parser': '^6.13.1',
 		dequal: '^2.0.3',
