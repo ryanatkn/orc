@@ -1,10 +1,10 @@
-import {Package_Json} from '@grogarden/gro/package_json.js';
+import {load_package_json, Package_Json} from '@grogarden/gro/package_json.js';
 import type {Url} from '@grogarden/gro/paths.js';
 import {ensure_end} from '@grogarden/util/string.js';
 import type {Logger} from '@grogarden/util/log.js';
 import {wait} from '@grogarden/util/async.js';
 import {parse_package_meta, type Package_Meta} from '@fuz.dev/fuz_library/package_meta.js';
-import type {Src_Json} from '@grogarden/gro/src_json.js';
+import {create_src_json, type Src_Json} from '@grogarden/gro/src_json.js';
 
 import {
 	fetch_github_check_runs,
@@ -50,10 +50,30 @@ export const fetch_packages = async (
 	homepage_urls: Url[],
 	token?: string,
 	cache?: Fetch_Cache_Data,
+	dir?: string,
 	log?: Logger,
 	delay = 50,
 ): Promise<Maybe_Fetched_Package[]> => {
 	log?.info(`homepage_urls`, homepage_urls);
+
+	// TODO BLOCK handle packages containing `local_package_json.homepage` and the final_packages below
+
+	const local_package_json = await load_package_json(dir);
+	console.log(`local_package_json`, local_package_json.homepage);
+	const local_src_json = await create_src_json(local_package_json);
+
+	const final_packages: Maybe_Fetched_Package[] = local_package_json?.homepage
+		? [
+				{
+					url: local_package_json.homepage,
+					package_json: local_package_json,
+					src_json: local_src_json,
+					pull_requests: null, // TODO - maybe `fetch_packages` should look locally just for the package_json?
+				} as Maybe_Fetched_Package,
+		  ].concat(fetched_packages)
+		: fetched_packages;
+
+	process.exit();
 	const packages: Maybe_Fetched_Package[] = [];
 	for (const homepage_url of homepage_urls) {
 		try {
