@@ -1,10 +1,10 @@
 import {ensure_end} from '@grogarden/util/string.js';
 
 import type {Github_Pull_Request} from '$lib/github.js';
-import type {Fetched_Deployment, Maybe_Fetched_Deployment} from '$lib/fetch_deployments.js';
+import type {Fetched_Deployment, Deployment} from '$lib/fetch_deployments.js';
 
 export interface Filter_Pull_Request {
-	(pull_request: Github_Pull_Request, deployment: Maybe_Fetched_Deployment): boolean;
+	(pull_request: Github_Pull_Request, deployment: Deployment): boolean;
 }
 
 export interface Pull_Request_Meta {

@@ -63,8 +63,8 @@ export const task: Task<Args> = {
 			await writeFile(
 				types_outfile,
 				`declare module '$lib/deployments.json' {
-	import type {Maybe_Fetched_Deployment} from '@ryanatkn/orc/fetch_deployments.js';
-	const data: Maybe_Fetched_Deployment[];
+	import type {Deployment} from '@ryanatkn/orc/fetch_deployments.js';
+	const data: Deployment[];
 	export default data;
 }
 `,

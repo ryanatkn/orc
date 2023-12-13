@@ -19,32 +19,20 @@ import {
 	type Fetch_Cache_Item,
 } from '$lib/fetch_cache.js';
 
-// TODO rethink these
-export interface Maybe_Fetched_Deployment {
-	url: Url;
-	package_json: Package_Json | null; // TODO forward error
-	src_json: Src_Json | null; // TODO forward error
-	check_runs: Github_Check_Runs | null;
-	pull_requests: Github_Pull_Request[] | null;
-}
+export type Deployment = Fetched_Deployment | Unfetched_Deployment;
 
-// TODO rethink these
 export interface Fetched_Deployment extends Package_Meta {
 	check_runs: Github_Check_Runs | null;
 	pull_requests: Github_Pull_Request[] | null;
 }
 
-// TODO rethink these
-export interface Unfetched_Deployment extends Maybe_Fetched_Deployment {
+export interface Unfetched_Deployment {
 	url: Url;
 	package_json: null;
 	src_json: null;
+	check_runs: null;
 	pull_requests: null;
 }
-
-// TODO BLOCK `Maybe_Fetched_Deployment`
-// TODO rethink these
-export type Fetched_Deployment_Meta = Fetched_Deployment | Unfetched_Deployment;
 
 /* eslint-disable no-await-in-loop */
 
@@ -58,7 +46,7 @@ export const fetch_deployments = async (
 	delay = 50,
 	github_api_version?: string,
 	github_refs?: Record<string, string>, // if not 'main', mapping from the provided raw `homepage_url` to branch name
-): Promise<Maybe_Fetched_Deployment[]> => {
+): Promise<Deployment[]> => {
 	log?.info(`homepage_urls`, homepage_urls);
 
 	// If one of the `homepage_urls` is the local package.json's `homepage` (local in `dir`),
@@ -70,7 +58,7 @@ export const fetch_deployments = async (
 		? ensure_end(local_package_json.homepage, '/')
 		: undefined;
 
-	const deployments: Maybe_Fetched_Deployment[] = [];
+	const deployments: Deployment[] = [];
 	for (const raw_homepage_url of homepage_urls) {
 		const homepage_url = ensure_end(raw_homepage_url, '/');
 		try {
@@ -129,7 +117,7 @@ export const fetch_deployments = async (
 			if (!pull_requests) throw Error('failed to fetch issues: ' + homepage_url);
 			await wait(delay);
 
-			deployments.push({url: homepage_url, package_json, src_json, check_runs, pull_requests});
+			deployments.push({...pkg, check_runs, pull_requests});
 		} catch (err) {
 			deployments.push({
 				url: homepage_url,

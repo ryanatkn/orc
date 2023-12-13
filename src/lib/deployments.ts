@@ -1,14 +1,10 @@
 import {getContext, setContext} from 'svelte';
 import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
 
-import type {
-	Fetched_Deployment,
-	Maybe_Fetched_Deployment,
-	Unfetched_Deployment,
-} from '$lib/fetch_deployments.js';
+import type {Fetched_Deployment, Deployment, Unfetched_Deployment} from '$lib/fetch_deployments.js';
 
 export interface Deployments {
-	deployment: Fetched_Deployment;
+	deployment: Fetched_Deployment; // TODO this type is wrong because it may not be fetched, but should it even be here? see below, we are incorrectly grabbing the first
 	deployments: Fetched_Deployment[];
 	unfetched_deployments: Unfetched_Deployment[];
 }
@@ -20,7 +16,7 @@ export const set_deployments = (deployments: Deployments): Deployments =>
 
 export const get_deployments = (): Deployments => getContext(KEY);
 
-export const parse_deployments = (maybe_deployments: Maybe_Fetched_Deployment[]): Deployments => {
+export const parse_deployments = (maybe_deployments: Deployment[]): Deployments => {
 	const deployments: Fetched_Deployment[] = [];
 	const unfetched_deployments: Unfetched_Deployment[] = [];
 

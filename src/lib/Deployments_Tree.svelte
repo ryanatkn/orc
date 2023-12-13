@@ -3,14 +3,14 @@
 	import Package_Detail from '@fuz.dev/fuz_library/Package_Detail.svelte';
 	import {strip_end, strip_start} from '@grogarden/util/string.js';
 	import {base} from '$app/paths';
-	import type {Maybe_Fetched_Deployment} from './fetch_deployments';
+	import type {Fetched_Deployment} from './fetch_deployments';
 
-	export let deployments: Maybe_Fetched_Deployment[];
+	export let deployments: Fetched_Deployment[];
 
 	/**
 	 * The selected package, if any.
 	 */
-	export let selected_deployment: Maybe_Fetched_Deployment | undefined = undefined;
+	export let selected_deployment: Fetched_Deployment | undefined = undefined;
 </script>
 
 <div class="deployments_tree">
