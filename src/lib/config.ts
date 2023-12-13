@@ -5,7 +5,7 @@ import {z} from 'zod';
 
 export const Orc_Config = z
 	.object({
-		packages: z.array(Url),
+		deployments: z.array(Url),
 	})
 	.strict();
 export type Orc_Config = z.infer<typeof Orc_Config>;
