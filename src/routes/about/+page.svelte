@@ -2,7 +2,7 @@
 	import Package_Detail from '@fuz.dev/fuz_library/Package_Detail.svelte';
 
 	import Page_Footer from '$lib/Page_Footer.svelte';
-	import {package_json} from '$lib/package.js';
+	import {package_json} from '$routes/package.js';
 	import {get_packages} from '$lib/packages.js';
 
 	const {pkg} = get_packages();

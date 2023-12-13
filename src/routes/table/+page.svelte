@@ -2,7 +2,7 @@
 	import Page_Header from '$lib/Page_Header.svelte';
 	import Packages_Table from '$lib/Packages_Table.svelte';
 	import Page_Footer from '$lib/Page_Footer.svelte';
-	import {package_json} from '$lib/package.js';
+	import {package_json} from '$routes/package.js';
 	import {get_packages} from '$lib/packages.js';
 
 	const {pkg, pkgs} = get_packages();
