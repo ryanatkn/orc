@@ -3,14 +3,13 @@
 	import {base} from '$app/paths';
 
 	import {to_pull_requests, type Filter_Pull_Request} from '$lib/github_helpers.js';
-	import type {Maybe_Fetched_Deployment} from '$lib/fetch_deployments.js';
-	import {parse_deployments} from '$lib/deployments.js';
+	import type {Fetched_Deployment, Unfetched_Deployment} from '$lib/fetch_deployments.js';
 
-	export let maybe_deployments: Maybe_Fetched_Deployment[];
+	export let deployments: Fetched_Deployment[];
+	export let unfetched_deployments: Unfetched_Deployment[];
 
 	export let filter_pull_request: Filter_Pull_Request | undefined = undefined;
 
-	$: ({deployments, unfetched_deployments} = parse_deployments(maybe_deployments));
 	$: pull_requests = to_pull_requests(deployments, filter_pull_request);
 </script>
 

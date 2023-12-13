@@ -7,7 +7,7 @@
 	import type {Fetched_Deployment_Meta} from '$lib/fetch_deployments.js';
 	import {to_pull_url} from '$lib/github_helpers.js';
 
-	export let pkgs: Fetched_Deployment_Meta[];
+	export let deployments: Fetched_Deployment_Meta[];
 	export let deps = ['@fuz.dev/fuz', '@fuz.dev/fuz_library', '@grogarden/gro']; // TODO add felt
 
 	// TODO fade out the `version` column if all deps are upgraded to the latest
@@ -32,7 +32,7 @@
 
 	$: latest_version_by_dep = new Map<string, string | null>(
 		deps.map((dep) => {
-			const pkg = pkgs.find((pkg) => pkg.package_json?.name === dep);
+			const pkg = deployments.find((pkg) => pkg.package_json?.name === dep);
 			if (!pkg?.package_json) return [dep, null];
 			return [dep, pkg.package_json.version];
 		}),
@@ -42,10 +42,10 @@
 		version === null ? '' : version.replace(/^(\^|>=)\s*/u, '');
 
 	const lookup_pull_requests = (
-		pkgs: Fetched_Deployment_Meta[] | null,
+		deployments: Fetched_Deployment_Meta[] | null,
 		pkg: Fetched_Deployment_Meta,
 	) => {
-		const found = pkgs?.find((p) => p.url === pkg.url);
+		const found = deployments?.find((p) => p.url === pkg.url);
 		if (!found?.package_json) return null;
 		const {pull_requests} = found;
 		return pull_requests;
@@ -64,7 +64,7 @@
 		{/each}
 		<th>pull requests</th>
 	</thead>
-	{#each pkgs as pkg}
+	{#each deployments as pkg}
 		{@const package_json = pkg.package_json}
 		{@const homepage_url = package_json ? pkg.homepage_url : null}
 		<tr>
@@ -136,7 +136,7 @@
 			{/each}
 			<td>
 				{#if package_json && pkg.repo_url}
-					{@const pull_requests = lookup_pull_requests(pkgs, pkg)}
+					{@const pull_requests = lookup_pull_requests(deployments, pkg)}
 					<!-- TODO show something like `and N more` with a link to a dialog list -->
 					<div class="row">
 						{#if pull_requests}
