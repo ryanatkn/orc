@@ -11,8 +11,8 @@ export const task: Task<Args> = {
 		await invoke_task('upgrade');
 		await invoke_task('deployments');
 		await invoke_task('sync');
-		// TODO probably support an optional message defaulting to 'update deployments',
+		// TODO fully automate the update with `gro check`
 		// and then `gro changeset` if it's a library,
-		// and then `git commit` and `git push`
+		// and then `git commit` and `git push` and `gro release`
 	},
 };
