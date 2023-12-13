@@ -185,7 +185,7 @@ export const fetch_json = async (
 			return cached!;
 		}
 		log?.info('not cached', key);
-		log?.info('res.headers', res.headers);
+		log?.info('res.headers', Object.fromEntries(res.headers.entries()));
 		const json = await res.json();
 		const package_json = Package_Json.parse(json); // TODO maybe not?
 		const result: Fetch_Cache_Item = {
