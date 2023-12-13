@@ -67,13 +67,14 @@ export const fetch_packages = async (
 		: undefined;
 
 	const packages: Maybe_Fetched_Package[] = [];
-	for (const homepage_url of homepage_urls) {
+	for (const raw_homepage_url of homepage_urls) {
+		const homepage_url = ensure_end(raw_homepage_url, '/');
 		try {
 			let package_json: Package_Json;
 			let src_json: Src_Json;
 
 			// Handle the local package data, if available
-			if (local_homepage_url === ensure_end(homepage_url, '/')) {
+			if (homepage_url === local_homepage_url) {
 				log?.info('resolving data locally for', homepage_url);
 				package_json = local_package_json;
 				src_json = await create_src_json(
@@ -98,7 +99,6 @@ export const fetch_packages = async (
 			}
 
 			const pkg = parse_package_meta(homepage_url, package_json, src_json);
-			if (!pkg) throw Error('failed to parse package_json: ' + homepage_url);
 
 			// CI status
 			const {data: check_runs} = await fetch_github_check_runs(
@@ -108,7 +108,7 @@ export const fetch_packages = async (
 				log,
 				token,
 			);
-			if (!check_runs) throw Error('failed to fetch issues: ' + homepage_url);
+			if (!check_runs) throw Error('failed to fetch CI status: ' + homepage_url);
 			await wait(delay);
 
 			// pull requests
