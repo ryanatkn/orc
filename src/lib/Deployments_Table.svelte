@@ -15,16 +15,16 @@
 	// TODO gray out the latest of each version for deps, but only if the max is knowable via a local dep, don't assume for externals
 
 	// TODO hacky, handle regular deps too
-	const lookup_dep_version = (pkg: Deployment, dep: string): string | null => {
-		if (!pkg.package_json) return null;
-		for (const key in pkg.package_json.dependencies) {
+	const lookup_dep_version = (deployment: Deployment, dep: string): string | null => {
+		if (!deployment.package_json) return null;
+		for (const key in deployment.package_json.dependencies) {
 			if (key === dep) {
-				return pkg.package_json.dependencies[key];
+				return deployment.package_json.dependencies[key];
 			}
 		}
-		for (const key in pkg.package_json.devDependencies) {
+		for (const key in deployment.package_json.devDependencies) {
 			if (key === dep) {
-				return pkg.package_json.devDependencies[key];
+				return deployment.package_json.devDependencies[key];
 			}
 		}
 		return null;
@@ -32,17 +32,17 @@
 
 	$: latest_version_by_dep = new Map<string, string | null>(
 		deps.map((dep) => {
-			const pkg = deployments.find((pkg) => pkg.package_json?.name === dep);
-			if (!pkg?.package_json) return [dep, null];
-			return [dep, pkg.package_json.version];
+			const deployment = deployments.find((deployment) => deployment.package_json?.name === dep);
+			if (!deployment?.package_json) return [dep, null];
+			return [dep, deployment.package_json.version];
 		}),
 	);
 
 	const format_version = (version: string | null): string =>
 		version === null ? '' : version.replace(/^(\^|>=)\s*/u, '');
 
-	const lookup_pull_requests = (deployments: Deployment[] | null, pkg: Deployment) => {
-		const found = deployments?.find((p) => p.url === pkg.url);
+	const lookup_pull_requests = (deployments: Deployment[] | null, deployment: Deployment) => {
+		const found = deployments?.find((p) => p.url === deployment.url);
 		if (!found?.package_json) return null;
 		const {pull_requests} = found;
 		return pull_requests;
@@ -61,14 +61,14 @@
 		{/each}
 		<th>pull requests</th>
 	</thead>
-	{#each deployments as pkg}
-		{@const package_json = pkg.package_json}
-		{@const homepage_url = package_json ? pkg.homepage_url : null}
+	{#each deployments as deployment}
+		{@const package_json = deployment.package_json}
+		{@const homepage_url = package_json ? deployment.homepage_url : null}
 		<tr>
 			<td>
 				<div class="row">
 					{#if package_json}
-						<a href="{base}/tree/{pkg.repo_name}">{pkg.package_json.icon || '🌳'}</a>
+						<a href="{base}/tree/{deployment.repo_name}">{deployment.package_json.icon || '🌳'}</a>
 					{/if}
 				</div>
 			</td>
@@ -91,13 +91,13 @@
 			<td>
 				<div class="row">
 					{#if package_json}
-						<a href={pkg.repo_url}>{pkg.repo_name}</a>
-						{@const check_runs = pkg.check_runs}
+						<a href={deployment.repo_url}>{deployment.repo_name}</a>
+						{@const check_runs = deployment.check_runs}
 						{@const check_runs_completed = check_runs?.status === 'completed'}
 						{@const check_runs_success = check_runs?.conclusion === 'success'}
 						{#if check_runs && (!check_runs_completed || !check_runs_success)}
 							<a
-								href="{pkg.repo_url}/commits/main"
+								href="{deployment.repo_url}/commits/main"
 								title={!check_runs_completed
 									? `status: ${check_runs.status}`
 									: `CI failed: ${check_runs.conclusion}`}
@@ -105,24 +105,24 @@
 							>
 						{/if}
 					{:else}
-						<a href={pkg.url}>{format_host(pkg.url)}</a>
+						<a href={deployment.url}>{format_host(deployment.url)}</a>
 					{/if}
 				</div>
 			</td>
 			<td>
-				{#if package_json && pkg.npm_url}
+				{#if package_json && deployment.npm_url}
 					<div class="row">
-						<a href={pkg.npm_url}><code>{pkg.name}</code></a>
+						<a href={deployment.npm_url}><code>{deployment.name}</code></a>
 					</div>
 				{/if}
 			</td>
 			<td>
 				{#if package_json && package_json.version !== '0.0.1'}
-					<a href={pkg.changelog_url}>{format_version(package_json.version)}</a>
+					<a href={deployment.changelog_url}>{format_version(package_json.version)}</a>
 				{/if}
 			</td>
 			{#each deps as dep (dep)}
-				{@const dep_version = lookup_dep_version(pkg, dep)}
+				{@const dep_version = lookup_dep_version(deployment, dep)}
 				{@const formatted_dep_version = format_version(dep_version)}
 				{@const dep_latest_version = latest_version_by_dep.get(dep)}
 				<td>
@@ -132,13 +132,13 @@
 				</td>
 			{/each}
 			<td>
-				{#if package_json && pkg.repo_url}
-					{@const pull_requests = lookup_pull_requests(deployments, pkg)}
+				{#if package_json && deployment.repo_url}
+					{@const pull_requests = lookup_pull_requests(deployments, deployment)}
 					<!-- TODO show something like `and N more` with a link to a dialog list -->
 					<div class="row">
 						{#if pull_requests}
 							{#each pull_requests as pull (pull)}
-								<a href={to_pull_url(pkg.repo_url, pull)} class="chip" title={pull.title}
+								<a href={to_pull_url(deployment.repo_url, pull)} class="chip" title={pull.title}
 									>#{pull.number}</a
 								>
 							{/each}

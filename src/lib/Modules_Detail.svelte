@@ -8,7 +8,7 @@
 
 	export let pkgs: Array<Package_Meta | {url: string; package_json: null; src_json: null}>; // TODO normalized version with cached primitives?
 
-	// TODO extract to Orc
+	// TODO this and `Modules_Menu` should either deal with `deployments` or be upstreamed to fuz_library
 
 	// TODO add sorting options
 
