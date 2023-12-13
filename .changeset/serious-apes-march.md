@@ -1,5 +1,5 @@
 ---
-"@ryanatkn/orc": minor
+'@ryanatkn/orc': minor
 ---
 
-fix local package `gro packages`
+fix local package `gro deployments`

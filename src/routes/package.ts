@@ -34,7 +34,7 @@ export const package_json = {
 		'@grogarden/util': '^0.18.0',
 		'@octokit/request': '^8.1.6',
 		'@sveltejs/adapter-static': '^2.0.3',
-		'@sveltejs/kit': '^1.30.2',
+		'@sveltejs/kit': '^1.30.3',
 		'@sveltejs/package': '^2.2.3',
 		'@types/node': '^20.10.4',
 		'@typescript-eslint/eslint-plugin': '^6.14.0',
@@ -61,10 +61,29 @@ export const package_json = {
 	},
 	exports: {
 		'./config.js': {default: './dist/config.js', types: './dist/config.d.ts'},
+		'./Deployments_Table.svelte': {
+			svelte: './dist/Deployments_Table.svelte',
+			default: './dist/Deployments_Table.svelte',
+			types: './dist/Deployments_Table.svelte.d.ts',
+		},
+		'./Deployments_Tree.svelte': {
+			svelte: './dist/Deployments_Tree.svelte',
+			default: './dist/Deployments_Tree.svelte',
+			types: './dist/Deployments_Tree.svelte.d.ts',
+		},
+		'./deployments.json': {
+			default: './dist/deployments.json',
+			types: './dist/deployments.json.d.ts',
+		},
+		'./deployments.task.js': {
+			default: './dist/deployments.task.js',
+			types: './dist/deployments.task.d.ts',
+		},
+		'./deployments.js': {default: './dist/deployments.js', types: './dist/deployments.d.ts'},
 		'./fetch_cache.js': {default: './dist/fetch_cache.js', types: './dist/fetch_cache.d.ts'},
-		'./fetch_packages.js': {
-			default: './dist/fetch_packages.js',
-			types: './dist/fetch_packages.d.ts',
+		'./fetch_deployments.js': {
+			default: './dist/fetch_deployments.js',
+			types: './dist/fetch_deployments.d.ts',
 		},
 		'./fs_fetch_cache.js': {
 			default: './dist/fs_fetch_cache.js',
@@ -86,19 +105,6 @@ export const package_json = {
 			types: './dist/Modules_Menu.svelte.d.ts',
 		},
 		'./orc.task.js': {default: './dist/orc.task.js', types: './dist/orc.task.d.ts'},
-		'./Packages_Table.svelte': {
-			svelte: './dist/Packages_Table.svelte',
-			default: './dist/Packages_Table.svelte',
-			types: './dist/Packages_Table.svelte.d.ts',
-		},
-		'./Packages_Tree.svelte': {
-			svelte: './dist/Packages_Tree.svelte',
-			default: './dist/Packages_Tree.svelte',
-			types: './dist/Packages_Tree.svelte.d.ts',
-		},
-		'./packages.json': {default: './dist/packages.json', types: './dist/packages.json.d.ts'},
-		'./packages.task.js': {default: './dist/packages.task.js', types: './dist/packages.task.d.ts'},
-		'./packages.js': {default: './dist/packages.js', types: './dist/packages.d.ts'},
 		'./Pull_Requests_Detail.svelte': {
 			svelte: './dist/Pull_Requests_Detail.svelte',
 			default: './dist/Pull_Requests_Detail.svelte',
@@ -118,6 +124,25 @@ export const src_json = {
 				{name: 'load_orc_config', kind: 'function'},
 			],
 		},
+		'./Deployments_Table.svelte': {path: 'Deployments_Table.svelte', declarations: []},
+		'./Deployments_Tree.svelte': {path: 'Deployments_Tree.svelte', declarations: []},
+		'./deployments.json': {path: 'deployments.json', declarations: []},
+		'./deployments.task.js': {
+			path: 'deployments.task.ts',
+			declarations: [
+				{name: 'Args', kind: 'variable'},
+				{name: 'task', kind: 'variable'},
+			],
+		},
+		'./deployments.js': {
+			path: 'deployments.ts',
+			declarations: [
+				{name: 'Deployments', kind: 'type'},
+				{name: 'set_deployments', kind: 'function'},
+				{name: 'get_deployments', kind: 'function'},
+				{name: 'parse_deployments', kind: 'function'},
+			],
+		},
 		'./fetch_cache.js': {
 			path: 'fetch_cache.ts',
 			declarations: [
@@ -131,14 +156,13 @@ export const src_json = {
 				{name: 'deserialize_cache', kind: 'function'},
 			],
 		},
-		'./fetch_packages.js': {
-			path: 'fetch_packages.ts',
+		'./fetch_deployments.js': {
+			path: 'fetch_deployments.ts',
 			declarations: [
-				{name: 'Maybe_Fetched_Package', kind: 'type'},
-				{name: 'Fetched_Package', kind: 'type'},
-				{name: 'Unfetched_Package', kind: 'type'},
-				{name: 'Fetched_Package_Meta', kind: 'type'},
-				{name: 'fetch_packages', kind: 'function'},
+				{name: 'Deployment', kind: 'type'},
+				{name: 'Fetched_Deployment', kind: 'type'},
+				{name: 'Unfetched_Deployment', kind: 'type'},
+				{name: 'fetch_deployments', kind: 'function'},
 				{name: 'fetch_package_json', kind: 'function'},
 				{name: 'fetch_src_json', kind: 'function'},
 				{name: 'fetch_json', kind: 'function'},
@@ -174,29 +198,6 @@ export const src_json = {
 			declarations: [
 				{name: 'Args', kind: 'variable'},
 				{name: 'task', kind: 'variable'},
-			],
-		},
-		'./Packages_Table.svelte': {path: 'Packages_Table.svelte', declarations: []},
-		'./Packages_Tree.svelte': {path: 'Packages_Tree.svelte', declarations: []},
-		'./packages.json': {path: 'packages.json', declarations: []},
-		'./packages.task.js': {
-			path: 'packages.task.ts',
-			declarations: [
-				{name: 'Args', kind: 'variable'},
-				{name: 'task', kind: 'variable'},
-			],
-		},
-		'./packages.js': {
-			path: 'packages.ts',
-			declarations: [
-				{name: 'Maybe_Fetched_Package', kind: 'type'},
-				{name: 'Fetched_Package', kind: 'type'},
-				{name: 'Unfetched_Package', kind: 'type'},
-				{name: 'Fetched_Package_Meta', kind: 'type'},
-				{name: 'fetch_packages', kind: 'function'},
-				{name: 'fetch_package_json', kind: 'function'},
-				{name: 'fetch_src_json', kind: 'function'},
-				{name: 'fetch_json', kind: 'function'},
 			],
 		},
 		'./Pull_Requests_Detail.svelte': {path: 'Pull_Requests_Detail.svelte', declarations: []},

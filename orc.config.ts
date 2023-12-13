@@ -1,7 +1,7 @@
 import type {Orc_Config} from '$lib/config.js';
 
 const config: Orc_Config = {
-	packages: [
+	deployments: [
 		'https://orc.ryanatkn.com', // intentionally omitting the trailing slash for testing purposes
 		'https://www.fuz.dev/',
 		'https://library.fuz.dev/',

@@ -3,15 +3,14 @@
 	import {base} from '$app/paths';
 
 	import {to_pull_requests, type Filter_Pull_Request} from '$lib/github_helpers.js';
-	import type {Maybe_Fetched_Package} from '$lib/fetch_packages.js';
-	import {parse_packages} from '$lib/packages.js';
+	import type {Fetched_Deployment, Unfetched_Deployment} from '$lib/fetch_deployments.js';
 
-	export let packages: Maybe_Fetched_Package[];
+	export let deployments: Fetched_Deployment[];
+	export let unfetched_deployments: Unfetched_Deployment[];
 
 	export let filter_pull_request: Filter_Pull_Request | undefined = undefined;
 
-	$: ({pkgs, unfetched_pkgs} = parse_packages(packages));
-	$: pull_requests = to_pull_requests(pkgs, filter_pull_request);
+	$: pull_requests = to_pull_requests(deployments, filter_pull_request);
 </script>
 
 <div class="width_md">
@@ -21,15 +20,15 @@
 			{#each pull_requests as pull_request}
 				<tr>
 					<td
-						><a href="{base}/tree/{pull_request.pkg.repo_name}"
-							>{pull_request.pkg
-								.repo_name}{#if pull_request.pkg.package_json.icon}{' '}{pull_request.pkg
-									.package_json.icon}{/if}</a
+						><a href="{base}/tree/{pull_request.deployment.repo_name}"
+							>{pull_request.deployment
+								.repo_name}{#if pull_request.deployment.package_json.icon}{' '}{pull_request
+									.deployment.package_json.icon}{/if}</a
 						></td
 					>
 					<td
 						><a
-							href="{pull_request.pkg.repo_url}/pull/{pull_request.pull_request.number}"
+							href="{pull_request.deployment.repo_url}/pull/{pull_request.pull_request.number}"
 							title={pull_request.pull_request.title}>#{pull_request.pull_request.number}</a
 						></td
 					>
@@ -38,11 +37,11 @@
 			{/each}
 		</table>
 	</section>
-	{#if unfetched_pkgs.length}
+	{#if unfetched_deployments.length}
 		<section class="prose">
-			<p>⚠️ Some packages could not be fetched:</p>
+			<p>⚠️ Some deployments could not be fetched:</p>
 			<ul>
-				{#each unfetched_pkgs as { url }}
+				{#each unfetched_deployments as { url }}
 					<li><a href={url}>{format_host(url)}</a></li>
 				{/each}
 			</ul>

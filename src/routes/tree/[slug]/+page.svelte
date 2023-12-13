@@ -6,19 +6,19 @@
 	import Page_Header from '$routes/Page_Header.svelte';
 	import Page_Footer from '$routes/Page_Footer.svelte';
 	import {package_json} from '$routes/package.js';
-	import Packages_Tree from '$lib/Packages_Tree.svelte';
-	import {get_packages} from '$lib/packages';
+	import Deployments_Tree from '$lib/Deployments_Tree.svelte';
+	import {get_deployments} from '$lib/deployments';
 
-	const {pkg, pkgs} = get_packages();
+	const {deployment, deployments} = get_deployments();
 
-	// TODO ideally there would be one `Packages_Tree` mounted by the layout
+	// TODO ideally there would be one `Deployments_Tree` mounted by the layout
 
 	$: slug = $page.params.slug;
 
 	// TODO hacky
 
 	// TODO hacky
-	$: route_pkg = pkgs.find((p) => p.repo_name === slug);
+	$: route_deployment = deployments.find((p) => p.repo_name === slug);
 </script>
 
 <svelte:head>
@@ -27,22 +27,22 @@
 
 <main class="box width_full">
 	<section>
-		<Page_Header {pkg} />
+		<Page_Header pkg={deployment} />
 	</section>
 	<section class="tree">
-		{#if !route_pkg}
+		{#if !route_deployment}
 			<div class="spaced">
 				<Alert status="error"><p>cannot find <code>{slug}</code></p></Alert>
 			</div>
 		{/if}
-		<Packages_Tree {pkgs} selected_pkg={route_pkg}>
-			<div slot="nav" class="packages_tree_nav">
+		<Deployments_Tree {deployments} selected_deployment={route_deployment}>
+			<div slot="nav" class="deployments_tree_nav">
 				<Breadcrumb>{package_json.icon}</Breadcrumb>
 			</div>
-		</Packages_Tree>
+		</Deployments_Tree>
 	</section>
 	<section class="box">
-		<Page_Footer {pkg} />
+		<Page_Footer pkg={deployment} />
 	</section>
 </main>
 
@@ -63,12 +63,12 @@
 		align-items: center;
 		width: 100%;
 	}
-	.packages_tree_nav {
+	.deployments_tree_nav {
 		display: flex;
 		margin-top: var(--spacing_1);
 	}
 	/* TODO hacky */
-	.packages_tree_nav :global(.breadcrumb) {
+	.deployments_tree_nav :global(.breadcrumb) {
 		justify-content: flex-start;
 	}
 </style>

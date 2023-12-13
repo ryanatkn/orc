@@ -5,9 +5,9 @@
 	import Page_Footer from '$routes/Page_Footer.svelte';
 	import Modules_Detail from '$lib/Modules_Detail.svelte';
 	import {package_json} from '$routes/package.js';
-	import {get_packages} from '$lib/packages.js';
+	import {get_deployments} from '$lib/deployments.js';
 
-	const {pkg, pkgs} = get_packages();
+	const {deployment, deployments} = get_deployments();
 </script>
 
 <svelte:head>
@@ -16,17 +16,17 @@
 
 <main class="box width_full">
 	<section>
-		<Page_Header {pkg} />
+		<Page_Header pkg={deployment} />
 	</section>
 	<section>
-		<Modules_Detail {pkgs}>
+		<Modules_Detail {deployments}>
 			<div slot="nav" class="row">
 				<Breadcrumb>{package_json.icon}</Breadcrumb>
 			</div>
 		</Modules_Detail>
 	</section>
 	<section class="box">
-		<Page_Footer {pkg} />
+		<Page_Footer pkg={deployment} />
 	</section>
 </main>
 

@@ -14,13 +14,13 @@
 
 ### Minor Changes
 
-- 70d4b0d: rename `Packages_Table` from `Repo_Table`
+- 70d4b0d: rename `Deployments_Table` from `Repo_Table`
 
 ## 0.13.3
 
 ### Patch Changes
 
-- 19809e1: make Packages_Tree full the available width
+- 19809e1: make Deployments_Tree full the available width
 
 ## 0.13.2
 
@@ -32,7 +32,7 @@
 
 ### Patch Changes
 
-- 3bb681a: fix packages.json type
+- 3bb681a: fix deployments.json type
 
 ## 0.13.0
 
@@ -54,7 +54,7 @@
 
 ### Patch Changes
 
-- f742bba: add `Packages_Tree`
+- f742bba: add `Deployments_Tree`
 - 6088428: add breadcrumb to `Modules_Detail`
 
 ## 0.10.9
@@ -104,7 +104,7 @@
 
 ### Patch Changes
 
-- e61c437: show only published packages
+- e61c437: show only published deployments
 
 ## 0.10.1
 
@@ -153,14 +153,14 @@
 
 ### Minor Changes
 
-- 9681187: add cache for `gro packages`
+- 9681187: add cache for `gro deployments`
 - 9681187: snake_case everywhere
 
 ## 0.6.2
 
 ### Patch Changes
 
-- 9c0e326: add favicon to `Packages_Table`
+- 9c0e326: add favicon to `Deployments_Table`
 
 ## 0.6.1
 
@@ -207,7 +207,7 @@
 
 ### Minor Changes
 
-- 0e16e6f: rename `Orc_Config` `packages` from `repos`
+- 0e16e6f: rename `Orc_Config` `deployments` from `repos`
 
 ## 0.2.1
 
