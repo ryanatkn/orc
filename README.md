@@ -30,8 +30,10 @@ planned additions:
 - configure [`orc.config.ts`](/orc.config.ts)
 - Orc calls the GitHub API using the environment variable `GITHUB_TOKEN_SECRET` for authorization,
   which is a [GitHub token](https://github.com/settings/tokens)
+  (with "public access" for public repos, no options selected)
   in either `process.env`, a project-local `.env`, or the parent directory at `../.env`
-  (currently optional because it's only used to read public repos, but it's recommended)
+  (currently optional to read public repos, but it's recommended regardless,
+  and you'll need to select options to support private repos)
 
 Getting started as a dev? Start with [Gro](https://github.com/grogarden/gro)
 and the [Fuz template](https://github.com/fuz-dev/fuz_template)
