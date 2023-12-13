@@ -170,7 +170,6 @@
 						{"name": "Deployment", "kind": "type"},
 						{"name": "Fetched_Deployment", "kind": "type"},
 						{"name": "Unfetched_Deployment", "kind": "type"},
-						{"name": "Deployment", "kind": "type"},
 						{"name": "fetch_deployments", "kind": "function"},
 						{"name": "fetch_package_json", "kind": "function"},
 						{"name": "fetch_src_json", "kind": "function"},
@@ -212,6 +211,14 @@
 				"./Pull_Requests_Detail.svelte": {"path": "Pull_Requests_Detail.svelte", "declarations": []}
 			}
 		},
+		"name": "@ryanatkn/orc",
+		"repo_name": "orc",
+		"repo_url": "https://github.com/ryanatkn/orc",
+		"owner_name": "ryanatkn",
+		"homepage_url": "https://orc.ryanatkn.com/",
+		"npm_url": "https://www.npmjs.com/package/@ryanatkn/orc",
+		"changelog_url": "https://github.com/ryanatkn/orc/blob/main/CHANGELOG.md",
+		"published": true,
 		"check_runs": {"status": "completed", "conclusion": "success"},
 		"pull_requests": [
 			{
@@ -222,7 +229,7 @@
 			},
 			{
 				"number": 14,
-				"title": "rename deployments and clarify packages",
+				"title": "rename deployments from packages",
 				"user": {"login": "ryanatkn"},
 				"draft": false
 			},
@@ -394,6 +401,14 @@
 				}
 			}
 		},
+		"name": "@fuz.dev/fuz",
+		"repo_name": "fuz",
+		"repo_url": "https://github.com/fuz-dev/fuz",
+		"owner_name": "fuz-dev",
+		"homepage_url": "https://www.fuz.dev/",
+		"npm_url": "https://www.npmjs.com/package/@fuz.dev/fuz",
+		"changelog_url": "https://github.com/fuz-dev/fuz/blob/main/CHANGELOG.md",
+		"published": true,
 		"check_runs": {"status": "completed", "conclusion": "success"},
 		"pull_requests": [
 			{"number": 358, "title": "add .unprose", "user": {"login": "ryanatkn"}, "draft": true}
@@ -653,6 +668,14 @@
 				}
 			}
 		},
+		"name": "@fuz.dev/fuz_library",
+		"repo_name": "fuz_library",
+		"repo_url": "https://github.com/fuz-dev/fuz_library",
+		"owner_name": "fuz-dev",
+		"homepage_url": "https://library.fuz.dev/",
+		"npm_url": "https://www.npmjs.com/package/@fuz.dev/fuz_library",
+		"changelog_url": "https://github.com/fuz-dev/fuz_library/blob/main/CHANGELOG.md",
+		"published": true,
 		"check_runs": {"status": "completed", "conclusion": "success"},
 		"pull_requests": [
 			{
@@ -716,6 +739,14 @@
 			}
 		},
 		"src_json": {"name": "@fuz.dev/fuz_template", "version": "0.0.1"},
+		"name": "@fuz.dev/fuz_template",
+		"repo_name": "fuz_template",
+		"repo_url": "https://github.com/fuz-dev/fuz_template",
+		"owner_name": "fuz-dev",
+		"homepage_url": "https://template.fuz.dev/",
+		"npm_url": null,
+		"changelog_url": null,
+		"published": false,
 		"check_runs": {"status": "completed", "conclusion": "success"},
 		"pull_requests": []
 	},
@@ -1674,6 +1705,14 @@
 				}
 			}
 		},
+		"name": "@grogarden/gro",
+		"repo_name": "gro",
+		"repo_url": "https://github.com/grogarden/gro",
+		"owner_name": "grogarden",
+		"homepage_url": "https://www.grogarden.org/",
+		"npm_url": "https://www.npmjs.com/package/@grogarden/gro",
+		"changelog_url": "https://github.com/grogarden/gro/blob/main/CHANGELOG.md",
+		"published": true,
 		"check_runs": {"status": "completed", "conclusion": "success"},
 		"pull_requests": []
 	},
@@ -1736,6 +1775,14 @@
 			}
 		},
 		"src_json": {"name": "@spiderspace/spiderspace", "version": "0.0.1"},
+		"name": "@spiderspace/spiderspace",
+		"repo_name": "spiderspace",
+		"repo_url": "https://github.com/spiderspace/spiderspace",
+		"owner_name": "spiderspace",
+		"homepage_url": "https://www.spiderspace.org/",
+		"npm_url": null,
+		"changelog_url": null,
+		"published": false,
 		"check_runs": {"status": "completed", "conclusion": "success"},
 		"pull_requests": []
 	}

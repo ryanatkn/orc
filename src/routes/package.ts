@@ -162,7 +162,6 @@ export const src_json = {
 				{name: 'Deployment', kind: 'type'},
 				{name: 'Fetched_Deployment', kind: 'type'},
 				{name: 'Unfetched_Deployment', kind: 'type'},
-				{name: 'Deployment', kind: 'type'},
 				{name: 'fetch_deployments', kind: 'function'},
 				{name: 'fetch_package_json', kind: 'function'},
 				{name: 'fetch_src_json', kind: 'function'},
