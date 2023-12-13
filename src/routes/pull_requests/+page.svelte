@@ -1,13 +1,13 @@
 <script lang="ts">
 	import Pull_Requests_Detail from '$lib/Pull_Requests_Detail.svelte';
-	import deployments from '$lib/deployments.json';
+	import maybe_deployments from '$lib/deployments.json';
 	import Page_Header from '$routes/Page_Header.svelte';
 	import Page_Footer from '$routes/Page_Footer.svelte';
 	import {package_json} from '$routes/package.js';
 	import type {Filter_Pull_Request} from '$lib/github_helpers.js';
 	import {get_deployments} from '$lib/deployments.js';
 
-	const {pkg} = get_deployments();
+	const {deployment} = get_deployments();
 
 	const filter_pull_request: Filter_Pull_Request = (pull) => pull.user.login === 'ryanatkn';
 </script>
@@ -18,13 +18,13 @@
 
 <main class="box width_full">
 	<section>
-		<Page_Header {pkg} />
+		<Page_Header pkg={deployment} />
 	</section>
 	<section>
-		<Pull_Requests_Detail {deployments} {filter_pull_request} />
+		<Pull_Requests_Detail {maybe_deployments} {filter_pull_request} />
 	</section>
 	<section class="box">
-		<Page_Footer {pkg} />
+		<Page_Footer pkg={deployment} />
 	</section>
 </main>
 

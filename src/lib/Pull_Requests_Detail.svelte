@@ -6,12 +6,12 @@
 	import type {Maybe_Fetched_Deployment} from '$lib/fetch_deployments.js';
 	import {parse_deployments} from '$lib/deployments.js';
 
-	export let deployments: Maybe_Fetched_Deployment[];
+	export let maybe_deployments: Maybe_Fetched_Deployment[];
 
 	export let filter_pull_request: Filter_Pull_Request | undefined = undefined;
 
-	$: ({pkgs, unfetched_deployments} = parse_deployments(deployments));
-	$: pull_requests = to_pull_requests(pkgs, filter_pull_request);
+	$: ({deployments, unfetched_deployments} = parse_deployments(maybe_deployments));
+	$: pull_requests = to_pull_requests(deployments, filter_pull_request);
 </script>
 
 <div class="width_md">
@@ -21,15 +21,15 @@
 			{#each pull_requests as pull_request}
 				<tr>
 					<td
-						><a href="{base}/tree/{pull_request.pkg.repo_name}"
-							>{pull_request.pkg
-								.repo_name}{#if pull_request.pkg.package_json.icon}{' '}{pull_request.pkg
-									.package_json.icon}{/if}</a
+						><a href="{base}/tree/{pull_request.deployment.repo_name}"
+							>{pull_request.deployment
+								.repo_name}{#if pull_request.deployment.package_json.icon}{' '}{pull_request
+									.deployment.package_json.icon}{/if}</a
 						></td
 					>
 					<td
 						><a
-							href="{pull_request.pkg.repo_url}/pull/{pull_request.pull_request.number}"
+							href="{pull_request.deployment.repo_url}/pull/{pull_request.pull_request.number}"
 							title={pull_request.pull_request.title}>#{pull_request.pull_request.number}</a
 						></td
 					>

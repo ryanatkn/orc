@@ -7,7 +7,7 @@
 	import {package_json} from '$routes/package.js';
 	import {get_deployments} from '$lib/deployments.js';
 
-	const {pkg, pkgs} = get_deployments();
+	const {deployment, deployments} = get_deployments();
 </script>
 
 <svelte:head>
@@ -16,17 +16,17 @@
 
 <main class="box width_full">
 	<section>
-		<Page_Header {pkg} />
+		<Page_Header pkg={deployment} />
 	</section>
 	<section>
-		<Modules_Detail {pkgs}>
+		<Modules_Detail pkgs={deployments}>
 			<div slot="nav" class="row">
 				<Breadcrumb>{package_json.icon}</Breadcrumb>
 			</div>
 		</Modules_Detail>
 	</section>
 	<section class="box">
-		<Page_Footer {pkg} />
+		<Page_Footer pkg={deployment} />
 	</section>
 </main>
 

@@ -42,6 +42,7 @@ export interface Unfetched_Deployment extends Maybe_Fetched_Deployment {
 	pull_requests: null;
 }
 
+// TODO BLOCK `Maybe_Fetched_Deployment`
 // TODO rethink these
 export type Fetched_Deployment_Meta = Fetched_Deployment | Unfetched_Deployment;
 

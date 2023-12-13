@@ -7,28 +7,28 @@
 	import {package_json} from '$routes/package.js';
 	import {get_deployments} from '$lib/deployments.js';
 
-	const {pkg, pkgs} = get_deployments();
+	const {deployment, deployments} = get_deployments();
 
 	// TODO ideally there would be one `Deployments_Tree` mounted by the layout
 </script>
 
 <svelte:head>
-	<title>tree {package_json.icon} {pkg.name}</title>
+	<title>tree {package_json.icon} {deployment.name}</title>
 </svelte:head>
 
 <main class="box width_full">
 	<section>
-		<Page_Header {pkg} />
+		<Page_Header pkg={deployment} />
 	</section>
 	<section class="tree">
-		<Deployments_Tree {pkgs}>
+		<Deployments_Tree {deployments}>
 			<div slot="nav" class="deployments_tree_nav">
 				<Breadcrumb>{package_json.icon}</Breadcrumb>
 			</div>
 		</Deployments_Tree>
 	</section>
 	<section class="box">
-		<Page_Footer {pkg} />
+		<Page_Footer pkg={deployment} />
 	</section>
 </main>
 

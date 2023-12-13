@@ -9,7 +9,7 @@
 	import Deployments_Tree from '$lib/Deployments_Tree.svelte';
 	import {get_deployments} from '$lib/deployments';
 
-	const {pkg, pkgs} = get_deployments();
+	const {deployment, deployments} = get_deployments();
 
 	// TODO ideally there would be one `Deployments_Tree` mounted by the layout
 
@@ -18,7 +18,7 @@
 	// TODO hacky
 
 	// TODO hacky
-	$: route_pkg = pkgs.find((p) => p.repo_name === slug);
+	$: route_deployment = deployments.find((p) => p.repo_name === slug);
 </script>
 
 <svelte:head>
@@ -27,22 +27,22 @@
 
 <main class="box width_full">
 	<section>
-		<Page_Header {pkg} />
+		<Page_Header pkg={deployment} />
 	</section>
 	<section class="tree">
-		{#if !route_pkg}
+		{#if !route_deployment}
 			<div class="spaced">
 				<Alert status="error"><p>cannot find <code>{slug}</code></p></Alert>
 			</div>
 		{/if}
-		<Deployments_Tree {pkgs} selected_pkg={route_pkg}>
+		<Deployments_Tree {deployments} selected_deployment={route_deployment}>
 			<div slot="nav" class="deployments_tree_nav">
 				<Breadcrumb>{package_json.icon}</Breadcrumb>
 			</div>
 		</Deployments_Tree>
 	</section>
 	<section class="box">
-		<Page_Footer {pkg} />
+		<Page_Footer pkg={deployment} />
 	</section>
 </main>
 

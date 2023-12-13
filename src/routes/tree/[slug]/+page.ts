@@ -1,12 +1,12 @@
 import type {EntryGenerator} from './$types';
 
-import deployments from '$lib/deployments.json';
+import maybe_deployments from '$lib/deployments.json';
 import {parse_deployments} from '$lib/deployments.js';
 
-const {pkgs} = parse_deployments(deployments);
+const {deployments} = parse_deployments(maybe_deployments);
 
 export const entries: EntryGenerator = async () => {
-	return pkgs.map((pkg) => {
-		return {slug: pkg.repo_name};
+	return deployments.map((deployment) => {
+		return {slug: deployment.repo_name};
 	});
 };

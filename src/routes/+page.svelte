@@ -7,7 +7,7 @@
 	import {package_json} from '$routes/package.js';
 	import {get_deployments} from '$lib/deployments.js';
 
-	const {pkg} = get_deployments();
+	const {deployment} = get_deployments();
 </script>
 
 <svelte:head>
@@ -55,7 +55,7 @@
 		<a class="chip" href="{base}/about">about</a>
 	</section>
 	<section>
-		<Library_Footer {pkg} root_url="https://www.ryanatkn.com/" />
+		<Library_Footer pkg={deployment} root_url="https://www.ryanatkn.com/" />
 	</section>
 </main>
 
