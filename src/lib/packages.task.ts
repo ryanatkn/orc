@@ -4,10 +4,10 @@ import {create_src_json} from '@grogarden/gro/src_json.js';
 import {z} from 'zod';
 import {writeFile} from 'node:fs/promises';
 import {format_file} from '@grogarden/gro/format_file.js';
-import {exists} from '@grogarden/gro/exists.js';
+import {exists} from '@grogarden/gro/fs.js';
 import {join} from 'node:path';
 import {paths} from '@grogarden/gro/paths.js';
-import {GITHUB_TOKEN_SECRET} from '$env/static/private';
+import {load_from_env} from '@grogarden/gro/env.js';
 
 import {fetch_packages, type Maybe_Fetched_Package} from '$lib/fetch_packages.js';
 import {load_orc_config} from '$lib/config.js';
@@ -44,7 +44,12 @@ export const task: Task<Args> = {
 		const cache = await create_fs_fetch_cache('packages');
 
 		// TODO BLOCK handle packages containing `local_package_json.homepage` and the final_packages below
-		const fetched_packages = await fetch_packages(packages, GITHUB_TOKEN_SECRET, cache.data, log);
+		// This searches the parent directory for the env var, so we don't use SvelteKit's $env imports
+		const token = await load_from_env('GITHUB_TOKEN_SECRET');
+		if (!token) {
+			log.warn('the env var GITHUB_TOKEN_SECRET was not found, so API calls with be unauthorized');
+		}
+		const fetched_packages = await fetch_packages(packages, token, cache.data, log);
 
 		const local_package_json = await load_package_json(dir);
 		const local_src_json = await create_src_json(local_package_json);

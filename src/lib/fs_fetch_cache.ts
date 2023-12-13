@@ -1,5 +1,5 @@
 import {mkdir, readFile, rm, writeFile} from 'node:fs/promises';
-import {exists} from '@grogarden/gro/exists.js';
+import {exists} from '@grogarden/gro/fs.js';
 import {dirname, join} from 'node:path';
 import {paths} from '@grogarden/gro/paths.js';
 import {format_file} from '@grogarden/gro/format_file.js';
