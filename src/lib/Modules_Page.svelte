@@ -6,6 +6,8 @@
 	import Modules_Detail from '$lib/Modules_Detail.svelte';
 	import type {Fetched_Package} from '$lib/fetch_packages.js';
 
+	// TODO BLOCK double check this
+
 	export let pkg: Fetched_Package;
 	export let pkgs: Fetched_Package[];
 </script>
