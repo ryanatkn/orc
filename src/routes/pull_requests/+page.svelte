@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Pull_Requests_Detail from '$lib/Pull_Requests_Detail.svelte';
-	import Page_Header from '$routes/Page_Header.svelte';
-	import Page_Footer from '$routes/Page_Footer.svelte';
+	import Page_Header from '$lib/Page_Header.svelte';
+	import Page_Footer from '$lib/Page_Footer.svelte';
 	import {package_json} from '$routes/package.js';
 	import type {Filter_Pull_Request} from '$lib/github_helpers.js';
 	import {get_deployments} from '$lib/deployments.js';

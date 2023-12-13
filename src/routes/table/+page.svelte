@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Page_Header from '$routes/Page_Header.svelte';
+	import Page_Header from '$lib/Page_Header.svelte';
 	import Deployments_Table from '$lib/Deployments_Table.svelte';
-	import Page_Footer from '$routes/Page_Footer.svelte';
+	import Page_Footer from '$lib/Page_Footer.svelte';
 	import {package_json} from '$routes/package.js';
 	import {get_deployments} from '$lib/deployments.js';
 

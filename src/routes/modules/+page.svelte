@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Breadcrumb from '@fuz.dev/fuz_library/Breadcrumb.svelte';
 
-	import Page_Header from '$routes/Page_Header.svelte';
-	import Page_Footer from '$routes/Page_Footer.svelte';
+	import Page_Header from '$lib/Page_Header.svelte';
+	import Page_Footer from '$lib/Page_Footer.svelte';
 	import Modules_Detail from '$lib/Modules_Detail.svelte';
 	import {package_json} from '$routes/package.js';
 	import {get_deployments} from '$lib/deployments.js';
