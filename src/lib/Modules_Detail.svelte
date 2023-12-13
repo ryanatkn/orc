@@ -1,27 +1,25 @@
 <script lang="ts">
-	import type {Package_Meta} from '@fuz.dev/fuz_library/package_meta.js';
 	import type {Src_Module} from '@grogarden/gro/src_json.js';
 	import {ensure_end} from '@grogarden/util/string.js';
 	import {base} from '$app/paths';
 
 	import Modules_Menu from '$lib/Modules_Menu.svelte';
+	import type {Fetched_Deployment} from './fetch_deployments.js';
 
-	export let pkgs: Array<Package_Meta | {url: string; package_json: null; src_json: null}>; // TODO normalized version with cached primitives?
-
-	// TODO this and `Modules_Menu` should either deal with `deployments` or be upstreamed to fuz_library
+	export let deployments: Fetched_Deployment[]; // TODO normalized version with cached primitives?
 
 	// TODO add sorting options
 
 	// TODO show other data (bytes and lines of code per module?)
 
 	// TODO hacky, needs helpers or rethinking
-	let pkgs_modules: Array<{
-		pkg: Package_Meta;
+	let deployments_modules: Array<{
+		deployment: Fetched_Deployment;
 		modules: Src_Module[];
 	}>;
-	$: pkgs_modules = pkgs.reduce(
-		(v, pkg) => {
-			const {package_json, src_json} = pkg;
+	$: deployments_modules = deployments.reduce(
+		(v, deployment) => {
+			const {package_json, src_json} = deployment;
 			if (
 				!src_json?.modules ||
 				!(
@@ -31,10 +29,10 @@
 			) {
 				return v;
 			}
-			v.push({pkg, modules: Object.values(src_json.modules)});
+			v.push({deployment, modules: Object.values(src_json.modules)});
 			return v;
 		},
-		[] as Array<{pkg: Package_Meta; modules: Src_Module[]}>,
+		[] as Array<{deployment: Fetched_Deployment; modules: Src_Module[]}>,
 	);
 
 	// TODO add favicon (from library? gro?)
@@ -42,20 +40,20 @@
 
 <div class="modules_detail">
 	<div class="nav">
-		<Modules_Menu {pkgs_modules} />
+		<Modules_Menu {deployments_modules} />
 		<slot name="nav" />
 	</div>
 	<ul class="width_md box">
-		{#each pkgs_modules as pkg_modules (pkg_modules)}
-			{@const {pkg, modules} = pkg_modules}
-			<li class="pkg_module">
+		{#each deployments_modules as deployment_modules (deployment_modules)}
+			{@const {deployment, modules} = deployment_modules}
+			<li class="deployment_module">
 				<header class="width_full relative">
-					<a href="#{pkg.name}" id={pkg.name} class="subtitle">🔗</a>
-					<a href="{base}/tree/{pkg.repo_name}">{pkg.name}</a>
+					<a href="#{deployment.name}" id={deployment.name} class="subtitle">🔗</a>
+					<a href="{base}/tree/{deployment.repo_name}">{deployment.name}</a>
 				</header>
 				<ul class="modules panel">
-					{#each modules as pkg_module (pkg_module)}
-						{@const {path, declarations} = pkg_module}
+					{#each modules as deployment_module (deployment_module)}
+						{@const {path, declarations} = deployment_module}
 						<li
 							class="module"
 							class:ts={path.endsWith('.ts')}
@@ -64,9 +62,11 @@
 							class:json={path.endsWith('.json')}
 						>
 							<div>
-								{#if pkg.repo_url}
+								{#if deployment.repo_url}
 									<div class="chip row">
-										<a href="{ensure_end(pkg.repo_url, '/')}blob/main/src/lib/{path}">{path}</a>
+										<a href="{ensure_end(deployment.repo_url, '/')}blob/main/src/lib/{path}"
+											>{path}</a
+										>
 									</div>
 								{:else}
 									<span class="chip">{path}</span>
@@ -105,13 +105,13 @@
 		top: 0;
 		text-align: right;
 	}
-	.pkg_module {
+	.deployment_module {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
 		margin-bottom: var(--spacing_5);
 	}
-	.pkg_module > header {
+	.deployment_module > header {
 		display: flex;
 		padding: var(--spacing_xs) var(--spacing_md);
 		font-size: var(--size_lg);

@@ -19,7 +19,7 @@
 		<Page_Header pkg={deployment} />
 	</section>
 	<section>
-		<Modules_Detail pkgs={deployments}>
+		<Modules_Detail {deployments}>
 			<div slot="nav" class="row">
 				<Breadcrumb>{package_json.icon}</Breadcrumb>
 			</div>
