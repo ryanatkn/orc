@@ -3,9 +3,7 @@
 	import Library_Footer from '@fuz.dev/fuz_library/Library_Footer.svelte';
 	import type {Package_Meta} from '@fuz.dev/fuz_library/package_meta.js';
 
-	import {package_json} from '$lib/package.js';
-
-	export let pkg: Package_Meta | {url: string; package_json: null};
+	export let pkg: Package_Meta;
 </script>
 
 <footer>
@@ -14,7 +12,7 @@
 	{/if}
 	<slot />
 	<div class="breadcrumb_wrapper">
-		<Breadcrumb>{package_json.icon}</Breadcrumb>
+		<Breadcrumb>{pkg.package_json.icon}</Breadcrumb>
 	</div>
 </footer>
 

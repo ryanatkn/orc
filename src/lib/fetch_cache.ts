@@ -24,13 +24,13 @@ export const Fetch_Cache_Item = z.object({
 	data: z.any(), // TODO type?
 });
 // TODO use `z.infer<typeof Fetch_Cache_Item>`, how with generic?
-export interface Fetch_Cache_Item<TData = any, TParams = any> {
+export interface Fetch_Cache_Item<T_Data = any, T_Params = any> {
 	url: Url;
-	params: TParams;
+	params: T_Params;
 	key: Fetch_Cache_Key;
 	etag: string | null;
 	last_modified: string | null;
-	data: TData;
+	data: T_Data;
 }
 
 export const CACHE_KEY_SEPARATOR = '::';

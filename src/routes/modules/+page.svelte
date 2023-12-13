@@ -1,19 +1,13 @@
 <script lang="ts">
-	import {parse_package_meta} from '@fuz.dev/fuz_library/package_meta.js';
 	import Breadcrumb from '@fuz.dev/fuz_library/Breadcrumb.svelte';
 
-	import packages from '$lib/packages.json';
 	import Page_Header from '$routes/Page_Header.svelte';
 	import Page_Footer from '$routes/Page_Footer.svelte';
 	import Modules_Detail from '$lib/Modules_Detail.svelte';
-	import {package_json} from '$lib/package.js';
+	import {package_json} from '$routes/package.js';
+	import {get_packages} from '$lib/packages.js';
 
-	// TODO hacky
-	const pkgs = packages.map(({url, package_json}) =>
-		package_json ? parse_package_meta(url, package_json) : {url, package_json: null},
-	);
-
-	const pkg = pkgs[0];
+	const {pkg, pkgs} = get_packages();
 </script>
 
 <svelte:head>
@@ -22,7 +16,7 @@
 
 <main class="box width_full">
 	<section>
-		<Page_Header />
+		<Page_Header {pkg} />
 	</section>
 	<section>
 		<Modules_Detail {pkgs}>

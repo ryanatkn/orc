@@ -6,6 +6,7 @@ const config: Orc_Config = {
 		'https://library.fuz.dev/',
 		'https://template.fuz.dev/',
 		'https://www.grogarden.org/',
+		// TODO cache 404s
 		'https://missing.fuz.dev/',
 		'https://www.spiderspace.org/',
 	],

@@ -1,11 +1,17 @@
 import {Package_Json} from '@grogarden/gro/package_json.js';
 import type {Url} from '@grogarden/gro/paths.js';
-import {strip_end} from '@grogarden/util/string.js';
+import {ensure_end} from '@grogarden/util/string.js';
 import type {Logger} from '@grogarden/util/log.js';
 import {wait} from '@grogarden/util/async.js';
 import {parse_package_meta, type Package_Meta} from '@fuz.dev/fuz_library/package_meta.js';
+import type {Src_Json} from '@grogarden/gro/src_json.js';
 
-import {fetch_github_pull_requests, type Github_Pull_Request} from '$lib/github.js';
+import {
+	fetch_github_check_runs,
+	fetch_github_pull_requests,
+	Github_Check_Runs,
+	type Github_Pull_Request,
+} from '$lib/github.js';
 import {
 	to_fetch_cache_key,
 	type Fetch_Cache_Data,
@@ -16,11 +22,14 @@ import {
 export interface Maybe_Fetched_Package {
 	url: Url;
 	package_json: Package_Json | null; // TODO forward error
+	src_json: Src_Json | null; // TODO forward error
+	check_runs: Github_Check_Runs | null;
 	pull_requests: Github_Pull_Request[] | null;
 }
 
 // TODO rethink these
 export interface Fetched_Package extends Package_Meta {
+	check_runs: Github_Check_Runs | null;
 	pull_requests: Github_Pull_Request[] | null;
 }
 
@@ -28,6 +37,7 @@ export interface Fetched_Package extends Package_Meta {
 export interface Unfetched_Package extends Maybe_Fetched_Package {
 	url: Url;
 	package_json: null;
+	src_json: null;
 	pull_requests: null;
 }
 
@@ -47,11 +57,31 @@ export const fetch_packages = async (
 	const packages: Maybe_Fetched_Package[] = [];
 	for (const homepage_url of homepage_urls) {
 		try {
+			// `${base}/.well-known/package.json`
 			const {data: package_json} = await fetch_package_json(homepage_url, cache, log);
 			if (!package_json) throw Error('failed to load package_json: ' + homepage_url);
 			await wait(delay);
-			const pkg = parse_package_meta(homepage_url, package_json);
+
+			// `${base}/.well-known/src.json`
+			const {data: src_json} = await fetch_src_json(homepage_url, cache, log);
+			if (!src_json) throw Error('failed to load src_json: ' + homepage_url);
+			await wait(delay);
+
+			const pkg = parse_package_meta(homepage_url, package_json, src_json);
 			if (!pkg) throw Error('failed to parse package_json: ' + homepage_url);
+
+			// CI status
+			const {data: check_runs} = await fetch_github_check_runs(
+				homepage_url,
+				pkg,
+				cache,
+				log,
+				token,
+			);
+			if (!check_runs) throw Error('failed to fetch issues: ' + homepage_url);
+			await wait(delay);
+
+			// pull requests
 			const {data: pull_requests} = await fetch_github_pull_requests(
 				homepage_url,
 				pkg,
@@ -61,23 +91,49 @@ export const fetch_packages = async (
 			);
 			if (!pull_requests) throw Error('failed to fetch issues: ' + homepage_url);
 			await wait(delay);
-			packages.push({url: homepage_url, package_json, pull_requests});
+
+			packages.push({url: homepage_url, package_json, src_json, check_runs, pull_requests});
 		} catch (err) {
-			packages.push({url: homepage_url, package_json: null, pull_requests: null});
+			packages.push({
+				url: homepage_url,
+				package_json: null,
+				src_json: null,
+				check_runs: null,
+				pull_requests: null,
+			});
 			log?.error(err);
 		}
 	}
 	return packages;
 };
 
-// TODO refactor with `fetch_github_pull_requests`
-const fetch_package_json = async (
+// TODO make this work with other urls and text, and extract
+
+export const fetch_package_json = async (
 	homepage_url: string,
 	cache?: Fetch_Cache_Data,
 	log?: Logger,
 ): Promise<Fetch_Cache_Item<Package_Json | null>> => {
-	const url = strip_end(homepage_url, '/') + '/.well-known/package.json'; // TODO helper
-	log?.info('fetching', homepage_url);
+	const url = ensure_end(homepage_url, '/') + '.well-known/package.json'; // TODO helper
+	return fetch_json(url, cache, log);
+};
+
+export const fetch_src_json = async (
+	homepage_url: string,
+	cache?: Fetch_Cache_Data,
+	log?: Logger,
+): Promise<Fetch_Cache_Item<Package_Json | null>> => {
+	const url = ensure_end(homepage_url, '/') + '.well-known/src.json'; // TODO helper
+	return fetch_json(url, cache, log);
+};
+
+// TODO refactor with `fetch_github_pull_requests`
+export const fetch_json = async (
+	url: string,
+	cache?: Fetch_Cache_Data,
+	log?: Logger,
+): Promise<Fetch_Cache_Item<Package_Json | null>> => {
+	log?.info('fetching', url);
 	const headers: Record<string, string> = {
 		'content-type': 'application/json',
 		accept: 'application/json',

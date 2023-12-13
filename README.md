@@ -8,9 +8,22 @@ I maintain a lot of git repos between
 Orc is a tool for helping me orchestrate this complexity.
 It's an alternative to the monorepo pattern that more loosely couples repos.
 
-This repo has demo data,
-I'm using Orc in [Spiderspace](https://github.com/spiderspace/spiderspace)
-and [fuz_repos](https://github.com/fuz-dev/fuz_repos).
+This repo has demo data -
+I'm using Orc in [Spiderspace](https://github.com/spiderspace/spiderspace),
+[Fuz](https://github.com/fuz-dev/fuz),
+and [Felt's website](https://github.com/feltjs/felt_website).
+
+With Orc you can:
+
+- fetch typesafe metadata about collections of packages and import it as typesafe JSON
+- publish a generated docs website for your collections of packages
+- import its components to view and interact with package collection metadata
+- publish metadata about your collections of packages to the web for other users and tools
+
+planned additions:
+
+- run updating operations and other workflows from the frontend in dev mode
+  (ultimately, an `update all` button)
 
 ## Usage
 
