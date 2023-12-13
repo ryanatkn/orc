@@ -3,7 +3,7 @@
 	import packages from '$lib/packages.json';
 	import Page_Header from '$routes/Page_Header.svelte';
 	import Page_Footer from '$routes/Page_Footer.svelte';
-	import {package_json} from '$lib/package.js';
+	import {package_json} from '$routes/package.js';
 	import type {Filter_Pull_Request} from '$lib/github_helpers.js';
 	import {get_packages} from '$lib/packages.js';
 

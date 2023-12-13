@@ -4,7 +4,7 @@
 	import {base} from '$app/paths';
 
 	import Main_Header from '$routes/Main_Header.svelte';
-	import {package_json} from '$lib/package.js';
+	import {package_json} from '$routes/package.js';
 	import {get_packages} from '$lib/packages.js';
 
 	const {pkg} = get_packages();

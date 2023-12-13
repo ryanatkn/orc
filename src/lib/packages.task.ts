@@ -1,5 +1,6 @@
 import type {Task} from '@grogarden/gro';
 import {load_package_json} from '@grogarden/gro/package_json.js';
+import {create_src_json} from '@grogarden/gro/src_json.js';
 import {z} from 'zod';
 import {writeFile} from 'node:fs/promises';
 import {format_file} from '@grogarden/gro/format_file.js';
@@ -50,12 +51,14 @@ export const task: Task<Args> = {
 		);
 
 		const local_package_json = await load_package_json(dir);
+		const local_src_json = await create_src_json(local_package_json);
 
 		const final_packages: Maybe_Fetched_Package[] = local_package_json?.homepage
 			? [
 					{
 						url: local_package_json.homepage,
 						package_json: local_package_json,
+						src_json: local_src_json,
 						pull_requests: null, // TODO - maybe `fetch_packages` should look locally just for the package_json?
 					} as Maybe_Fetched_Package,
 			  ].concat(fetched_packages)
@@ -71,8 +74,8 @@ export const task: Task<Args> = {
 			await writeFile(
 				types_outfile,
 				`declare module '$lib/packages.json' {
-	import type {Fetched_Package} from '@ryanatkn/orc/fetch_packages.js';
-	const data: Fetched_Package[];
+	import type {Maybe_Fetched_Package} from '@ryanatkn/orc/fetch_packages.js';
+	const data: Maybe_Fetched_Package[];
 	export default data;
 }
 `,
