@@ -3,7 +3,7 @@
 		"url": "https://orc.ryanatkn.com/",
 		"package_json": {
 			"name": "@ryanatkn/orc",
-			"version": "0.14.0",
+			"version": "0.15.0",
 			"description": "a tool for orchestrating many repos",
 			"icon": "🪄",
 			"public": true,
@@ -27,33 +27,33 @@
 				"svelte": "*"
 			},
 			"devDependencies": {
-				"@changesets/changelog-git": "^0.1.14",
+				"@changesets/changelog-git": "^0.2.0",
 				"@feltjs/eslint-config": "^0.4.1",
-				"@fuz.dev/fuz": "^0.80.1",
+				"@fuz.dev/fuz": "^0.81.0",
 				"@fuz.dev/fuz_contextmenu": "^0.6.0",
 				"@fuz.dev/fuz_dialog": "^0.5.0",
-				"@fuz.dev/fuz_library": "^0.22.1",
-				"@grogarden/gro": "^0.102.3",
-				"@grogarden/util": "^0.16.1",
+				"@fuz.dev/fuz_library": "^0.23.0",
+				"@grogarden/gro": "^0.105.3",
+				"@grogarden/util": "^0.18.0",
 				"@octokit/request": "^8.1.6",
 				"@sveltejs/adapter-static": "^2.0.3",
-				"@sveltejs/kit": "^1.27.6",
+				"@sveltejs/kit": "^1.30.2",
 				"@sveltejs/package": "^2.2.3",
-				"@types/node": "^20.10.0",
-				"@typescript-eslint/eslint-plugin": "^6.12.0",
-				"@typescript-eslint/parser": "^6.12.0",
+				"@types/node": "^20.10.4",
+				"@typescript-eslint/eslint-plugin": "^6.14.0",
+				"@typescript-eslint/parser": "^6.14.0",
 				"dequal": "^2.0.3",
-				"eslint": "^8.54.0",
+				"eslint": "^8.55.0",
 				"eslint-plugin-svelte": "^2.35.1",
-				"prettier": "^3.1.0",
+				"prettier": "^3.1.1",
 				"prettier-plugin-svelte": "^3.1.2",
-				"svelte": "^4.2.7",
+				"svelte": "^4.2.8",
 				"svelte-check": "^3.6.2",
 				"tslib": "^2.6.2",
-				"typescript": "^5.3.2",
+				"typescript": "^5.3.3",
 				"uvu": "^0.5.6"
 			},
-			"eslintConfig": {"root": true, "extends": "@feltjs"},
+			"eslintConfig": {"root": true, "extends": "@feltjs", "rules": {"no-console": 1}},
 			"prettier": {
 				"plugins": ["prettier-plugin-svelte"],
 				"useTabs": true,
@@ -115,13 +115,12 @@
 					"svelte": "./dist/Pull_Requests_Detail.svelte",
 					"default": "./dist/Pull_Requests_Detail.svelte",
 					"types": "./dist/Pull_Requests_Detail.svelte.d.ts"
-				},
-				"./sync.task.js": {"default": "./dist/sync.task.js", "types": "./dist/sync.task.d.ts"}
+				}
 			}
 		},
 		"src_json": {
 			"name": "@ryanatkn/orc",
-			"version": "0.14.0",
+			"version": "0.15.0",
 			"modules": {
 				"./config.js": {
 					"path": "config.ts",
@@ -172,6 +171,7 @@
 				"./github.js": {
 					"path": "github.ts",
 					"declarations": [
+						{"name": "GITHUB_API_VERSION", "kind": "variable"},
 						{"name": "Github_Pull_Request", "kind": "variable"},
 						{"name": "Github_Check_Runs", "kind": "variable"},
 						{"name": "fetch_github_pull_requests", "kind": "function"},
@@ -210,23 +210,37 @@
 						{"name": "fetch_json", "kind": "function"}
 					]
 				},
-				"./Pull_Requests_Detail.svelte": {
-					"path": "Pull_Requests_Detail.svelte",
-					"declarations": []
-				},
-				"./sync.task.js": {
-					"path": "sync.task.ts",
-					"declarations": [{"name": "task", "kind": "variable"}]
-				}
+				"./Pull_Requests_Detail.svelte": {"path": "Pull_Requests_Detail.svelte", "declarations": []}
 			}
 		},
-		"pull_requests": null
+		"check_runs": {"status": "completed", "conclusion": "success"},
+		"pull_requests": [
+			{
+				"number": 16,
+				"title": "add `Page_Footer`, `Page_Header`, and page components",
+				"user": {"login": "ryanatkn"},
+				"draft": true
+			},
+			{
+				"number": 15,
+				"title": "fix local package `gro packages`",
+				"user": {"login": "ryanatkn"},
+				"draft": true
+			},
+			{
+				"number": 14,
+				"title": "rename deployments and clarify packages",
+				"user": {"login": "ryanatkn"},
+				"draft": true
+			},
+			{"number": 12, "title": "add menu to sidebars", "user": {"login": "ryanatkn"}, "draft": false}
+		]
 	},
 	{
 		"url": "https://www.fuz.dev/",
 		"package_json": {
 			"name": "@fuz.dev/fuz",
-			"version": "0.80.1",
+			"version": "0.81.0",
 			"description": "design system for CSS, Svelte, and SvelteKit",
 			"icon": "🧶",
 			"public": true,
@@ -251,29 +265,29 @@
 			"files": ["dist"],
 			"peerDependencies": {"svelte": "*"},
 			"devDependencies": {
-				"@changesets/changelog-git": "^0.1.14",
+				"@changesets/changelog-git": "^0.2.0",
 				"@feltjs/eslint-config": "^0.4.1",
 				"@fuz.dev/fuz_code": "^0.4.3",
 				"@fuz.dev/fuz_dialog": "^0.5.0",
-				"@fuz.dev/fuz_library": "^0.21.1",
-				"@grogarden/gro": "^0.102.1",
-				"@ryanatkn/orc": "^0.14.0",
+				"@fuz.dev/fuz_library": "^0.23.0",
+				"@grogarden/gro": "^0.104.0",
+				"@ryanatkn/orc": "^0.15.0",
 				"@sveltejs/adapter-static": "^2.0.3",
-				"@sveltejs/kit": "^1.27.5",
-				"@sveltejs/package": "^2.2.2",
+				"@sveltejs/kit": "^1.29.0",
+				"@sveltejs/package": "^2.2.3",
 				"@types/prismjs": "^1.26.3",
-				"@typescript-eslint/eslint-plugin": "^6.11.0",
-				"@typescript-eslint/parser": "^6.11.0",
-				"eslint": "^8.53.0",
-				"eslint-plugin-svelte": "^2.35.0",
-				"prettier": "^3.1.0",
-				"prettier-plugin-svelte": "^3.1.0",
+				"@typescript-eslint/eslint-plugin": "^6.14.0",
+				"@typescript-eslint/parser": "^6.14.0",
+				"eslint": "^8.55.0",
+				"eslint-plugin-svelte": "^2.35.1",
+				"prettier": "^3.1.1",
+				"prettier-plugin-svelte": "^3.1.2",
 				"prism-svelte": "^0.5.0",
 				"prismjs": "^1.29.0",
-				"svelte": "^4.2.3",
-				"svelte-check": "^3.6.0",
+				"svelte": "^4.2.8",
+				"svelte-check": "^3.6.2",
 				"tslib": "^2.6.2",
-				"typescript": "^5.2.2",
+				"typescript": "^5.3.3",
 				"uvu": "^0.5.6"
 			},
 			"eslintConfig": {"root": true, "extends": "@feltjs", "rules": {"no-console": 1}},
@@ -292,11 +306,6 @@
 					"types": "./dist/Color_Scheme_Input.svelte.d.ts"
 				},
 				"./orc.task.js": {"default": "./dist/orc.task.js", "types": "./dist/orc.task.d.ts"},
-				"./package.gen.js": {
-					"default": "./dist/package.gen.js",
-					"types": "./dist/package.gen.d.ts"
-				},
-				"./package.js": {"default": "./dist/package.js", "types": "./dist/package.d.ts"},
 				"./packages.json": {
 					"default": "./dist/packages.json",
 					"types": "./dist/packages.json.d.ts"
@@ -334,18 +343,10 @@
 		},
 		"src_json": {
 			"name": "@fuz.dev/fuz",
-			"version": "0.80.1",
+			"version": "0.81.0",
 			"modules": {
 				"./Color_Scheme_Input.svelte": {"path": "Color_Scheme_Input.svelte", "declarations": []},
 				"./orc.task.js": {"path": "orc.task.ts", "declarations": []},
-				"./package.gen.js": {"path": "package.gen.ts", "declarations": []},
-				"./package.js": {
-					"path": "package.ts",
-					"declarations": [
-						{"name": "package_json", "kind": "variable"},
-						{"name": "src_json", "kind": "variable"}
-					]
-				},
 				"./packages.json": {"path": "packages.json", "declarations": []},
 				"./packages.task.js": {"path": "packages.task.ts", "declarations": []},
 				"./style.css": {"path": "style.css", "declarations": []},
@@ -409,7 +410,7 @@
 		"url": "https://library.fuz.dev/",
 		"package_json": {
 			"name": "@fuz.dev/fuz_library",
-			"version": "0.22.1",
+			"version": "0.23.0",
 			"description": "components and helpers for Svelte, SvelteKit, and Fuz",
 			"icon": "🧶",
 			"public": true,
@@ -433,28 +434,28 @@
 			"files": ["dist"],
 			"peerDependencies": {"@grogarden/util": "*", "@sveltejs/kit": "*", "svelte": "*"},
 			"devDependencies": {
-				"@changesets/changelog-git": "^0.1.14",
+				"@changesets/changelog-git": "^0.2.0",
 				"@feltjs/eslint-config": "^0.4.1",
-				"@fuz.dev/fuz": "^0.80.1",
+				"@fuz.dev/fuz": "^0.81.0",
 				"@fuz.dev/fuz_code": "^0.4.3",
-				"@grogarden/gro": "^0.102.2",
-				"@grogarden/util": "^0.16.1",
+				"@grogarden/gro": "^0.104.0",
+				"@grogarden/util": "^0.18.0",
 				"@sveltejs/adapter-static": "^2.0.3",
-				"@sveltejs/kit": "^1.27.6",
+				"@sveltejs/kit": "^1.29.0",
 				"@sveltejs/package": "^2.2.3",
-				"@types/node": "^20.10.0",
-				"@typescript-eslint/eslint-plugin": "^6.12.0",
-				"@typescript-eslint/parser": "^6.12.0",
-				"eslint": "^8.54.0",
+				"@types/node": "^20.10.4",
+				"@typescript-eslint/eslint-plugin": "^6.14.0",
+				"@typescript-eslint/parser": "^6.14.0",
+				"eslint": "^8.55.0",
 				"eslint-plugin-svelte": "^2.35.1",
-				"prettier": "^3.1.0",
+				"prettier": "^3.1.1",
 				"prettier-plugin-svelte": "^3.1.2",
 				"prism-svelte": "^0.5.0",
 				"prismjs": "^1.29.0",
-				"svelte": "^4.2.7",
+				"svelte": "^4.2.8",
 				"svelte-check": "^3.6.2",
 				"tslib": "^2.6.2",
-				"typescript": "^5.3.2",
+				"typescript": "^5.3.3",
 				"uvu": "^0.5.6",
 				"zod": "^3.22.4"
 			},
@@ -590,7 +591,7 @@
 		},
 		"src_json": {
 			"name": "@fuz.dev/fuz_library",
-			"version": "0.22.1",
+			"version": "0.23.0",
 			"modules": {
 				"./Alert.svelte": {"path": "Alert.svelte", "declarations": []},
 				"./alert.js": {
@@ -691,16 +692,16 @@
 			"files": ["dist"],
 			"devDependencies": {
 				"@feltjs/eslint-config": "^0.4.1",
-				"@fuz.dev/fuz": "^0.80.1",
+				"@fuz.dev/fuz": "^0.81.0",
 				"@fuz.dev/fuz_contextmenu": "^0.6.0",
 				"@fuz.dev/fuz_dialog": "^0.5.0",
-				"@fuz.dev/fuz_library": "^0.21.1",
-				"@grogarden/gro": "^0.102.2",
-				"@grogarden/util": "^0.16.1",
+				"@fuz.dev/fuz_library": "^0.23.0",
+				"@grogarden/gro": "^0.103.0",
+				"@grogarden/util": "^0.17.0",
 				"@sveltejs/adapter-static": "^2.0.3",
 				"@sveltejs/kit": "^1.27.6",
-				"@typescript-eslint/eslint-plugin": "^6.12.0",
-				"@typescript-eslint/parser": "^6.12.0",
+				"@typescript-eslint/eslint-plugin": "^6.13.1",
+				"@typescript-eslint/parser": "^6.13.1",
 				"eslint": "^8.54.0",
 				"eslint-plugin-svelte": "^2.35.1",
 				"prettier": "^3.1.0",
@@ -729,7 +730,7 @@
 		"url": "https://www.grogarden.org/",
 		"package_json": {
 			"name": "@grogarden/gro",
-			"version": "0.102.3",
+			"version": "0.105.3",
 			"description": "task runner and toolkit extending SvelteKit",
 			"icon": "🌰",
 			"public": true,
@@ -763,40 +764,40 @@
 			],
 			"files": ["dist"],
 			"dependencies": {
-				"@grogarden/util": "^0.16.1",
+				"@grogarden/util": "^0.18.0",
 				"@ryanatkn/json-schema-to-typescript": "^11.1.5",
 				"chokidar": "^3.5.3",
 				"dotenv": "^16.3.1",
 				"es-module-lexer": "^1.4.1",
 				"kleur": "^4.1.5",
 				"mri": "^1.2.0",
-				"prettier": "^3.1.0",
+				"prettier": "^3.1.1",
 				"prettier-plugin-svelte": "^3.1.2",
 				"tiny-glob": "^0.2.9",
-				"ts-morph": "^20.0.0",
+				"ts-morph": "^21.0.1",
 				"tslib": "^2.6.2",
 				"zod": "^3.22.4"
 			},
 			"peerDependencies": {"esbuild": "^0.18.20", "svelte": "*"},
 			"devDependencies": {
-				"@changesets/changelog-git": "^0.1.14",
-				"@changesets/types": "^5.2.1",
+				"@changesets/changelog-git": "^0.2.0",
+				"@changesets/types": "^6.0.0",
 				"@feltjs/eslint-config": "^0.4.1",
-				"@fuz.dev/fuz": "^0.80.1",
-				"@fuz.dev/fuz_library": "^0.22.1",
+				"@fuz.dev/fuz": "^0.81.0",
+				"@fuz.dev/fuz_library": "^0.23.0",
 				"@sveltejs/adapter-static": "^2.0.3",
-				"@sveltejs/kit": "^1.27.6",
+				"@sveltejs/kit": "^1.29.0",
 				"@sveltejs/package": "^2.2.3",
 				"@types/fs-extra": "^11.0.4",
-				"@types/node": "^20.10.0",
-				"@typescript-eslint/eslint-plugin": "^6.12.0",
-				"@typescript-eslint/parser": "^6.12.0",
+				"@types/node": "^20.10.4",
+				"@typescript-eslint/eslint-plugin": "^6.14.0",
+				"@typescript-eslint/parser": "^6.14.0",
 				"esbuild": "^0.18.20",
-				"eslint": "^8.54.0",
+				"eslint": "^8.55.0",
 				"eslint-plugin-svelte": "^2.35.1",
-				"svelte": "^4.2.7",
+				"svelte": "^4.2.8",
 				"svelte-check": "^3.6.2",
-				"typescript": "^5.3.2",
+				"typescript": "^5.3.3",
 				"uvu": "^0.5.6"
 			},
 			"eslintConfig": {"root": true, "extends": "@feltjs", "rules": {"no-console": 1}},
@@ -812,6 +813,7 @@
 				".": {"default": "./dist/index.js", "types": "./dist/index.d.ts"},
 				"./args.js": {"default": "./dist/args.js", "types": "./dist/args.d.ts"},
 				"./build.task.js": {"default": "./dist/build.task.js", "types": "./dist/build.task.d.ts"},
+				"./changelog.js": {"default": "./dist/changelog.js", "types": "./dist/changelog.d.ts"},
 				"./changeset.task.js": {
 					"default": "./dist/changeset.task.js",
 					"types": "./dist/changeset.task.d.ts"
@@ -859,7 +861,6 @@
 					"default": "./dist/esbuild_plugin_sveltekit_shim_env.js",
 					"types": "./dist/esbuild_plugin_sveltekit_shim_env.d.ts"
 				},
-				"./exists.js": {"default": "./dist/exists.js", "types": "./dist/exists.d.ts"},
 				"./format_directory.js": {
 					"default": "./dist/format_directory.js",
 					"types": "./dist/format_directory.d.ts"
@@ -872,6 +873,7 @@
 					"default": "./dist/format.task.js",
 					"types": "./dist/format.task.d.ts"
 				},
+				"./fs.js": {"default": "./dist/fs.js", "types": "./dist/fs.d.ts"},
 				"./gen_module.js": {"default": "./dist/gen_module.js", "types": "./dist/gen_module.d.ts"},
 				"./gen_schemas.js": {
 					"default": "./dist/gen_schemas.js",
@@ -880,6 +882,7 @@
 				"./gen.task.js": {"default": "./dist/gen.task.js", "types": "./dist/gen.task.d.ts"},
 				"./gen.js": {"default": "./dist/gen.js", "types": "./dist/gen.d.ts"},
 				"./git.js": {"default": "./dist/git.js", "types": "./dist/git.d.ts"},
+				"./github.js": {"default": "./dist/github.js", "types": "./dist/github.d.ts"},
 				"./gro_plugin_gen.js": {
 					"default": "./dist/gro_plugin_gen.js",
 					"types": "./dist/gro_plugin_gen.d.ts"
@@ -1003,7 +1006,7 @@
 		},
 		"src_json": {
 			"name": "@grogarden/gro",
-			"version": "0.102.3",
+			"version": "0.105.3",
 			"modules": {
 				".": {
 					"path": "index.ts",
@@ -1040,6 +1043,10 @@
 						{"name": "Args", "kind": "variable"},
 						{"name": "task", "kind": "variable"}
 					]
+				},
+				"./changelog.js": {
+					"path": "changelog.ts",
+					"declarations": [{"name": "update_changelog", "kind": "function"}]
 				},
 				"./changeset.task.js": {
 					"path": "changeset.task.ts",
@@ -1121,7 +1128,8 @@
 						{"name": "load_env", "kind": "function"},
 						{"name": "merge_envs", "kind": "function"},
 						{"name": "is_private_env", "kind": "function"},
-						{"name": "is_public_env", "kind": "function"}
+						{"name": "is_public_env", "kind": "function"},
+						{"name": "load_from_env", "kind": "function"}
 					]
 				},
 				"./esbuild_helpers.js": {
@@ -1171,10 +1179,6 @@
 						{"name": "esbuild_plugin_sveltekit_shim_env", "kind": "function"}
 					]
 				},
-				"./exists.js": {
-					"path": "exists.ts",
-					"declarations": [{"name": "exists", "kind": "function"}]
-				},
 				"./format_directory.js": {
 					"path": "format_directory.ts",
 					"declarations": [{"name": "format_directory", "kind": "function"}]
@@ -1190,6 +1194,7 @@
 						{"name": "task", "kind": "variable"}
 					]
 				},
+				"./fs.js": {"path": "fs.ts", "declarations": [{"name": "clean_fs", "kind": "function"}]},
 				"./gen_module.js": {
 					"path": "gen_module.ts",
 					"declarations": [
@@ -1265,12 +1270,18 @@
 						{"name": "git_push_to_create", "kind": "function"},
 						{"name": "git_delete_local_branch", "kind": "function"},
 						{"name": "git_delete_remote_branch", "kind": "function"},
-						{"name": "WORKTREE_DIRNAME", "kind": "variable"},
-						{"name": "to_worktree_dir", "kind": "function"},
-						{"name": "git_clean_worktree", "kind": "function"},
 						{"name": "git_reset_branch_to_first_commit", "kind": "function"},
 						{"name": "git_current_commit_hash", "kind": "function"},
-						{"name": "git_current_branch_first_commit_hash", "kind": "function"}
+						{"name": "git_current_branch_first_commit_hash", "kind": "function"},
+						{"name": "git_check_setting_pull_rebase", "kind": "function"},
+						{"name": "git_clone_locally", "kind": "function"}
+					]
+				},
+				"./github.js": {
+					"path": "github.ts",
+					"declarations": [
+						{"name": "Github_Pull_Request", "kind": "variable"},
+						{"name": "github_fetch_commit_prs", "kind": "function"}
 					]
 				},
 				"./gro_plugin_gen.js": {
@@ -1376,7 +1387,8 @@
 						{"name": "write_package_json", "kind": "function"},
 						{"name": "serialize_package_json", "kind": "function"},
 						{"name": "update_package_json", "kind": "function"},
-						{"name": "to_package_exports", "kind": "function"}
+						{"name": "to_package_exports", "kind": "function"},
+						{"name": "parse_repo_url", "kind": "function"}
 					]
 				},
 				"./package.gen.js": {
@@ -1584,7 +1596,8 @@
 					"path": "sveltekit_shim_app_paths.ts",
 					"declarations": [
 						{"name": "assets", "kind": "variable"},
-						{"name": "base", "kind": "variable"}
+						{"name": "base", "kind": "variable"},
+						{"name": "resolveRoute", "kind": "function"}
 					]
 				},
 				"./sveltekit_shim_app_stores.js": {
@@ -1669,20 +1682,7 @@
 			}
 		},
 		"check_runs": {"status": "completed", "conclusion": "success"},
-		"pull_requests": [
-			{
-				"number": 429,
-				"title": "stop using the `deploy` branch in the main cwd for `gro deploy`",
-				"user": {"login": "ryanatkn"},
-				"draft": true
-			},
-			{
-				"number": 427,
-				"title": "add and integrate `gro changelog`",
-				"user": {"login": "ryanatkn"},
-				"draft": true
-			}
-		]
+		"pull_requests": []
 	},
 	{
 		"url": "https://missing.fuz.dev/",
@@ -1713,16 +1713,16 @@
 			},
 			"devDependencies": {
 				"@feltjs/eslint-config": "^0.4.1",
-				"@fuz.dev/fuz": "^0.80.1",
-				"@fuz.dev/fuz_library": "^0.22.1",
-				"@grogarden/gro": "^0.102.3",
-				"@grogarden/util": "^0.16.1",
+				"@fuz.dev/fuz": "^0.81.0",
+				"@fuz.dev/fuz_library": "^0.23.0",
+				"@grogarden/gro": "^0.103.0",
+				"@grogarden/util": "^0.17.0",
 				"@octokit/request": "^8.1.6",
-				"@ryanatkn/orc": "^0.14.0",
+				"@ryanatkn/orc": "^0.15.0",
 				"@sveltejs/adapter-static": "^2.0.3",
 				"@sveltejs/kit": "^1.27.6",
-				"@typescript-eslint/eslint-plugin": "^6.12.0",
-				"@typescript-eslint/parser": "^6.12.0",
+				"@typescript-eslint/eslint-plugin": "^6.13.1",
+				"@typescript-eslint/parser": "^6.13.1",
 				"eslint": "^8.54.0",
 				"prettier": "^3.1.0",
 				"prettier-plugin-svelte": "^3.1.2",
