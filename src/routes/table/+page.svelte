@@ -1,11 +1,11 @@
 <script lang="ts">
 	import Page_Header from '$routes/Page_Header.svelte';
-	import Packages_Table from '$lib/Packages_Table.svelte';
+	import Deployments_Table from '$lib/Deployments_Table.svelte';
 	import Page_Footer from '$routes/Page_Footer.svelte';
 	import {package_json} from '$routes/package.js';
-	import {get_packages} from '$lib/packages.js';
+	import {get_deployments} from '$lib/deployments.js';
 
-	const {pkg, pkgs} = get_packages();
+	const {deployment, deployments} = get_deployments();
 </script>
 
 <svelte:head>
@@ -14,15 +14,15 @@
 
 <main class="box">
 	<section>
-		<Page_Header {pkg} />
+		<Page_Header pkg={deployment} />
 	</section>
 	<section>
 		<div class="panel padded_md">
-			<Packages_Table {pkgs} />
+			<Deployments_Table {deployments} />
 		</div>
 	</section>
 	<section class="box">
-		<Page_Footer {pkg} />
+		<Page_Footer pkg={deployment} />
 	</section>
 </main>
 

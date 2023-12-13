@@ -38,7 +38,7 @@
     "@grogarden/util": "^0.18.0",
     "@octokit/request": "^8.1.6",
     "@sveltejs/adapter-static": "^2.0.3",
-    "@sveltejs/kit": "^1.30.2",
+    "@sveltejs/kit": "^1.30.3",
     "@sveltejs/package": "^2.2.3",
     "@types/node": "^20.10.4",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
@@ -83,13 +83,35 @@
       "default": "./dist/config.js",
       "types": "./dist/config.d.ts"
     },
+    "./Deployments_Table.svelte": {
+      "svelte": "./dist/Deployments_Table.svelte",
+      "default": "./dist/Deployments_Table.svelte",
+      "types": "./dist/Deployments_Table.svelte.d.ts"
+    },
+    "./Deployments_Tree.svelte": {
+      "svelte": "./dist/Deployments_Tree.svelte",
+      "default": "./dist/Deployments_Tree.svelte",
+      "types": "./dist/Deployments_Tree.svelte.d.ts"
+    },
+    "./deployments.json": {
+      "default": "./dist/deployments.json",
+      "types": "./dist/deployments.json.d.ts"
+    },
+    "./deployments.task.js": {
+      "default": "./dist/deployments.task.js",
+      "types": "./dist/deployments.task.d.ts"
+    },
+    "./deployments.js": {
+      "default": "./dist/deployments.js",
+      "types": "./dist/deployments.d.ts"
+    },
     "./fetch_cache.js": {
       "default": "./dist/fetch_cache.js",
       "types": "./dist/fetch_cache.d.ts"
     },
-    "./fetch_packages.js": {
-      "default": "./dist/fetch_packages.js",
-      "types": "./dist/fetch_packages.d.ts"
+    "./fetch_deployments.js": {
+      "default": "./dist/fetch_deployments.js",
+      "types": "./dist/fetch_deployments.d.ts"
     },
     "./fs_fetch_cache.js": {
       "default": "./dist/fs_fetch_cache.js",
@@ -116,28 +138,6 @@
     "./orc.task.js": {
       "default": "./dist/orc.task.js",
       "types": "./dist/orc.task.d.ts"
-    },
-    "./Packages_Table.svelte": {
-      "svelte": "./dist/Packages_Table.svelte",
-      "default": "./dist/Packages_Table.svelte",
-      "types": "./dist/Packages_Table.svelte.d.ts"
-    },
-    "./Packages_Tree.svelte": {
-      "svelte": "./dist/Packages_Tree.svelte",
-      "default": "./dist/Packages_Tree.svelte",
-      "types": "./dist/Packages_Tree.svelte.d.ts"
-    },
-    "./packages.json": {
-      "default": "./dist/packages.json",
-      "types": "./dist/packages.json.d.ts"
-    },
-    "./packages.task.js": {
-      "default": "./dist/packages.task.js",
-      "types": "./dist/packages.task.d.ts"
-    },
-    "./packages.js": {
-      "default": "./dist/packages.js",
-      "types": "./dist/packages.d.ts"
     },
     "./Pull_Requests_Detail.svelte": {
       "svelte": "./dist/Pull_Requests_Detail.svelte",

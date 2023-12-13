@@ -15,10 +15,10 @@ and [Felt's website](https://github.com/feltjs/felt_website).
 
 With Orc you can:
 
-- fetch typesafe metadata about collections of packages and import it as typesafe JSON
-- publish a generated docs website for your collections of packages
+- fetch typesafe metadata about collections of deployments and import it as typesafe JSON
+- publish a generated docs website for your collections of deployments
 - import its components to view and interact with package collection metadata
-- publish metadata about your collections of packages to the web for other users and tools
+- publish metadata about your collections of deployments to the web for other users and tools
 
 planned additions:
 
@@ -40,7 +40,7 @@ and the [Fuz template](https://github.com/fuz-dev/fuz_template)
 
 TODO
 
-- figure out better automation than manually running `gro packages`
+- figure out better automation than manually running `gro deployments`
 - show the rate limit info
 
 ## License [🐦](https://wikipedia.org/wiki/Free_and_open-source_software)

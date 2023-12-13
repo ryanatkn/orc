@@ -1,34 +1,34 @@
 <script lang="ts">
 	import Breadcrumb from '@fuz.dev/fuz_library/Breadcrumb.svelte';
 
-	import Packages_Tree from '$lib/Packages_Tree.svelte';
+	import Deployments_Tree from '$lib/Deployments_Tree.svelte';
 	import Page_Header from '$routes/Page_Header.svelte';
 	import Page_Footer from '$routes/Page_Footer.svelte';
 	import {package_json} from '$routes/package.js';
-	import {get_packages} from '$lib/packages.js';
+	import {get_deployments} from '$lib/deployments.js';
 
-	const {pkg, pkgs} = get_packages();
+	const {deployment, deployments} = get_deployments();
 
-	// TODO ideally there would be one `Packages_Tree` mounted by the layout
+	// TODO ideally there would be one `Deployments_Tree` mounted by the layout
 </script>
 
 <svelte:head>
-	<title>tree {package_json.icon} {pkg.name}</title>
+	<title>tree {package_json.icon} {deployment.name}</title>
 </svelte:head>
 
 <main class="box width_full">
 	<section>
-		<Page_Header {pkg} />
+		<Page_Header pkg={deployment} />
 	</section>
 	<section class="tree">
-		<Packages_Tree {pkgs}>
-			<div slot="nav" class="packages_tree_nav">
+		<Deployments_Tree {deployments}>
+			<div slot="nav" class="deployments_tree_nav">
 				<Breadcrumb>{package_json.icon}</Breadcrumb>
 			</div>
-		</Packages_Tree>
+		</Deployments_Tree>
 	</section>
 	<section class="box">
-		<Page_Footer {pkg} />
+		<Page_Footer pkg={deployment} />
 	</section>
 </main>
 
@@ -47,12 +47,12 @@
 		flex-direction: row;
 		align-items: flex-start;
 	}
-	.packages_tree_nav {
+	.deployments_tree_nav {
 		display: flex;
 		margin-top: var(--spacing_1);
 	}
 	/* TODO hacky */
-	.packages_tree_nav :global(.breadcrumb) {
+	.deployments_tree_nav :global(.breadcrumb) {
 		justify-content: flex-start;
 	}
 </style>
