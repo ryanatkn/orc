@@ -47,6 +47,7 @@ export type Fetched_Package_Meta = Fetched_Package | Unfetched_Package;
 
 /* eslint-disable no-await-in-loop */
 
+// TODO probably refactor to an object API
 export const fetch_packages = async (
 	homepage_urls: Url[],
 	token?: string,
@@ -54,6 +55,8 @@ export const fetch_packages = async (
 	dir?: string,
 	log?: Logger,
 	delay = 50,
+	github_api_version?: string,
+	github_refs?: Record<string, string>, // if not 'main', mapping from the provided raw `homepage_url` to branch name
 ): Promise<Maybe_Fetched_Package[]> => {
 	log?.info(`homepage_urls`, homepage_urls);
 
@@ -107,6 +110,8 @@ export const fetch_packages = async (
 				cache,
 				log,
 				token,
+				github_api_version,
+				github_refs?.[raw_homepage_url],
 			);
 			if (!check_runs) throw Error('failed to fetch CI status: ' + homepage_url);
 			await wait(delay);
@@ -118,6 +123,7 @@ export const fetch_packages = async (
 				cache,
 				log,
 				token,
+				github_api_version,
 			);
 			if (!pull_requests) throw Error('failed to fetch issues: ' + homepage_url);
 			await wait(delay);

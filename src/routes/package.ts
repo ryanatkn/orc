@@ -50,7 +50,7 @@ export const package_json = {
 		typescript: '^5.3.3',
 		uvu: '^0.5.6',
 	},
-	eslintConfig: {root: true, extends: '@feltjs'},
+	eslintConfig: {root: true, extends: '@feltjs', rules: {'no-console': 1}},
 	prettier: {
 		plugins: ['prettier-plugin-svelte'],
 		useTabs: true,
@@ -160,6 +160,7 @@ export const src_json = {
 		'./github.js': {
 			path: 'github.ts',
 			declarations: [
+				{name: 'GITHUB_API_VERSION', kind: 'variable'},
 				{name: 'Github_Pull_Request', kind: 'variable'},
 				{name: 'Github_Check_Runs', kind: 'variable'},
 				{name: 'fetch_github_pull_requests', kind: 'function'},
