@@ -5,6 +5,7 @@ import type {Logger} from '@grogarden/util/log.js';
 import {wait} from '@grogarden/util/async.js';
 import {parse_package_meta, type Package_Meta} from '@fuz.dev/fuz_library/package_meta.js';
 import {create_src_json, type Src_Json} from '@grogarden/gro/src_json.js';
+import {join} from 'node:path';
 
 import {
 	fetch_github_check_runs,
@@ -56,36 +57,42 @@ export const fetch_packages = async (
 ): Promise<Maybe_Fetched_Package[]> => {
 	log?.info(`homepage_urls`, homepage_urls);
 
-	// TODO BLOCK handle packages containing `local_package_json.homepage` and the final_packages below
-
+	// If one of the `homepage_urls` is the local package.json's `homepage` (local in `dir`),
+	// use the local information as much as possible to ensure we're up to date.
+	// If this isn't done, the local package's info will be pulled from the web,
+	// making it perpetually behind by one deployment.
 	const local_package_json = await load_package_json(dir);
-	console.log(`local_package_json`, local_package_json.homepage);
-	const local_src_json = await create_src_json(local_package_json);
+	const local_homepage_url = local_package_json.homepage
+		? ensure_end(local_package_json.homepage, '/')
+		: undefined;
 
-	const final_packages: Maybe_Fetched_Package[] = local_package_json?.homepage
-		? [
-				{
-					url: local_package_json.homepage,
-					package_json: local_package_json,
-					src_json: local_src_json,
-					pull_requests: null, // TODO - maybe `fetch_packages` should look locally just for the package_json?
-				} as Maybe_Fetched_Package,
-		  ].concat(fetched_packages)
-		: fetched_packages;
-
-	process.exit();
 	const packages: Maybe_Fetched_Package[] = [];
 	for (const homepage_url of homepage_urls) {
 		try {
-			// `${base}/.well-known/package.json`
-			const {data: package_json} = await fetch_package_json(homepage_url, cache, log);
-			if (!package_json) throw Error('failed to load package_json: ' + homepage_url);
-			await wait(delay);
+			let package_json: Package_Json;
+			let src_json: Src_Json;
 
-			// `${base}/.well-known/src.json`
-			const {data: src_json} = await fetch_src_json(homepage_url, cache, log);
-			if (!src_json) throw Error('failed to load src_json: ' + homepage_url);
-			await wait(delay);
+			// Handle the local package data, if available
+			if (local_homepage_url === ensure_end(homepage_url, '/')) {
+				package_json = local_package_json;
+				src_json = await create_src_json(
+					local_package_json,
+					log,
+					dir ? join(dir, 'src/lib') : undefined,
+				);
+			} else {
+				// `${base}/.well-known/package.json`
+				const fetched_package_json = await fetch_package_json(homepage_url, cache, log);
+				if (!fetched_package_json.data) throw Error('failed to load package_json: ' + homepage_url);
+				package_json = fetched_package_json.data;
+				await wait(delay);
+
+				// `${base}/.well-known/src.json`
+				const fetched_src_json = await fetch_src_json(homepage_url, cache, log);
+				if (!fetched_src_json.data) throw Error('failed to load src_json: ' + homepage_url);
+				src_json = fetched_src_json.data;
+				await wait(delay);
+			}
 
 			const pkg = parse_package_meta(homepage_url, package_json, src_json);
 			if (!pkg) throw Error('failed to parse package_json: ' + homepage_url);
