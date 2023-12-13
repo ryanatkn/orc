@@ -1,10 +1,11 @@
-import {Package_Json} from '@grogarden/gro/package_json.js';
+import {load_package_json, Package_Json} from '@grogarden/gro/package_json.js';
 import type {Url} from '@grogarden/gro/paths.js';
 import {ensure_end} from '@grogarden/util/string.js';
 import type {Logger} from '@grogarden/util/log.js';
 import {wait} from '@grogarden/util/async.js';
 import {parse_package_meta, type Package_Meta} from '@fuz.dev/fuz_library/package_meta.js';
-import type {Src_Json} from '@grogarden/gro/src_json.js';
+import {create_src_json, type Src_Json} from '@grogarden/gro/src_json.js';
+import {join} from 'node:path';
 
 import {
 	fetch_github_check_runs,
@@ -46,29 +47,61 @@ export type Fetched_Package_Meta = Fetched_Package | Unfetched_Package;
 
 /* eslint-disable no-await-in-loop */
 
+// TODO probably refactor to an object API
 export const fetch_packages = async (
 	homepage_urls: Url[],
 	token?: string,
 	cache?: Fetch_Cache_Data,
+	dir?: string,
 	log?: Logger,
 	delay = 50,
+	github_api_version?: string,
+	github_refs?: Record<string, string>, // if not 'main', mapping from the provided raw `homepage_url` to branch name
 ): Promise<Maybe_Fetched_Package[]> => {
 	log?.info(`homepage_urls`, homepage_urls);
-	const packages: Maybe_Fetched_Package[] = [];
-	for (const homepage_url of homepage_urls) {
-		try {
-			// `${base}/.well-known/package.json`
-			const {data: package_json} = await fetch_package_json(homepage_url, cache, log);
-			if (!package_json) throw Error('failed to load package_json: ' + homepage_url);
-			await wait(delay);
 
-			// `${base}/.well-known/src.json`
-			const {data: src_json} = await fetch_src_json(homepage_url, cache, log);
-			if (!src_json) throw Error('failed to load src_json: ' + homepage_url);
-			await wait(delay);
+	// If one of the `homepage_urls` is the local package.json's `homepage` (local in `dir`),
+	// use the local information as much as possible to ensure we're up to date.
+	// If this isn't done, the local package's info will be pulled from the web,
+	// making it perpetually behind by one deployment.
+	const local_package_json = await load_package_json(dir);
+	const local_homepage_url = local_package_json.homepage
+		? ensure_end(local_package_json.homepage, '/')
+		: undefined;
+
+	const packages: Maybe_Fetched_Package[] = [];
+	for (const raw_homepage_url of homepage_urls) {
+		const homepage_url = ensure_end(raw_homepage_url, '/');
+		try {
+			let package_json: Package_Json;
+			let src_json: Src_Json;
+
+			// Handle the local package data, if available
+			if (homepage_url === local_homepage_url) {
+				log?.info('resolving data locally for', homepage_url);
+				package_json = local_package_json;
+				src_json = await create_src_json(
+					local_package_json,
+					log,
+					dir ? join(dir, 'src/lib') : undefined,
+				);
+			} else {
+				log?.info('fetching data for', homepage_url);
+
+				// `${base}/.well-known/package.json`
+				const fetched_package_json = await fetch_package_json(homepage_url, cache, log);
+				if (!fetched_package_json.data) throw Error('failed to load package_json: ' + homepage_url);
+				package_json = fetched_package_json.data;
+				await wait(delay);
+
+				// `${base}/.well-known/src.json`
+				const fetched_src_json = await fetch_src_json(homepage_url, cache, log);
+				if (!fetched_src_json.data) throw Error('failed to load src_json: ' + homepage_url);
+				src_json = fetched_src_json.data;
+				await wait(delay);
+			}
 
 			const pkg = parse_package_meta(homepage_url, package_json, src_json);
-			if (!pkg) throw Error('failed to parse package_json: ' + homepage_url);
 
 			// CI status
 			const {data: check_runs} = await fetch_github_check_runs(
@@ -77,8 +110,10 @@ export const fetch_packages = async (
 				cache,
 				log,
 				token,
+				github_api_version,
+				github_refs?.[raw_homepage_url],
 			);
-			if (!check_runs) throw Error('failed to fetch issues: ' + homepage_url);
+			if (!check_runs) throw Error('failed to fetch CI status: ' + homepage_url);
 			await wait(delay);
 
 			// pull requests
@@ -88,6 +123,7 @@ export const fetch_packages = async (
 				cache,
 				log,
 				token,
+				github_api_version,
 			);
 			if (!pull_requests) throw Error('failed to fetch issues: ' + homepage_url);
 			await wait(delay);
@@ -155,7 +191,7 @@ export const fetch_json = async (
 			return cached!;
 		}
 		log?.info('not cached', key);
-		log?.info('res.headers', res.headers);
+		log?.info('res.headers', Object.fromEntries(res.headers.entries()));
 		const json = await res.json();
 		const package_json = Package_Json.parse(json); // TODO maybe not?
 		const result: Fetch_Cache_Item = {
