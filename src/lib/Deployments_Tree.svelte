@@ -20,7 +20,7 @@
 	export let selected_pkg: Package_Meta | undefined = undefined;
 </script>
 
-<div class="packages_tree">
+<div class="deployments_tree">
 	<div class="nav">
 		<menu class="names panel padded_md">
 			{#each pkgs as pkg}
@@ -67,7 +67,7 @@
 </div>
 
 <style>
-	.packages_tree {
+	.deployments_tree {
 		width: 100%;
 		display: flex;
 		flex-direction: row;

@@ -20,7 +20,7 @@ import {
 } from '$lib/fetch_cache.js';
 
 // TODO rethink these
-export interface Maybe_Fetched_Package {
+export interface Maybe_Fetched_Deployment {
 	url: Url;
 	package_json: Package_Json | null; // TODO forward error
 	src_json: Src_Json | null; // TODO forward error
@@ -29,13 +29,13 @@ export interface Maybe_Fetched_Package {
 }
 
 // TODO rethink these
-export interface Fetched_Package extends Package_Meta {
+export interface Fetched_Deployment extends Package_Meta {
 	check_runs: Github_Check_Runs | null;
 	pull_requests: Github_Pull_Request[] | null;
 }
 
 // TODO rethink these
-export interface Unfetched_Package extends Maybe_Fetched_Package {
+export interface Unfetched_Deployment extends Maybe_Fetched_Deployment {
 	url: Url;
 	package_json: null;
 	src_json: null;
@@ -43,12 +43,12 @@ export interface Unfetched_Package extends Maybe_Fetched_Package {
 }
 
 // TODO rethink these
-export type Fetched_Package_Meta = Fetched_Package | Unfetched_Package;
+export type Fetched_Deployment_Meta = Fetched_Deployment | Unfetched_Deployment;
 
 /* eslint-disable no-await-in-loop */
 
 // TODO probably refactor to an object API
-export const fetch_packages = async (
+export const fetch_deployments = async (
 	homepage_urls: Url[],
 	token?: string,
 	cache?: Fetch_Cache_Data,
@@ -57,7 +57,7 @@ export const fetch_packages = async (
 	delay = 50,
 	github_api_version?: string,
 	github_refs?: Record<string, string>, // if not 'main', mapping from the provided raw `homepage_url` to branch name
-): Promise<Maybe_Fetched_Package[]> => {
+): Promise<Maybe_Fetched_Deployment[]> => {
 	log?.info(`homepage_urls`, homepage_urls);
 
 	// If one of the `homepage_urls` is the local package.json's `homepage` (local in `dir`),
@@ -69,7 +69,7 @@ export const fetch_packages = async (
 		? ensure_end(local_package_json.homepage, '/')
 		: undefined;
 
-	const packages: Maybe_Fetched_Package[] = [];
+	const deployments: Maybe_Fetched_Deployment[] = [];
 	for (const raw_homepage_url of homepage_urls) {
 		const homepage_url = ensure_end(raw_homepage_url, '/');
 		try {
@@ -128,9 +128,9 @@ export const fetch_packages = async (
 			if (!pull_requests) throw Error('failed to fetch issues: ' + homepage_url);
 			await wait(delay);
 
-			packages.push({url: homepage_url, package_json, src_json, check_runs, pull_requests});
+			deployments.push({url: homepage_url, package_json, src_json, check_runs, pull_requests});
 		} catch (err) {
-			packages.push({
+			deployments.push({
 				url: homepage_url,
 				package_json: null,
 				src_json: null,
@@ -140,7 +140,7 @@ export const fetch_packages = async (
 			log?.error(err);
 		}
 	}
-	return packages;
+	return deployments;
 };
 
 // TODO make this work with other urls and text, and extract

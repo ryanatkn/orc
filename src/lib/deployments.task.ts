@@ -7,7 +7,7 @@ import {join} from 'node:path';
 import {paths} from '@grogarden/gro/paths.js';
 import {load_from_env} from '@grogarden/gro/env.js';
 
-import {fetch_packages} from '$lib/fetch_packages.js';
+import {fetch_deployments} from '$lib/fetch_deployments.js';
 import {load_orc_config} from '$lib/config.js';
 import {create_fs_fetch_cache} from '$lib/fs_fetch_cache.js';
 
@@ -30,22 +30,22 @@ export type Args = z.infer<typeof Args>;
  */
 export const task: Task<Args> = {
 	Args,
-	summary: 'download metadata for the given packages',
+	summary: 'download metadata for the given deployments',
 	run: async ({args, log}) => {
 		const {dir} = args;
 
-		const outfile = join(paths.lib, 'packages.json');
+		const outfile = join(paths.lib, 'deployments.json');
 
 		const orc_config = await load_orc_config(log, dir);
 
-		const cache = await create_fs_fetch_cache('packages');
+		const cache = await create_fs_fetch_cache('deployments');
 
 		// This searches the parent directory for the env var, so we don't use SvelteKit's $env imports
 		const token = await load_from_env('GITHUB_TOKEN_SECRET');
 		if (!token) {
 			log.warn('the env var GITHUB_TOKEN_SECRET was not found, so API calls with be unauthorized');
 		}
-		const fetched_packages = await fetch_packages(
+		const fetched_deployments = await fetch_deployments(
 			orc_config.deployments,
 			token,
 			cache.data,
@@ -55,16 +55,16 @@ export const task: Task<Args> = {
 
 		await writeFile(
 			outfile,
-			await format_file(JSON.stringify(fetched_packages), {filepath: outfile}),
+			await format_file(JSON.stringify(fetched_deployments), {filepath: outfile}),
 		);
 
 		const types_outfile = outfile + '.d.ts';
 		if (!(await exists(types_outfile))) {
 			await writeFile(
 				types_outfile,
-				`declare module '$lib/packages.json' {
-	import type {Maybe_Fetched_Package} from '@ryanatkn/orc/fetch_packages.js';
-	const data: Maybe_Fetched_Package[];
+				`declare module '$lib/deployments.json' {
+	import type {Maybe_Fetched_Deployment} from '@ryanatkn/orc/fetch_deployments.js';
+	const data: Maybe_Fetched_Deployment[];
 	export default data;
 }
 `,
@@ -73,9 +73,9 @@ export const task: Task<Args> = {
 
 		const changed = await cache.save();
 		if (changed) {
-			log.info('packages cache updated');
+			log.info('deployments cache updated');
 		} else {
-			log.info('packages cache did not change');
+			log.info('deployments cache did not change');
 		}
 	},
 };

@@ -5,9 +5,9 @@
 
 	import Main_Header from '$routes/Main_Header.svelte';
 	import {package_json} from '$routes/package.js';
-	import {get_packages} from '$lib/packages.js';
+	import {get_deployments} from '$lib/deployments.js';
 
-	const {pkg} = get_packages();
+	const {pkg} = get_deployments();
 </script>
 
 <svelte:head>

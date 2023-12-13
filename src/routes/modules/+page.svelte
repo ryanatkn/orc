@@ -5,9 +5,9 @@
 	import Page_Footer from '$routes/Page_Footer.svelte';
 	import Modules_Detail from '$lib/Modules_Detail.svelte';
 	import {package_json} from '$routes/package.js';
-	import {get_packages} from '$lib/packages.js';
+	import {get_deployments} from '$lib/deployments.js';
 
-	const {pkg, pkgs} = get_packages();
+	const {pkg, pkgs} = get_deployments();
 </script>
 
 <svelte:head>

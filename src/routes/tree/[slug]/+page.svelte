@@ -6,12 +6,12 @@
 	import Page_Header from '$routes/Page_Header.svelte';
 	import Page_Footer from '$routes/Page_Footer.svelte';
 	import {package_json} from '$routes/package.js';
-	import Packages_Tree from '$lib/Packages_Tree.svelte';
-	import {get_packages} from '$lib/packages';
+	import Deployments_Tree from '$lib/Deployments_Tree.svelte';
+	import {get_deployments} from '$lib/deployments';
 
-	const {pkg, pkgs} = get_packages();
+	const {pkg, pkgs} = get_deployments();
 
-	// TODO ideally there would be one `Packages_Tree` mounted by the layout
+	// TODO ideally there would be one `Deployments_Tree` mounted by the layout
 
 	$: slug = $page.params.slug;
 
@@ -35,11 +35,11 @@
 				<Alert status="error"><p>cannot find <code>{slug}</code></p></Alert>
 			</div>
 		{/if}
-		<Packages_Tree {pkgs} selected_pkg={route_pkg}>
-			<div slot="nav" class="packages_tree_nav">
+		<Deployments_Tree {pkgs} selected_pkg={route_pkg}>
+			<div slot="nav" class="deployments_tree_nav">
 				<Breadcrumb>{package_json.icon}</Breadcrumb>
 			</div>
-		</Packages_Tree>
+		</Deployments_Tree>
 	</section>
 	<section class="box">
 		<Page_Footer {pkg} />
@@ -63,12 +63,12 @@
 		align-items: center;
 		width: 100%;
 	}
-	.packages_tree_nav {
+	.deployments_tree_nav {
 		display: flex;
 		margin-top: var(--spacing_1);
 	}
 	/* TODO hacky */
-	.packages_tree_nav :global(.breadcrumb) {
+	.deployments_tree_nav :global(.breadcrumb) {
 		justify-content: flex-start;
 	}
 </style>

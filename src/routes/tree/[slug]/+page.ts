@@ -1,9 +1,9 @@
 import type {EntryGenerator} from './$types';
 
-import packages from '$lib/packages.json';
-import {parse_packages} from '$lib/packages.js';
+import deployments from '$lib/deployments.json';
+import {parse_deployments} from '$lib/deployments.js';
 
-const {pkgs} = parse_packages(packages);
+const {pkgs} = parse_deployments(deployments);
 
 export const entries: EntryGenerator = async () => {
 	return pkgs.map((pkg) => {

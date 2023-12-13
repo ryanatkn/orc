@@ -2,10 +2,10 @@ import type {Package_Meta} from '@fuz.dev/fuz_library/package_meta.js';
 import {ensure_end} from '@grogarden/util/string.js';
 
 import type {Github_Pull_Request} from '$lib/github.js';
-import type {Fetched_Package, Maybe_Fetched_Package} from '$lib/fetch_packages.js';
+import type {Fetched_Deployment, Maybe_Fetched_Deployment} from '$lib/fetch_deployments.js';
 
 export interface Filter_Pull_Request {
-	(pull_request: Github_Pull_Request, pkg: Maybe_Fetched_Package): boolean;
+	(pull_request: Github_Pull_Request, pkg: Maybe_Fetched_Deployment): boolean;
 }
 
 export interface Pull_Request_Meta {
@@ -14,10 +14,10 @@ export interface Pull_Request_Meta {
 }
 
 export const to_pull_requests = (
-	packages: Fetched_Package[],
+	deployments: Fetched_Deployment[],
 	filter_pull_request?: Filter_Pull_Request,
 ): Pull_Request_Meta[] =>
-	packages
+	deployments
 		.flatMap((pkg) => {
 			if (!pkg.pull_requests) return null!;
 			// TODO hacky, figure out the data structure

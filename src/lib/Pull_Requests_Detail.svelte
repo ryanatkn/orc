@@ -3,14 +3,14 @@
 	import {base} from '$app/paths';
 
 	import {to_pull_requests, type Filter_Pull_Request} from '$lib/github_helpers.js';
-	import type {Maybe_Fetched_Package} from '$lib/fetch_packages.js';
-	import {parse_packages} from '$lib/packages.js';
+	import type {Maybe_Fetched_Deployment} from '$lib/fetch_deployments.js';
+	import {parse_deployments} from '$lib/deployments.js';
 
-	export let packages: Maybe_Fetched_Package[];
+	export let deployments: Maybe_Fetched_Deployment[];
 
 	export let filter_pull_request: Filter_Pull_Request | undefined = undefined;
 
-	$: ({pkgs, unfetched_pkgs} = parse_packages(packages));
+	$: ({pkgs, unfetched_deployments} = parse_deployments(deployments));
 	$: pull_requests = to_pull_requests(pkgs, filter_pull_request);
 </script>
 
@@ -38,11 +38,11 @@
 			{/each}
 		</table>
 	</section>
-	{#if unfetched_pkgs.length}
+	{#if unfetched_deployments.length}
 		<section class="prose">
-			<p>⚠️ Some packages could not be fetched:</p>
+			<p>⚠️ Some deployments could not be fetched:</p>
 			<ul>
-				{#each unfetched_pkgs as { url }}
+				{#each unfetched_deployments as { url }}
 					<li><a href={url}>{format_host(url)}</a></li>
 				{/each}
 			</ul>

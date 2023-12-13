@@ -4,10 +4,10 @@
 	import {base} from '$app/paths';
 	import {ensure_end} from '@grogarden/util/string.js';
 
-	import type {Fetched_Package_Meta} from '$lib/fetch_packages.js';
+	import type {Fetched_Deployment_Meta} from '$lib/fetch_deployments.js';
 	import {to_pull_url} from '$lib/github_helpers.js';
 
-	export let pkgs: Fetched_Package_Meta[];
+	export let pkgs: Fetched_Deployment_Meta[];
 	export let deps = ['@fuz.dev/fuz', '@fuz.dev/fuz_library', '@grogarden/gro']; // TODO add felt
 
 	// TODO fade out the `version` column if all deps are upgraded to the latest
@@ -15,7 +15,7 @@
 	// TODO gray out the latest of each version for deps, but only if the max is knowable via a local dep, don't assume for externals
 
 	// TODO hacky, handle regular deps too
-	const lookup_dep_version = (pkg: Fetched_Package_Meta, dep: string): string | null => {
+	const lookup_dep_version = (pkg: Fetched_Deployment_Meta, dep: string): string | null => {
 		if (!pkg.package_json) return null;
 		for (const key in pkg.package_json.dependencies) {
 			if (key === dep) {
@@ -41,7 +41,10 @@
 	const format_version = (version: string | null): string =>
 		version === null ? '' : version.replace(/^(\^|>=)\s*/u, '');
 
-	const lookup_pull_requests = (pkgs: Fetched_Package_Meta[] | null, pkg: Fetched_Package_Meta) => {
+	const lookup_pull_requests = (
+		pkgs: Fetched_Deployment_Meta[] | null,
+		pkg: Fetched_Deployment_Meta,
+	) => {
 		const found = pkgs?.find((p) => p.url === pkg.url);
 		if (!found?.package_json) return null;
 		const {pull_requests} = found;
