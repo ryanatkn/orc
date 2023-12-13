@@ -9,6 +9,8 @@ import {
 	type Fetch_Cache_Item,
 } from '$lib/fetch_cache.js';
 
+export const GITHUB_API_VERSION = '2022-11-28';
+
 export const Github_Pull_Request = z.object({
 	number: z.number(),
 	title: z.string(),
@@ -55,14 +57,16 @@ export const fetch_github_pull_requests = async (
 	cache?: Fetch_Cache_Data,
 	log?: Logger,
 	token?: string,
+	api_version = GITHUB_API_VERSION,
 ): Promise<Fetch_Cache_Item<Github_Pull_Request[] | null>> => {
 	log?.info('url', url);
 	if (!pkg.owner_name) throw Error('owner_name is required');
 	const params = {owner: pkg.owner_name, repo: pkg.repo_name} as const; // defaults to `sort: 'created'`
 	const headers: Record<string, string> = {
 		accept: 'application/vnd.github+json', // might be set by the library, @see https://docs.github.com/en/rest/pulls/pulls?apiVersion=2022-11-28#list-pull-requests
+		'x-github-api-version': api_version,
 	};
-	if (token) headers.authorization = 'token ' + token;
+	if (token) headers.authorization = 'Bearer ' + token;
 	const route = 'GET /repos/{owner}/{repo}/pulls'; // TODO param
 	const key = to_fetch_cache_key(route, params);
 	const cached = cache?.get(key);
@@ -115,6 +119,7 @@ export const fetch_github_check_runs = async (
 	cache?: Fetch_Cache_Data,
 	log?: Logger,
 	token?: string,
+	api_version = GITHUB_API_VERSION,
 	ref = 'main',
 ): Promise<Fetch_Cache_Item<Github_Check_Runs | null>> => {
 	log?.info('url', url);
@@ -122,23 +127,20 @@ export const fetch_github_check_runs = async (
 	const params = {owner: pkg.owner_name, repo: pkg.repo_name, ref} as const;
 	const headers: Record<string, string> = {
 		accept: 'application/vnd.github+json', // might be set by the library, @see https://docs.github.com/en/rest/pulls/pulls?apiVersion=2022-11-28#list-pull-requests
+		'x-github-api-version': api_version,
 	};
-	if (token) headers.authorization = 'token ' + token;
+	if (token) headers.authorization = 'Bearer ' + token;
 	const route = 'GET /repos/{owner}/{repo}/commits/{ref}/check-runs'; // TODO param
 	const key = to_fetch_cache_key(route, params);
 	const cached = cache?.get(key);
 	const etag = cached?.etag;
-	if (etag) {
-		headers['if-none-match'] = etag;
-	}
+	if (etag) headers['if-none-match'] = etag;
 	try {
 		const res = await request(route, {
 			headers,
 			...params,
 		});
-		log?.info('not cached', key);
-		log?.info('res.headers', res.headers);
-		console.log(`res.data`, res.data);
+		log?.info('res.headers', key, res.headers);
 		const result: Fetch_Cache_Item<Github_Check_Runs | null> = {
 			url,
 			params,
