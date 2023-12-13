@@ -74,6 +74,7 @@ export const fetch_packages = async (
 
 			// Handle the local package data, if available
 			if (local_homepage_url === ensure_end(homepage_url, '/')) {
+				log?.info('resolving data locally for', homepage_url);
 				package_json = local_package_json;
 				src_json = await create_src_json(
 					local_package_json,
@@ -81,6 +82,8 @@ export const fetch_packages = async (
 					dir ? join(dir, 'src/lib') : undefined,
 				);
 			} else {
+				log?.info('fetching data for', homepage_url);
+
 				// `${base}/.well-known/package.json`
 				const fetched_package_json = await fetch_package_json(homepage_url, cache, log);
 				if (!fetched_package_json.data) throw Error('failed to load package_json: ' + homepage_url);

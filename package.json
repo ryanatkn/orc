@@ -140,10 +140,6 @@
       "svelte": "./dist/Pull_Requests_Detail.svelte",
       "default": "./dist/Pull_Requests_Detail.svelte",
       "types": "./dist/Pull_Requests_Detail.svelte.d.ts"
-    },
-    "./sync.task.js": {
-      "default": "./dist/sync.task.js",
-      "types": "./dist/sync.task.d.ts"
     }
   }
 }
