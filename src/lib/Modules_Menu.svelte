@@ -1,9 +1,9 @@
 <script lang="ts">
 	import {page} from '$app/stores';
 	import Library_Panel from '@fuz.dev/fuz_library/Library_Panel.svelte';
-
 	import type {Src_Module} from '@grogarden/gro/src_json.js';
-	import type {Fetched_Deployment} from './fetch_deployments.js';
+
+	import type {Fetched_Deployment} from '$lib/fetch_deployments.js';
 
 	// TODO add highlighting of the items that are onscreen
 

@@ -4,14 +4,13 @@
 	import {base} from '$app/paths';
 
 	import Main_Header from '$routes/Main_Header.svelte';
-	import {package_json} from '$routes/package.js';
 	import {get_deployments} from '$lib/deployments.js';
 
 	const {deployment} = get_deployments();
 </script>
 
 <svelte:head>
-	<title>{package_json.name}</title>
+	<title>{deployment.package_json.name}</title>
 </svelte:head>
 
 <main class="box">

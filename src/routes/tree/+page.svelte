@@ -4,7 +4,6 @@
 	import Deployments_Tree from '$lib/Deployments_Tree.svelte';
 	import Page_Header from '$lib/Page_Header.svelte';
 	import Page_Footer from '$lib/Page_Footer.svelte';
-	import {package_json} from '$routes/package.js';
 	import {get_deployments} from '$lib/deployments.js';
 
 	const {deployment, deployments} = get_deployments();
@@ -13,7 +12,7 @@
 </script>
 
 <svelte:head>
-	<title>tree {package_json.icon} {deployment.name}</title>
+	<title>tree {deployment.package_json.icon} {deployment.name}</title>
 </svelte:head>
 
 <main class="box width_full">
@@ -23,7 +22,7 @@
 	<section class="tree">
 		<Deployments_Tree {deployments}>
 			<div slot="nav" class="deployments_tree_nav">
-				<Breadcrumb>{package_json.icon}</Breadcrumb>
+				<Breadcrumb>{deployment.package_json.icon}</Breadcrumb>
 			</div>
 		</Deployments_Tree>
 	</section>

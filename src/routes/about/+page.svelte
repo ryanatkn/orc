@@ -2,14 +2,13 @@
 	import Package_Detail from '@fuz.dev/fuz_library/Package_Detail.svelte';
 
 	import Page_Footer from '$lib/Page_Footer.svelte';
-	import {package_json} from '$routes/package.js';
 	import {get_deployments} from '$lib/deployments.js';
 
 	const {deployment} = get_deployments();
 </script>
 
 <svelte:head>
-	<title>about {package_json.icon} {package_json.name}</title>
+	<title>about {deployment.package_json.icon} {deployment.package_json.name}</title>
 </svelte:head>
 
 <main class="width_md">

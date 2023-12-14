@@ -3,7 +3,8 @@
 	import Package_Detail from '@fuz.dev/fuz_library/Package_Detail.svelte';
 	import {strip_end, strip_start} from '@grogarden/util/string.js';
 	import {base} from '$app/paths';
-	import type {Fetched_Deployment} from './fetch_deployments';
+
+	import type {Fetched_Deployment} from '$lib/fetch_deployments.js';
 
 	export let deployments: Fetched_Deployment[];
 

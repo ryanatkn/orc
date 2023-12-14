@@ -4,7 +4,7 @@
 	import {base} from '$app/paths';
 
 	import Modules_Menu from '$lib/Modules_Menu.svelte';
-	import type {Fetched_Deployment} from './fetch_deployments.js';
+	import type {Fetched_Deployment} from '$lib/fetch_deployments.js';
 
 	export let deployments: Fetched_Deployment[]; // TODO normalized version with cached primitives?
 
