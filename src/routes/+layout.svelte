@@ -14,7 +14,7 @@
 
 	const contextmenu = create_contextmenu();
 
-	set_deployments(parse_deployments(maybe_deployments));
+	set_deployments(parse_deployments(maybe_deployments, 'https://orc.ryanatkn.com/'));
 
 	let show_settings = false;
 </script>
