@@ -1,5 +1,11 @@
 # @ryanatkn/orc
 
+## 0.16.1
+
+### Patch Changes
+
+- fix tree nav flex direction ([a1cc247](https://github.com/ryanatkn/orc/commit/a1cc247))
+
 ## 0.16.0
 
 ### Minor Changes
