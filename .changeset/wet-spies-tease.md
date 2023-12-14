@@ -2,4 +2,4 @@
 '@ryanatkn/orc': patch
 ---
 
-add menu to sidebars
+add tree nav component
