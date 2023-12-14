@@ -37,7 +37,7 @@
 				"@grogarden/util": "^0.18.0",
 				"@octokit/request": "^8.1.6",
 				"@sveltejs/adapter-static": "^2.0.3",
-				"@sveltejs/kit": "^1.30.3",
+				"@sveltejs/kit": "^1.30.0",
 				"@sveltejs/package": "^2.2.3",
 				"@types/node": "^20.10.4",
 				"@typescript-eslint/eslint-plugin": "^6.14.0",
@@ -68,6 +68,11 @@
 					"svelte": "./dist/Deployments_Table.svelte",
 					"default": "./dist/Deployments_Table.svelte",
 					"types": "./dist/Deployments_Table.svelte.d.ts"
+				},
+				"./Deployments_Tree_Nav.svelte": {
+					"svelte": "./dist/Deployments_Tree_Nav.svelte",
+					"default": "./dist/Deployments_Tree_Nav.svelte",
+					"types": "./dist/Deployments_Tree_Nav.svelte.d.ts"
 				},
 				"./Deployments_Tree.svelte": {
 					"svelte": "./dist/Deployments_Tree.svelte",
@@ -168,6 +173,10 @@
 					]
 				},
 				"./Deployments_Table.svelte": {"path": "Deployments_Table.svelte", "declarations": []},
+				"./Deployments_Tree_Nav.svelte": {
+					"path": "Deployments_Tree_Nav.svelte",
+					"declarations": []
+				},
 				"./Deployments_Tree.svelte": {"path": "Deployments_Tree.svelte", "declarations": []},
 				"./deployments.json": {"path": "deployments.json", "declarations": []},
 				"./deployments.task.js": {
@@ -264,16 +273,8 @@
 		"npm_url": "https://www.npmjs.com/package/@ryanatkn/orc",
 		"changelog_url": "https://github.com/ryanatkn/orc/blob/main/CHANGELOG.md",
 		"published": true,
-		"check_runs": {"status": "completed", "conclusion": "success"},
-		"pull_requests": [
-			{
-				"number": 16,
-				"title": "add `Page_Footer`, `Page_Header`, and page components",
-				"user": {"login": "ryanatkn"},
-				"draft": false
-			},
-			{"number": 12, "title": "add menu to sidebars", "user": {"login": "ryanatkn"}, "draft": false}
-		]
+		"check_runs": {"status": "in_progress", "conclusion": null},
+		"pull_requests": []
 	},
 	{
 		"url": "https://www.fuz.dev/",
