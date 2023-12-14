@@ -1,234 +1,245 @@
 # @ryanatkn/orc
 
+## 0.16.0
+
+### Minor Changes
+
+- fix local package `gro deployments` ([#15](https://github.com/ryanatkn/orc/pull/15))
+
+### Patch Changes
+
+- add `Page_Footer`, `Page_Header`, and page components ([#16](https://github.com/ryanatkn/orc/pull/16))
+- add tree nav component ([#12](https://github.com/ryanatkn/orc/pull/12))
+
 ## 0.15.0
 
 ### Minor Changes
 
-- 4826b85: query and display CI status
+- query and display CI status ([#17](https://github.com/ryanatkn/orc/pull/17))
 
 ### Patch Changes
 
-- 523131f: fix pull request links
+- fix pull request links ([523131f](https://github.com/ryanatkn/orc/commit/523131f))
 
 ## 0.14.0
 
 ### Minor Changes
 
-- 70d4b0d: rename `Deployments_Table` from `Repo_Table`
+- rename `Deployments_Table` from `Repo_Table` ([70d4b0d](https://github.com/ryanatkn/orc/commit/70d4b0d))
 
 ## 0.13.3
 
 ### Patch Changes
 
-- 19809e1: make Deployments_Tree full the available width
+- make Deployments_Tree full the available width ([19809e1](https://github.com/ryanatkn/orc/commit/19809e1))
 
 ## 0.13.2
 
 ### Patch Changes
 
-- fb802a2: fix local package
+- fix local package ([fb802a2](https://github.com/ryanatkn/orc/commit/fb802a2))
 
 ## 0.13.1
 
 ### Patch Changes
 
-- 3bb681a: fix deployments.json type
+- fix deployments.json type ([3bb681a](https://github.com/ryanatkn/orc/commit/3bb681a))
 
 ## 0.13.0
 
 ### Minor Changes
 
-- 25b4e86: upgrade gro with src_json
+- upgrade gro with src_json ([#13](https://github.com/ryanatkn/orc/pull/13))
 
 ## 0.12.0
 
 ### Minor Changes
 
-- b25acb6: upgrade deps
+- upgrade deps ([b25acb6](https://github.com/ryanatkn/orc/commit/b25acb6))
 
 ## 0.11.0
 
 ### Minor Changes
 
-- f742bba: rename `Modules_Detail` slot `"nav"` from `"menu"`
+- rename `Modules_Detail` slot `"nav"` from `"menu"` ([#11](https://github.com/ryanatkn/orc/pull/11))
 
 ### Patch Changes
 
-- f742bba: add `Deployments_Tree`
-- 6088428: add breadcrumb to `Modules_Detail`
+- add `Deployments_Tree` ([#11](https://github.com/ryanatkn/orc/pull/11))
+- add breadcrumb to `Modules_Detail` ([6088428](https://github.com/ryanatkn/orc/commit/6088428))
 
 ## 0.10.9
 
 ### Patch Changes
 
-- 7de4255: fix whitespace
+- fix whitespace ([7de4255](https://github.com/ryanatkn/orc/commit/7de4255))
 
 ## 0.10.8
 
 ### Patch Changes
 
-- 1e2dc8f: add `orc.task.ts`
-- 68e4f47: use `if-modified-since` and `last-modified` headers
+- add `orc.task.ts` ([1e2dc8f](https://github.com/ryanatkn/orc/commit/1e2dc8f))
+- use `if-modified-since` and `last-modified` headers ([68e4f47](https://github.com/ryanatkn/orc/commit/68e4f47))
 
 ## 0.10.7
 
 ### Patch Changes
 
-- 9887469: improve `Pull_Requests_Detail`
+- improve `Pull_Requests_Detail` ([9887469](https://github.com/ryanatkn/orc/commit/9887469))
 
 ## 0.10.6
 
 ### Patch Changes
 
-- c37cd9a: add `Pull_Requests_Detail`
+- add `Pull_Requests_Detail` ([#10](https://github.com/ryanatkn/orc/pull/10))
 
 ## 0.10.5
 
 ### Patch Changes
 
-- c6d69c3: fix `Modules_Detail` layout
+- fix `Modules_Detail` layout ([c6d69c3](https://github.com/ryanatkn/orc/commit/c6d69c3))
 
 ## 0.10.4
 
 ### Patch Changes
 
-- 4e379a1: improve `Modules_Detail`
+- improve `Modules_Detail` ([4e379a1](https://github.com/ryanatkn/orc/commit/4e379a1))
 
 ## 0.10.3
 
 ### Patch Changes
 
-- 00b94f0: fix a link
+- fix a link ([00b94f0](https://github.com/ryanatkn/orc/commit/00b94f0))
 
 ## 0.10.2
 
 ### Patch Changes
 
-- e61c437: show only published deployments
+- show only published deployments ([e61c437](https://github.com/ryanatkn/orc/commit/e61c437))
 
 ## 0.10.1
 
 ### Patch Changes
 
-- 6041e50: rearrange repo table columns
+- rearrange repo table columns ([6041e50](https://github.com/ryanatkn/orc/commit/6041e50))
 
 ## 0.10.0
 
 ### Minor Changes
 
-- b6b7f7b: upgrade deps
+- upgrade deps ([b6b7f7b](https://github.com/ryanatkn/orc/commit/b6b7f7b))
 
 ## 0.9.0
 
 ### Minor Changes
 
-- 3cb1586: upgrade deps
+- upgrade deps ([#9](https://github.com/ryanatkn/orc/pull/9))
 
 ## 0.8.2
 
 ### Patch Changes
 
-- 3669efa: publish sample data
-- 3669efa: add `Modules_Detail.svelte` and `Modules_Menu.svelte`
+- publish sample data ([#8](https://github.com/ryanatkn/orc/pull/8))
+- add `Modules_Detail.svelte` and `Modules_Menu.svelte` ([#8](https://github.com/ryanatkn/orc/pull/8))
 
 ## 0.8.1
 
 ### Patch Changes
 
-- 7e888d3: add `package.ts`
+- add `package.ts` ([7e888d3](https://github.com/ryanatkn/orc/commit/7e888d3))
 
 ## 0.8.0
 
 ### Minor Changes
 
-- 2c0164c: upgrade deps
+- upgrade deps ([2c0164c](https://github.com/ryanatkn/orc/commit/2c0164c))
 
 ## 0.7.1
 
 ### Patch Changes
 
-- fe97baf: log package cache status
+- log package cache status ([fe97baf](https://github.com/ryanatkn/orc/commit/fe97baf))
 
 ## 0.7.0
 
 ### Minor Changes
 
-- 9681187: add cache for `gro deployments`
-- 9681187: snake_case everywhere
+- add cache for `gro deployments` ([#7](https://github.com/ryanatkn/orc/pull/7))
+- snake_case everywhere ([#7](https://github.com/ryanatkn/orc/pull/7))
 
 ## 0.6.2
 
 ### Patch Changes
 
-- 9c0e326: add favicon to `Deployments_Table`
+- add favicon to `Deployments_Table` ([9c0e326](https://github.com/ryanatkn/orc/commit/9c0e326))
 
 ## 0.6.1
 
 ### Patch Changes
 
-- 77f0ad6: make `Github_Pull_Request` `body` nullable
+- make `Github_Pull_Request` `body` nullable ([77f0ad6](https://github.com/ryanatkn/orc/commit/77f0ad6))
 
 ## 0.6.0
 
 ### Minor Changes
 
-- e045fb1: extract `$lib/github.ts`
-- e045fb1: add `Github_Pull_Request` schema and parse fetch response
+- extract `$lib/github.ts` ([#6](https://github.com/ryanatkn/orc/pull/6))
+- add `Github_Pull_Request` schema and parse fetch response ([#6](https://github.com/ryanatkn/orc/pull/6))
 
 ## 0.5.2
 
 ### Patch Changes
 
-- b7cb0df: fix package fetching error handling
+- fix package fetching error handling ([b7cb0df](https://github.com/ryanatkn/orc/commit/b7cb0df))
 
 ## 0.5.1
 
 ### Patch Changes
 
-- 8dbc32a: add peer dep for @octokit/request
+- add peer dep for @octokit/request ([8dbc32a](https://github.com/ryanatkn/orc/commit/8dbc32a))
 
 ## 0.5.0
 
 ### Minor Changes
 
-- 0f40917: support `pull_requests` for public repos
+- support `pull_requests` for public repos ([#5](https://github.com/ryanatkn/orc/pull/5))
 
 ## 0.4.0
 
 ### Minor Changes
 
-- 1ed8dc4: parse Orc_Config
+- parse Orc_Config ([1ed8dc4](https://github.com/ryanatkn/orc/commit/1ed8dc4))
 
 ### Patch Changes
 
-- 1ed8dc4: strict config
+- strict config ([1ed8dc4](https://github.com/ryanatkn/orc/commit/1ed8dc4))
 
 ## 0.3.0
 
 ### Minor Changes
 
-- 0e16e6f: rename `Orc_Config` `deployments` from `repos`
+- rename `Orc_Config` `deployments` from `repos` ([0e16e6f](https://github.com/ryanatkn/orc/commit/0e16e6f))
 
 ## 0.2.1
 
 ### Patch Changes
 
-- 49f61b1: fix generated type file path
+- fix generated type file path ([49f61b1](https://github.com/ryanatkn/orc/commit/49f61b1))
 
 ## 0.2.0
 
 ### Minor Changes
 
-- fb9de5d: update exports
+- update exports ([fb9de5d](https://github.com/ryanatkn/orc/commit/fb9de5d))
 
 ## 0.1.1
 
 ### Patch Changes
 
-- 33f0f77: upgrade gro to fix default svelte exports
+- upgrade gro to fix default svelte exports ([33f0f77](https://github.com/ryanatkn/orc/commit/33f0f77))
 
 ## 0.1.0
 
 ### Minor Changes
 
-- 408f471: init
+- init ([408f471](https://github.com/ryanatkn/orc/commit/408f471))
