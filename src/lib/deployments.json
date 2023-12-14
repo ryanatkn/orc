@@ -3,7 +3,7 @@
 		"url": "https://orc.ryanatkn.com/",
 		"package_json": {
 			"name": "@ryanatkn/orc",
-			"version": "0.15.0",
+			"version": "0.16.0",
 			"description": "a tool for orchestrating many repos",
 			"icon": "🪄",
 			"public": true,
@@ -163,7 +163,7 @@
 		},
 		"src_json": {
 			"name": "@ryanatkn/orc",
-			"version": "0.15.0",
+			"version": "0.16.0",
 			"modules": {
 				"./config.js": {
 					"path": "config.ts",
@@ -273,7 +273,7 @@
 		"npm_url": "https://www.npmjs.com/package/@ryanatkn/orc",
 		"changelog_url": "https://github.com/ryanatkn/orc/blob/main/CHANGELOG.md",
 		"published": true,
-		"check_runs": {"status": "in_progress", "conclusion": null},
+		"check_runs": {"status": "completed", "conclusion": "success"},
 		"pull_requests": []
 	},
 	{
