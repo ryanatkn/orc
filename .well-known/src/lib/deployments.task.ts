@@ -11,6 +11,7 @@ import {fetch_deployments} from '$lib/fetch_deployments.js';
 import {load_orc_config} from '$lib/config.js';
 import {create_fs_fetch_cache} from '$lib/fs_fetch_cache.js';
 
+// TODO maybe rename to `update_deployments` or something else? is too close to `gro deploy` (autocomplete D:)
 // TODO add flag to ignore or invalidate cache -- no-cache? clean?
 
 // TODO maybe support `--check` for CI
