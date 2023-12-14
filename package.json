@@ -88,6 +88,11 @@
       "default": "./dist/Deployments_Table.svelte",
       "types": "./dist/Deployments_Table.svelte.d.ts"
     },
+    "./Deployments_Tree_Nav.svelte": {
+      "svelte": "./dist/Deployments_Tree_Nav.svelte",
+      "default": "./dist/Deployments_Tree_Nav.svelte",
+      "types": "./dist/Deployments_Tree_Nav.svelte.d.ts"
+    },
     "./Deployments_Tree.svelte": {
       "svelte": "./dist/Deployments_Tree.svelte",
       "default": "./dist/Deployments_Tree.svelte",
