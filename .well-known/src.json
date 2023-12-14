@@ -1,6 +1,6 @@
 {
   "name": "@ryanatkn/orc",
-  "version": "0.16.1",
+  "version": "0.16.2",
   "modules": {
     "./config.js": {
       "path": "config.ts",
