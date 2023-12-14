@@ -1,5 +1,11 @@
 # @ryanatkn/orc
 
+## 0.16.2
+
+### Patch Changes
+
+- fix `parse_deployments` to require a `homepage_url` ([d1bccb4](https://github.com/ryanatkn/orc/commit/d1bccb4))
+
 ## 0.16.1
 
 ### Patch Changes
