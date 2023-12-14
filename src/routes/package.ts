@@ -110,6 +110,16 @@ export const package_json = {
 			types: './dist/Modules_Page.svelte.d.ts',
 		},
 		'./orc.task.js': {default: './dist/orc.task.js', types: './dist/orc.task.d.ts'},
+		'./Page_Footer.svelte': {
+			svelte: './dist/Page_Footer.svelte',
+			default: './dist/Page_Footer.svelte',
+			types: './dist/Page_Footer.svelte.d.ts',
+		},
+		'./Page_Header.svelte': {
+			svelte: './dist/Page_Header.svelte',
+			default: './dist/Page_Header.svelte',
+			types: './dist/Page_Header.svelte.d.ts',
+		},
 		'./Pull_Requests_Detail.svelte': {
 			svelte: './dist/Pull_Requests_Detail.svelte',
 			default: './dist/Pull_Requests_Detail.svelte',
@@ -206,6 +216,8 @@ export const src_json = {
 				{name: 'task', kind: 'variable'},
 			],
 		},
+		'./Page_Footer.svelte': {path: 'Page_Footer.svelte', declarations: []},
+		'./Page_Header.svelte': {path: 'Page_Header.svelte', declarations: []},
 		'./Pull_Requests_Detail.svelte': {path: 'Pull_Requests_Detail.svelte', declarations: []},
 	},
 } satisfies Src_Json;

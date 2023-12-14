@@ -144,6 +144,16 @@
       "default": "./dist/orc.task.js",
       "types": "./dist/orc.task.d.ts"
     },
+    "./Page_Footer.svelte": {
+      "svelte": "./dist/Page_Footer.svelte",
+      "default": "./dist/Page_Footer.svelte",
+      "types": "./dist/Page_Footer.svelte.d.ts"
+    },
+    "./Page_Header.svelte": {
+      "svelte": "./dist/Page_Header.svelte",
+      "default": "./dist/Page_Header.svelte",
+      "types": "./dist/Page_Header.svelte.d.ts"
+    },
     "./Pull_Requests_Detail.svelte": {
       "svelte": "./dist/Pull_Requests_Detail.svelte",
       "default": "./dist/Pull_Requests_Detail.svelte",
