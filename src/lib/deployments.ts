@@ -41,6 +41,7 @@ export const parse_deployments = (
 		}
 	}
 
+	// TODO see the comment above, this is hacky
 	const deployment = deployments.find((d) => d.homepage_url === homepage_url);
 	if (!deployment) throw Error(`Cannot find deployment with homepage_url: ${homepage_url}`);
 
