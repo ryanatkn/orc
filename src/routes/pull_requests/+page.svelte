@@ -1,41 +1,13 @@
 <script lang="ts">
-	import Pull_Requests_Detail from '$lib/Pull_Requests_Detail.svelte';
-	import Page_Header from '$routes/Page_Header.svelte';
-	import Page_Footer from '$routes/Page_Footer.svelte';
-	import {package_json} from '$routes/package.js';
-	import type {Filter_Pull_Request} from '$lib/github_helpers.js';
+	import Pull_Requests_Page from '$lib/Pull_Requests_Page.svelte';
 	import {get_deployments} from '$lib/deployments.js';
 
 	const {deployment, deployments, unfetched_deployments} = get_deployments();
-
-	const filter_pull_request: Filter_Pull_Request = (pull) => pull.user.login === 'ryanatkn';
 </script>
 
-<svelte:head>
-	<title>pull requests {package_json.icon} {package_json.name}</title>
-</svelte:head>
-
-<main class="box width_full">
-	<section>
-		<Page_Header pkg={deployment} />
-	</section>
-	<section>
-		<Pull_Requests_Detail {deployments} {unfetched_deployments} {filter_pull_request} />
-	</section>
-	<section class="box">
-		<Page_Footer pkg={deployment} />
-	</section>
-</main>
-
-<style>
-	section {
-		width: 100%;
-		margin-bottom: var(--spacing_4);
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-	}
-	section:first-child {
-		margin-top: var(--spacing_4);
-	}
-</style>
+<Pull_Requests_Page
+	{deployment}
+	{deployments}
+	{unfetched_deployments}
+	filter_pull_request={(pull) => pull.user.login === 'ryanatkn'}
+/>
