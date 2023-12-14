@@ -33,9 +33,11 @@
 
 <style>
 	nav {
-		width: var(--nav_width, 240px);
+		display: flex;
+		flex-direction: column;
 		position: sticky;
 		top: var(--spacing_md);
+		width: var(--nav_width, 240px);
 		padding: var(--spacing_lg);
 		padding-right: 0;
 	}
