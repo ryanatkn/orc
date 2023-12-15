@@ -6,8 +6,12 @@ I maintain a lot of git repos between
 [Felt](https://github.com/feltjs/felt), [Fuz](https://github.com/fuz-dev/fuz),
 [Gro](https://github.com/grogarden/gro), and [others](https://github.com/ryanatkn).
 Orc is a tool for helping me orchestrate this complexity.
-It's an alternative to the monorepo pattern that more loosely couples repos.
-It's not orchestration in the Kubernetes or Pulumi sense - maybe Orc needs a rename.
+It's an alternative to the monorepo pattern that more loosely couples repos:
+
+- enables automations across repos without requiring them to be in the same monorepo
+- allows management of the same repo in multiple Orc projects
+- runs automations locally on your machine, giving you full control and visibility
+- it's not orchestration in the Kubernetes or Pulumi sense - maybe Orc needs a rename
 
 This repo has demo data -
 I'm using Orc in [Spiderspace](https://github.com/spiderspace/spiderspace),
@@ -46,6 +50,9 @@ TODO
 
 - figure out better automation than manually running `gro deployments`
 - show the rate limit info
+- think about how Orc could better leverage both GitHub Actions and
+  [Forgejo Actions](https://forgejo.org/docs/v1.20/user/actions/)
+  without unwieldy compat
 
 ## License [🐦](https://wikipedia.org/wiki/Free_and_open-source_software)
 
