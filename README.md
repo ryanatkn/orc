@@ -20,7 +20,8 @@ and [Felt's website](https://github.com/feltjs/felt_website).
 
 With Orc you can:
 
-- fetch typesafe metadata about collections of deployments and import it as typesafe JSON
+- fetch metadata about collections of deployments and import it as typesafe JSON (using
+  [Gro's public package patterns](https://github.com/grogarden/gro/blob/main/src/lib/docs/gro_plugin_sveltekit_frontend.md#well_known_package_json))
 - publish a generated docs website for your collections of deployments
 - import its components to view and interact with deployment collection metadata
 - publish metadata about your collections of deployments to the web for other users and tools
