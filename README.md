@@ -7,6 +7,7 @@ I maintain a lot of git repos between
 [Gro](https://github.com/grogarden/gro), and [others](https://github.com/ryanatkn).
 Orc is a tool for helping me orchestrate this complexity.
 It's an alternative to the monorepo pattern that more loosely couples repos.
+It's not orchestration in the Kubernetes or Pulumi sense - maybe Orc needs a rename.
 
 This repo has demo data -
 I'm using Orc in [Spiderspace](https://github.com/spiderspace/spiderspace),
