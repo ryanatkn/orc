@@ -14,11 +14,11 @@
 <nav>
 	<menu class="names panel padded_md">
 		{#each deployments as deployment}
-			{@const active = deployment === selected_deployment}
+			{@const selected = deployment === selected_deployment}
 			<li style:display="contents">
 				{#if deployment.package_json}<a
 						class="menu_item"
-						class:active
+						class:selected
 						href="{base}/tree/{deployment.repo_name}"
 						><div class="ellipsis">
 							{deployment.repo_name}{#if deployment.package_json.icon}{' '}{deployment.package_json
@@ -48,7 +48,7 @@
 	.names a:hover {
 		background-color: var(--bg_5);
 	}
-	.names a:is(:active, .active) {
+	.names a:is(:active, .selected) {
 		background-color: var(--bg_7);
 	}
 </style>
