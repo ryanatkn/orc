@@ -18,7 +18,7 @@ With Orc you can:
 
 - fetch typesafe metadata about collections of deployments and import it as typesafe JSON
 - publish a generated docs website for your collections of deployments
-- import its components to view and interact with package collection metadata
+- import its components to view and interact with deployment collection metadata
 - publish metadata about your collections of deployments to the web for other users and tools
 
 planned additions:
@@ -35,9 +35,12 @@ planned additions:
   in either `process.env`, a project-local `.env`, or the parent directory at `../.env`
   (currently optional to read public repos, but it's recommended regardless,
   and you'll need to select options to support private repos)
+- re-export the `gro deployments` task by creating `$lib/deployments.task.ts` with
+  the contents `export * from '@ryanatkn/orc/deployments.task.js';`
+- run `gro deployments` to update the local data
 
 Getting started as a dev? Start with [Gro](https://github.com/grogarden/gro)
-and the [Fuz template](https://github.com/fuz-dev/fuz_template)
+and the [Fuz template](https://github.com/fuz-dev/fuz_template).
 
 TODO
 
