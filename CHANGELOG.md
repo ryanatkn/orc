@@ -1,5 +1,11 @@
 # @ryanatkn/orc
 
+## 0.16.3
+
+### Patch Changes
+
+- use `selected` instead of `active` for link classes ([1cdc18f](https://github.com/ryanatkn/orc/commit/1cdc18f))
+
 ## 0.16.2
 
 ### Patch Changes
