@@ -75,7 +75,7 @@
 			<td>
 				<div class="row">
 					{#if homepage_url}
-						<a class:active={homepage_url === $page.url.href} href={homepage_url} class="row">
+						<a class:selected={homepage_url === $page.url.href} href={homepage_url} class="row">
 							<img
 								src="{ensure_end(homepage_url, '/')}favicon.png"
 								alt="favicon to homepage at {homepage_url}"

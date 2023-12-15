@@ -7,7 +7,7 @@
 
 	// TODO add highlighting of the items that are onscreen
 
-	// LibraryMenu floats alongside the docs, showing scrolled item as active
+	// LibraryMenu floats alongside the docs, showing scrolled item as selected
 	export let deployments_modules: Array<{
 		deployment: Fetched_Deployment;
 		modules: Src_Module[];
