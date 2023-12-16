@@ -22,7 +22,6 @@
     "dist"
   ],
   "peerDependencies": {
-    "@octokit/request": "*",
     "@sveltejs/kit": "*",
     "dequal": "*",
     "svelte": "*"
@@ -36,7 +35,6 @@
     "@fuz.dev/fuz_library": "^0.23.0",
     "@grogarden/gro": "^0.105.3",
     "@grogarden/util": "^0.18.0",
-    "@octokit/request": "^8.1.6",
     "@sveltejs/adapter-static": "^2.0.3",
     "@sveltejs/kit": "^1.30.0",
     "@sveltejs/package": "^2.2.3",

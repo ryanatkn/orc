@@ -90,7 +90,6 @@ export const fetch_deployments = async (
 
 			// CI status
 			const {data: check_runs} = await fetch_github_check_runs(
-				homepage_url,
 				pkg,
 				cache,
 				log,
@@ -103,7 +102,6 @@ export const fetch_deployments = async (
 
 			// pull requests
 			const {data: pull_requests} = await fetch_github_pull_requests(
-				homepage_url,
 				pkg,
 				cache,
 				log,
