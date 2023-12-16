@@ -110,10 +110,6 @@
       "default": "./dist/deployments.js",
       "types": "./dist/deployments.d.ts"
     },
-    "./fetch_cache.js": {
-      "default": "./dist/fetch_cache.js",
-      "types": "./dist/fetch_cache.d.ts"
-    },
     "./fetch_deployments.js": {
       "default": "./dist/fetch_deployments.js",
       "types": "./dist/fetch_deployments.d.ts"

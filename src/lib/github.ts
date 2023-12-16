@@ -2,14 +2,11 @@ import type {Logger} from '@grogarden/util/log.js';
 import type {Package_Meta} from '@fuz.dev/fuz_library/package_meta.js';
 import {request} from '@octokit/request';
 import {z} from 'zod';
-
 import {
 	to_fetch_cache_key,
 	type Fetch_Cache_Data,
 	type Fetch_Cache_Item,
-} from '$lib/fetch_cache.js';
-
-export const GITHUB_API_VERSION = '2022-11-28';
+} from '@grogarden/util/fetch.js';
 
 export const Github_Pull_Request = z.object({
 	number: z.number(),
@@ -57,17 +54,14 @@ export const fetch_github_pull_requests = async (
 	cache?: Fetch_Cache_Data,
 	log?: Logger,
 	token?: string,
-	api_version = GITHUB_API_VERSION,
+	api_version?: string,
 ): Promise<Fetch_Cache_Item<Github_Pull_Request[] | null>> => {
 	log?.info('url', url);
 	if (!pkg.owner_name) throw Error('owner_name is required');
 	const params = {owner: pkg.owner_name, repo: pkg.repo_name} as const; // defaults to `sort: 'created'`
-	const headers: Record<string, string> = {
-		accept: 'application/vnd.github+json', // might be set by the library, @see https://docs.github.com/en/rest/pulls/pulls?apiVersion=2022-11-28#list-pull-requests
-		'x-github-api-version': api_version,
-	};
-	if (token) headers.authorization = 'Bearer ' + token;
-	const route = 'GET /repos/{owner}/{repo}/pulls'; // TODO param
+	const headers = api_version ? new Headers({'x-github-api-version': api_version}) : undefined;
+
+	const route = 'GET /repos/{owner}/{repo}/pulls';
 	const key = to_fetch_cache_key(route, params);
 	const cached = cache?.get(key);
 	const etag = cached?.etag;
@@ -119,7 +113,7 @@ export const fetch_github_check_runs = async (
 	cache?: Fetch_Cache_Data,
 	log?: Logger,
 	token?: string,
-	api_version = GITHUB_API_VERSION,
+	api_version?: string,
 	ref = 'main',
 ): Promise<Fetch_Cache_Item<Github_Check_Runs | null>> => {
 	log?.info('url', url);

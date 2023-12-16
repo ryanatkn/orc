@@ -4,8 +4,9 @@ import {ensure_end} from '@grogarden/util/string.js';
 import type {Logger} from '@grogarden/util/log.js';
 import {wait} from '@grogarden/util/async.js';
 import {parse_package_meta, type Package_Meta} from '@fuz.dev/fuz_library/package_meta.js';
-import {create_src_json, type Src_Json} from '@grogarden/gro/src_json.js';
+import {create_src_json, Src_Json} from '@grogarden/gro/src_json.js';
 import {join} from 'node:path';
+import {fetch_value, type Fetch_Cache_Data} from '@grogarden/util/fetch.js';
 
 import {
 	fetch_github_check_runs,
@@ -13,11 +14,6 @@ import {
 	Github_Check_Runs,
 	type Github_Pull_Request,
 } from '$lib/github.js';
-import {
-	to_fetch_cache_key,
-	type Fetch_Cache_Data,
-	type Fetch_Cache_Item,
-} from '$lib/fetch_cache.js';
 
 export type Deployment = Fetched_Deployment | Unfetched_Deployment;
 
@@ -79,14 +75,14 @@ export const fetch_deployments = async (
 
 				// `${base}/.well-known/package.json`
 				const fetched_package_json = await fetch_package_json(homepage_url, cache, log);
-				if (!fetched_package_json.data) throw Error('failed to load package_json: ' + homepage_url);
-				package_json = fetched_package_json.data;
+				if (!fetched_package_json) throw Error('failed to load package_json: ' + homepage_url);
+				package_json = fetched_package_json;
 				await wait(delay);
 
 				// `${base}/.well-known/src.json`
 				const fetched_src_json = await fetch_src_json(homepage_url, cache, log);
-				if (!fetched_src_json.data) throw Error('failed to load src_json: ' + homepage_url);
-				src_json = fetched_src_json.data;
+				if (!fetched_src_json) throw Error('failed to load src_json: ' + homepage_url);
+				src_json = fetched_src_json;
 				await wait(delay);
 			}
 
@@ -138,70 +134,20 @@ export const fetch_package_json = async (
 	homepage_url: string,
 	cache?: Fetch_Cache_Data,
 	log?: Logger,
-): Promise<Fetch_Cache_Item<Package_Json | null>> => {
+): Promise<Package_Json | null> => {
 	const url = ensure_end(homepage_url, '/') + '.well-known/package.json'; // TODO helper
-	return fetch_json(url, cache, log);
+	const fetched = await fetch_value(url, {schema: Package_Json, cache, log});
+	if (!fetched.ok) return null;
+	return fetched.value;
 };
 
 export const fetch_src_json = async (
 	homepage_url: string,
 	cache?: Fetch_Cache_Data,
 	log?: Logger,
-): Promise<Fetch_Cache_Item<Package_Json | null>> => {
+): Promise<Src_Json | null> => {
 	const url = ensure_end(homepage_url, '/') + '.well-known/src.json'; // TODO helper
-	return fetch_json(url, cache, log);
-};
-
-// TODO refactor with `fetch_github_pull_requests`
-export const fetch_json = async (
-	url: string,
-	cache?: Fetch_Cache_Data,
-	log?: Logger,
-): Promise<Fetch_Cache_Item<Package_Json | null>> => {
-	log?.info('fetching', url);
-	const headers: Record<string, string> = {
-		'content-type': 'application/json',
-		accept: 'application/json',
-	};
-	const key = to_fetch_cache_key(url, null);
-	const cached = cache?.get(key);
-	const etag = cached?.etag;
-	if (etag) {
-		headers['if-none-match'] = etag;
-	}
-	const last_modified = cached?.last_modified;
-	if (last_modified) {
-		headers['if-modified-since'] = last_modified;
-	}
-	try {
-		const res = await fetch(url, {headers}); // TODO handle `retry-after` @see https://docs.github.com/en/rest/guides/best-practices-for-using-the-rest-api
-		if (res.status === 304) {
-			log?.info('cached', key);
-			return cached!;
-		}
-		log?.info('not cached', key);
-		log?.info('res.headers', Object.fromEntries(res.headers.entries()));
-		const json = await res.json();
-		const package_json = Package_Json.parse(json); // TODO maybe not?
-		const result: Fetch_Cache_Item = {
-			url,
-			params: null,
-			key,
-			etag: res.headers.get('etag'),
-			last_modified: res.headers.get('last-modified'),
-			data: package_json,
-		};
-		cache?.set(result.key, result);
-		return result;
-	} catch (err) {
-		const result: Fetch_Cache_Item<Package_Json | null> = {
-			url,
-			params: null,
-			key,
-			etag: null,
-			last_modified: null,
-			data: null,
-		}; // TODO better error
-		return result;
-	}
+	const fetched = await fetch_value(url, {schema: Src_Json, cache, log});
+	if (!fetched.ok) return null;
+	return fetched.value;
 };

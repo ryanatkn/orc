@@ -4,13 +4,12 @@ import {dirname, join} from 'node:path';
 import {paths} from '@grogarden/gro/paths.js';
 import {format_file} from '@grogarden/gro/format_file.js';
 import {dequal} from 'dequal';
-
 import {
 	deserialize_cache,
 	serialize_cache,
 	type Fetch_Cache_Data,
 	type Fetch_Cache,
-} from '$lib/fetch_cache.js';
+} from '@grogarden/util/fetch.js';
 
 // TODO rename?
 
