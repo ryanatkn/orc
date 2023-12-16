@@ -11,14 +11,14 @@ import {fetch_value, type Fetch_Cache_Data} from '@grogarden/util/fetch.js';
 import {
 	fetch_github_check_runs,
 	fetch_github_pull_requests,
-	Github_Check_Runs,
+	Github_Check_Runs_Item,
 	type Github_Pull_Request,
 } from '$lib/github.js';
 
 export type Deployment = Fetched_Deployment | Unfetched_Deployment;
 
 export interface Fetched_Deployment extends Package_Meta {
-	check_runs: Github_Check_Runs | null;
+	check_runs: Github_Check_Runs_Item | null;
 	pull_requests: Github_Pull_Request[] | null;
 }
 

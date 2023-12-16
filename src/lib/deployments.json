@@ -238,7 +238,7 @@
 					"declarations": [
 						{"name": "GITHUB_API_VERSION", "kind": "variable"},
 						{"name": "Github_Pull_Request", "kind": "variable"},
-						{"name": "Github_Check_Runs", "kind": "variable"},
+						{"name": "Github_Check_Runs_Item", "kind": "variable"},
 						{"name": "fetch_github_pull_requests", "kind": "function"},
 						{"name": "fetch_github_check_runs", "kind": "function"}
 					]
