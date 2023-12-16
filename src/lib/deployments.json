@@ -3,7 +3,7 @@
 		"url": "https://orc.ryanatkn.com/",
 		"package_json": {
 			"name": "@ryanatkn/orc",
-			"version": "0.16.2",
+			"version": "0.16.3",
 			"description": "a tool for orchestrating many repos",
 			"icon": "🪄",
 			"public": true,
@@ -163,7 +163,7 @@
 		},
 		"src_json": {
 			"name": "@ryanatkn/orc",
-			"version": "0.16.2",
+			"version": "0.16.3",
 			"modules": {
 				"./config.js": {
 					"path": "config.ts",
@@ -310,10 +310,10 @@
 				"@fuz.dev/fuz_code": "^0.4.3",
 				"@fuz.dev/fuz_dialog": "^0.5.0",
 				"@fuz.dev/fuz_library": "^0.23.0",
-				"@grogarden/gro": "^0.104.0",
-				"@ryanatkn/orc": "^0.15.0",
+				"@grogarden/gro": "^0.105.4",
+				"@ryanatkn/orc": "^0.16.3",
 				"@sveltejs/adapter-static": "^2.0.3",
-				"@sveltejs/kit": "^1.29.0",
+				"@sveltejs/kit": "^1.30.0",
 				"@sveltejs/package": "^2.2.3",
 				"@types/prismjs": "^1.26.3",
 				"@typescript-eslint/eslint-plugin": "^6.14.0",
@@ -345,15 +345,15 @@
 					"default": "./dist/Color_Scheme_Input.svelte",
 					"types": "./dist/Color_Scheme_Input.svelte.d.ts"
 				},
+				"./deployments.json": {
+					"default": "./dist/deployments.json",
+					"types": "./dist/deployments.json.d.ts"
+				},
+				"./deployments.task.js": {
+					"default": "./dist/deployments.task.js",
+					"types": "./dist/deployments.task.d.ts"
+				},
 				"./orc.task.js": {"default": "./dist/orc.task.js", "types": "./dist/orc.task.d.ts"},
-				"./packages.json": {
-					"default": "./dist/packages.json",
-					"types": "./dist/packages.json.d.ts"
-				},
-				"./packages.task.js": {
-					"default": "./dist/packages.task.js",
-					"types": "./dist/packages.task.d.ts"
-				},
 				"./style.css": {"default": "./dist/style.css"},
 				"./swallow.js": {"default": "./dist/swallow.js", "types": "./dist/swallow.d.ts"},
 				"./Theme_Input.svelte": {
@@ -386,9 +386,9 @@
 			"version": "0.81.0",
 			"modules": {
 				"./Color_Scheme_Input.svelte": {"path": "Color_Scheme_Input.svelte", "declarations": []},
+				"./deployments.json": {"path": "deployments.json", "declarations": []},
+				"./deployments.task.js": {"path": "deployments.task.ts", "declarations": []},
 				"./orc.task.js": {"path": "orc.task.ts", "declarations": []},
-				"./packages.json": {"path": "packages.json", "declarations": []},
-				"./packages.task.js": {"path": "packages.task.ts", "declarations": []},
 				"./style.css": {"path": "style.css", "declarations": []},
 				"./swallow.js": {
 					"path": "swallow.ts",
@@ -794,7 +794,7 @@
 		"url": "https://www.grogarden.org/",
 		"package_json": {
 			"name": "@grogarden/gro",
-			"version": "0.105.3",
+			"version": "0.105.4",
 			"description": "task runner and toolkit extending SvelteKit",
 			"icon": "🌰",
 			"public": true,
@@ -1070,7 +1070,7 @@
 		},
 		"src_json": {
 			"name": "@grogarden/gro",
-			"version": "0.105.3",
+			"version": "0.105.4",
 			"modules": {
 				".": {
 					"path": "index.ts",
@@ -1787,21 +1787,21 @@
 				"@feltjs/eslint-config": "^0.4.1",
 				"@fuz.dev/fuz": "^0.81.0",
 				"@fuz.dev/fuz_library": "^0.23.0",
-				"@grogarden/gro": "^0.103.0",
-				"@grogarden/util": "^0.17.0",
+				"@grogarden/gro": "^0.105.3",
+				"@grogarden/util": "^0.18.0",
 				"@octokit/request": "^8.1.6",
-				"@ryanatkn/orc": "^0.15.0",
+				"@ryanatkn/orc": "^0.16.2",
 				"@sveltejs/adapter-static": "^2.0.3",
-				"@sveltejs/kit": "^1.27.6",
-				"@typescript-eslint/eslint-plugin": "^6.13.1",
-				"@typescript-eslint/parser": "^6.13.1",
-				"eslint": "^8.54.0",
-				"prettier": "^3.1.0",
+				"@sveltejs/kit": "^1.30.0",
+				"@typescript-eslint/eslint-plugin": "^6.14.0",
+				"@typescript-eslint/parser": "^6.14.0",
+				"eslint": "^8.55.0",
+				"prettier": "^3.1.1",
 				"prettier-plugin-svelte": "^3.1.2",
-				"svelte": "^4.2.7",
+				"svelte": "^4.2.8",
 				"svelte-check": "^3.6.2",
 				"tslib": "^2.6.2",
-				"typescript": "^5.3.2",
+				"typescript": "^5.3.3",
 				"uvu": "^0.5.6"
 			},
 			"eslintConfig": {"root": true, "extends": "@feltjs"},
