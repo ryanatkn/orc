@@ -20,12 +20,7 @@
 				"deploy": "gro deploy"
 			},
 			"files": ["dist"],
-			"peerDependencies": {
-				"@octokit/request": "*",
-				"@sveltejs/kit": "*",
-				"dequal": "*",
-				"svelte": "*"
-			},
+			"peerDependencies": {"@sveltejs/kit": "*", "dequal": "*", "svelte": "*"},
 			"devDependencies": {
 				"@changesets/changelog-git": "^0.2.0",
 				"@feltjs/eslint-config": "^0.4.1",
@@ -35,7 +30,6 @@
 				"@fuz.dev/fuz_library": "^0.23.0",
 				"@grogarden/gro": "^0.105.3",
 				"@grogarden/util": "^0.18.0",
-				"@octokit/request": "^8.1.6",
 				"@sveltejs/adapter-static": "^2.0.3",
 				"@sveltejs/kit": "^1.30.0",
 				"@sveltejs/package": "^2.2.3",
@@ -90,10 +84,6 @@
 				"./deployments.js": {
 					"default": "./dist/deployments.js",
 					"types": "./dist/deployments.d.ts"
-				},
-				"./fetch_cache.js": {
-					"default": "./dist/fetch_cache.js",
-					"types": "./dist/fetch_cache.d.ts"
 				},
 				"./fetch_deployments.js": {
 					"default": "./dist/fetch_deployments.js",
@@ -195,19 +185,6 @@
 						{"name": "parse_deployments", "kind": "function"}
 					]
 				},
-				"./fetch_cache.js": {
-					"path": "fetch_cache.ts",
-					"declarations": [
-						{"name": "Fetch_Cache", "kind": "type"},
-						{"name": "Fetch_Cache_Key", "kind": "variable"},
-						{"name": "Fetch_Cache_Data", "kind": "type"},
-						{"name": "Fetch_Cache_Item", "kind": "variable"},
-						{"name": "CACHE_KEY_SEPARATOR", "kind": "variable"},
-						{"name": "to_fetch_cache_key", "kind": "function"},
-						{"name": "serialize_cache", "kind": "function"},
-						{"name": "deserialize_cache", "kind": "function"}
-					]
-				},
 				"./fetch_deployments.js": {
 					"path": "fetch_deployments.ts",
 					"declarations": [
@@ -216,8 +193,7 @@
 						{"name": "Unfetched_Deployment", "kind": "type"},
 						{"name": "fetch_deployments", "kind": "function"},
 						{"name": "fetch_package_json", "kind": "function"},
-						{"name": "fetch_src_json", "kind": "function"},
-						{"name": "fetch_json", "kind": "function"}
+						{"name": "fetch_src_json", "kind": "function"}
 					]
 				},
 				"./fs_fetch_cache.js": {
@@ -236,10 +212,11 @@
 				"./github.js": {
 					"path": "github.ts",
 					"declarations": [
-						{"name": "GITHUB_API_VERSION", "kind": "variable"},
 						{"name": "Github_Pull_Request", "kind": "variable"},
-						{"name": "Github_Check_Runs_Item", "kind": "variable"},
+						{"name": "Github_Pull_Requests", "kind": "variable"},
 						{"name": "fetch_github_pull_requests", "kind": "function"},
+						{"name": "Github_Check_Runs_Item", "kind": "variable"},
+						{"name": "Github_Check_Runs", "kind": "variable"},
 						{"name": "fetch_github_check_runs", "kind": "function"}
 					]
 				},
@@ -274,7 +251,14 @@
 		"changelog_url": "https://github.com/ryanatkn/orc/blob/main/CHANGELOG.md",
 		"published": true,
 		"check_runs": {"status": "completed", "conclusion": "success"},
-		"pull_requests": []
+		"pull_requests": [
+			{
+				"number": 18,
+				"title": "upgrade @grogarden/util and switch to use its `fetch_value`",
+				"user": {"login": "ryanatkn"},
+				"draft": true
+			}
+		]
 	},
 	{
 		"url": "https://www.fuz.dev/",

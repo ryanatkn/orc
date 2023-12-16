@@ -89,7 +89,7 @@ export const fetch_deployments = async (
 			const pkg = parse_package_meta(homepage_url, package_json, src_json);
 
 			// CI status
-			const {data: check_runs} = await fetch_github_check_runs(
+			const check_runs = await fetch_github_check_runs(
 				pkg,
 				cache,
 				log,
@@ -101,7 +101,7 @@ export const fetch_deployments = async (
 			await wait(delay);
 
 			// pull requests
-			const {data: pull_requests} = await fetch_github_pull_requests(
+			const pull_requests = await fetch_github_pull_requests(
 				pkg,
 				cache,
 				log,
@@ -126,15 +126,13 @@ export const fetch_deployments = async (
 	return deployments;
 };
 
-// TODO make this work with other urls and text, and extract
-
 export const fetch_package_json = async (
 	homepage_url: string,
 	cache?: Fetch_Cache_Data,
 	log?: Logger,
 ): Promise<Package_Json | null> => {
-	const url = ensure_end(homepage_url, '/') + '.well-known/package.json'; // TODO helper
-	const fetched = await fetch_value(url, {schema: Package_Json, cache, log});
+	const url = ensure_end(homepage_url, '/') + '.well-known/package.json';
+	const fetched = await fetch_value(url, {parse: Package_Json.parse, cache, log});
 	if (!fetched.ok) return null;
 	return fetched.value;
 };
@@ -144,8 +142,8 @@ export const fetch_src_json = async (
 	cache?: Fetch_Cache_Data,
 	log?: Logger,
 ): Promise<Src_Json | null> => {
-	const url = ensure_end(homepage_url, '/') + '.well-known/src.json'; // TODO helper
-	const fetched = await fetch_value(url, {schema: Src_Json, cache, log});
+	const url = ensure_end(homepage_url, '/') + '.well-known/src.json';
+	const fetched = await fetch_value(url, {parse: Src_Json.parse, cache, log});
 	if (!fetched.ok) return null;
 	return fetched.value;
 };
