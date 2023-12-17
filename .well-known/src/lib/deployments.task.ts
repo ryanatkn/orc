@@ -9,7 +9,7 @@ import {load_from_env} from '@grogarden/gro/env.js';
 
 import {fetch_deployments} from '$lib/fetch_deployments.js';
 import {load_orc_config} from '$lib/config.js';
-import {create_fs_fetch_cache} from '$lib/fs_fetch_cache.js';
+import {create_fs_fetch_value_cache} from '$lib/fs_fetch_value_cache.js';
 
 // TODO maybe rename to `update_deployments` or something else? is too close to `gro deploy` (autocomplete D:)
 // TODO add flag to ignore or invalidate cache -- no-cache? clean?
@@ -39,7 +39,7 @@ export const task: Task<Args> = {
 
 		const orc_config = await load_orc_config(log, dir);
 
-		const cache = await create_fs_fetch_cache('deployments');
+		const cache = await create_fs_fetch_value_cache('deployments');
 
 		// This searches the parent directory for the env var, so we don't use SvelteKit's $env imports
 		const token = await load_from_env('GITHUB_TOKEN_SECRET');
