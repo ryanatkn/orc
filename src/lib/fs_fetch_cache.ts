@@ -7,7 +7,7 @@ import {dequal} from 'dequal';
 import {
 	deserialize_cache,
 	serialize_cache,
-	type Fetch_Cache_Data,
+	type Fetch_Value_Cache,
 	type Fetch_Cache,
 } from '@grogarden/util/fetch.js';
 
@@ -18,7 +18,7 @@ export const create_fs_fetch_cache = async (
 	dir = join(paths.build, 'fetch'),
 ): Promise<Fetch_Cache> => {
 	const data_path = join(dir, name + '.json');
-	let data: Fetch_Cache_Data;
+	let data: Fetch_Value_Cache;
 	if (await exists(data_path)) {
 		try {
 			data = deserialize_cache(await readFile(data_path, 'utf8')); // TODO pass schema to parse so failures invalidate the cache

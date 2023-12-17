@@ -6,7 +6,7 @@ import {wait} from '@grogarden/util/async.js';
 import {parse_package_meta, type Package_Meta} from '@fuz.dev/fuz_library/package_meta.js';
 import {create_src_json, Src_Json} from '@grogarden/gro/src_json.js';
 import {join} from 'node:path';
-import {fetch_value, type Fetch_Cache_Data} from '@grogarden/util/fetch.js';
+import {fetch_value, type Fetch_Value_Cache} from '@grogarden/util/fetch.js';
 
 import {
 	fetch_github_check_runs,
@@ -36,7 +36,7 @@ export interface Unfetched_Deployment {
 export const fetch_deployments = async (
 	homepage_urls: Url[],
 	token?: string,
-	cache?: Fetch_Cache_Data,
+	cache?: Fetch_Value_Cache,
 	dir?: string,
 	log?: Logger,
 	delay = 50,
@@ -128,7 +128,7 @@ export const fetch_deployments = async (
 
 export const fetch_package_json = async (
 	homepage_url: string,
-	cache?: Fetch_Cache_Data,
+	cache?: Fetch_Value_Cache,
 	log?: Logger,
 ): Promise<Package_Json | null> => {
 	const url = ensure_end(homepage_url, '/') + '.well-known/package.json';
@@ -139,7 +139,7 @@ export const fetch_package_json = async (
 
 export const fetch_src_json = async (
 	homepage_url: string,
-	cache?: Fetch_Cache_Data,
+	cache?: Fetch_Value_Cache,
 	log?: Logger,
 ): Promise<Src_Json | null> => {
 	const url = ensure_end(homepage_url, '/') + '.well-known/src.json';

@@ -1,7 +1,7 @@
 import type {Logger} from '@grogarden/util/log.js';
 import type {Package_Meta} from '@fuz.dev/fuz_library/package_meta.js';
 import {z} from 'zod';
-import {fetch_value, type Fetch_Cache_Data} from '@grogarden/util/fetch.js';
+import {fetch_value, type Fetch_Value_Cache} from '@grogarden/util/fetch.js';
 
 /**
  * @see https://docs.github.com/en/rest/pulls/pulls?apiVersion=2022-11-28#list-pull-requests
@@ -23,7 +23,7 @@ export type Github_Pull_Requests = z.infer<typeof Github_Pull_Requests>;
  */
 export const fetch_github_pull_requests = async (
 	pkg: Package_Meta,
-	cache?: Fetch_Cache_Data,
+	cache?: Fetch_Value_Cache,
 	log?: Logger,
 	token?: string,
 	api_version?: string,
@@ -63,7 +63,7 @@ export type Github_Check_Runs = z.infer<typeof Github_Check_Runs>;
  */
 export const fetch_github_check_runs = async (
 	pkg: Package_Meta,
-	cache?: Fetch_Cache_Data,
+	cache?: Fetch_Value_Cache,
 	log?: Logger,
 	token?: string,
 	api_version?: string,
