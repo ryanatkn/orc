@@ -84,7 +84,6 @@ export const fetch_github_check_runs = async (
 };
 
 const reduce_check_runs = (check_runs: Github_Check_Runs_Item[]): Github_Check_Runs_Item | null => {
-	console.log(`REDUCING check_runs`, check_runs);
 	if (!check_runs.length) return null;
 	let status!: Github_Check_Runs_Item['status'];
 	let conclusion!: Github_Check_Runs_Item['conclusion'];

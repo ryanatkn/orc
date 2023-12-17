@@ -23,6 +23,7 @@ export const create_fs_fetch_cache = async (
 		try {
 			data = deserialize_cache(await readFile(data_path, 'utf8')); // TODO pass schema to parse so failures invalidate the cache
 		} catch (err) {
+			// something went wrong, maybe the data format changed, so clear the cache
 			data = new Map();
 			await rm(data_path);
 		}
