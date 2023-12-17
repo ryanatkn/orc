@@ -4,16 +4,20 @@ import {dirname, join} from 'node:path';
 import {paths} from '@grogarden/gro/paths.js';
 import {format_file} from '@grogarden/gro/format_file.js';
 import {dequal} from 'dequal';
-import {
-	deserialize_cache,
-	serialize_cache,
-	type Fetch_Value_Cache,
-	type Fetch_Cache,
-} from '@grogarden/util/fetch.js';
+import {deserialize_cache, serialize_cache, type Fetch_Value_Cache} from '@grogarden/util/fetch.js';
 
-// TODO rename?
+// TODO upstream to Gro probably, and rename/redesign?
 
-export const create_fs_fetch_cache = async (
+export interface Fetch_Cache {
+	name: string;
+	data: Fetch_Value_Cache; // TODO probably expose an API for this instead of passing the map directly
+	/**
+	 * @returns a boolean indicating if anything changed, returns `false` if it was a no-op
+	 */
+	save: () => Promise<boolean>;
+}
+
+export const create_fs_fetch_value_cache = async (
 	name: string,
 	dir = join(paths.build, 'fetch'),
 ): Promise<Fetch_Cache> => {
