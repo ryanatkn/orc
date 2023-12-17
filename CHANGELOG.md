@@ -1,5 +1,11 @@
 # @ryanatkn/orc
 
+## 0.17.0
+
+### Minor Changes
+
+- upgrade @grogarden/util and switch to use its `fetch_value` ([#18](https://github.com/ryanatkn/orc/pull/18))
+
 ## 0.16.3
 
 ### Patch Changes
