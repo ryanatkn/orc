@@ -20,12 +20,7 @@
 				"deploy": "gro deploy"
 			},
 			"files": ["dist"],
-			"peerDependencies": {
-				"@octokit/request": "*",
-				"@sveltejs/kit": "*",
-				"dequal": "*",
-				"svelte": "*"
-			},
+			"peerDependencies": {"@sveltejs/kit": "*", "dequal": "*", "svelte": "*"},
 			"devDependencies": {
 				"@changesets/changelog-git": "^0.2.0",
 				"@feltjs/eslint-config": "^0.4.1",
@@ -33,9 +28,8 @@
 				"@fuz.dev/fuz_contextmenu": "^0.6.0",
 				"@fuz.dev/fuz_dialog": "^0.5.0",
 				"@fuz.dev/fuz_library": "^0.23.0",
-				"@grogarden/gro": "^0.105.3",
-				"@grogarden/util": "^0.18.0",
-				"@octokit/request": "^8.1.6",
+				"@grogarden/gro": "^0.105.5",
+				"@grogarden/util": "^0.18.1",
 				"@sveltejs/adapter-static": "^2.0.3",
 				"@sveltejs/kit": "^1.30.0",
 				"@sveltejs/package": "^2.2.3",
@@ -91,17 +85,13 @@
 					"default": "./dist/deployments.js",
 					"types": "./dist/deployments.d.ts"
 				},
-				"./fetch_cache.js": {
-					"default": "./dist/fetch_cache.js",
-					"types": "./dist/fetch_cache.d.ts"
-				},
 				"./fetch_deployments.js": {
 					"default": "./dist/fetch_deployments.js",
 					"types": "./dist/fetch_deployments.d.ts"
 				},
-				"./fs_fetch_cache.js": {
-					"default": "./dist/fs_fetch_cache.js",
-					"types": "./dist/fs_fetch_cache.d.ts"
+				"./fs_fetch_value_cache.js": {
+					"default": "./dist/fs_fetch_value_cache.js",
+					"types": "./dist/fs_fetch_value_cache.d.ts"
 				},
 				"./github_helpers.js": {
 					"default": "./dist/github_helpers.js",
@@ -195,19 +185,6 @@
 						{"name": "parse_deployments", "kind": "function"}
 					]
 				},
-				"./fetch_cache.js": {
-					"path": "fetch_cache.ts",
-					"declarations": [
-						{"name": "Fetch_Cache", "kind": "type"},
-						{"name": "Fetch_Cache_Key", "kind": "variable"},
-						{"name": "Fetch_Cache_Data", "kind": "type"},
-						{"name": "Fetch_Cache_Item", "kind": "variable"},
-						{"name": "CACHE_KEY_SEPARATOR", "kind": "variable"},
-						{"name": "to_fetch_cache_key", "kind": "function"},
-						{"name": "serialize_cache", "kind": "function"},
-						{"name": "deserialize_cache", "kind": "function"}
-					]
-				},
 				"./fetch_deployments.js": {
 					"path": "fetch_deployments.ts",
 					"declarations": [
@@ -216,13 +193,15 @@
 						{"name": "Unfetched_Deployment", "kind": "type"},
 						{"name": "fetch_deployments", "kind": "function"},
 						{"name": "fetch_package_json", "kind": "function"},
-						{"name": "fetch_src_json", "kind": "function"},
-						{"name": "fetch_json", "kind": "function"}
+						{"name": "fetch_src_json", "kind": "function"}
 					]
 				},
-				"./fs_fetch_cache.js": {
-					"path": "fs_fetch_cache.ts",
-					"declarations": [{"name": "create_fs_fetch_cache", "kind": "function"}]
+				"./fs_fetch_value_cache.js": {
+					"path": "fs_fetch_value_cache.ts",
+					"declarations": [
+						{"name": "Fetch_Cache", "kind": "type"},
+						{"name": "create_fs_fetch_value_cache", "kind": "function"}
+					]
 				},
 				"./github_helpers.js": {
 					"path": "github_helpers.ts",
@@ -236,10 +215,11 @@
 				"./github.js": {
 					"path": "github.ts",
 					"declarations": [
-						{"name": "GITHUB_API_VERSION", "kind": "variable"},
 						{"name": "Github_Pull_Request", "kind": "variable"},
-						{"name": "Github_Check_Runs", "kind": "variable"},
+						{"name": "Github_Pull_Requests", "kind": "variable"},
 						{"name": "fetch_github_pull_requests", "kind": "function"},
+						{"name": "Github_Check_Runs_Item", "kind": "variable"},
+						{"name": "Github_Check_Runs", "kind": "variable"},
 						{"name": "fetch_github_check_runs", "kind": "function"}
 					]
 				},
@@ -274,7 +254,14 @@
 		"changelog_url": "https://github.com/ryanatkn/orc/blob/main/CHANGELOG.md",
 		"published": true,
 		"check_runs": {"status": "completed", "conclusion": "success"},
-		"pull_requests": []
+		"pull_requests": [
+			{
+				"number": 18,
+				"title": "upgrade @grogarden/util and switch to use its `fetch_value`",
+				"user": {"login": "ryanatkn"},
+				"draft": false
+			}
+		]
 	},
 	{
 		"url": "https://www.fuz.dev/",
@@ -794,7 +781,7 @@
 		"url": "https://www.grogarden.org/",
 		"package_json": {
 			"name": "@grogarden/gro",
-			"version": "0.105.4",
+			"version": "0.105.5",
 			"description": "task runner and toolkit extending SvelteKit",
 			"icon": "🌰",
 			"public": true,
@@ -828,7 +815,7 @@
 			],
 			"files": ["dist"],
 			"dependencies": {
-				"@grogarden/util": "^0.18.0",
+				"@grogarden/util": "^0.18.1",
 				"@ryanatkn/json-schema-to-typescript": "^11.1.5",
 				"chokidar": "^3.5.3",
 				"dotenv": "^16.3.1",
@@ -1070,7 +1057,7 @@
 		},
 		"src_json": {
 			"name": "@grogarden/gro",
-			"version": "0.105.4",
+			"version": "0.105.5",
 			"modules": {
 				".": {
 					"path": "index.ts",
