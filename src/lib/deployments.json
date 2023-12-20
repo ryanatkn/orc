@@ -3,7 +3,7 @@
 		"url": "https://orc.ryanatkn.com/",
 		"package_json": {
 			"name": "@ryanatkn/orc",
-			"version": "0.16.3",
+			"version": "0.17.0",
 			"description": "a tool for orchestrating many repos",
 			"icon": "🪄",
 			"public": true,
@@ -25,19 +25,20 @@
 				"@changesets/changelog-git": "^0.2.0",
 				"@feltjs/eslint-config": "^0.4.1",
 				"@fuz.dev/fuz": "^0.81.0",
-				"@fuz.dev/fuz_contextmenu": "^0.6.0",
-				"@fuz.dev/fuz_dialog": "^0.5.0",
+				"@fuz.dev/fuz_contextmenu": "^0.7.0",
+				"@fuz.dev/fuz_dialog": "^0.6.0",
 				"@fuz.dev/fuz_library": "^0.23.0",
-				"@grogarden/gro": "^0.105.5",
+				"@grogarden/gro": "^0.107.1",
 				"@grogarden/util": "^0.18.1",
-				"@sveltejs/adapter-static": "^2.0.3",
-				"@sveltejs/kit": "^1.30.0",
-				"@sveltejs/package": "^2.2.3",
-				"@types/node": "^20.10.4",
-				"@typescript-eslint/eslint-plugin": "^6.14.0",
-				"@typescript-eslint/parser": "^6.14.0",
+				"@sveltejs/adapter-static": "^3.0.1",
+				"@sveltejs/kit": "^2.0.4",
+				"@sveltejs/package": "^2.2.4",
+				"@sveltejs/vite-plugin-svelte": "^3.0.1",
+				"@types/node": "^20.10.5",
+				"@typescript-eslint/eslint-plugin": "^6.15.0",
+				"@typescript-eslint/parser": "^6.15.0",
 				"dequal": "^2.0.3",
-				"eslint": "^8.55.0",
+				"eslint": "^8.56.0",
 				"eslint-plugin-svelte": "^2.35.1",
 				"prettier": "^3.1.1",
 				"prettier-plugin-svelte": "^3.1.2",
@@ -153,7 +154,7 @@
 		},
 		"src_json": {
 			"name": "@ryanatkn/orc",
-			"version": "0.16.3",
+			"version": "0.17.0",
 			"modules": {
 				"./config.js": {
 					"path": "config.ts",
@@ -254,14 +255,7 @@
 		"changelog_url": "https://github.com/ryanatkn/orc/blob/main/CHANGELOG.md",
 		"published": true,
 		"check_runs": {"status": "completed", "conclusion": "success"},
-		"pull_requests": [
-			{
-				"number": 18,
-				"title": "upgrade @grogarden/util and switch to use its `fetch_value`",
-				"user": {"login": "ryanatkn"},
-				"draft": false
-			}
-		]
+		"pull_requests": []
 	},
 	{
 		"url": "https://www.fuz.dev/",
@@ -281,7 +275,7 @@
 			"repository": {"type": "git", "url": "git+https://github.com/fuz-dev/fuz.git"},
 			"bugs": {"url": "https://github.com/fuz-dev/fuz/issues", "email": "mail@ryanatkn.com"},
 			"type": "module",
-			"engines": {"node": ">=20.10"},
+			"engines": {"node": ">=20.7"},
 			"scripts": {
 				"dev": "gro dev",
 				"build": "gro build",
@@ -297,8 +291,8 @@
 				"@fuz.dev/fuz_code": "^0.4.3",
 				"@fuz.dev/fuz_dialog": "^0.5.0",
 				"@fuz.dev/fuz_library": "^0.23.0",
-				"@grogarden/gro": "^0.105.4",
-				"@ryanatkn/orc": "^0.16.3",
+				"@grogarden/gro": "^0.105.5",
+				"@ryanatkn/orc": "^0.17.0",
 				"@sveltejs/adapter-static": "^2.0.3",
 				"@sveltejs/kit": "^1.30.0",
 				"@sveltejs/package": "^2.2.3",
@@ -472,16 +466,17 @@
 				"@changesets/changelog-git": "^0.2.0",
 				"@feltjs/eslint-config": "^0.4.1",
 				"@fuz.dev/fuz": "^0.81.0",
-				"@fuz.dev/fuz_code": "^0.4.3",
-				"@grogarden/gro": "^0.104.0",
-				"@grogarden/util": "^0.18.0",
-				"@sveltejs/adapter-static": "^2.0.3",
-				"@sveltejs/kit": "^1.29.0",
-				"@sveltejs/package": "^2.2.3",
-				"@types/node": "^20.10.4",
-				"@typescript-eslint/eslint-plugin": "^6.14.0",
-				"@typescript-eslint/parser": "^6.14.0",
-				"eslint": "^8.55.0",
+				"@fuz.dev/fuz_code": "^0.5.0",
+				"@grogarden/gro": "^0.107.0",
+				"@grogarden/util": "^0.18.1",
+				"@sveltejs/adapter-static": "^3.0.1",
+				"@sveltejs/kit": "^2.0.4",
+				"@sveltejs/package": "^2.2.4",
+				"@sveltejs/vite-plugin-svelte": "^3.0.1",
+				"@types/node": "^20.10.5",
+				"@typescript-eslint/eslint-plugin": "^6.15.0",
+				"@typescript-eslint/parser": "^6.15.0",
+				"eslint": "^8.56.0",
 				"eslint-plugin-svelte": "^2.35.1",
 				"prettier": "^3.1.1",
 				"prettier-plugin-svelte": "^3.1.2",
@@ -736,23 +731,24 @@
 			"devDependencies": {
 				"@feltjs/eslint-config": "^0.4.1",
 				"@fuz.dev/fuz": "^0.81.0",
-				"@fuz.dev/fuz_contextmenu": "^0.6.0",
-				"@fuz.dev/fuz_dialog": "^0.5.0",
+				"@fuz.dev/fuz_contextmenu": "^0.7.0",
+				"@fuz.dev/fuz_dialog": "^0.6.0",
 				"@fuz.dev/fuz_library": "^0.23.0",
-				"@grogarden/gro": "^0.103.0",
-				"@grogarden/util": "^0.17.0",
-				"@sveltejs/adapter-static": "^2.0.3",
-				"@sveltejs/kit": "^1.27.6",
-				"@typescript-eslint/eslint-plugin": "^6.13.1",
-				"@typescript-eslint/parser": "^6.13.1",
-				"eslint": "^8.54.0",
+				"@grogarden/gro": "^0.107.0",
+				"@grogarden/util": "^0.18.1",
+				"@sveltejs/adapter-static": "^3.0.1",
+				"@sveltejs/kit": "^2.0.4",
+				"@sveltejs/vite-plugin-svelte": "^3.0.1",
+				"@typescript-eslint/eslint-plugin": "^6.15.0",
+				"@typescript-eslint/parser": "^6.15.0",
+				"eslint": "^8.56.0",
 				"eslint-plugin-svelte": "^2.35.1",
-				"prettier": "^3.1.0",
+				"prettier": "^3.1.1",
 				"prettier-plugin-svelte": "^3.1.2",
-				"svelte": "^4.2.7",
+				"svelte": "^4.2.8",
 				"svelte-check": "^3.6.2",
 				"tslib": "^2.6.2",
-				"typescript": "^5.3.2",
+				"typescript": "^5.3.3",
 				"uvu": "^0.5.6"
 			},
 			"eslintConfig": {"root": true, "extends": "@feltjs"},
@@ -781,7 +777,7 @@
 		"url": "https://www.grogarden.org/",
 		"package_json": {
 			"name": "@grogarden/gro",
-			"version": "0.105.5",
+			"version": "0.107.1",
 			"description": "task runner and toolkit extending SvelteKit",
 			"icon": "🌰",
 			"public": true,
@@ -829,22 +825,23 @@
 				"tslib": "^2.6.2",
 				"zod": "^3.22.4"
 			},
-			"peerDependencies": {"esbuild": "^0.18.20", "svelte": "*"},
+			"peerDependencies": {"esbuild": "^0.19", "svelte": "*"},
 			"devDependencies": {
 				"@changesets/changelog-git": "^0.2.0",
 				"@changesets/types": "^6.0.0",
 				"@feltjs/eslint-config": "^0.4.1",
 				"@fuz.dev/fuz": "^0.81.0",
 				"@fuz.dev/fuz_library": "^0.23.0",
-				"@sveltejs/adapter-static": "^2.0.3",
-				"@sveltejs/kit": "^1.29.0",
-				"@sveltejs/package": "^2.2.3",
+				"@sveltejs/adapter-static": "^3.0.1",
+				"@sveltejs/kit": "^2.0.4",
+				"@sveltejs/package": "^2.2.4",
+				"@sveltejs/vite-plugin-svelte": "^3.0.1",
 				"@types/fs-extra": "^11.0.4",
-				"@types/node": "^20.10.4",
-				"@typescript-eslint/eslint-plugin": "^6.14.0",
-				"@typescript-eslint/parser": "^6.14.0",
-				"esbuild": "^0.18.20",
-				"eslint": "^8.55.0",
+				"@types/node": "^20.10.5",
+				"@typescript-eslint/eslint-plugin": "^6.15.0",
+				"@typescript-eslint/parser": "^6.15.0",
+				"esbuild": "^0.19.10",
+				"eslint": "^8.56.0",
 				"eslint-plugin-svelte": "^2.35.1",
 				"svelte": "^4.2.8",
 				"svelte-check": "^3.6.2",
@@ -1057,7 +1054,7 @@
 		},
 		"src_json": {
 			"name": "@grogarden/gro",
-			"version": "0.105.5",
+			"version": "0.107.1",
 			"modules": {
 				".": {
 					"path": "index.ts",
@@ -1102,16 +1099,9 @@
 				"./changeset.task.js": {
 					"path": "changeset.task.ts",
 					"declarations": [
+						{"name": "Changeset_Bump", "kind": "variable"},
 						{"name": "Args", "kind": "variable"},
-						{"name": "task", "kind": "variable"},
-						{"name": "Changeset_Callback", "kind": "type"},
-						{"name": "Update_Written_Config", "kind": "type"},
-						{"name": "update_changeset_config", "kind": "function"},
-						{"name": "load_changeset_config", "kind": "function"},
-						{"name": "load_changeset_config_contents", "kind": "function"},
-						{"name": "write_changeset_config", "kind": "function"},
-						{"name": "serialize_changeset_config", "kind": "function"},
-						{"name": "parse_changeset_config", "kind": "function"}
+						{"name": "task", "kind": "variable"}
 					]
 				},
 				"./check.task.js": {
@@ -1363,6 +1353,7 @@
 				"./gro_plugin_sveltekit_frontend.js": {
 					"path": "gro_plugin_sveltekit_frontend.ts",
 					"declarations": [
+						{"name": "has_sveltekit_frontend", "kind": "function"},
 						{"name": "Options", "kind": "type"},
 						{"name": "Host_Target", "kind": "type"},
 						{"name": "plugin", "kind": "function"}
@@ -1370,10 +1361,7 @@
 				},
 				"./gro.config.default.js": {
 					"path": "gro.config.default.ts",
-					"declarations": [
-						{"name": "default", "kind": "function"},
-						{"name": "has_sveltekit_frontend", "kind": "function"}
-					]
+					"declarations": [{"name": "default", "kind": "function"}]
 				},
 				"./gro.js": {"path": "gro.ts", "declarations": []},
 				"./hash.js": {"path": "hash.ts", "declarations": [{"name": "to_hash", "kind": "function"}]},
@@ -1762,7 +1750,7 @@
 			"homepage": "https://www.spiderspace.org/",
 			"repository": "https://github.com/spiderspace/spiderspace",
 			"type": "module",
-			"engines": {"node": ">=20.10"},
+			"engines": {"node": ">=20.7"},
 			"scripts": {
 				"start": "gro dev",
 				"dev": "gro dev",
@@ -1774,10 +1762,10 @@
 				"@feltjs/eslint-config": "^0.4.1",
 				"@fuz.dev/fuz": "^0.81.0",
 				"@fuz.dev/fuz_library": "^0.23.0",
-				"@grogarden/gro": "^0.105.3",
-				"@grogarden/util": "^0.18.0",
+				"@grogarden/gro": "^0.105.5",
+				"@grogarden/util": "^0.18.1",
 				"@octokit/request": "^8.1.6",
-				"@ryanatkn/orc": "^0.16.2",
+				"@ryanatkn/orc": "^0.17.0",
 				"@sveltejs/adapter-static": "^2.0.3",
 				"@sveltejs/kit": "^1.30.0",
 				"@typescript-eslint/eslint-plugin": "^6.14.0",
@@ -1810,7 +1798,7 @@
 		"npm_url": null,
 		"changelog_url": null,
 		"published": false,
-		"check_runs": {"status": "completed", "conclusion": "success"},
+		"check_runs": {"status": "in_progress", "conclusion": null},
 		"pull_requests": []
 	}
 ]
