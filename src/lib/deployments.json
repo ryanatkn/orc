@@ -11,7 +11,7 @@
 			"homepage": "https://orc.ryanatkn.com/",
 			"repository": "https://github.com/ryanatkn/orc",
 			"type": "module",
-			"engines": {"node": ">=20.7"},
+			"engines": {"node": ">=20.10"},
 			"scripts": {
 				"start": "gro dev",
 				"dev": "gro dev",
@@ -281,7 +281,7 @@
 			"repository": {"type": "git", "url": "git+https://github.com/fuz-dev/fuz.git"},
 			"bugs": {"url": "https://github.com/fuz-dev/fuz/issues", "email": "mail@ryanatkn.com"},
 			"type": "module",
-			"engines": {"node": ">=20.7"},
+			"engines": {"node": ">=20.10"},
 			"scripts": {
 				"dev": "gro dev",
 				"build": "gro build",
@@ -458,7 +458,7 @@
 				"url": "https://www.ryanatkn.com/"
 			},
 			"type": "module",
-			"engines": {"node": ">=20.7"},
+			"engines": {"node": ">=20.10"},
 			"scripts": {
 				"start": "gro dev",
 				"dev": "gro dev",
@@ -724,7 +724,7 @@
 			"homepage": "https://template.fuz.dev/",
 			"repository": "https://github.com/fuz-dev/fuz_template",
 			"type": "module",
-			"engines": {"node": ">=20.7"},
+			"engines": {"node": ">=20.10"},
 			"scripts": {
 				"start": "gro dev",
 				"dev": "gro dev",
@@ -796,7 +796,7 @@
 			"repository": {"type": "git", "url": "git+https://github.com/grogarden/gro.git"},
 			"bugs": {"url": "https://github.com/grogarden/gro/issues", "email": "mail@ryanatkn.com"},
 			"type": "module",
-			"engines": {"node": ">=20.7"},
+			"engines": {"node": ">=20.10"},
 			"scripts": {
 				"build": "rm -rf .gro dist && svelte-package && chmod +x ./dist/gro.js && npm link -f",
 				"start": "gro dev",
@@ -1762,7 +1762,7 @@
 			"homepage": "https://www.spiderspace.org/",
 			"repository": "https://github.com/spiderspace/spiderspace",
 			"type": "module",
-			"engines": {"node": ">=20.7"},
+			"engines": {"node": ">=20.10"},
 			"scripts": {
 				"start": "gro dev",
 				"dev": "gro dev",
