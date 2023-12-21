@@ -18,7 +18,7 @@
 
 <Library_Panel>
 	<div class="library_menu">
-		<h6>deployments</h6>
+		<h6>packages</h6>
 		<menu>
 			{#each deployments_modules as pkg_modules (pkg_modules)}
 				<li role="none">
